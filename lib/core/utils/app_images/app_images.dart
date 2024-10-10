@@ -10,9 +10,17 @@ class AppImages {
   /// assets/images/big_chair.svg
   static const String assetsImagesBigChair = "assets/images/big_chair.svg";
 
+  /// Assets for assetsImagesColoredChair
+  /// assets/images/colored_chair.png
+  static const String assetsImagesColoredChair = "assets/images/colored_chair.png";
+
   /// Assets for assetsImagesLogo
   /// assets/images/logo.png
   static const String assetsImagesLogo = "assets/images/logo.png";
+
+  /// Assets for assetsImagesLogo360
+  /// assets/images/logo_360.png
+  static const String assetsImagesLogo360 = "assets/images/logo_360.png";
 
   /// Assets for assetsImagesSmallChair
   /// assets/images/small_chair.svg
