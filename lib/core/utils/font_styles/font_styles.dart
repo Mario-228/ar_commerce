@@ -47,27 +47,23 @@ abstract class FontStyles {
     fontSize: 15,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w600,
-    height: 0.10,
   );
   static const TextStyle textStyleBold16 = TextStyle(
     color: AppColors.beige,
     fontSize: 16,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
-    height: 0.10,
   );
   static const TextStyle textStyleBold20 = TextStyle(
     color: AppColors.grey,
     fontSize: 20,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
-    height: 0.10,
   );
   static const TextStyle textStyleBold28 = TextStyle(
     color: AppColors.darkGreen,
     fontSize: 28,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
-    height: 0.10,
   );
 }
