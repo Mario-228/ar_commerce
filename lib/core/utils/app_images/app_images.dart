@@ -2,6 +2,10 @@
 class AppImages {
   AppImages._();
   
+  /// Assets for assetsImagesBackground
+  /// assets/images/background.png
+  static const String assetsImagesBackground = "assets/images/background.png";
+
   /// Assets for assetsImagesBigChair
   /// assets/images/big_chair.svg
   static const String assetsImagesBigChair = "assets/images/big_chair.svg";
