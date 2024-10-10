@@ -15,7 +15,7 @@ class CustomBackGroundContainer extends StatelessWidget {
         image: AssetImage(
           AppImages.assetsImagesBackground,
         ),
-        opacity: 0.3,
+        opacity: 0.2,
         fit: BoxFit.cover,
       )),
       child: child,
