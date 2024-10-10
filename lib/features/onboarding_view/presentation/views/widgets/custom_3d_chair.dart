@@ -8,22 +8,18 @@ class Custom3DChair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 240.0,
+    return const SizedBox(
+      height: 200.0,
       child: Stack(
+        alignment: Alignment(0.0, -2.0),
         children: [
-          Positioned(
-            left: MediaQuery.sizeOf(context).width * 0.17,
-            child: const Image(
-              image: AssetImage(AppImages.assetsImagesLogo360),
-            ),
+          Image(
+            height: 130.0,
+            image: AssetImage(AppImages.assetsImagesLogo360),
           ),
-          const Positioned(
-            top: 50,
-            child: Image(
-              image: AssetImage(AppImages.assetsImagesColoredChair),
-            ),
+          Image(
+            height: 200.0,
+            image: AssetImage(AppImages.assetsImagesColoredChair),
           ),
         ],
       ),
