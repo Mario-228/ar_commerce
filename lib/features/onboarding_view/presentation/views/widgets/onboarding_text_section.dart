@@ -11,15 +11,21 @@ class OnboardingTextSection extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          "Optimize your space using tech and creativity in africa",
-          style: FontStyles.textStyleBold20,
-          textAlign: TextAlign.center,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "Optimize your space using tech and creativity in africa",
+            style: FontStyles.textStyleBold20,
+            textAlign: TextAlign.center,
+          ),
         ),
         SizedBox(height: 6.0),
-        Text(
-          "Fitting your furnitures in your space before buying",
-          style: FontStyles.textStyleMeduim13,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "Fitting your furnitures in your space before buying",
+            style: FontStyles.textStyleMeduim13,
+          ),
         ),
       ],
     );
