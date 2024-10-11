@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
+import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
+// import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 // import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const OnboardingView(),
+      home: const LoginView(),
     );
   }
 }
