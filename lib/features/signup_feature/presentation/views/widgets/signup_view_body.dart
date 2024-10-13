@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
-import 'package:graduation_project/core/utils/app_images/app_images.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
-import 'package:graduation_project/core/widgets/custom_text_form_field.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/core/widgets/custom_header_widget.dart';
-import 'package:graduation_project/features/signup_feature/presentation/views/widgets/password_field_and_strength_checker.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/widgets/signup_text_form_field_section.dart';
-import 'package:password_strength_checker/password_strength_checker.dart';
 
 class SignupViewBody extends StatelessWidget {
   SignupViewBody({super.key});
