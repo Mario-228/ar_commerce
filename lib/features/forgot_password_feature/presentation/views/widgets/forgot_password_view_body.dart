@@ -1,43 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
-import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
-import 'package:graduation_project/core/widgets/custom_header_widget.dart';
-import 'package:graduation_project/core/widgets/custom_material_button.dart';
-import 'package:graduation_project/core/widgets/custom_text_form_field.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation_project/core/utils/app_images/app_images.dart';
+import 'package:graduation_project/features/forgot_password_feature/presentation/views/widgets/forgot_password_body_content.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
   const ForgotPasswordViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 30.0),
-            const CustomHeaderWidget(
-                title: "Forgot Password",
-                subtitle: "Login to your minifurs account"),
-            const SizedBox(height: 40.0),
-            CustomTextFormField(
-                type: TextInputType.emailAddress,
-                labelText: "Enter Email Address",
-                controller: TextEditingController()),
-            const SizedBox(height: 35.0),
-            CustomMaterialButton(
-              text: "Send Email",
-              color: AppColors.darkGreen,
-              onPressed: () =>
-                  GoRouter.of(context).push(AppRouters.kPasswordResetView),
-              textColor: AppColors.white,
-            ),
-          ],
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: ForgotPasswordBodyContent(),
+          ),
         ),
-      ),
+        const Spacer(flex: 1),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Opacity(
+            opacity: 0.3,
+            child: SvgPicture.asset(
+              AppImages.assetsImagesLockIcon,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
