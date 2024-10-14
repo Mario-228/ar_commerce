@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
-import 'package:graduation_project/features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 
 class ForgetPasswordWidget extends StatelessWidget {
   const ForgetPasswordWidget({
@@ -12,14 +13,7 @@ class ForgetPasswordWidget extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ForgotPasswordView(),
-            ),
-          );
-        },
+        onTap: () => GoRouter.of(context).push(AppRouters.kForgotPasswordView),
         child: Text(
           "Forgot Password?",
           style: FontStyles.textStyleMedium12

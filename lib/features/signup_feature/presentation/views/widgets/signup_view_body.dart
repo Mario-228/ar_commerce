@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/core/widgets/custom_header_widget.dart';
@@ -36,9 +37,7 @@ class SignupViewBody extends StatelessWidget {
               buttonTitle: "Sign Up",
               footerText: "Already have an account? ",
               footerLinkText: "Login Here",
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () => GoRouter.of(context).pop(),
             ),
           ],
         ),

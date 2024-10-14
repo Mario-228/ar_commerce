@@ -32,7 +32,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
               text: "Send Email",
               color: AppColors.darkGreen,
               onPressed: () =>
-                  GoRouter.of(context).pushNamed(AppRouters.kPasswordResetView),
+                  GoRouter.of(context).push(AppRouters.kPasswordResetView),
               textColor: AppColors.white,
             ),
           ],
