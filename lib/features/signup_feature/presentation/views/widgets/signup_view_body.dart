@@ -24,18 +24,12 @@ class SignupViewBody extends StatelessWidget {
             const SizedBox(height: 30.0),
             SignupTextFormFieldSection(passwordController: passwordController),
             const SizedBox(height: 20.0),
-            Row(
-              children: [
-                Checkbox(
-                  value: false,
-                  onChanged: (value) {},
-                  shape: const CircleBorder(),
-                ),
-                const Text(
-                  "I accept the Terms of Service & Privacy Policy",
-                  style: FontStyles.textStyleMedium12,
-                )
-              ],
+            const ListTile(
+              leading: Icon(Icons.circle_outlined),
+              title: Text(
+                "I accept the Terms of Service & Privacy Policy",
+                style: FontStyles.textStyleMedium12,
+              ),
             ),
             const SizedBox(height: 30.0),
             CustomFooterWidget(
