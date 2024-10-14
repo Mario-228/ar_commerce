@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/app_images/app_images.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
 import 'package:graduation_project/core/widgets/custom_material_button.dart';
 
@@ -14,9 +16,9 @@ class PasswordResetViewBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 30.0),
-          Container(
+          const Align(
             alignment: Alignment.centerLeft,
-            child: const Image(
+            child: Image(
               height: 40.0,
               width: 85.0,
               image: AssetImage(AppImages.assetsImagesLogo),
@@ -40,9 +42,7 @@ class PasswordResetViewBody extends StatelessWidget {
               text: "Back to Login",
               color: AppColors.darkGreen,
               onPressed: () {
-                Navigator.of(context)
-                  ..pop(context)
-                  ..pop(context);
+                GoRouter.of(context).push(AppRouters.kLoginView);
               },
               textColor: AppColors.white),
         ],

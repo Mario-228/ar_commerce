@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/widgets/forget_password_widget.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/core/widgets/custom_header_widget.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/widgets/login_text_form_field_section.dart';
-import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -32,9 +33,7 @@ class LoginViewBody extends StatelessWidget {
               footerText: "Don't have an account? ",
               footerLinkText: "Create Account Here",
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const SignupView();
-                }));
+                GoRouter.of(context).push(AppRouters.kSignUpView);
               },
             ),
           ],

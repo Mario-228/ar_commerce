@@ -3,6 +3,7 @@ import 'package:graduation_project/features/forgot_password_feature/presentation
 import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
+import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
 import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
 
 abstract class AppRouters {
@@ -33,6 +34,10 @@ abstract class AppRouters {
       GoRoute(
         path: kPasswordResetView,
         builder: (context, state) => const PasswordResetView(),
+      ),
+      GoRoute(
+        path: kSignUpView,
+        builder: (context, state) => const SignupView(),
       ),
     ],
   );
