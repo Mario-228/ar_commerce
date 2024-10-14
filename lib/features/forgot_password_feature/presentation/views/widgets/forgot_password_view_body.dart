@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/widgets/custom_header_widget.dart';
 import 'package:graduation_project/core/widgets/custom_material_button.dart';
 import 'package:graduation_project/core/widgets/custom_text_form_field.dart';
-import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
   const ForgotPasswordViewBody({super.key});
@@ -30,14 +31,8 @@ class ForgotPasswordViewBody extends StatelessWidget {
             CustomMaterialButton(
               text: "Send Email",
               color: AppColors.darkGreen,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PasswordResetView(),
-                  ),
-                );
-              },
+              onPressed: () =>
+                  GoRouter.of(context).pushNamed(AppRouters.kPasswordResetView),
               textColor: AppColors.white,
             ),
           ],
