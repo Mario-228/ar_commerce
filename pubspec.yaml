@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
+  go_router: ^14.3.0
   password_strength_checker: ^1.2.4
 
 dev_dependencies:
