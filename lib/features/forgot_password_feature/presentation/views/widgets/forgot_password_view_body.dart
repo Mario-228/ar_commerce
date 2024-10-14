@@ -12,33 +12,36 @@ class ForgotPasswordViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 30.0),
-          const CustomHeaderWidget(
-              title: "Forgot Password",
-              subtitle: "Login to your minifurs account"),
-          const SizedBox(height: 40.0),
-          CustomTextFormField(
-              type: TextInputType.emailAddress,
-              labelText: "Enter Email Address",
-              controller: TextEditingController()),
-          const SizedBox(height: 35.0),
-          CustomMaterialButton(
-            text: "Send Email",
-            color: AppColors.darkGreen,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PasswordResetView(),
-                ),
-              );
-            },
-            textColor: AppColors.white,
-          ),
-        ],
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 30.0),
+            const CustomHeaderWidget(
+                title: "Forgot Password",
+                subtitle: "Login to your minifurs account"),
+            const SizedBox(height: 40.0),
+            CustomTextFormField(
+                type: TextInputType.emailAddress,
+                labelText: "Enter Email Address",
+                controller: TextEditingController()),
+            const SizedBox(height: 35.0),
+            CustomMaterialButton(
+              text: "Send Email",
+              color: AppColors.darkGreen,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PasswordResetView(),
+                  ),
+                );
+              },
+              textColor: AppColors.white,
+            ),
+          ],
+        ),
       ),
     );
   }

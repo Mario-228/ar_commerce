@@ -12,30 +12,33 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 30.0),
-          const CustomHeaderWidget(
-            title: 'Welcome Back',
-            subtitle: 'Login to your minifurs account',
-          ),
-          const SizedBox(height: 30.0),
-          const LoginTextFormFieldSection(),
-          const SizedBox(height: 12.0),
-          const ForgetPasswordWidget(),
-          const SizedBox(height: 35.0),
-          CustomFooterWidget(
-            buttonTitle: "Login",
-            footerText: "Don't have an account? ",
-            footerLinkText: "Create Account Here",
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const SignupView();
-              }));
-            },
-          ),
-        ],
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 30.0),
+            const CustomHeaderWidget(
+              title: 'Welcome Back',
+              subtitle: 'Login to your minifurs account',
+            ),
+            const SizedBox(height: 30.0),
+            const LoginTextFormFieldSection(),
+            const SizedBox(height: 12.0),
+            const ForgetPasswordWidget(),
+            const SizedBox(height: 35.0),
+            CustomFooterWidget(
+              buttonTitle: "Login",
+              footerText: "Don't have an account? ",
+              footerLinkText: "Create Account Here",
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const SignupView();
+                }));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
