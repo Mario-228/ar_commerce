@@ -29,10 +29,12 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.6
+  device_preview: ^1.2.0
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
-  
+  password_strength_checker: ^1.2.4
+
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:
