@@ -29,6 +29,10 @@ class PasswordFieldAndStrengthChecker extends StatelessWidget {
           labelText: "Password",
           labelStyle:
               FontStyles.textStyleLight13.copyWith(fontWeight: FontWeight.w400),
+          suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.visibility_off),
+          ),
         ),
       ),
       minimumStrengthRequired: PasswordStrength.strong,

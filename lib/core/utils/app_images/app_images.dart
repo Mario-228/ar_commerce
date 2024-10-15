@@ -30,4 +30,8 @@ class AppImages {
   /// Assets for assetsImagesEmailImage
   /// assets/images/email_image.png
   static const String assetsImagesEmailImage = "assets/images/email_image.png";
+
+  /// Assets for assetsImagesLockIcon
+  /// assets/images/lock_icon.svg
+  static const String assetsImagesLockIcon = "assets/images/lock_icon.svg";
 }

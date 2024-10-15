@@ -16,9 +16,9 @@ class PasswordResetViewBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 30.0),
-          Container(
+          const Align(
             alignment: Alignment.centerLeft,
-            child: const Image(
+            child: Image(
               height: 40.0,
               width: 85.0,
               image: AssetImage(AppImages.assetsImagesLogo),
