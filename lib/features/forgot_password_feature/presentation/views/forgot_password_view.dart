@@ -10,6 +10,7 @@ class ForgotPasswordView extends StatelessWidget {
     return const Scaffold(
       body: CustomBackGroundContainer(
         child: SafeArea(
+          bottom: false,
           child: ForgotPasswordViewBody(),
         ),
       ),

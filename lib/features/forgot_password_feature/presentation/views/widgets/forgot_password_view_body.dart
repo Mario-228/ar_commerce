@@ -9,6 +9,8 @@ class ForgotPasswordViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -17,14 +19,10 @@ class ForgotPasswordViewBody extends StatelessWidget {
             child: ForgotPasswordBodyContent(),
           ),
         ),
-        const Spacer(flex: 1),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Opacity(
-            opacity: 0.3,
-            child: SvgPicture.asset(
-              AppImages.assetsImagesLockIcon,
-            ),
+        Opacity(
+          opacity: 0.3,
+          child: SvgPicture.asset(
+            AppImages.assetsImagesLockIcon,
           ),
         ),
       ],
