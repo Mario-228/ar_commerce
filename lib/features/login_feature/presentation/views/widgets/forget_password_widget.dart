@@ -13,9 +13,7 @@ class ForgetPasswordWidget extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: GestureDetector(
-        onTap: () {
-          GoRouter.of(context).push(AppRouters.kForgotPasswordView);
-        },
+        onTap: () => GoRouter.of(context).push(AppRouters.kForgotPasswordView),
         child: Text(
           "Forgot Password?",
           style: FontStyles.textStyleMedium12

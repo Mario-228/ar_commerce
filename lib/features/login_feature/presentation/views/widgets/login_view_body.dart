@@ -32,9 +32,8 @@ class LoginViewBody extends StatelessWidget {
               buttonTitle: "Login",
               footerText: "Don't have an account? ",
               footerLinkText: "Create Account Here",
-              onPressed: () {
-                GoRouter.of(context).push(AppRouters.kSignUpView);
-              },
+              onPressed: () =>
+                  GoRouter.of(context).push(AppRouters.kSignUpView),
             ),
           ],
         ),

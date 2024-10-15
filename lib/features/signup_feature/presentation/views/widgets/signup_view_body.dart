@@ -37,9 +37,7 @@ class SignupViewBody extends StatelessWidget {
               buttonTitle: "Sign Up",
               footerText: "Already have an account? ",
               footerLinkText: "Login Here",
-              onPressed: () {
-                GoRouter.of(context).pop();
-              },
+              onPressed: () => GoRouter.of(context).pop(),
             ),
           ],
         ),

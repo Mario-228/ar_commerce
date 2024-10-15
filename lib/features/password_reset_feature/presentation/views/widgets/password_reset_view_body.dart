@@ -41,9 +41,7 @@ class PasswordResetViewBody extends StatelessWidget {
           CustomMaterialButton(
               text: "Back to Login",
               color: AppColors.darkGreen,
-              onPressed: () {
-                GoRouter.of(context).push(AppRouters.kLoginView);
-              },
+              onPressed: () => GoRouter.of(context).push(AppRouters.kLoginView),
               textColor: AppColors.white),
         ],
       ),
