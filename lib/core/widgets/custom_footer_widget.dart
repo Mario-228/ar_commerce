@@ -10,18 +10,25 @@ class CustomFooterWidget extends StatelessWidget {
     required this.footerText,
     required this.footerLinkText,
     required this.onPressed,
+    required this.formKey,
   });
   final String buttonTitle;
   final String footerText;
   final String footerLinkText;
   final void Function() onPressed;
-
+  final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomMaterialButton(
-            text: buttonTitle, color: AppColors.darkGreen, onPressed: () {}),
+            text: buttonTitle,
+            color: AppColors.darkGreen,
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                print("done");
+              }
+            }),
         const SizedBox(height: 20.0),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(footerText, style: FontStyles.textStyleMedium12),

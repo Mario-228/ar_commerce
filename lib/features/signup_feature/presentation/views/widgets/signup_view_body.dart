@@ -34,6 +34,7 @@ class SignupViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 30.0),
             CustomFooterWidget(
+              formKey: GlobalKey(),
               buttonTitle: "Sign Up",
               footerText: "Already have an account? ",
               footerLinkText: "Login Here",
