@@ -8,23 +8,28 @@ class ForgotPasswordViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: ForgotPasswordBodyContent(),
+    return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: ForgotPasswordBodyContent(),
+              ),
+              Opacity(
+                opacity: 0.3,
+                child: SvgPicture.asset(
+                  AppImages.assetsImagesLockIcon,
+                ),
+              ),
+            ],
           ),
-        ),
-        Opacity(
-          opacity: 0.3,
-          child: SvgPicture.asset(
-            AppImages.assetsImagesLockIcon,
-          ),
-        ),
+        )
       ],
     );
   }
