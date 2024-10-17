@@ -10,9 +10,9 @@ import 'package:graduation_project/features/login_feature/presentation/views_mod
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
-  static final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: SingleChildScrollView(
