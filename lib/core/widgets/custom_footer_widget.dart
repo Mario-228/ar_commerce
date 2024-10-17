@@ -24,10 +24,9 @@ class CustomFooterWidget extends StatelessWidget {
         CustomMaterialButton(
             text: buttonTitle,
             color: AppColors.darkGreen,
+            //this function must passed in constructor
             onPressed: () {
-              if (formKey.currentState!.validate()) {
-                print("done");
-              }
+              if (formKey.currentState!.validate()) {}
             }),
         const SizedBox(height: 20.0),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [

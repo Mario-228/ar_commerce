@@ -3,7 +3,7 @@ import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
 
-class PasswordFieldAndStrengthChecker extends StatelessWidget {
+class PasswordFieldAndStrengthChecker extends StatefulWidget {
   const PasswordFieldAndStrengthChecker({
     super.key,
     required this.passwordController,
@@ -12,13 +12,23 @@ class PasswordFieldAndStrengthChecker extends StatelessWidget {
   final TextEditingController passwordController;
 
   @override
+  State<PasswordFieldAndStrengthChecker> createState() =>
+      _PasswordFieldAndStrengthCheckerState();
+}
+
+class _PasswordFieldAndStrengthCheckerState
+    extends State<PasswordFieldAndStrengthChecker> {
+  bool isVisible = true;
+  IconData eye = Icons.visibility_off;
+  @override
   Widget build(BuildContext context) {
     return PasswordStrengthFormChecker(
       onChanged: (password, notifier) {
         notifier.value = PasswordStrength.calculate(text: password);
       },
       textFormFieldConfiguration: TextFormFieldConfiguration(
-        controller: passwordController,
+        obscureText: isVisible,
+        controller: widget.passwordController,
         decoration: InputDecoration(
           border: const OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.lightGrey),
@@ -30,8 +40,17 @@ class PasswordFieldAndStrengthChecker extends StatelessWidget {
           labelStyle:
               FontStyles.textStyleLight13.copyWith(fontWeight: FontWeight.w400),
           suffixIcon: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.visibility_off),
+            onPressed: () {
+              setState(() {
+                isVisible = !isVisible;
+                if (isVisible) {
+                  eye = Icons.visibility_off;
+                } else {
+                  eye = Icons.visibility;
+                }
+              });
+            },
+            icon: Icon(eye),
           ),
         ),
       ),
