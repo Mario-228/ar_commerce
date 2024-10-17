@@ -29,17 +29,20 @@ class CustomFooterWidget extends StatelessWidget {
               if (formKey.currentState!.validate()) {}
             }),
         const SizedBox(height: 20.0),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text(footerText, style: FontStyles.textStyleMedium12),
-          GestureDetector(
-            onTap: onPressed,
-            child: Text(
-              footerLinkText,
-              style: FontStyles.textStyleMedium12.copyWith(
-                  fontWeight: FontWeight.w600, color: AppColors.orange),
-            ),
-          )
-        ]),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text(footerText, style: FontStyles.textStyleMedium12),
+            GestureDetector(
+              onTap: onPressed,
+              child: Text(
+                footerLinkText,
+                style: FontStyles.textStyleMedium12.copyWith(
+                    fontWeight: FontWeight.w600, color: AppColors.orange),
+              ),
+            )
+          ]),
+        ),
       ],
     );
   }

@@ -6,10 +6,7 @@ import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 // import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
 
 void main() {
-  runApp(DevicePreview(
-    builder: (BuildContext context) => const MyApp(),
-    enabled: true,
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
