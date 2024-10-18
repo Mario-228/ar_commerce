@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project/features/forgot_password_feature/presentation/views/forgot_password_view.dart';
+import 'package:graduation_project/features/home_feature/presentation/home_view.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
@@ -12,6 +13,7 @@ abstract class AppRouters {
   static const String kOnBoardingView = '/onBoardingView';
   static const String kLoginView = '/loginView';
   static const String kForgotPasswordView = '/forgotPasswordView';
+  static const String kHomeView = '/homeView';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
@@ -38,6 +40,10 @@ abstract class AppRouters {
       GoRoute(
         path: kSignUpView,
         builder: (context, state) => const SignupView(),
+      ),
+      GoRoute(
+        path: kHomeView,
+        builder: (context, state) => const HomeView(),
       ),
     ],
   );
