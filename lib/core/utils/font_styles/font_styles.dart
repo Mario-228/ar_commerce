@@ -2,11 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 
 abstract class FontStyles {
+  static const TextStyle textStyleMedium6 = TextStyle(
+    color: AppColors.glodenOrange,
+    fontSize: 6,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w500,
+  );
+  static const TextStyle textStyleRegular8 = TextStyle(
+    color: AppColors.black,
+    fontSize: 8,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle textStyleMedium8 = TextStyle(
+    color: AppColors.black,
+    fontSize: 8,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w500,
+  );
+  static const TextStyle textStyleMedium10 = TextStyle(
+    color: AppColors.darkGreen,
+    fontSize: 10,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle textStyleLight10 = TextStyle(
     color: AppColors.black,
     fontSize: 10,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w300,
+  );
+  static const TextStyle textStyleRegular12 = TextStyle(
+    color: AppColors.grey,
+    fontSize: 12,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
   );
   static const TextStyle textStyleMedium12 = TextStyle(
     color: AppColors.black,
@@ -21,10 +51,22 @@ abstract class FontStyles {
     fontWeight: FontWeight.w300,
   );
   static const TextStyle textStyleMeduim13 = TextStyle(
-    color: AppColors.grey,
+    color: AppColors.darkGrey,
     fontSize: 13,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w500,
+  );
+  static const TextStyle textStyleBold13 = TextStyle(
+    color: AppColors.orange,
+    fontSize: 13,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle textStyleSemiBold14 = TextStyle(
+    color: AppColors.blackShade800,
+    fontSize: 14,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
   );
   static const TextStyle textStyleRegular14 = TextStyle(
     color: AppColors.black,
@@ -55,10 +97,22 @@ abstract class FontStyles {
     fontWeight: FontWeight.w700,
   );
   static const TextStyle textStyleBold20 = TextStyle(
-    color: AppColors.grey,
+    color: AppColors.darkGrey,
     fontSize: 20,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
+  );
+  static const TextStyle textStyleBold19 = TextStyle(
+    color: AppColors.white,
+    fontSize: 19,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle textStyleSemiBold20 = TextStyle(
+    color: AppColors.blackShade800,
+    fontSize: 20,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w600,
   );
   static const TextStyle textStyleBold28 = TextStyle(
     color: AppColors.darkGreen,
