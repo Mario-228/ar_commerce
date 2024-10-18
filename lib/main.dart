@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 // import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
 // import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
@@ -19,8 +20,16 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.orange, brightness: Brightness.light),
         useMaterial3: true,
       ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.orange, brightness: Brightness.dark),
+        useMaterial3: true,
+      ),
+      themeMode: ThemeMode.light,
     );
   }
 }
