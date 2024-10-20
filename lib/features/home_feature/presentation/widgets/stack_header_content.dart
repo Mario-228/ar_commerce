@@ -20,7 +20,7 @@ class StackHeaderContent extends StatelessWidget {
           TextField(
             controller: searchController,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 30.0),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
               fillColor: AppColors.white,
               filled: true,
               border: const OutlineInputBorder(
