@@ -27,7 +27,6 @@ class HomeCategoriesList extends StatefulWidget {
       icon: Icons.umbrella_outlined,
     ),
   ];
-
   @override
   State<HomeCategoriesList> createState() => _HomeCategoriesListState();
 }
@@ -35,6 +34,7 @@ class HomeCategoriesList extends StatefulWidget {
 class _HomeCategoriesListState extends State<HomeCategoriesList> {
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 70.0,
       child: ListView.separated(
@@ -51,7 +51,8 @@ class _HomeCategoriesListState extends State<HomeCategoriesList> {
               isSelected: index == HomeCategoriesList.currentIndex,
             )),
         itemCount: HomeCategoriesList.items.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 25.0),
+        separatorBuilder: (context, index) =>
+            SizedBox(width: (width - 40 - 5 * 45) / 4),
       ),
     );
   }
