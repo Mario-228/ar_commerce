@@ -1,12 +1,12 @@
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project/features/category_feature/presentation/views/category_view.dart';
 import 'package:graduation_project/features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 import 'package:graduation_project/features/home_feature/presentation/home_view.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
-import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
-// import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
+//import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
 
 abstract class AppRouters {
   static const String kSignUpView = '/signUpView';
@@ -15,12 +15,13 @@ abstract class AppRouters {
   static const String kLoginView = '/loginView';
   static const String kForgotPasswordView = '/forgotPasswordView';
   static const String kHomeView = '/homeView';
+  static const String kCategoryView = '/categoryView';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
       GoRoute(
         path: "/", // route screen of the application
-        builder: (context, state) => const SplashView(),
+        builder: (context, state) => const CategoryView(),
       ),
       GoRoute(
         path: kLoginView,
@@ -45,6 +46,10 @@ abstract class AppRouters {
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: kCategoryView,
+        builder: (context, state) => const CategoryView(),
       ),
     ],
   );

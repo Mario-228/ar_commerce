@@ -102,6 +102,12 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
   );
+  static const TextStyle textStyleBold22 = TextStyle(
+    color: AppColors.darkGreen,
+    fontSize: 22,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle textStyleBold19 = TextStyle(
     color: AppColors.white,
     fontSize: 19,
