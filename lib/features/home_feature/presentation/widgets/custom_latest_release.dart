@@ -21,7 +21,7 @@ class CustomLatestRelease extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                "See All ${0xe09b}",
+                "See All",
                 style: FontStyles.textStyleRegular12
                     .copyWith(color: AppColors.glodenOrange),
               ),
