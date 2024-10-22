@@ -6,6 +6,7 @@ import 'package:graduation_project/features/onboarding_view/presentation/views/o
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
 import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
+// import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
 
 abstract class AppRouters {
   static const String kSignUpView = '/signUpView';
