@@ -42,4 +42,5 @@ abstract class AppColors {
   static const Color beige = Color(0xFFF2F0E0);
   static const Color lightPink = Color(0xFFFFE4C7);
   static const Color transparent = Colors.transparent;
+  static const Color red = Colors.red;
 }
