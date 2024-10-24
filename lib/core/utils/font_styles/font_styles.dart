@@ -76,6 +76,12 @@ abstract class FontStyles {
     height: 0.08,
     letterSpacing: -0.17,
   );
+  static const TextStyle textStyleRegular20 = TextStyle(
+    color: AppColors.blackShade800,
+    fontSize: 20,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.normal,
+  );
   // static const TextStyle textStyleSemiBold15 = TextStyle(
   //   color: AppColors.black,
   //   fontSize: 15,
@@ -120,6 +126,7 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w600,
   );
+
   static const TextStyle textStyleBold28 = TextStyle(
     color: AppColors.darkGreen,
     fontSize: 28,

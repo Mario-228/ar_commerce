@@ -36,6 +36,7 @@ abstract class AppColors {
   //orange
   static const Color glodenOrange = Color(0xFFE29547);
   static const Color orange = Color(0xFFE68314);
+  static const Color lightOrange = Color(0xFFFFEEDD);
 
   //others
   static const Color darkBrown = Color(0xFF472B29);
