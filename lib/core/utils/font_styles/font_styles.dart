@@ -56,6 +56,12 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle textStyleMeduimWhite13 = TextStyle(
+    color: AppColors.white,
+    fontSize: 13,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle textStyleBold13 = TextStyle(
     color: AppColors.orange,
     fontSize: 13,
@@ -70,6 +76,14 @@ abstract class FontStyles {
   );
   static const TextStyle textStyleRegular14 = TextStyle(
     color: AppColors.black,
+    fontSize: 14,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w400,
+    height: 0.08,
+    letterSpacing: -0.17,
+  );
+  static const TextStyle textStyleRegularGrey14 = TextStyle(
+    color: AppColors.grey,
     fontSize: 14,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w400,
