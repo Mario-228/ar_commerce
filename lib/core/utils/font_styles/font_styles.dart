@@ -56,6 +56,12 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle textStyleMeduimWhite13 = TextStyle(
+    color: AppColors.white,
+    fontSize: 13,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle textStyleBold13 = TextStyle(
     color: AppColors.orange,
     fontSize: 13,
@@ -75,6 +81,20 @@ abstract class FontStyles {
     fontWeight: FontWeight.w400,
     height: 0.08,
     letterSpacing: -0.17,
+  );
+  static const TextStyle textStyleRegularGrey14 = TextStyle(
+    color: AppColors.grey,
+    fontSize: 14,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w400,
+    height: 0.08,
+    letterSpacing: -0.17,
+  );
+  static const TextStyle textStyleRegular20 = TextStyle(
+    color: AppColors.blackShade800,
+    fontSize: 20,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.normal,
   );
   // static const TextStyle textStyleSemiBold15 = TextStyle(
   //   color: AppColors.black,
@@ -102,6 +122,12 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
   );
+  static const TextStyle textStyleBold22 = TextStyle(
+    color: AppColors.darkGreen,
+    fontSize: 22,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle textStyleBold19 = TextStyle(
     color: AppColors.white,
     fontSize: 19,
@@ -114,6 +140,7 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w600,
   );
+
   static const TextStyle textStyleBold28 = TextStyle(
     color: AppColors.darkGreen,
     fontSize: 28,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
-import 'package:graduation_project/features/home_feature/presentation/widgets/custom_home_bottom_navigation_bar.dart';
+import 'package:graduation_project/core/widgets/custom_bottom_navigation_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -10,10 +10,10 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteShade700,
       body: SafeArea(
-        child: CustomHomeBottomNavigationBar
-            .screens[CustomHomeBottomNavigationBar.selectedIndex],
+        child: CustomBottomNavigationBar
+            .screens[CustomBottomNavigationBar.selectedIndex],
       ),
-      bottomNavigationBar: const CustomHomeBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
