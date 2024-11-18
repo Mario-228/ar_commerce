@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/custom_latest_release.dart';
-import 'package:graduation_project/features/home_feature/presentation/widgets/custom_products_grid_view.dart';
+import 'package:graduation_project/features/home_feature/presentation/widgets/custom_home_products_grid_view.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/home_categories_list.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/home_view_header.dart';
 
@@ -31,7 +31,7 @@ class HomeViewBody extends StatelessWidget {
                   SizedBox(height: 20.0),
                   CustomLatestRelease(),
                   SizedBox(height: 20.0),
-                  CustomProductsGridView(),
+                  CustomHomeProductsGridView(),
                 ],
               ),
             ),
