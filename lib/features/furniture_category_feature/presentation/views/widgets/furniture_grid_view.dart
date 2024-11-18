@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/custom_product_item.dart';
 
-class CustomProductsGridView extends StatelessWidget {
-  const CustomProductsGridView({super.key});
+class FurnitureProductsGridView extends StatelessWidget {
+  const FurnitureProductsGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemCount: 4,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -16,7 +17,8 @@ class CustomProductsGridView extends StatelessWidget {
         mainAxisSpacing: 2,
         childAspectRatio: 1,
       ),
-      itemBuilder: (context, index) => const CustomProductItem(
+      itemBuilder: (context, index) => CustomProductItem(
+        onTap: () => GoRouter.of(context).push(AppRouters.kProductDetailsView),
         isFavorite: true,
         price: '65,000',
         currency: 'L.E ',
