@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
@@ -36,7 +37,9 @@ class Product3DView extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
             ),
             color: AppColors.blackShade800,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
             child: const Icon(
               Icons.arrow_back,
               color: AppColors.white,
