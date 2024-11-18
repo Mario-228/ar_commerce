@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
@@ -28,10 +27,9 @@ class ProductDetailsViewFooter extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
           ),
           color: AppColors.darkGreen,
-          child: Text(
+          child: const Text(
             "Set in your space",
-            style:
-                FontStyles.textStyleMeduim13.copyWith(color: AppColors.white),
+            style: FontStyles.textStyleMeduimWhite13,
           ),
         )
       ],
