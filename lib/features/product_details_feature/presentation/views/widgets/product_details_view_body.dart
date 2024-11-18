@@ -9,22 +9,18 @@ class ProductDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Product3DView(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                children: [
-                  ProductInfo(),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+    return const Column(
+      children: [
+        Product3DView(),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              ProductInfo(),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
