@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/features/home_feature/data/models/category_item_model.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/category_item_widget.dart';
 
@@ -45,6 +47,17 @@ class _HomeCategoriesListState extends State<HomeCategoriesList> {
               setState(() {
                 HomeCategoriesList.currentIndex = index;
               });
+              if (index == 0) {
+                GoRouter.of(context).push(AppRouters.kPopularCategoryView);
+              } else if (index == 1) {
+                GoRouter.of(context).push(AppRouters.kFurnitureCategoryView);
+              } else if (index == 2) {
+                GoRouter.of(context).push(AppRouters.kClothesCategoryView);
+              } else if (index == 3) {
+                GoRouter.of(context).push(AppRouters.kAccessoriesCategoryView);
+              } else if (index == 4) {
+                GoRouter.of(context).push(AppRouters.kOthersCategoryView);
+              }
             },
             child: CategoryItemWidget(
               item: HomeCategoriesList.items[index],
