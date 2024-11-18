@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/product_details_view_body.dart';
 
@@ -7,6 +6,10 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProductDetailsViewBody();
+    return const Scaffold(
+      body: SafeArea(
+        child: ProductDetailsViewBody(),
+      ),
+    );
   }
 }
