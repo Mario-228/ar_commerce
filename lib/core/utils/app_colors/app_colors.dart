@@ -15,6 +15,7 @@ abstract class AppColors {
   static const Color limeGreen = Color(0xFF88AE45);
   static const Color darkGreenWithOpacity = Color.fromRGBO(7, 77, 66, 0.75);
   static const Color lightGreen = Color(0xFFBFEC6F);
+  static const Color lightLimeGreen = Color(0xFF53B175);
 
   //blue
   static const Color babyBlue = Color(0xFFCCD8D6);
@@ -27,6 +28,7 @@ abstract class AppColors {
   static const Color darkGrey = Color(0xFF808080);
   static const Color greyShade700 = Color(0xFF606060);
   static const Color greyShade600 = Color(0xFFDEDEDE);
+  static const Color greyShade500 = Color(0xFFF2F3F2);
 
   //black
   static const Color black = Color(0xFF000000);
