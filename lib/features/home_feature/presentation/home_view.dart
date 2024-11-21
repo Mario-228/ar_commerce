@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 // import 'package:graduation_project/core/widgets/custom_bottom_navigation_bar.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/home_view_body.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/profile_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({
@@ -38,9 +39,7 @@ class HomeView extends StatefulWidget {
     Center(
       child: Text('Favorite'),
     ),
-    Center(
-      child: Text('Profile'),
-    ),
+    ProfileView(),
   ];
   static int selectedIndex = 0;
 }
