@@ -68,11 +68,4 @@ class _HomeCategoriesListState extends State<HomeCategoriesList> {
       ),
     );
   }
-
-  void navigateTo(BuildContext context, Widget screen) => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => screen,
-        ),
-      );
 }
