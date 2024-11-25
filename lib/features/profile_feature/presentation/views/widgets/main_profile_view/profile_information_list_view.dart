@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/features/profile_feature/data/models/profile_info_model.dart';
-import 'package:graduation_project/features/profile_feature/presentation/views/widgets/profile_information_item.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/main_profile_view/profile_information_item.dart';
 
 class ProfileInformationListView extends StatelessWidget {
   const ProfileInformationListView({
