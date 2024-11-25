@@ -1,40 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
-//import 'package:go_router/go_router.dart';
-//import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
-// import 'package:graduation_project/features/accessories_category_feature/presentation/views/accessories_category_view.dart';
-// import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
-// import 'package:graduation_project/features/furniture_category_feature/presentation/views/furniture_category_view.dart';
 import 'package:graduation_project/features/home_feature/data/models/category_item_model.dart';
-// import 'package:graduation_project/features/home_feature/presentation/home_view.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/category_item_widget.dart';
-// import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
-// import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 
 class HomeCategoriesList extends StatefulWidget {
   const HomeCategoriesList({super.key});
   static int currentIndex = 0;
   static const List<CategoryItemModel> items = [
     CategoryItemModel(
-      title: "Popular",
+      title: "Best Sellers",
       icon: Icons.star,
     ),
     CategoryItemModel(
       title: "Furniture",
-      icon: Icons.umbrella_outlined,
+      icon: Icons.chair,
     ),
     CategoryItemModel(
       title: "Clothes",
-      icon: Icons.umbrella_outlined,
+      icon: Icons.shower,
     ),
     CategoryItemModel(
       title: "Accessories",
-      icon: Icons.umbrella_outlined,
+      icon: Icons.headphones,
     ),
     CategoryItemModel(
       title: "Others",
-      icon: Icons.umbrella_outlined,
+      icon: Icons.other_houses,
     ),
   ];
   @override

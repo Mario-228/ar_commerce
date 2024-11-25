@@ -24,7 +24,7 @@ class ProfileInformationListView extends StatelessWidget {
     ),
     ProfileInfoModel(
       infoText: "Contact us",
-      infoIcon: Icons.notifications_outlined,
+      infoIcon: Icons.call_outlined,
       onInfoProfileItemPressed: () {},
     ),
   ];

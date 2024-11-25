@@ -14,7 +14,7 @@ abstract class NavigationBarScreens {
       label: 'Home',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.home),
+      icon: Icon(Icons.shopping_bag),
       label: 'Cart',
     ),
     BottomNavigationBarItem(
