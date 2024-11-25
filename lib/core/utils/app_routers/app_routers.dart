@@ -1,9 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project/features/accessories_category_feature/presentation/views/accessories_category_view.dart';
 import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
 import 'package:graduation_project/features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 import 'package:graduation_project/features/furniture_category_feature/presentation/views/furniture_category_view.dart';
 import 'package:graduation_project/features/home_feature/presentation/home_view.dart';
+import 'package:graduation_project/features/home_feature/presentation/views_models/home_navigation_bar_cubit/home_navigation_bar_cubit.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
@@ -55,7 +57,12 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kHomeView,
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => HomeNavigationBarCubit(),
+            child: HomeView(externalIndex: state.extra as int?),
+          );
+        },
       ),
       GoRoute(
         path: kFurnitureCategoryView,

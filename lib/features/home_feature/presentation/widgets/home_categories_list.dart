@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 //import 'package:go_router/go_router.dart';
 //import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
-import 'package:graduation_project/features/accessories_category_feature/presentation/views/accessories_category_view.dart';
-import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
-import 'package:graduation_project/features/furniture_category_feature/presentation/views/furniture_category_view.dart';
+// import 'package:graduation_project/features/accessories_category_feature/presentation/views/accessories_category_view.dart';
+// import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
+// import 'package:graduation_project/features/furniture_category_feature/presentation/views/furniture_category_view.dart';
 import 'package:graduation_project/features/home_feature/data/models/category_item_model.dart';
-import 'package:graduation_project/features/home_feature/presentation/home_view.dart';
+// import 'package:graduation_project/features/home_feature/presentation/home_view.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/category_item_widget.dart';
-import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
-import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
+// import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
+// import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 
 class HomeCategoriesList extends StatefulWidget {
   const HomeCategoriesList({super.key});
@@ -49,33 +51,17 @@ class _HomeCategoriesListState extends State<HomeCategoriesList> {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => GestureDetector(
-            onTap: () {
-              setState(() {
-                HomeCategoriesList.currentIndex = index;
-              });
-              if (index == 0) {
-                navigateTo(context,
-                    const HomeView(categoriesScreen: PopularCategoryView()));
-              } else if (index == 1) {
-                navigateTo(context,
-                    const HomeView(categoriesScreen: FurnitureCategoryView()));
-              } else if (index == 2) {
-                navigateTo(context,
-                    const HomeView(categoriesScreen: ClothesCategoryView()));
-              } else if (index == 3) {
-                navigateTo(
-                    context,
-                    const HomeView(
-                        categoriesScreen: AccessoriesCategoryView()));
-              } else if (index == 4) {
-                navigateTo(context,
-                    const HomeView(categoriesScreen: OthersCategoryView()));
-              }
-            },
-            child: CategoryItemWidget(
-              item: HomeCategoriesList.items[index],
-              isSelected: index == HomeCategoriesList.currentIndex,
-            )),
+          onTap: () {
+            setState(() {
+              HomeCategoriesList.currentIndex = index;
+            });
+            GoRouter.of(context).push(AppRouters.kHomeView, extra: index + 4);
+          },
+          child: CategoryItemWidget(
+            item: HomeCategoriesList.items[index],
+            isSelected: index == HomeCategoriesList.currentIndex,
+          ),
+        ),
         itemCount: HomeCategoriesList.items.length,
         separatorBuilder: (context, index) =>
             SizedBox(width: (width - 40 - 5 * 45) / 4),
