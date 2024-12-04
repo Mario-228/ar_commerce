@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
-  static const String baseUrl =
-      "https://e807-102-190-243-167.ngrok-free.app/api";
+  static const String baseUrl = "https://muhtest.runasp.net/api";
 
   static final Dio dioHelper = Dio(
     BaseOptions(
