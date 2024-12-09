@@ -33,18 +33,18 @@ class CustomProductItemModel {
 
   static CustomProductItemModel fromJson(Map<String, dynamic> json) =>
       CustomProductItemModel(
-        id: json['id'],
-        name: json['name'],
-        description: json['description'],
-        pictureUrl: json['pictureUrl'],
-        price: json['price'],
+        id: json['Id'],
+        name: json['Name'],
+        description: json['Description'],
+        pictureUrl: json['PictureUrl'],
+        price: json['Price'],
         currency: 'L.E ',
         isFavorite: false,
-        productBrand: json['productBrand'],
-        productBrandId: json['productBrandId'],
-        quantity: json['quantity'],
-        productTypeId: json['productTypeId'],
-        productType: json['productType'],
+        productBrandId: json['ProductBrandId'],
+        productTypeId: json['ProductTypeId'],
+        quantity: json['Quantity'],
+        productBrand: json['ProductBrand'] ?? "",
+        productType: json['ProductType'] ?? "",
         // onTap: () {},
         // onFavouritePressed: json['onFavouritePressed'],
       );
