@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
+import 'package:graduation_project/features/home_feature/presentation/views_models/get_product_cubit/get_product_cubit.dart';
+import 'package:graduation_project/features/home_feature/presentation/views_models/get_product_cubit/get_product_states.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/custom_product_item.dart';
 
 class CustomHomeProductsGridView extends StatelessWidget {
@@ -8,25 +12,31 @@ class CustomHomeProductsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: 4,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 2,
-        mainAxisSpacing: 2,
-        childAspectRatio: 1,
-      ),
-      itemBuilder: (context, index) => CustomProductItem(
-        onTap: () => GoRouter.of(context).push(AppRouters.kProductDetailsView),
-        isFavorite: true,
-        price: '65,000',
-        currency: 'L.E ',
-        productName: 'Sverom chair',
-        image:
-            "https://www.befunky.com/images/wp/wp-2018-08-product-photography-18.jpg?auto=avif,webp&format=jpg&width=1200",
-      ),
-    );
+    List<CustomProductItemModel> productItems = [];
+    return BlocBuilder<GetProductCubit, GetProductStates>(
+        builder: (context, state) {
+      if (state is GetProductSuccessState) {
+        productItems = state.productItems;
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: productItems.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2,
+            childAspectRatio: 1,
+          ),
+          itemBuilder: (context, index) =>
+              CustomProductItem(productItemModel: productItems[index]),
+        );
+      } else if (state is GetProductErrorState) {
+        return Center(
+          child: Text(state.errorMessageFromApi),
+        );
+      } else {
+        return const Center(child: CircularProgressIndicator());
+      }
+    });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/custom_product_item.dart';
 
 class FurnitureProductsGridView extends StatelessWidget {
@@ -8,6 +9,64 @@ class FurnitureProductsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<CustomProductItemModel> productItems = [
+      CustomProductItemModel(
+        id: 1,
+        name: 'Product 1',
+        price: 10,
+        pictureUrl: 'https://via.placeholder.com/150',
+        isFavorite: true,
+        productBrand: 'Brand 1',
+        productBrandId: 1,
+        quantity: 10,
+        productTypeId: 1,
+        productType: 'Type 1',
+        currency: 'L.E ',
+        description: 'Description 1',
+      ),
+      CustomProductItemModel(
+        id: 1,
+        name: 'Product 1',
+        price: 10,
+        pictureUrl: 'https://via.placeholder.com/150',
+        isFavorite: true,
+        productBrand: 'Brand 1',
+        productBrandId: 1,
+        quantity: 10,
+        productTypeId: 1,
+        productType: 'Type 1',
+        currency: 'L.E ',
+        description: 'Description 1',
+      ),
+      CustomProductItemModel(
+        id: 1,
+        name: 'Product 1',
+        price: 10,
+        pictureUrl: 'https://via.placeholder.com/150',
+        isFavorite: true,
+        productBrand: 'Brand 1',
+        productBrandId: 1,
+        quantity: 10,
+        productTypeId: 1,
+        productType: 'Type 1',
+        currency: 'L.E ',
+        description: 'Description 1',
+      ),
+      CustomProductItemModel(
+        id: 1,
+        name: 'Product 1',
+        price: 10,
+        pictureUrl: 'https://via.placeholder.com/150',
+        isFavorite: true,
+        productBrand: 'Brand 1',
+        productBrandId: 1,
+        quantity: 10,
+        productTypeId: 1,
+        productType: 'Type 1',
+        currency: 'L.E ',
+        description: 'Description 1',
+      ),
+    ];
     return GridView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: 4,
@@ -17,15 +76,8 @@ class FurnitureProductsGridView extends StatelessWidget {
         mainAxisSpacing: 2,
         childAspectRatio: 1,
       ),
-      itemBuilder: (context, index) => CustomProductItem(
-        onTap: () => GoRouter.of(context).push(AppRouters.kProductDetailsView),
-        isFavorite: true,
-        price: '65,000',
-        currency: 'L.E ',
-        productName: 'Sverom chair',
-        image:
-            "https://www.befunky.com/images/wp/wp-2018-08-product-photography-18.jpg?auto=avif,webp&format=jpg&width=1200",
-      ),
+      itemBuilder: (context, index) =>
+          CustomProductItem(productItemModel: productItems[index]),
     );
   }
 }
