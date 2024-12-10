@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:graduation_project/core/errors/errors.dart';
 import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo.dart';
@@ -9,11 +10,16 @@ class SignUpRepoImplementation extends SignUpRepo {
   Future<Either<Errors, AuthResponse>> signUpUser(
       SignUpUserModel signUpUserModel) async {
     try {
-      var response = await Supabase.instance.client.auth.signUp(
-          email: signUpUserModel.email, password: signUpUserModel.password);
+      var response = await Supabase.instance.client.auth.signUp(data: {
+        'name': signUpUserModel.name,
+      }, email: signUpUserModel.email, password: signUpUserModel.password);
       return right(response);
     } on Exception catch (e) {
-      return left(ServerError(errorMessage: e.toString()));
+      if (e is DioException) {
+        return left(ServerError.fromDioError(e));
+      } else {
+        return left(ServerError(errorMessage: e.toString()));
+      }
     }
   }
 }
