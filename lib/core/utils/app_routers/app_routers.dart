@@ -15,7 +15,9 @@ import 'package:graduation_project/features/others_category_feature/presentation
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/product_details_view.dart';
+import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
+import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import 'package:graduation_project/features/splash_view/presentation/views/splash_view.dart';
 
 abstract class AppRouters {
@@ -56,7 +58,9 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kSignUpView,
-        builder: (context, state) => const SignupView(),
+        builder: (context, state) => BlocProvider(
+            create: (context) => SignUpCubit(SignUpRepoImplementation()),
+            child: const SignupView()),
       ),
       GoRoute(
         path: kHomeView,

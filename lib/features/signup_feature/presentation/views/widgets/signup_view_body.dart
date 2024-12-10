@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
-import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/core/widgets/custom_header_widget.dart';
+import 'package:graduation_project/features/signup_feature/presentation/views/widgets/custom_footer_widget_bloc_builder.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/widgets/signup_text_form_field_section.dart';
 
 class SignupViewBody extends StatelessWidget {
   const SignupViewBody({super.key});
   static final TextEditingController passwordController =
       TextEditingController();
+  static final TextEditingController nameController = TextEditingController();
+  static final TextEditingController emailController = TextEditingController();
   static GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    clearSignUpFields();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: SingleChildScrollView(
@@ -27,25 +28,15 @@ class SignupViewBody extends StatelessWidget {
               ),
               const SizedBox(height: 30.0),
               SignupTextFormFieldSection(
+                  emailController: emailController,
+                  nameController: nameController,
                   passwordController: passwordController),
               const SizedBox(height: 20.0),
-              const ListTile(
-                leading: Icon(Icons.circle_outlined),
-                title: Text(
-                  "I accept the Terms of Service & Privacy Policy",
-                  style: FontStyles.textStyleMedium12,
-                ),
-              ),
-              const SizedBox(height: 30.0),
-              CustomFooterWidget(
-                formKey: signUpFormKey,
-                buttonTitle: "Sign Up",
-                footerText: "Already have an account? ",
-                footerLinkText: "Login Here",
-                onPressed: () {
-                  GoRouter.of(context).pop();
-                },
-              ),
+              CustomFooterWidgetBlocBuilder(
+                  signUpFormKey: signUpFormKey,
+                  nameController: nameController,
+                  emailController: emailController,
+                  passwordController: passwordController),
             ],
           ),
         ),
@@ -53,3 +44,17 @@ class SignupViewBody extends StatelessWidget {
     );
   }
 }
+
+void clearSignUpFields() {
+  SignupViewBody.nameController.clear();
+  SignupViewBody.emailController.clear();
+  SignupViewBody.passwordController.clear();
+}
+
+// const ListTile(
+//   leading: Icon(Icons.circle_outlined),
+//   title: Text(
+//     "I accept the Terms of Service & Privacy Policy",
+//     style: FontStyles.textStyleMedium12,
+//   ),
+// ),

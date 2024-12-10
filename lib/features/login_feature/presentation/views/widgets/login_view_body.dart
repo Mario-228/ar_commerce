@@ -35,11 +35,14 @@ class LoginViewBody extends StatelessWidget {
               const ForgetPasswordWidget(),
               const SizedBox(height: 35.0),
               CustomFooterWidget(
+                onPressedButton: () {
+                  if (loginFormKey.currentState!.validate()) {}
+                },
                 formKey: loginFormKey,
                 buttonTitle: "Login",
                 footerText: "Don't have an account? ",
                 footerLinkText: "Create Account Here",
-                onPressed: () =>
+                onPressedFooterText: () =>
                     GoRouter.of(context).push(AppRouters.kSignUpView),
               ),
             ],

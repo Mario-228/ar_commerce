@@ -7,9 +7,13 @@ class SignupTextFormFieldSection extends StatelessWidget {
   const SignupTextFormFieldSection({
     super.key,
     required this.passwordController,
+    required this.nameController,
+    required this.emailController,
   });
 
   final TextEditingController passwordController;
+  final TextEditingController nameController;
+  final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class SignupTextFormFieldSection extends StatelessWidget {
         CustomTextFormField(
           type: TextInputType.name,
           labelText: "Full Name",
-          controller: TextEditingController(),
+          controller: nameController,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return "Insert Name";
@@ -30,7 +34,7 @@ class SignupTextFormFieldSection extends StatelessWidget {
         CustomTextFormField(
           type: TextInputType.emailAddress,
           labelText: "Enter email address",
-          controller: TextEditingController(),
+          controller: emailController,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Enter your email';
