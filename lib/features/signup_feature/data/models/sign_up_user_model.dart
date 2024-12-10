@@ -1,6 +1,10 @@
-import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_constants.dart';
-
 class SignUpUserModel {
+  String email;
+  String password;
+
+  SignUpUserModel({required this.email, required this.password});
+}
+/*class SignUpUserModel {
   String id;
   String name;
   String email;
@@ -39,4 +43,4 @@ class SignUpUserModel {
         "userImageUrl": userImageUrl,
         "createdAt": createdAt,
       };
-}
+}*/
