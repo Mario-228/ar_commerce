@@ -1,8 +1,10 @@
 class SignUpUserModel {
   String email;
   String password;
+  String name;
 
-  SignUpUserModel({required this.email, required this.password});
+  SignUpUserModel(
+      {required this.email, required this.password, required this.name});
 }
 /*class SignUpUserModel {
   String id;
