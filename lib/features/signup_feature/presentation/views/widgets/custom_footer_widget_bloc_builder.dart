@@ -1,13 +1,18 @@
+import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_images/app_images.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
+import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
+import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/widgets/signup_view_body.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_states.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CustomFooterWidgetBlocBuilder extends StatelessWidget {
   const CustomFooterWidgetBlocBuilder({
@@ -49,8 +54,13 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
                   );
                   await SignUpCubit.get(context).signUp(user).then((value) {
                     clearSignUpFields();
-                    showSnackBar(context, "Account created successfully");
                   });
+                  var response = await SignUpRepoImplementation()
+                      .insertUserIntoDatabase(getUserDataFromSignUp(user));
+                  response.fold(
+                      (error) =>
+                          showSnackBar(context, "Try with another Credentials"),
+                      (value) => onSuccess(context));
                 }
               }
             },
@@ -59,21 +69,20 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
       },
     );
   }
-}
-/*
-// Supabase.instance.client
-//     .from(SignUpRepoConstants.usersEndPoint)
-//     .insert({
-//   SignUpRepoConstants.id:
-//       Supabase.instance.client.auth.currentUser!.id,
-//   SignUpRepoConstants.name: nameController.text,
-//   SignUpRepoConstants.email: emailController.text,
-//   SignUpRepoConstants.emailConfirmed: false,
-//   SignUpRepoConstants.phone: "",
-//   SignUpRepoConstants.pictureUrl:
-//       "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1733863368~exp=1733866968~hmac=dcf753cc48215353e01269e8d6aaf27adfa1e7eff7d23173fd74e6dda73b5dd2&w=740"
-// }).then((value) {
-//   print("inserted => $value");
-// });
 
- */
+  UserModel getUserDataFromSignUp(SignUpUserModel user) {
+    return UserModel(
+      id: Supabase.instance.client.auth.currentUser!.id,
+      email: user.email,
+      name: user.name,
+      phoneNumber: "",
+      pictureUrl: AppImages.assetsImagesUserImage,
+      password: Crypt.sha256(user.password).toString(),
+    );
+  }
+}
+
+void onSuccess(BuildContext context) {
+  showSnackBar(context, "Account created successfully");
+  GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
+}

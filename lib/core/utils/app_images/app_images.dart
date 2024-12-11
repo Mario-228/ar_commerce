@@ -37,5 +37,9 @@ class AppImages {
   /// Assets for assetsImagesSmallChair
   /// assets/images/small_chair.svg
   static const String assetsImagesSmallChair = "assets/images/small_chair.svg";
+
+  /// Assets for assetsImagesUserImage
+  /// assets/images/user_image.avif
+  static const String assetsImagesUserImage = "assets/images/user_image.avif";
 }
 
