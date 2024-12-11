@@ -60,3 +60,20 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
     );
   }
 }
+/*
+// Supabase.instance.client
+//     .from(SignUpRepoConstants.usersEndPoint)
+//     .insert({
+//   SignUpRepoConstants.id:
+//       Supabase.instance.client.auth.currentUser!.id,
+//   SignUpRepoConstants.name: nameController.text,
+//   SignUpRepoConstants.email: emailController.text,
+//   SignUpRepoConstants.emailConfirmed: false,
+//   SignUpRepoConstants.phone: "",
+//   SignUpRepoConstants.pictureUrl:
+//       "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1733863368~exp=1733866968~hmac=dcf753cc48215353e01269e8d6aaf27adfa1e7eff7d23173fd74e6dda73b5dd2&w=740"
+// }).then((value) {
+//   print("inserted => $value");
+// });
+
+ */
