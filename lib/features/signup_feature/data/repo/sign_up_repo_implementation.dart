@@ -33,7 +33,6 @@ class SignUpRepoImplementation extends SignUpRepo {
           .from(SignUpRepoConstants.usersEndPoint)
           .insert(userModel.toJson())
           .select();
-      print("inserted => $response");
       return right(UserModel.fromJson(response.first));
     } on Exception catch (e) {
       if (e is DioException) {
