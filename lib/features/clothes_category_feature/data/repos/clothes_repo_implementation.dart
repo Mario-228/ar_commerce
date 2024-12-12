@@ -5,7 +5,7 @@ import 'package:graduation_project/features/clothes_category_feature/data/repos/
 import 'package:graduation_project/features/clothes_category_feature/data/repos/clothes_repo_endpoints.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class ClothesRepoImplementaation extends ClothesRepo {
+class ClothesRepoImplementation extends ClothesRepo {
   @override
   Future<Either<Errors, List<CustomProductItemModel>>> getClothesProducts(
       {required String endPoint}) async {
