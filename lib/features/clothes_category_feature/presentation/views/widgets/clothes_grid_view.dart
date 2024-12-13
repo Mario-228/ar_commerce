@@ -16,17 +16,20 @@ class ClothesProductsGridView extends StatelessWidget {
         builder: (context, state) {
       if (state is GetClothesSuccessState) {
         productItems = state.clothesProducts;
-        return GridView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: productItems.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2,
-            childAspectRatio: 1,
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: productItems.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
+              childAspectRatio: 1,
+            ),
+            itemBuilder: (context, index) =>
+                CustomProductItem(productItemModel: productItems[index]),
           ),
-          itemBuilder: (context, index) =>
-              CustomProductItem(productItemModel: productItems[index]),
         );
       } else if (state is GetClothesFailedState) {
         return Center(
