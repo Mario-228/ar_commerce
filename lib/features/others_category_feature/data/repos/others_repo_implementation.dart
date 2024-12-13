@@ -13,7 +13,9 @@ class OthersRepoImplementation extends OthersRepo {
       var result = await Supabase.instance.client
           .from(endPoint)
           .select()
-          .not(OthersRepoEndpoints.id, "containedBy", [1, 2, 3]);
+          .neq(OthersRepoEndpoints.id, 1)
+          .neq(OthersRepoEndpoints.id, 2)
+          .neq(OthersRepoEndpoints.id, 3);
       List<CustomProductItemModel> othersProducts = [];
       for (var element in result) {
         othersProducts.add(CustomProductItemModel.fromJson(element));
