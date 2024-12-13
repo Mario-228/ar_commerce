@@ -36,7 +36,9 @@ class LoginViewBody extends StatelessWidget {
               const SizedBox(height: 35.0),
               CustomFooterWidget(
                 onPressedButton: () {
-                  if (loginFormKey.currentState!.validate()) {}
+                  if (loginFormKey.currentState!.validate()) {
+                    GoRouter.of(context).push(AppRouters.kHomeView);
+                  }
                 },
                 formKey: loginFormKey,
                 buttonTitle: "Login",
