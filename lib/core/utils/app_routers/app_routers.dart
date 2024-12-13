@@ -10,6 +10,7 @@ import 'package:graduation_project/features/home_feature/presentation/home_view.
 import 'package:graduation_project/features/home_feature/presentation/views_models/get_product_cubit/get_product_cubit.dart';
 import 'package:graduation_project/features/home_feature/presentation/views_models/home_navigation_bar_cubit/home_navigation_bar_cubit.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
+import 'package:graduation_project/features/login_feature/presentation/views/views_models/login_cubit/login_cubit.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
@@ -42,7 +43,10 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kLoginView,
-        builder: (context, state) => const LoginView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => LoginCubit(),
+          child: const LoginView(),
+        ),
       ),
       GoRoute(
         path: kForgotPasswordView,

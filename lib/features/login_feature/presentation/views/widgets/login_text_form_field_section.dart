@@ -8,15 +8,17 @@ class LoginTextFormFieldSection extends StatelessWidget {
     super.key,
   });
   static TextEditingController passwordController = TextEditingController();
+  static TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    emailController.clear();
     passwordController.clear();
     return Column(
       children: [
         CustomTextFormField(
           type: TextInputType.emailAddress,
           labelText: 'Enter Email Address',
-          controller: TextEditingController(),
+          controller: emailController,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Enter your email';

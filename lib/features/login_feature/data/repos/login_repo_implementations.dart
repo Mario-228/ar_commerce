@@ -1,4 +1,4 @@
-import 'package:crypt/crypt.dart';
+// import 'package:crypt/crypt.dart';
 import 'package:dartz/dartz.dart';
 import 'package:graduation_project/core/errors/errors.dart';
 import 'package:graduation_project/features/login_feature/data/repos/login_repo.dart';
@@ -14,8 +14,8 @@ class LoginRepoImplementations extends LoginRepo {
       var response = await Supabase.instance.client
           .from(LoginRepoConstants.usersEndPoint)
           .select()
-          .eq(LoginRepoConstants.email, email)
-          .eq(LoginRepoConstants.password, Crypt.sha256(password));
+          .eq(LoginRepoConstants.email, email);
+      //.eq(LoginRepoConstants.password, Crypt.sha256(password));=> must be added later
       UserModel? result = UserModel.fromJson(response.first);
       // ignore: unnecessary_null_comparison
       if (result != null) {
