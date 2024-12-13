@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/core/widgets/category_app_bar.dart';
-import 'package:graduation_project/features/accessories_category_feature/data/repos/accessories_repo.dart';
+import 'package:graduation_project/features/accessories_category_feature/data/repos/accessories_repo_endpoints.dart';
 import 'package:graduation_project/features/accessories_category_feature/data/repos/accessories_repo_implementation.dart';
 import 'package:graduation_project/features/accessories_category_feature/presentation/views/widgets/accessories_grid_view.dart';
 import 'package:graduation_project/features/accessories_category_feature/presentation/views_models/get_accessories_cubit/get_accessories_cubit.dart';
@@ -11,13 +11,14 @@ class AccessoriesCategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AccessoriesRepo accessoriesRepo = AccessoriesRepoImplementation();
     return Scaffold(
       appBar: const CategoryAppbar(
         title: "Accessories",
       ),
       body: BlocProvider(
-        create: (context) => GetAccessoriesCubit(accessoriesRepo),
+        create: (context) =>
+            GetAccessoriesCubit(AccessoriesRepoImplementation())
+              ..getAccessories(endPoint: AccessoriesRepoEndpoints.product),
         child: const AccessoriesProductsGridView(),
       ),
     );
