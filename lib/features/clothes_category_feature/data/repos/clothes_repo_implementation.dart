@@ -13,7 +13,7 @@ class ClothesRepoImplementation extends ClothesRepo {
       var result = await Supabase.instance.client
           .from(endPoint)
           .select()
-          .eq(ClothesRepoEndpoints.id, '2');
+          .eq(ClothesRepoEndpoints.id, 2);
       List<CustomProductItemModel> clothesProducts = [];
       for (var element in result) {
         clothesProducts.add(CustomProductItemModel.fromJson(element));

@@ -1,16 +1,10 @@
 import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 
-abstract class GetOthersStates {
-  GetOthersStates();
-}
+abstract class GetOthersStates {}
 
-class GetOthersInitialState extends GetOthersStates {
-  GetOthersInitialState();
-}
+class GetOthersInitialState extends GetOthersStates {}
 
-class GetOthersLoadingState extends GetOthersStates {
-  GetOthersLoadingState();
-}
+class GetOthersLoadingState extends GetOthersStates {}
 
 class GetOthersSuccessState extends GetOthersStates {
   final List<CustomProductItemModel> productItems;

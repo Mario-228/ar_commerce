@@ -1,16 +1,10 @@
 import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 
-abstract class GetFurnitureStates {
-  GetFurnitureStates();
-}
+abstract class GetFurnitureStates {}
 
-class GetFurnitureInitialState extends GetFurnitureStates {
-  GetFurnitureInitialState();
-}
+class GetFurnitureInitialState extends GetFurnitureStates {}
 
-class GetFurnitureLoadingState extends GetFurnitureStates {
-  GetFurnitureLoadingState();
-}
+class GetFurnitureLoadingState extends GetFurnitureStates {}
 
 class GetFurnitureSuccessState extends GetFurnitureStates {
   final List<CustomProductItemModel> furnitureProducts;
