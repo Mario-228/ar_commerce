@@ -12,7 +12,14 @@ class ApiService {
   )
  */
   Future<Map<String, dynamic>> get(String endPoint) async {
-    var response = await dioHelper.get(endPoint);
+    var response = await dioHelper.get(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+        },
+      ),
+    );
     return response.data;
   }
 

@@ -42,7 +42,7 @@ class CustomProductItemModel {
         isFavorite: false,
         productBrandId: json['productBrandId'] ?? 0,
         productTypeId: json['productTypeId'] ?? 0,
-        quantity: json['quantity'] ?? "0",
+        quantity: json['quantity'] ?? 0,
         productBrand: json['productBrand'] ?? "",
         productType: json['productType'] ?? "",
         // onTap: () {},

@@ -13,7 +13,6 @@ class FurnitureRepoImplementation extends FurnitureRepo {
       {required String endPoint}) async {
     try {
       var result = await ApiService(BaseUrl.products).get(endPoint);
-      print(result);
       List<CustomProductItemModel> accessoriesProducts = [];
       for (var element in result["data"]) {
         accessoriesProducts.add(CustomProductItemModel.fromJson(element));
