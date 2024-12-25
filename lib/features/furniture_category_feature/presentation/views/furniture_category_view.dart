@@ -15,7 +15,9 @@ class FurnitureCategoryView extends StatelessWidget {
       appBar: const CategoryAppbar(title: "Furniture"),
       body: BlocProvider(
         create: (context) => GetFurnitureCubit(FurnitureRepoImplementation())
-          ..getFurnitureProducts(endPoint: FurnitureRepoEndpoints.product),
+          ..getFurnitureProducts(
+              endPoint:
+                  FurnitureRepoEndpoints.product + FurnitureRepoEndpoints.id),
         child: const FurnitureProductsGridView(),
       ),
     );
