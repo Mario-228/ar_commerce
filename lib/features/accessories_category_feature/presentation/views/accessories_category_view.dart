@@ -18,7 +18,9 @@ class AccessoriesCategoryView extends StatelessWidget {
       body: BlocProvider(
         create: (context) =>
             GetAccessoriesCubit(AccessoriesRepoImplementation())
-              ..getAccessories(endPoint: AccessoriesRepoEndpoints.product),
+              ..getAccessories(
+                  endPoint: AccessoriesRepoEndpoints.product +
+                      AccessoriesRepoEndpoints.id),
         child: const AccessoriesProductsGridView(),
       ),
     );
