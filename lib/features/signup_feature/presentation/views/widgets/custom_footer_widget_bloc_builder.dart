@@ -30,7 +30,15 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpStates>(
+    return BlocConsumer<SignUpCubit, SignUpStates>(
+      listener: (context, state) {
+        if (state is SignUpError) {
+          showSnackBar(context, state.error);
+        } else if (state is SignUpSuccess) {
+          onSuccess(context);
+          clearSignUpFields();
+        }
+      },
       builder: (context, state) {
         if (state is SignUpLoading) {
           return const Center(child: CircularProgressIndicator());
@@ -43,20 +51,13 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
             onPressedFooterText: () =>
                 GoRouter.of(context).push(AppRouters.kLoginView),
             onPressedButton: () async {
-              if (state is SignUpError) {
-                showSnackBar(context, state.error);
-              } else {
-                if (signUpFormKey.currentState!.validate()) {
-                  SignUpUserModel user = SignUpUserModel(
-                    name: nameController.text,
-                    email: emailController.text,
-                    password: passwordController.text,
-                  );
-                  await SignUpCubit.get(context).signUp(user).then((value) {
-                    onSuccess(context);
-                    clearSignUpFields();
-                  });
-                }
+              if (signUpFormKey.currentState!.validate()) {
+                SignUpUserModel user = SignUpUserModel(
+                  name: nameController.text,
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+                await SignUpCubit.get(context).signUp(user);
               }
             },
           );

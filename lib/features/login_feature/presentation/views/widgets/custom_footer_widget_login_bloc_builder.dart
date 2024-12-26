@@ -18,7 +18,15 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginStates>(
+    return BlocConsumer<LoginCubit, LoginStates>(
+      listener: (context, state) {
+        if (state is LoginSuccess) {
+          GoRouter.of(context).push(AppRouters.kHomeView);
+          showSnackBar(context, "Login successfully");
+        } else if (state is LoginError) {
+          showSnackBar(context, "the provided credentials are incorrect");
+        }
+      },
       builder: (context, state) {
         if (state is LoginLoading) {
           return const Center(child: CircularProgressIndicator());
@@ -26,19 +34,9 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
           return CustomFooterWidget(
             onPressedButton: () async {
               if (loginFormKey.currentState!.validate()) {
-                LoginCubit.get(context)
-                    .login(LoginTextFormFieldSection.emailController.text,
-                        LoginTextFormFieldSection.passwordController.text)
-                    .then((value) {
-                  if (state is LoginError) {
-                    showSnackBar(context, state.error);
-                  } else if (state is LoginSuccess && state.isLogin == true) {
-                    GoRouter.of(context).push(AppRouters.kHomeView);
-                    showSnackBar(context, "Login successfully");
-                  } else if (state is LoginSuccess && state.isLogin != true) {
-                    showSnackBar(context, "Invalid email or password");
-                  }
-                });
+                LoginCubit.get(context).login(
+                    LoginTextFormFieldSection.emailController.text,
+                    LoginTextFormFieldSection.passwordController.text);
               }
             },
             formKey: loginFormKey,
