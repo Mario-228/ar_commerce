@@ -17,7 +17,7 @@ class FurnitureRepoImplementation extends FurnitureRepo {
       for (var element in result["data"]) {
         accessoriesProducts.add(CustomProductItemModel.fromJson(element));
       }
-      print(accessoriesProducts);
+
       return right(accessoriesProducts);
     } catch (e) {
       return left(

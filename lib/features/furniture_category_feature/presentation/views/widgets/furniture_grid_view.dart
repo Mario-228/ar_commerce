@@ -1,9 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 import 'package:graduation_project/features/furniture_category_feature/presentation/views_models/get_furniture_cubit/get_furniture_cubit.dart';
 import 'package:graduation_project/features/furniture_category_feature/presentation/views_models/get_furniture_cubit/get_furniture_states.dart';
@@ -19,9 +15,8 @@ class FurnitureProductsGridView extends StatelessWidget {
     return BlocBuilder<GetFurnitureCubit, GetFurnitureStates>(
       builder: (BuildContext context, state) {
         if (state is GetFurnitureSuccessState) {
-          log("state succeeed");
           productItems = state.furnitureProducts;
-          log(productItems.toString());
+
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: GridView.builder(
@@ -38,12 +33,10 @@ class FurnitureProductsGridView extends StatelessWidget {
             ),
           );
         } else if (state is GetFurnitureFailedState) {
-          log("state failed");
           return Center(
             child: Text(state.errorMsg),
           );
         } else {
-          log("state loading");
           return const Center(
             child: CircularProgressIndicator(),
           );
