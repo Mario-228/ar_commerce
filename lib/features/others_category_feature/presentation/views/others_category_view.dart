@@ -17,7 +17,8 @@ class OthersCategoryView extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => GetOthersCubit(OthersRepoImplementation())
-          ..getOthersProducts(endPoint: OthersRepoEndpoints.product),
+          ..getOthersProducts(
+              endPoint: OthersRepoEndpoints.product + OthersRepoEndpoints.id),
         child: const OthersProductsGridView(),
       ),
     );
