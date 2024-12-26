@@ -1,18 +1,18 @@
-import 'package:crypt/crypt.dart';
+// import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:graduation_project/core/utils/app_images/app_images.dart';
+// import 'package:graduation_project/core/utils/app_images/app_images.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
-import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
-import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
+// import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
+// import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/widgets/signup_view_body.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_states.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CustomFooterWidgetBlocBuilder extends StatelessWidget {
   const CustomFooterWidgetBlocBuilder({
@@ -53,14 +53,9 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
                     password: passwordController.text,
                   );
                   await SignUpCubit.get(context).signUp(user).then((value) {
+                    onSuccess(context);
                     clearSignUpFields();
                   });
-                  var response = await SignUpRepoImplementation()
-                      .insertUserIntoDatabase(getUserDataFromSignUp(user));
-                  response.fold(
-                      (error) =>
-                          showSnackBar(context, "Try with another Credentials"),
-                      (value) => onSuccess(context));
                 }
               }
             },
@@ -69,20 +64,26 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
       },
     );
   }
+// var response = await SignUpRepoImplementation()
+//     .insertUserIntoDatabase(getUserDataFromSignUp(user));
+// response.fold(
+//     (error) =>
+//         showSnackBar(context, "Try with another Credentials"),
+//     (value) => onSuccess(context));
+//   UserModel getUserDataFromSignUp(SignUpUserModel user) {
+//     return UserModel(
+//       id: Supabase.instance.client.auth.currentUser!.id,
+//       email: user.email,
+//       name: user.name,
+//       phoneNumber: "",
+//       pictureUrl: AppImages.assetsImagesUserImage,
+//       password: Crypt.sha256(user.password).toString(),
+//     );
+//   }
+// }
 
-  UserModel getUserDataFromSignUp(SignUpUserModel user) {
-    return UserModel(
-      id: Supabase.instance.client.auth.currentUser!.id,
-      email: user.email,
-      name: user.name,
-      phoneNumber: "",
-      pictureUrl: AppImages.assetsImagesUserImage,
-      password: Crypt.sha256(user.password).toString(),
-    );
+  void onSuccess(BuildContext context) {
+    showSnackBar(context, "Account created successfully");
+    GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
   }
-}
-
-void onSuccess(BuildContext context) {
-  showSnackBar(context, "Account created successfully");
-  GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
 }

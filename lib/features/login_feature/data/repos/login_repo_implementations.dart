@@ -3,7 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:graduation_project/core/errors/errors.dart';
 import 'package:graduation_project/features/login_feature/data/repos/login_repo.dart';
 import 'package:graduation_project/features/login_feature/data/repos/login_repo_constants.dart';
-import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
+import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
+// import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginRepoImplementations extends LoginRepo {
@@ -16,7 +17,7 @@ class LoginRepoImplementations extends LoginRepo {
           .select()
           .eq(LoginRepoConstants.email, email);
       //.eq(LoginRepoConstants.password, Crypt.sha256(password));=> must be added later
-      UserModel? result = UserModel.fromJson(response.first);
+      SignUpUserModel? result = SignUpUserModel.fromJson(response.first);
       // ignore: unnecessary_null_comparison
       if (result != null) {
         return right(true);

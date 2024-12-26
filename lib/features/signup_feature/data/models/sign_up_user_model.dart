@@ -1,3 +1,5 @@
+import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_constants.dart';
+
 class SignUpUserModel {
   String email;
   String password;
@@ -5,6 +7,19 @@ class SignUpUserModel {
 
   SignUpUserModel(
       {required this.email, required this.password, required this.name});
+
+  static SignUpUserModel fromJson(Map<String, dynamic> json) => SignUpUserModel(
+        email: json[SignUpRepoConstants.email],
+        password: json[SignUpRepoConstants.password],
+        name: json[SignUpRepoConstants.name],
+      );
+
+  Map<String, dynamic> toJson() => {
+        SignUpRepoConstants.email: email,
+        SignUpRepoConstants.password: password,
+        SignUpRepoConstants.name: name,
+        SignUpRepoConstants.passwordConfirmation: password,
+      };
 }
 /*class SignUpUserModel {
   String id;

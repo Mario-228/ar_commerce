@@ -15,7 +15,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
     response.fold((error) {
       emit(SignUpError(error.errorMessage));
     }, (value) {
-      emit(SignUpSuccess(authResponse: value));
+      emit(SignUpSuccess(user: value));
     });
   }
 }
