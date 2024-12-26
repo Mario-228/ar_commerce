@@ -1,3 +1,3 @@
 abstract class HomeRepoEndPoints {
-  static const String product = "Products";
+  static const String product = "Product";
 }
