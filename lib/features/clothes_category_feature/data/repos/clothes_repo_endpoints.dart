@@ -1,4 +1,4 @@
 abstract class ClothesRepoEndpoints {
-  static const String product = "Products";
-  static const String id = "ProductTypeId";
+  static const String product = "Product";
+  static const String id = "?FilterByType=2";
 }

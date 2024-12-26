@@ -17,7 +17,8 @@ class ClothesCategoryView extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => GetClothesCubit(ClothesRepoImplementation())
-          ..getClothes(endPoint: ClothesRepoEndpoints.product),
+          ..getClothes(
+              endPoint: ClothesRepoEndpoints.product + ClothesRepoEndpoints.id),
         child: const ClothesProductsGridView(),
       ),
     );
