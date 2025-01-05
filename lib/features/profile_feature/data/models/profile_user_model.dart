@@ -1,0 +1,72 @@
+import 'package:graduation_project/features/profile_feature/data/repos/profile_constants.dart';
+
+class ProfileUserModel {
+  final int id;
+  final String name;
+  final String email;
+  final String phone;
+  final String image;
+  final String gender;
+  final String emailVerifiedAt;
+  final String googleId;
+  final String createdAt;
+  final String updatedAt;
+
+  ProfileUserModel({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.image,
+    required this.gender,
+    required this.emailVerifiedAt,
+    required this.googleId,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  static ProfileUserModel fromJson(Map<String, dynamic> json) {
+    return ProfileUserModel(
+      id: json[ProfileConstants.id],
+      name: json[ProfileConstants.name],
+      email: json[ProfileConstants.email],
+      phone: json[ProfileConstants.phone],
+      image: json[ProfileConstants.image],
+      gender: json[ProfileConstants.gender],
+      emailVerifiedAt: json[ProfileConstants.emailverifiedAt],
+      googleId: json[ProfileConstants.googleId],
+      createdAt: json[ProfileConstants.createdAt],
+      updatedAt: json[ProfileConstants.updatedAt],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        ProfileConstants.id: id,
+        ProfileConstants.name: name,
+        ProfileConstants.email: email,
+        ProfileConstants.phone: phone,
+        ProfileConstants.image: image,
+        ProfileConstants.gender: gender,
+        ProfileConstants.emailverifiedAt: emailVerifiedAt,
+        ProfileConstants.googleId: googleId,
+        ProfileConstants.createdAt: createdAt,
+        ProfileConstants.updatedAt: updatedAt,
+      };
+}
+
+class UserModel {
+  ProfileUserModel userModel;
+  String imageUrl;
+  List<String> addresses;
+
+  UserModel(
+      {required this.userModel,
+      required this.imageUrl,
+      required this.addresses});
+
+  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
+        userModel: ProfileUserModel.fromJson(json[ProfileConstants.user]),
+        imageUrl: json[ProfileConstants.imageUrl],
+        addresses: List<String>.from(json[ProfileConstants.addresses]),
+      );
+}
