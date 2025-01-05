@@ -22,9 +22,11 @@ class CategoryItemWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(11.0)),
             color: isSelected ? AppColors.orange : AppColors.greyShade800,
           ),
-          child: Icon(
-            item.icon,
-            color: AppColors.white,
+          child: Image(
+            image: NetworkImage(
+              item.image,
+              // color: AppColors.white,
+            ),
           ),
         ),
         const SizedBox(height: 10.0),
