@@ -37,4 +37,21 @@ class ApiService {
     );
     return response.data;
   }
+
+  Future<Map<String, dynamic>> getUser(
+    String endPoint,
+    String token,
+  ) async {
+    var response = await dioHelper.get(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token'
+        },
+        contentType: 'application/json',
+      ),
+    );
+    return response.data;
+  }
 }
