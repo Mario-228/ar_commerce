@@ -12,6 +12,7 @@ import 'package:graduation_project/features/signup_feature/data/models/sign_up_r
 // import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginRepoImplementations extends LoginRepo {
+  static String token = "";
   @override
   Future<Either<Errors, SignUpResponse>> login(
       {required String email, required String password}) async {
@@ -19,6 +20,7 @@ class LoginRepoImplementations extends LoginRepo {
       var response = await ApiService(BaseUrl.authentication).postData(
           LoginRepoConstants.login, {"email": email, "password": password});
       SignUpResponse result = SignUpResponse.fromJson(response);
+      token = result.token;
       print(result.name);
       print(result.token);
       return right(result);
