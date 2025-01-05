@@ -7,7 +7,7 @@ import 'package:graduation_project/features/login_feature/data/repos/login_repo_
 import 'package:graduation_project/features/profile_feature/data/repos/profile_repo_implementation.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/main_profile_view/profile_custom_button.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/main_profile_view/profile_information_list_view.dart';
-import 'package:graduation_project/features/profile_feature/presentation/views/widgets/main_profile_view/user_profile_header.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/main_profile_view/user_profile_header_bloc_builder.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -21,7 +21,7 @@ class ProfileViewBody extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 30.0),
-            const UserPofileHeader(),
+            const UserProfileHeaderBlocBuilder(),
             const SizedBox(height: 50.0),
             const ProfileInformationListView(),
             const SizedBox(height: 60.0),

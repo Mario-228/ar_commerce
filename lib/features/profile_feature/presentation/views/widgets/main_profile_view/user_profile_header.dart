@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
+import 'package:graduation_project/features/profile_feature/data/models/profile_user_model.dart';
 
 class UserPofileHeader extends StatelessWidget {
   const UserPofileHeader({
     super.key,
+    required this.userModel,
   });
-
+  final UserModel userModel;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CircleAvatar(
           radius: 37.5,
-          backgroundImage: NetworkImage(
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          ),
+          backgroundImage: NetworkImage(userModel.imageUrl),
         ),
-        SizedBox(width: 25.0),
+        const SizedBox(width: 25.0),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "John Doe",
+              userModel.userModel.name,
               style: FontStyles.textStyleRegular16,
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Text(
-              "hirata@gmail.com",
+              userModel.userModel.email,
               style: FontStyles.textStyleRegularGrey14,
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
           ],
         )
       ],
