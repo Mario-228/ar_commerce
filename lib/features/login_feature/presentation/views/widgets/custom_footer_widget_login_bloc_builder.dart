@@ -13,9 +13,7 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
     super.key,
     required this.loginFormKey,
   });
-
   final GlobalKey<FormState> loginFormKey;
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginStates>(
