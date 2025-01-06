@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/features/login_feature/data/repos/login_repo_implementations.dart';
-import 'package:graduation_project/features/login_feature/presentation/views/views_models/login_cubit/login_states.dart';
+import 'package:graduation_project/features/login_feature/presentation/views_models/login_cubit/login_states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitial());
