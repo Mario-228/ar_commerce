@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
-  Future<void> saveData(String key, dynamic value) async {
+  Future<void> saveData<T>(String key, T value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (value is String) {
@@ -19,7 +19,7 @@ class CacheHelper {
     }
   }
 
-  Future<T?> getData<T>(String key) async {
+  Future<T> getData<T>(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     if (T is String) {
       return prefs.getString(key) as T;
