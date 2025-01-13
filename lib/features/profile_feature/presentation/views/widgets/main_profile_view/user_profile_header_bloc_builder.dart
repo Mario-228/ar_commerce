@@ -5,29 +5,6 @@ import 'package:graduation_project/features/profile_feature/presentation/views/w
 import 'package:graduation_project/features/profile_feature/presentation/views_models/get_user_cubit/get_user_cubit.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views_models/get_user_cubit/get_user_states.dart';
 
-class UserProfileHeaderBlocBuilder extends StatelessWidget {
-  const UserProfileHeaderBlocBuilder({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<GetUserCubit, GetUserStates>(
-      builder: (context, state) {
-        if (state is GetUserSuccessState) {
-          return UserPofileHeader(
-            userModel: state.userModel,
-          );
-        } else {
-          return UserPofileHeader(
-            userModel: defaultUser,
-          );
-        }
-      },
-    );
-  }
-}
-
 var defaultUser = UserModel(
   addresses: [],
   imageUrl:
@@ -45,3 +22,25 @@ var defaultUser = UserModel(
     updatedAt: "updatedAt",
   ),
 );
+
+class UserProfileHeaderBlocBuilder extends StatelessWidget {
+  const UserProfileHeaderBlocBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<GetUserCubit, GetUserStates>(
+      listener: (context, state) {
+        if (state is GetUserSuccessState) {
+          defaultUser = state.userModel;
+        }
+      },
+      builder: (context, state) {
+        return UserPofileHeader(
+          userModel: defaultUser,
+        );
+      },
+    );
+  }
+}
