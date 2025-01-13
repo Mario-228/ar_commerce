@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_material_button.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_cubit.dart';
@@ -33,8 +35,13 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
         } else {
           return CustomMaterialButton(
             text: 'Confirm',
-            onPressed: () {
+            onPressed: () async {
               if (otp.length == 6) {
+                CacheHelper.getData<String>(CacheHelperKeys.userEmail)
+                    .then((email) {
+                  EmailVerificationCubit.get(context)
+                      .verificationEmail(email, otp);
+                });
               } else {
                 showSnackBar(context, 'Please enter a valid OTP');
               }
