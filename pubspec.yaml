@@ -42,6 +42,7 @@ dependencies:
   go_router: ^14.3.0
   model_viewer_plus: ^1.9.0
   password_strength_checker: ^1.2.4
+  shared_preferences: ^2.3.5
   smooth_page_indicator: ^1.2.0+3
   supabase_flutter: ^2.8.1
 

@@ -4,66 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_images/app_images.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/features/home_feature/data/models/category_item_model.dart';
-// import 'package:graduation_project/features/home_feature/presentation/widgets/category_item_widget.dart';
-// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-// class HomeCategoriesList extends StatefulWidget {
-//   const HomeCategoriesList({super.key});
-//   static int currentIndex = 0;
-//   static const List<CategoryItemModel> items = [
-//     CategoryItemModel(
-//       title: "Best Sellers",
-//       icon: Icons.star,
-//     ),
-//     CategoryItemModel(
-//       title: "Furniture",
-//       icon: Icons.chair,
-//     ),
-//     CategoryItemModel(
-//       title: "Clothes",
-//       icon: Icons.shower,
-//     ),
-//     CategoryItemModel(
-//       title: "Accessories",
-//       icon: Icons.headphones,
-//     ),
-//     CategoryItemModel(
-//       title: "Others",
-//       icon: Icons.other_houses,
-//     ),
-//   ];
-//   @override
-//   State<HomeCategoriesList> createState() => _HomeCategoriesListState();
-// }
-
-// class _HomeCategoriesListState extends State<HomeCategoriesList> {
-//   @override
-//   Widget build(BuildContext context) {
-//     var width = MediaQuery.of(context).size.width;
-//     return SizedBox(
-//       height: 70.0,
-//       child: ListView.separated(
-//         scrollDirection: Axis.horizontal,
-//         physics: const BouncingScrollPhysics(),
-//         itemBuilder: (context, index) => GestureDetector(
-//           onTap: () {
-//             setState(() {
-//               HomeCategoriesList.currentIndex = index;
-//             });
-//             GoRouter.of(context).push(AppRouters.kHomeView, extra: index + 4);
-//           },
-//           child: CategoryItemWidget(
-//             item: HomeCategoriesList.items[index],
-//             isSelected: index == HomeCategoriesList.currentIndex,
-//           ),
-//         ),
-//         itemCount: HomeCategoriesList.items.length,
-//         separatorBuilder: (context, index) =>
-//             SizedBox(width: (width - 40 - 5 * 45) / 4),
-//       ),
-//     );
-//   }
-// }
 class HomeCategoriesList extends StatefulWidget {
   const HomeCategoriesList({super.key});
   static const List<CategoryItemModel> items = [
@@ -111,19 +52,34 @@ class _HomeCategoriesListState extends State<HomeCategoriesList> {
         ),
         items: HomeCategoriesList.items
             .map(
-              (item) => GestureDetector(
-                onTap: () => GoRouter.of(context)
-                    .push(AppRouters.kHomeView, extra: currentIndex + 4),
-                child: Center(
-                  child: Image.network(
-                    item.image,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
-                ),
-              ),
+              (item) =>
+                  HomeCategoryItemView(currentIndex: currentIndex, item: item),
             )
             .toList(),
+      ),
+    );
+  }
+}
+
+class HomeCategoryItemView extends StatelessWidget {
+  const HomeCategoryItemView({
+    super.key,
+    required this.currentIndex,
+    required this.item,
+  });
+
+  final int currentIndex;
+  final CategoryItemModel item;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => GoRouter.of(context)
+          .push(AppRouters.kHomeView, extra: currentIndex + 4),
+      child: Image.asset(
+        item.image,
+        fit: BoxFit.cover,
+        width: double.infinity,
       ),
     );
   }
