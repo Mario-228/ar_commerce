@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
-import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
-import 'package:graduation_project/core/widgets/custom_material_button.dart';
+import 'package:graduation_project/features/email_verification_feature/presentation/views/widgets/custom_material_button_bloc_consumer.dart';
 
 class CustomOtpFormField extends StatelessWidget {
   const CustomOtpFormField({
@@ -28,17 +27,7 @@ class CustomOtpFormField extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 50.0),
-        CustomMaterialButton(
-          text: 'Confirm',
-          onPressed: () {
-            if (otp.length == 6) {
-            } else {
-              showSnackBar(context, 'Please enter a valid OTP');
-            }
-          },
-          color: AppColors.darkGreen,
-          textColor: AppColors.white,
-        ),
+        CustomMaterialButtonBlocConsumer(otp: otp),
       ],
     );
   }

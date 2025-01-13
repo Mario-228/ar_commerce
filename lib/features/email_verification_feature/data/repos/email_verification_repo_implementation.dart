@@ -14,6 +14,7 @@ class EmailVerificationRepoImplementation extends EmailVerificationRepo {
       var response = await ApiService(BaseUrl.authentication).postData(
           EmailVerificationConstants.emailVerification,
           {"email": email, "otp": otp});
+      return right(response['data']);
     } on Exception catch (e) {
       if (e is DioException) {
         return left(ServerError.fromDioError(e));

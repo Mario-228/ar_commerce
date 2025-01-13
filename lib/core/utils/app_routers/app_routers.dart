@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:graduation_project/features/accessories_category_feature/presentation/views/accessories_category_view.dart';
 import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views/email_verification_view.dart';
+import 'package:graduation_project/features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_cubit.dart';
 import 'package:graduation_project/features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 import 'package:graduation_project/features/furniture_category_feature/presentation/views/furniture_category_view.dart';
 import 'package:graduation_project/features/home_feature/data/repos/home_repo_end_points.dart';
@@ -38,14 +39,14 @@ abstract class AppRouters {
   static const String kPopularCategoryView = '/popularCategoryView';
   static const String kProductDetailsView = '/productDetailsView';
   static const String kProfileView = '/profileView';
-  static const String kEmailVerificationView = '/';
+  static const String kEmailVerificationView = '/emailVerificationView';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
-      // GoRoute(
-      //   path: "/", // route screen of the application
-      //   builder: (context, state) => const SplashView(),
-      // ),
+      GoRoute(
+        path: "/", // route screen of the application
+        builder: (context, state) => const SplashView(),
+      ),
       GoRoute(
         path: kLoginView,
         builder: (context, state) => BlocProvider(
@@ -119,7 +120,10 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kEmailVerificationView,
-        builder: (context, state) => const EmailVerificationView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => EmailVerificationCubit(),
+          child: const EmailVerificationView(),
+        ),
       ),
     ],
   );
