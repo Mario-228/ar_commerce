@@ -4,9 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 // import 'package:graduation_project/core/utils/app_images/app_images.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
+import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 // import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
 // import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/widgets/signup_view_body.dart';
@@ -83,8 +86,18 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
 //   }
 // }
 
-  void onSuccess(BuildContext context) {
-    showSnackBar(context, "Account created successfully");
-    GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
+  Future<void> onSuccess(BuildContext context) async {
+    showSnackBar(context, "Check your email to verify your account");
+    await CacheHelper.saveData<bool>(CacheHelperKeys.isVerified, false);
+    await CacheHelper.saveData<String>(
+        CacheHelperKeys.userEmail, emailController.text);
+    String email = await CacheHelper.getData<String>(CacheHelperKeys.userEmail);
+    var response =
+        await SignUpRepoImplementation().sendVerificationEmail(email);
+    response.fold(
+        (error) =>
+            showSnackBar(context, "Something went wrong please try again..."),
+        (value) =>
+            GoRouter.of(context).push(AppRouters.kEmailVerificationView));
   }
 }

@@ -8,6 +8,5 @@ import 'package:graduation_project/features/signup_feature/data/models/sign_up_u
 abstract class SignUpRepo {
   Future<Either<Errors, SignUpResponse>> signUpUser(
       SignUpUserModel signUpUserModel);
-  // Future<Either<Errors, SignUpUserModel>> insertUserIntoDatabase(
-  //     SignUpUserModel userModel);
+  Future<Either<Errors, String>> sendVerificationEmail(String email);
 }

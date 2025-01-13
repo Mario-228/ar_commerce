@@ -27,6 +27,21 @@ class SignUpRepoImplementation extends SignUpRepo {
     }
   }
 
+  @override
+  Future<Either<Errors, String>> sendVerificationEmail(String email) async {
+    try {
+      var response = await ApiService(BaseUrl.authentication).postData(
+          SignUpRepoConstants.sendEmailVerificationEndPoint, {"email": email});
+      return right(response['data']);
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return left(ServerError.fromDioError(e));
+      } else {
+        return left(ServerError(errorMessage: e.toString()));
+      }
+    }
+  }
+
   // @override
   // Future<Either<Errors, SignUpUserModel>> insertUserIntoDatabase(
   //     SignUpUserModel userModel) async {
