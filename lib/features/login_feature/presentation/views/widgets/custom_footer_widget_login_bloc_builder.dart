@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
-import 'package:graduation_project/features/login_feature/presentation/views/views_models/login_cubit/login_cubit.dart';
-import 'package:graduation_project/features/login_feature/presentation/views/views_models/login_cubit/login_states.dart';
+import 'package:graduation_project/features/login_feature/presentation/views_models/login_cubit/login_cubit.dart';
+import 'package:graduation_project/features/login_feature/presentation/views_models/login_cubit/login_states.dart';
 import 'package:graduation_project/features/login_feature/presentation/views/widgets/login_text_form_field_section.dart';
 
 class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
