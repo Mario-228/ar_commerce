@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/features/login_feature/data/repos/login_repo_implementations.dart';
 import 'package:graduation_project/features/profile_feature/data/repos/profile_repo_implementation.dart';
@@ -32,14 +35,11 @@ class ProfileViewBody extends StatelessWidget {
               text: "Logout",
               color: AppColors.greyShade500,
               onPressed: () async {
-                var result = await ProfileRepoImplementation()
-                    .signOut(LoginRepoImplementations.token);
+                var result =
+                    await ProfileRepoImplementation().signOut(userToken);
                 result.fold(
                   (error) => showSnackBar(context, error.errorMessage),
-                  (value) {
-                    showSnackBar(context, "Logout successfully");
-                    GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
-                  },
+                  (value) async => await logoutSuccessfully(context),
                 );
               },
               textColor: AppColors.lightLimeGreen,
@@ -48,5 +48,12 @@ class ProfileViewBody extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> logoutSuccessfully(BuildContext context) async {
+    showSnackBar(context, "Logout successfully");
+    GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
+    await CacheHelper.saveData<String>(CacheHelperKeys.tokenKey, "");
+    userToken = "";
   }
 }

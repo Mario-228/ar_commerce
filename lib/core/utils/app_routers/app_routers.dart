@@ -19,7 +19,6 @@ import 'package:graduation_project/features/password_reset_feature/presentation/
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/product_details_view.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/profile_view.dart';
-import 'package:graduation_project/features/profile_feature/presentation/views_models/get_user_cubit/get_user_cubit.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
@@ -114,9 +113,7 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kProfileView,
-        builder: (context, state) => BlocProvider(
-            create: (context) => GetUserCubit()..getUser(),
-            child: const ProfileView()),
+        builder: (context, state) => const ProfileView(),
       ),
       GoRoute(
         path: kEmailVerificationView,

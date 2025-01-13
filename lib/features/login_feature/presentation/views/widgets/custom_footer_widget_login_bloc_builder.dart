@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/features/login_feature/presentation/views_models/login_cubit/login_cubit.dart';
@@ -17,14 +20,13 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginStates>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginSuccess) {
           GoRouter.of(context).push(AppRouters.kHomeView);
           showSnackBar(context, "Login successfully");
+          await updateUserToken(state);
         } else if (state is LoginError) {
           showSnackBar(context, "the provided credentials are incorrect");
-        } else {
-          GoRouter.of(context).push(AppRouters.kHomeView);
         }
       },
       builder: (context, state) {
@@ -34,9 +36,22 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
           return CustomFooterWidget(
             onPressedButton: () async {
               if (loginFormKey.currentState!.validate()) {
-                LoginCubit.get(context).login(
-                    LoginTextFormFieldSection.emailController.text,
-                    LoginTextFormFieldSection.passwordController.text);
+                await CacheHelper.saveData<String>(CacheHelperKeys.userEmail,
+                        LoginTextFormFieldSection.emailController.text)
+                    .then((value) {
+                  if (isVerified && userEmail.isNotEmpty) {
+                    LoginCubit.get(context).login(
+                        LoginTextFormFieldSection.emailController.text,
+                        LoginTextFormFieldSection.passwordController.text);
+                  } else if (!isVerified && userEmail.isNotEmpty) {
+                    showSnackBar(context, "please verify your email first");
+                    GoRouter.of(context)
+                        .push(AppRouters.kEmailVerificationView);
+                  } else {
+                    showSnackBar(context, "please sign up first");
+                    GoRouter.of(context).push(AppRouters.kSignUpView);
+                  }
+                });
               }
             },
             formKey: loginFormKey,
@@ -49,5 +64,12 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
         }
       },
     );
+  }
+
+  Future<void> updateUserToken(LoginSuccess state) async {
+    await CacheHelper.saveData<String>(
+        CacheHelperKeys.tokenKey, state.model.token);
+    userToken = state.model.token;
+    print(userToken);
   }
 }

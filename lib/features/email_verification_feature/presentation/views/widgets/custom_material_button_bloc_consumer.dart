@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
@@ -19,10 +20,11 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EmailVerificationCubit, EmailVerificationStates>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is EmailVerificationSuccess) {
           showSnackBar(context, 'Email verified successfully');
           GoRouter.of(context).push(AppRouters.kLoginView);
+          await updateVerified();
         } else if (state is EmailVerificationError) {
           showSnackBar(context, state.errorMessage);
         }
@@ -35,10 +37,10 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
             text: 'Confirm',
             onPressed: () async {
               if (CustomOtpFormField.otp.length == 6) {
-                CacheHelper.getData<String>(CacheHelperKeys.userEmail)
+                await CacheHelper.getData<String>(CacheHelperKeys.userEmail)
                     .then((email) {
                   EmailVerificationCubit.get(context)
-                      .verificationEmail(email, CustomOtpFormField.otp);
+                      .verificationEmail(email!, CustomOtpFormField.otp);
                 });
               } else {
                 showSnackBar(context, 'Please enter a valid OTP');
@@ -50,5 +52,10 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
         }
       },
     );
+  }
+
+  Future<void> updateVerified() async {
+    await CacheHelper.saveData<bool>(CacheHelperKeys.isVerified, true);
+    isVerified = true;
   }
 }

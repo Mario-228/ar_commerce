@@ -29,7 +29,9 @@ class SignUpRepoImplementation extends SignUpRepo {
     try {
       var response = await ApiService(BaseUrl.authentication).postData(
           SignUpRepoConstants.sendEmailVerificationEndPoint, {"email": email});
-      return right(response['data']);
+      String message = "";
+      message = response['user'] ?? response['data'];
+      return right(message);
     } on Exception catch (e) {
       if (e is DioException) {
         return left(ServerError.fromDioError(e));

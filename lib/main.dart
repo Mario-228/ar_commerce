@@ -1,8 +1,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/constants.dart';
 // import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 // import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
 // import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
@@ -13,7 +16,11 @@ Future<void> main() async {
   //   url: baseUrl,
   //   anonKey: anonKey,
   // );
-
+  isVerified =
+      await CacheHelper.getData<bool>(CacheHelperKeys.isVerified) ?? false;
+  userToken = await CacheHelper.getData<String>(CacheHelperKeys.tokenKey) ?? "";
+  userEmail =
+      await CacheHelper.getData<String>(CacheHelperKeys.userEmail) ?? "";
   runApp(const MyApp());
 }
 

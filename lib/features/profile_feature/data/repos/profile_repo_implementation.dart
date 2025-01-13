@@ -26,7 +26,7 @@ class ProfileRepoImplementation extends ProfileRepo {
   Future<Either<Errors, UserModel>> getUserProfile(String token) async {
     try {
       var result = await ApiService(BaseUrl.authentication)
-          .getUser(ProfileConstants.signOut, token);
+          .getUser(ProfileConstants.profile, token);
       return Right(UserModel.fromJson(result));
     } catch (e) {
       if (e is DioException) {
