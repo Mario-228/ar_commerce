@@ -18,7 +18,7 @@ class LoginRepoImplementations extends LoginRepo {
           LoginRepoConstants.login, {"email": email, "password": password});
       SignUpResponse result = SignUpResponse.fromJson(response);
       token = result.token;
-      CacheHelper().saveData(CacheHelperKeys.tokenKey, token);
+      CacheHelper.saveData(CacheHelperKeys.tokenKey, token);
 
       return right(result);
     } catch (e) {
