@@ -4,13 +4,13 @@ import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views/widgets/custom_material_button_bloc_consumer.dart';
 
 class CustomOtpFormField extends StatelessWidget {
+  static String otp = '';
   const CustomOtpFormField({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    String otp = "";
     return Column(
       children: [
         FittedBox(
@@ -23,11 +23,12 @@ class CustomOtpFormField extends StatelessWidget {
             showFieldAsBox: true,
             onSubmit: (String verificationCode) {
               otp = verificationCode;
+              print(otp);
             },
           ),
         ),
         const SizedBox(height: 50.0),
-        CustomMaterialButtonBlocConsumer(otp: otp),
+        const CustomMaterialButtonBlocConsumer(),
       ],
     );
   }

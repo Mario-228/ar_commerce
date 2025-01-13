@@ -3,21 +3,18 @@ import 'package:dio/dio.dart';
 import 'package:graduation_project/core/errors/errors.dart';
 import 'package:graduation_project/core/utils/api_service/api_service.dart';
 import 'package:graduation_project/core/utils/api_service/base_url.dart';
-import 'package:graduation_project/features/signup_feature/data/models/sign_up_response.dart';
 import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
-// import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_constants.dart';
-// import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpRepoImplementation extends SignUpRepo {
   @override
-  Future<Either<Errors, SignUpResponse>> signUpUser(
+  Future<Either<Errors, String>> signUpUser(
       SignUpUserModel signUpUserModel) async {
     try {
       var response = await ApiService(BaseUrl.authentication).postData(
           SignUpRepoConstants.registerEndPoint, signUpUserModel.toJson());
-      return right(SignUpResponse.fromJson(response));
+      return right(response['data']);
     } on Exception catch (e) {
       if (e is DioException) {
         return left(ServerError.fromDioError(e));

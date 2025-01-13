@@ -21,18 +21,19 @@ abstract class CacheHelper {
 
   static Future<T> getData<T>(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (T is String) {
+
+    if (T == String) {
       return prefs.getString(key) as T;
-    } else if (T is int) {
+    } else if (T == int) {
       return prefs.getInt(key) as T;
-    } else if (T is double) {
+    } else if (T == double) {
       return prefs.getDouble(key) as T;
-    } else if (T is bool) {
+    } else if (T == bool) {
       return prefs.getBool(key) as T;
-    } else if (T is List<String>) {
+    } else if (T == List<String>) {
       return prefs.getStringList(key) as T;
     } else {
-      throw Exception('Invalid Key');
+      throw Exception('Unsupported type');
     }
   }
 }

@@ -91,7 +91,11 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
     await CacheHelper.saveData<bool>(CacheHelperKeys.isVerified, false);
     await CacheHelper.saveData<String>(
         CacheHelperKeys.userEmail, emailController.text);
-    String email = await CacheHelper.getData<String>(CacheHelperKeys.userEmail);
+    String email = "";
+    await CacheHelper.getData<String>(CacheHelperKeys.userEmail).then((value) {
+      print(value.toString());
+      email = value;
+    });
     var response =
         await SignUpRepoImplementation().sendVerificationEmail(email);
     response.fold(

@@ -7,16 +7,14 @@ import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
 import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_material_button.dart';
+import 'package:graduation_project/features/email_verification_feature/presentation/views/widgets/custom_otp_form_field.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_cubit.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_states.dart';
 
 class CustomMaterialButtonBlocConsumer extends StatelessWidget {
   const CustomMaterialButtonBlocConsumer({
     super.key,
-    required this.otp,
   });
-
-  final String otp;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +34,11 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
           return CustomMaterialButton(
             text: 'Confirm',
             onPressed: () async {
-              if (otp.length == 6) {
+              if (CustomOtpFormField.otp.length == 6) {
                 CacheHelper.getData<String>(CacheHelperKeys.userEmail)
                     .then((email) {
                   EmailVerificationCubit.get(context)
-                      .verificationEmail(email, otp);
+                      .verificationEmail(email, CustomOtpFormField.otp);
                 });
               } else {
                 showSnackBar(context, 'Please enter a valid OTP');
