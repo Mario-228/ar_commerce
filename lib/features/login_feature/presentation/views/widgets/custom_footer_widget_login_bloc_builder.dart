@@ -23,6 +23,8 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
           showSnackBar(context, "Login successfully");
         } else if (state is LoginError) {
           showSnackBar(context, "the provided credentials are incorrect");
+        } else {
+          GoRouter.of(context).push(AppRouters.kHomeView);
         }
       },
       builder: (context, state) {
