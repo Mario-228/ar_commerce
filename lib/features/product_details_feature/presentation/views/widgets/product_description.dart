@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
+import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
 
 class ProductDescription extends StatelessWidget {
   const ProductDescription({
     super.key,
+    required this.model,
   });
-
+  final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: Text(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur velit at massa vehicula, quis fringilla urna gravida.",
+        model.description,
         style: FontStyles.textStyleMeduim13.copyWith(color: AppColors.grey),
         softWrap: true,
         maxLines: 3,

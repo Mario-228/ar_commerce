@@ -11,7 +11,7 @@ class CustomProductItemModel {
   final bool isFavorite;
   final int productTypeId;
   final String productType;
-  // final void Function()? onTap;
+  final String image3DUrl; // final void Function()? onTap;
   // final void Function()? onFavouritePressed;
 
   CustomProductItemModel({
@@ -27,6 +27,7 @@ class CustomProductItemModel {
     required this.productBrandId,
     required this.pictureUrl,
     required this.isFavorite,
+    required this.image3DUrl,
     // required this.onTap,
     // required this.onFavouritePressed
   });
@@ -45,6 +46,8 @@ class CustomProductItemModel {
         quantity: json['quantity'] ?? 0,
         productBrand: json['productBrand'] ?? "",
         productType: json['productType'] ?? "",
+        image3DUrl: json['urlGlb'] ??
+            "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
         // onTap: () {},
         // onFavouritePressed: json['onFavouritePressed'],
       );

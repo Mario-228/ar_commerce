@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 import 'package:graduation_project/features/accessories_category_feature/presentation/views/accessories_category_view.dart';
 import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views/email_verification_view.dart';
@@ -109,7 +110,8 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kProductDetailsView,
-        builder: (context, state) => const ProductDetailsView(),
+        builder: (context, state) =>
+            ProductDetailsView(model: state.extra as CustomProductItemModel),
       ),
       GoRoute(
         path: kProfileView,

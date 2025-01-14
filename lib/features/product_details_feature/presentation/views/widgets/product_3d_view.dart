@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
+import 'package:graduation_project/core/utils/custom_product_item_model/custom_product_item_model.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 class Product3DView extends StatelessWidget {
   const Product3DView({
     super.key,
+    required this.model,
   });
-
+  final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -15,15 +17,14 @@ class Product3DView extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height / 3,
           width: double.infinity,
-          child: const Expanded(
+          child: Expanded(
             child: ModelViewer(
-              backgroundColor: Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
-              src: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
+              backgroundColor: const Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
+              src: model.image3DUrl,
               alt: 'A 3D model of an astronaut',
               ar: true,
               autoRotate: true,
-              iosSrc:
-                  'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
+              iosSrc: model.image3DUrl,
               disableZoom: true,
             ),
           ),
