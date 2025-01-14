@@ -4,7 +4,6 @@ import 'package:graduation_project/core/utils/custom_product_item_model/custom_p
 import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/description_and_reviews_buttons.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/product_color_choices.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/product_delivery.dart';
-import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/product_description.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/product_details_view_footer.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/widgets/product_name_and_price.dart';
 
@@ -27,7 +26,6 @@ class ProductInfo extends StatelessWidget {
             height: 30,
           ),
           DescriptionAndReviewsButtons(model: model),
-          ProductDescription(model: model),
           const SizedBox(
             height: 15,
           ),
