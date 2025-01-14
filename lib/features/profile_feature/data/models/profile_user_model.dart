@@ -1,5 +1,23 @@
 import 'package:graduation_project/features/profile_feature/data/repos/profile_constants.dart';
 
+class UserModel {
+  ProfileUserModel userModel;
+  String imageUrl;
+  Map<String, dynamic> addresses;
+
+  UserModel(
+      {required this.userModel,
+      required this.imageUrl,
+      required this.addresses});
+
+  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
+        userModel: ProfileUserModel.fromJson(json[ProfileConstants.user]),
+        imageUrl: json[ProfileConstants.imageUrl] ??
+            "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1733863368~exp=1733866968~hmac=dcf753cc48215353e01269e8d6aaf27adfa1e7eff7d23173fd74e6dda73b5dd2&w=740",
+        addresses: (json[ProfileConstants.addresses]) ?? {},
+      );
+}
+
 class ProfileUserModel {
   final int id;
   final String name;
@@ -32,7 +50,7 @@ class ProfileUserModel {
       email: json[ProfileConstants.email] ?? "",
       phone: json[ProfileConstants.phone] ?? "",
       image: json[ProfileConstants.image] ?? "",
-      gender: json[ProfileConstants.gender],
+      gender: json[ProfileConstants.gender] ?? "",
       emailVerifiedAt: json[ProfileConstants.emailverifiedAt] ?? "",
       googleId: json[ProfileConstants.googleId] ?? "",
       createdAt: json[ProfileConstants.createdAt] ?? "",
@@ -52,22 +70,4 @@ class ProfileUserModel {
         ProfileConstants.createdAt: createdAt,
         ProfileConstants.updatedAt: updatedAt,
       };
-}
-
-class UserModel {
-  ProfileUserModel userModel;
-  String imageUrl;
-  List<String> addresses;
-
-  UserModel(
-      {required this.userModel,
-      required this.imageUrl,
-      required this.addresses});
-
-  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
-        userModel: ProfileUserModel.fromJson(json[ProfileConstants.user]),
-        imageUrl: json[ProfileConstants.imageUrl] ??
-            "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1733863368~exp=1733866968~hmac=dcf753cc48215353e01269e8d6aaf27adfa1e7eff7d23173fd74e6dda73b5dd2&w=740",
-        addresses: List<String>.from(json[ProfileConstants.addresses] ?? []),
-      );
 }

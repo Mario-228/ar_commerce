@@ -25,6 +25,7 @@ class ProfileRepoImplementation extends ProfileRepo {
   @override
   Future<Either<Errors, UserModel>> getUserProfile(String token) async {
     try {
+      print("Token is => $token");
       var result = await ApiService(BaseUrl.authentication)
           .getUser(ProfileConstants.profile, token);
       return Right(UserModel.fromJson(result));

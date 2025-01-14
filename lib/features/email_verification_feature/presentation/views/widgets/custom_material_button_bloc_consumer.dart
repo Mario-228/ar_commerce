@@ -37,11 +37,11 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
             text: 'Confirm',
             onPressed: () async {
               if (CustomOtpFormField.otp.length == 6) {
-                await CacheHelper.getData<String>(CacheHelperKeys.userEmail)
-                    .then((email) {
-                  EmailVerificationCubit.get(context)
-                      .verificationEmail(email!, CustomOtpFormField.otp);
-                });
+                // await CacheHelper.getData<String>(CacheHelperKeys.userEmail)
+                //     .then((email) {
+                // });
+                EmailVerificationCubit.get(context)
+                    .verificationEmail(userEmail, CustomOtpFormField.otp);
               } else {
                 showSnackBar(context, 'Please enter a valid OTP');
               }

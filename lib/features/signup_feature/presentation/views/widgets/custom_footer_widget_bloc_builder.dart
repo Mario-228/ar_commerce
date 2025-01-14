@@ -1,8 +1,7 @@
-// import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-// import 'package:graduation_project/core/utils/app_images/app_images.dart';
+import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
 import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
@@ -10,12 +9,9 @@ import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_footer_widget.dart';
 import 'package:graduation_project/features/signup_feature/data/models/sign_up_user_model.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
-// import 'package:graduation_project/features/signup_feature/data/models/user_model.dart';
-// import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/widgets/signup_view_body.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_states.dart';
-// import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CustomFooterWidgetBlocBuilder extends StatelessWidget {
   const CustomFooterWidgetBlocBuilder({
@@ -30,7 +26,7 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-
+  static late SignUpUserModel user;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpStates>(
@@ -38,7 +34,7 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
         if (state is SignUpError) {
           showSnackBar(context, state.error);
         } else if (state is SignUpSuccess) {
-          onSuccess(context);
+          onSuccess(context, user);
           clearSignUpFields();
         }
       },
@@ -55,11 +51,12 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
                 GoRouter.of(context).push(AppRouters.kLoginView),
             onPressedButton: () async {
               if (signUpFormKey.currentState!.validate()) {
-                SignUpUserModel user = SignUpUserModel(
+                user = SignUpUserModel(
                   name: nameController.text,
                   email: emailController.text,
                   password: passwordController.text,
                 );
+                // print(user.toJson());
                 await SignUpCubit.get(context).signUp(user);
               }
             },
@@ -68,40 +65,19 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
       },
     );
   }
-// var response = await SignUpRepoImplementation()
-//     .insertUserIntoDatabase(getUserDataFromSignUp(user));
-// response.fold(
-//     (error) =>
-//         showSnackBar(context, "Try with another Credentials"),
-//     (value) => onSuccess(context));
-//   UserModel getUserDataFromSignUp(SignUpUserModel user) {
-//     return UserModel(
-//       id: Supabase.instance.client.auth.currentUser!.id,
-//       email: user.email,
-//       name: user.name,
-//       phoneNumber: "",
-//       pictureUrl: AppImages.assetsImagesUserImage,
-//       password: Crypt.sha256(user.password).toString(),
-//     );
-//   }
-// }
 
-  Future<void> onSuccess(BuildContext context) async {
-    showSnackBar(context, "Check your email to verify your account");
+  Future<void> onSuccess(BuildContext context, SignUpUserModel user) async {
     await CacheHelper.saveData<bool>(CacheHelperKeys.isVerified, false);
-    await CacheHelper.saveData<String>(
-        CacheHelperKeys.userEmail, emailController.text);
-    String email = "";
-    await CacheHelper.getData<String>(CacheHelperKeys.userEmail).then((value) {
-      print(value.toString());
-      email = value!;
-    });
+    await CacheHelper.saveData<String>(CacheHelperKeys.userEmail, user.email);
+    userEmail = user.email;
     var response =
-        await SignUpRepoImplementation().sendVerificationEmail(email);
+        await SignUpRepoImplementation().sendVerificationEmail(user.email);
     response.fold(
         (error) =>
             showSnackBar(context, "Something went wrong please try again..."),
-        (value) =>
-            GoRouter.of(context).push(AppRouters.kEmailVerificationView));
+        (value) {
+      GoRouter.of(context).push(AppRouters.kEmailVerificationView);
+      showSnackBar(context, "Check your email to verify your account");
+    });
   }
 }

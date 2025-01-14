@@ -1,39 +1,76 @@
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// abstract class CacheHelper {
+//   static Future<void> saveData<T>(String key, T value) async {
+//     final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+//     if (value is String) {
+//       await prefs.setString(key, value);
+//     } else if (value is int) {
+//       await prefs.setInt(key, value);
+//     } else if (value is double) {
+//       await prefs.setDouble(key, value);
+//     } else if (value is bool) {
+//       await prefs.setBool(key, value);
+//     } else if (value is List<String>) {
+//       await prefs.setStringList(key, value);
+//     } else {
+//       throw Exception('Invalid value type');
+//     }
+//   }
+
+//   static Future<T?> getData<T>(String key) async {
+//     final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+//     if (T == String) {
+//       return prefs.getString(key) as T?;
+//     } else if (T == int) {
+//       return prefs.getInt(key) as T?;
+//     } else if (T == double) {
+//       return prefs.getDouble(key) as T?;
+//     } else if (T == bool) {
+//       return prefs.getBool(key) as T?;
+//     } else if (T == List<String>) {
+//       return prefs.getStringList(key) as T?;
+//     } else {
+//       throw Exception('Unsupported type');
+//     }
+//   }
+// }
+
+import 'package:hive_flutter/hive_flutter.dart';
 
 abstract class CacheHelper {
   static Future<void> saveData<T>(String key, T value) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var box = await Hive.openBox('appBox');
 
     if (value is String) {
-      await prefs.setString(key, value);
+      await box.put(key, value);
     } else if (value is int) {
-      await prefs.setInt(key, value);
+      await box.put(key, value);
     } else if (value is double) {
-      await prefs.setDouble(key, value);
+      await box.put(key, value);
     } else if (value is bool) {
-      await prefs.setBool(key, value);
+      await box.put(key, value);
     } else if (value is List<String>) {
-      await prefs.setStringList(key, value);
+      await box.put(key, value);
     } else {
       throw Exception('Invalid value type');
     }
+
+    await box.close();
   }
 
   static Future<T?> getData<T>(String key) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var box = await Hive.openBox('appBox');
 
-    if (T == String) {
-      return prefs.getString(key) as T?;
-    } else if (T == int) {
-      return prefs.getInt(key) as T?;
-    } else if (T == double) {
-      return prefs.getDouble(key) as T?;
-    } else if (T == bool) {
-      return prefs.getBool(key) as T?;
-    } else if (T == List<String>) {
-      return prefs.getStringList(key) as T?;
+    var value = box.get(key);
+    await box.close();
+
+    if (value is T) {
+      return value;
     } else {
-      throw Exception('Unsupported type');
+      return null;
     }
   }
 }

@@ -22,11 +22,9 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginStates>(
       listener: (context, state) async {
         if (state is LoginSuccess) {
-          GoRouter.of(context).push(AppRouters.kHomeView);
-          showSnackBar(context, "Login successfully");
-          await updateUserToken(state);
+          await onSuccessLogin(context, state);
         } else if (state is LoginError) {
-          showSnackBar(context, "the provided credentials are incorrect");
+          onErrorLogin(state, context);
         }
       },
       builder: (context, state) {
@@ -39,18 +37,9 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
                 await CacheHelper.saveData<String>(CacheHelperKeys.userEmail,
                         LoginTextFormFieldSection.emailController.text)
                     .then((value) {
-                  if (isVerified && userEmail.isNotEmpty) {
-                    LoginCubit.get(context).login(
-                        LoginTextFormFieldSection.emailController.text,
-                        LoginTextFormFieldSection.passwordController.text);
-                  } else if (!isVerified && userEmail.isNotEmpty) {
-                    showSnackBar(context, "please verify your email first");
-                    GoRouter.of(context)
-                        .push(AppRouters.kEmailVerificationView);
-                  } else {
-                    showSnackBar(context, "please sign up first");
-                    GoRouter.of(context).push(AppRouters.kSignUpView);
-                  }
+                  LoginCubit.get(context).login(
+                      LoginTextFormFieldSection.emailController.text,
+                      LoginTextFormFieldSection.passwordController.text);
                 });
               }
             },
@@ -66,10 +55,26 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
     );
   }
 
+  void onErrorLogin(LoginError state, BuildContext context) {
+    if (state.error.contains("must do Email Verification")) {
+      GoRouter.of(context).push(AppRouters.kEmailVerificationView);
+      showSnackBar(context, state.error);
+    } else {
+      showSnackBar(context, state.error);
+    }
+  }
+
+  Future<void> onSuccessLogin(BuildContext context, LoginSuccess state) async {
+    GoRouter.of(context).push(AppRouters.kHomeView);
+    showSnackBar(context, "Login successfully");
+    await updateUserToken(state);
+  }
+
   Future<void> updateUserToken(LoginSuccess state) async {
     await CacheHelper.saveData<String>(
         CacheHelperKeys.tokenKey, state.model.token);
     userToken = state.model.token;
-    print(userToken);
+    // print(userToken);
+    LoginTextFormFieldSection.clearFields();
   }
 }

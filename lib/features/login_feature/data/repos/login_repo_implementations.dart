@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:graduation_project/core/errors/errors.dart';
 import 'package:graduation_project/core/utils/api_service/api_service.dart';
 import 'package:graduation_project/core/utils/api_service/base_url.dart';
@@ -16,12 +17,17 @@ class LoginRepoImplementations extends LoginRepo {
     try {
       var response = await ApiService(BaseUrl.authentication).postData(
           LoginRepoConstants.login, {"email": email, "password": password});
+      if (response.containsKey('error')) {
+        return left(ServerError(errorMessage: response['error']));
+      }
       SignUpResponse result = SignUpResponse.fromJson(response);
       token = result.token;
       CacheHelper.saveData<String>(CacheHelperKeys.tokenKey, token);
-
       return right(result);
     } catch (e) {
+      if (e is DioException) {
+        return left(ServerError.fromDioError(e));
+      }
       return left(ServerError(errorMessage: e.toString()));
     }
   }

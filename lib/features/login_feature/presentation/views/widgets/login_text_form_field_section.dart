@@ -11,8 +11,6 @@ class LoginTextFormFieldSection extends StatelessWidget {
   static TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    emailController.clear();
-    passwordController.clear();
     return Column(
       children: [
         CustomTextFormField(
@@ -33,5 +31,10 @@ class LoginTextFormFieldSection extends StatelessWidget {
         CustomPasswordFieldBlocBuilder(passwordController: passwordController),
       ],
     );
+  }
+
+  static void clearFields() {
+    emailController.clear();
+    passwordController.clear();
   }
 }

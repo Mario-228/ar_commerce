@@ -9,10 +9,9 @@ class SignupViewBody extends StatelessWidget {
       TextEditingController();
   static final TextEditingController nameController = TextEditingController();
   static final TextEditingController emailController = TextEditingController();
-  static GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    clearSignUpFields();
+    GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: SingleChildScrollView(

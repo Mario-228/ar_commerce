@@ -1,5 +1,7 @@
 abstract class ProfileConstants {
   static const String signOut = 'logout';
+  static const String profile = 'profile';
+
   static const String id = 'id';
   static const String name = 'name';
   static const String email = 'email';
@@ -11,7 +13,6 @@ abstract class ProfileConstants {
   static const String createdAt = 'created_at';
   static const String updatedAt = 'updated_at';
   static const String user = 'user';
-  static const String profile = 'profile';
   static const String imageUrl = 'image url';
   static const String addresses = 'addresses';
 }
