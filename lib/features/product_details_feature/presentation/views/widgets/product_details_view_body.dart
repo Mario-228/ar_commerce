@@ -11,18 +11,20 @@ class ProductDetailsViewBody extends StatelessWidget {
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Product3DView(model: model),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              ProductInfo(model: model),
-            ],
-          ),
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Product3DView(model: model),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
+                ProductInfo(model: model),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
