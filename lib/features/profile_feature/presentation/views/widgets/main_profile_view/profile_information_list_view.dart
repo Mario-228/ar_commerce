@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project/features/profile_feature/data/models/profile_info_model.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/main_profile_view/profile_information_item.dart';
 
@@ -30,6 +32,12 @@ class ProfileInformationListView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    List<void Function()> functions = [
+      () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
+      () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
+      () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
+      () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
+    ];
     return ListView.separated(
       itemCount: items.length,
       shrinkWrap: true,
@@ -37,8 +45,8 @@ class ProfileInformationListView extends StatelessWidget {
       separatorBuilder: (context, index) => const Divider(
         height: 2.0,
       ),
-      itemBuilder: (context, index) =>
-          ProfileInformationItem(item: items[index]),
+      itemBuilder: (context, index) => ProfileInformationItem(
+          item: items[index]..onInfoProfileItemPressed = functions[index]),
     );
   }
 }
