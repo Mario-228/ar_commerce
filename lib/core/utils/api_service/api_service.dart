@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:graduation_project/features/profile_feature/data/repos/update_user_repo/update_user_constants.dart';
+import 'package:path/path.dart' as path;
 import 'package:dio/dio.dart';
 
 class ApiService {
@@ -50,6 +53,32 @@ class ApiService {
           'Authorization': 'Bearer $token'
         },
         contentType: 'application/json',
+      ),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> postWithToken(
+      String endPoint, String token, Map<String, dynamic> query) async {
+    if (query.containsKey(UpdateUserConstants.imageKey) &&
+        query[UpdateUserConstants.imageKey] is File) {
+      File imageFile = query[UpdateUserConstants.imageKey];
+      String fileName = path.basename(imageFile.path);
+
+      query[UpdateUserConstants.imageKey] = await MultipartFile.fromFile(
+        imageFile.path,
+        filename: fileName,
+      );
+    }
+    FormData formData = FormData.fromMap(query);
+    var response = await dioHelper.post(
+      endPoint,
+      data: formData,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token',
+        },
       ),
     );
     return response.data;

@@ -8,7 +8,10 @@ Future<File> convertAssetImageToFile(String assetPath, String fileName) async {
 
   final Directory directory = await getApplicationDocumentsDirectory();
   final String path = directory.path;
-  final File file = File('$path/$fileName');
+  var path2 = '$path/$fileName';
+  path2 = path2.replaceAll('\\', '/');
+  final File file = File(path2);
   await file.writeAsBytes(bytes);
+  print(file.path);
   return file;
 }

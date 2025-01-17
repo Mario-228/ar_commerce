@@ -22,7 +22,7 @@ class LoginRepoImplementations extends LoginRepo {
       }
       SignUpResponse result = SignUpResponse.fromJson(response);
       token = result.token;
-      CacheHelper.saveData<String>(CacheHelperKeys.tokenKey, token);
+      await CacheHelper.saveData<String>(CacheHelperKeys.tokenKey, token);
       return right(result);
     } catch (e) {
       if (e is DioException) {

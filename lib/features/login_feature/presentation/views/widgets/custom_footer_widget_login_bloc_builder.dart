@@ -34,7 +34,7 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
           return CustomFooterWidget(
             onPressedButton: () async {
               if (loginFormKey.currentState!.validate()) {
-                await CacheHelper.saveData<String>(CacheHelperKeys.userEmail,
+                CacheHelper.saveData<String>(CacheHelperKeys.userEmail,
                         LoginTextFormFieldSection.emailController.text)
                     .then((value) {
                   LoginCubit.get(context).login(
