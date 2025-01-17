@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:graduation_project/constants.dart';
-import 'package:graduation_project/core/utils/app_images/app_images.dart';
-import 'package:graduation_project/core/utils/functions/convert_asset_image_to_file.dart';
 import 'package:graduation_project/features/profile_feature/data/models/update_profile_model.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/my_details_view/widgets/custom_gender_selection_widget.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/my_details_view/widgets/my_details_input_fields_section.dart';
