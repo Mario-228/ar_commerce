@@ -4,7 +4,7 @@ import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
 
 class CustomGenederSelectionWidget extends StatefulWidget {
   const CustomGenederSelectionWidget({super.key});
-
+  static String gender = "";
   @override
   State<CustomGenederSelectionWidget> createState() =>
       _CustomGenederSelectionWidgetState();
@@ -12,7 +12,6 @@ class CustomGenederSelectionWidget extends StatefulWidget {
 
 class _CustomGenederSelectionWidgetState
     extends State<CustomGenederSelectionWidget> {
-  String gender = "";
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,23 +19,23 @@ class _CustomGenederSelectionWidgetState
       children: [
         const Text("Gender:", style: FontStyles.textStyleSemiBold15),
         RadioListTile<String>(
-          title: const Text('Male'),
-          value: 'Male',
-          groupValue: gender,
+          title: const Text('male'),
+          value: 'male',
+          groupValue: CustomGenederSelectionWidget.gender,
           onChanged: (value) {
             setState(() {
-              gender = value ?? "";
+              CustomGenederSelectionWidget.gender = value ?? "";
             });
           },
           activeColor: AppColors.darkGreen,
         ),
         RadioListTile<String>(
-          title: const Text('Female'),
-          value: 'Female',
-          groupValue: gender,
+          title: const Text('female'),
+          value: 'female',
+          groupValue: CustomGenederSelectionWidget.gender,
           onChanged: (value) {
             setState(() {
-              gender = value ?? "";
+              CustomGenederSelectionWidget.gender = value ?? "";
             });
           },
           activeColor: AppColors.darkGreen,

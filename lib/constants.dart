@@ -25,3 +25,5 @@ final defaultUser = UserModel(
     updatedAt: "updatedAt",
   ),
 );
+
+late UserModel userModel;

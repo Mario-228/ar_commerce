@@ -23,6 +23,7 @@ class UserProfileHeaderBlocBuilder extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is GetUserSuccessState) {
+          userModel = state.userModel;
           return UserPofileHeader(
             userModel: state.userModel,
           );

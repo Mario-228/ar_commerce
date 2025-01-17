@@ -1,4 +1,4 @@
-import 'package:graduation_project/features/signup_feature/data/models/sign_up_response.dart';
+import 'package:graduation_project/features/profile_feature/data/models/update_profile_response_model.dart';
 
 abstract class UpdateUserStates {}
 
@@ -7,7 +7,7 @@ class UpdateUserInitialState extends UpdateUserStates {}
 class UpdateUserLoadingState extends UpdateUserStates {}
 
 class UpdateUserSuccessState extends UpdateUserStates {
-  final SignUpResponse userModel;
+  final UpdateProfileResponseModel userModel;
   UpdateUserSuccessState({required this.userModel});
 }
 
