@@ -19,6 +19,7 @@ import 'package:graduation_project/features/others_category_feature/presentation
 import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/product_details_view.dart';
+import 'package:graduation_project/features/profile_feature/data/models/update_profile_model.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/profile_view.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
@@ -128,7 +129,10 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kMyDetailsView,
-        builder: (context, state) => const MyDetailsView(),
+        builder: (context, state) =>
+            MyDetailsView(model: state.extra as UpdateProfileModel),
+        // used to pass the user model when navigate to my details view screen
+        // this may cause problem...
       ),
     ],
   );
