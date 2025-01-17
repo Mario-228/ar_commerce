@@ -4,8 +4,8 @@ import 'package:graduation_project/core/errors/errors.dart';
 import 'package:graduation_project/core/utils/api_service/api_service.dart';
 import 'package:graduation_project/core/utils/api_service/base_url.dart';
 import 'package:graduation_project/features/profile_feature/data/models/profile_user_model.dart';
-import 'package:graduation_project/features/profile_feature/data/repos/profile_constants.dart';
-import 'package:graduation_project/features/profile_feature/data/repos/profile_repo.dart';
+import 'package:graduation_project/features/profile_feature/data/repos/profile_repo/profile_constants.dart';
+import 'package:graduation_project/features/profile_feature/data/repos/profile_repo/profile_repo.dart';
 
 class ProfileRepoImplementation extends ProfileRepo {
   @override

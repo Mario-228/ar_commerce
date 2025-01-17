@@ -12,13 +12,10 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetUserCubit()..getUser(),
-      child: Scaffold(
+      child: const Scaffold(
         backgroundColor: AppColors.white,
-        appBar: const ProfileAppBar(title: "Profile"),
-        body: BlocProvider(
-          create: (context) => GetUserCubit()..getUser(),
-          child: const ProfileViewBody(),
-        ),
+        appBar: ProfileAppBar(title: "Profile"),
+        body: ProfileViewBody(),
       ),
     );
   }
