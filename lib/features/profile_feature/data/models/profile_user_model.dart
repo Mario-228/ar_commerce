@@ -1,4 +1,4 @@
-import 'package:graduation_project/features/profile_feature/data/repos/profile_constants.dart';
+import 'package:graduation_project/features/profile_feature/data/repos/profile_repo/profile_constants.dart';
 
 class UserModel {
   ProfileUserModel userModel;
