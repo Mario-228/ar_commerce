@@ -22,7 +22,7 @@ class _CustomGenederSelectionWidgetState
         RadioListTile<String>(
           title: const Text('male'),
           value: 'male',
-          groupValue: CustomGenederSelectionWidget.gender,
+          groupValue: UpdateUserCubit.get(context).userProfileModel.gender,
           onChanged: (value) {
             setState(() {
               UpdateUserCubit.get(context).userProfileModel.gender =
@@ -34,7 +34,7 @@ class _CustomGenederSelectionWidgetState
         RadioListTile<String>(
           title: const Text('female'),
           value: 'female',
-          groupValue: CustomGenederSelectionWidget.gender,
+          groupValue: UpdateUserCubit.get(context).userProfileModel.gender,
           onChanged: (value) {
             setState(() {
               UpdateUserCubit.get(context).userProfileModel.gender =
