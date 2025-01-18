@@ -16,11 +16,12 @@ import 'package:graduation_project/features/login_feature/presentation/views/log
 import 'package:graduation_project/features/login_feature/presentation/views_models/login_cubit/login_cubit.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
-import 'package:graduation_project/features/password_reset_feature/presentation/views/password_reset_view.dart';
+import 'package:graduation_project/features/reset_password_feature/presentation/views/reset_password_view.dart';
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/product_details_view.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/profile_view.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
+import 'package:graduation_project/features/reset_password_feature/presentation/views_models/reset_password_cubit/reset_password_cubit.dart';
 import 'package:graduation_project/features/signup_feature/data/repo/sign_up_repo_implementation.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views/signup_view.dart';
 import 'package:graduation_project/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
@@ -28,7 +29,7 @@ import 'package:graduation_project/features/splash_view/presentation/views/splas
 
 abstract class AppRouters {
   static const String kSignUpView = '/signUpView';
-  static const String kPasswordResetView = '/passwordResetView';
+  static const String kResetPasswordView = '/resetPasswordView';
   static const String kOnBoardingView = '/onBoardingView';
   static const String kLoginView = '/loginView';
   static const String kForgotPasswordView = '/forgotPasswordView';
@@ -42,6 +43,7 @@ abstract class AppRouters {
   static const String kProfileView = '/profileView';
   static const String kEmailVerificationView = '/emailVerificationView';
   static const String kMyDetailsView = '/myDetailsView';
+  static const String kChangePassword = '/changePassword';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
@@ -65,8 +67,11 @@ abstract class AppRouters {
         builder: (context, state) => const OnboardingView(),
       ),
       GoRoute(
-        path: kPasswordResetView,
-        builder: (context, state) => const PasswordResetView(),
+        path: kResetPasswordView,
+        builder: (context, state) => BlocProvider(
+          create: (context) => ResetPasswordCubit(),
+          child: ResetPasswordView(email: state.extra as String),
+        ),
       ),
       GoRoute(
         path: kSignUpView,
