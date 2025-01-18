@@ -19,16 +19,16 @@ class UserModel {
 }
 
 class ProfileUserModel {
-  final int id;
-  final String name;
-  final String email;
-  final String phone;
-  final String image;
-  final String gender;
-  final String emailVerifiedAt;
-  final String googleId;
-  final String createdAt;
-  final String updatedAt;
+  int id;
+  String name;
+  String email;
+  String phone;
+  String image;
+  String gender;
+  String emailVerifiedAt;
+  String googleId;
+  String createdAt;
+  String updatedAt;
 
   ProfileUserModel({
     required this.id,

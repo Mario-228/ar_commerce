@@ -38,6 +38,10 @@
 //   }
 // }
 
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:graduation_project/core/utils/cache_helper/cache_helper_keys.dart';
+import 'package:graduation_project/core/utils/functions/convert_asset_image_to_file.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 abstract class CacheHelper {
@@ -72,5 +76,25 @@ abstract class CacheHelper {
     } else {
       return null;
     }
+  }
+
+  static Future<void> saveUserImage(File image) async {
+    var box = await Hive.openBox('appBox');
+    Uint8List bytes = await image.readAsBytes();
+    await box.put(CacheHelperKeys.userImage, bytes);
+  }
+
+  static Future<File> getUserImage() async {
+    var box = await Hive.openBox('appBox');
+    if (box.get(CacheHelperKeys.userImage) == null) {
+      // imageFile = await convertAssetImageToFile(
+      //     "assets/images/user_default_image.jpg", 'default_user_image.png');
+      //imageFile=
+      return convertAssetImageToFile(
+          "assets/images/user_default_image.jpg", 'default_user_image.png');
+    }
+    Uint8List bytes = await box.get(CacheHelperKeys.userImage);
+    await box.close();
+    return File.fromRawPath(bytes);
   }
 }
