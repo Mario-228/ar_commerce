@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/constants.dart';
+// import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
+// import 'package:graduation_project/core/utils/functions/get_user_update_information.dart';
 import 'package:graduation_project/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project/core/widgets/custom_material_button.dart';
-import 'package:graduation_project/features/profile_feature/data/models/update_profile_model.dart';
+// import 'package:graduation_project/features/profile_feature/presentation/views/widgets/my_details_view/widgets/custom_gender_selection_widget.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/my_details_view/widgets/my_details_input_fields_section.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views_models/update_user_cubit/update_user_cubit.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views_models/update_user_cubit/update_user_states.dart';
 
@@ -11,10 +15,8 @@ class UpdateUserInfoButtonBlocBuilder extends StatelessWidget {
   const UpdateUserInfoButtonBlocBuilder({
     super.key,
     required this.myDetailsFormKey,
-    required this.profileModel,
   });
   final GlobalKey<FormState> myDetailsFormKey;
-  final Future<UpdateProfileModel> profileModel;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,24 +37,26 @@ class UpdateUserInfoButtonBlocBuilder extends StatelessWidget {
           return CustomMaterialButton(
             text: "Update",
             color: AppColors.darkGreen,
-            onPressed: () async {
-              handleUpdatingUserDataFromApi(context);
-            },
+            onPressed: () async => await handleUpdatingUserDataFromApi(context),
           );
         }
       }),
     );
   }
 
-  void handleUpdatingUserDataFromApi(BuildContext context) {
-    profileModel.then((value) {
-      if (value.gender.isEmpty) {
-        showSnackBar(context, "Select your gender");
-        return;
-      }
-      if (myDetailsFormKey.currentState!.validate()) {
-        UpdateUserCubit.get(context).updateUser(value);
-      }
-    });
+  Future<void> handleUpdatingUserDataFromApi(BuildContext context) async {
+    if (UpdateUserCubit.get(context).userProfileModel.gender.isEmpty) {
+      showSnackBar(context, "Select your gender");
+      return;
+    }
+    if (myDetailsFormKey.currentState!.validate()) {
+      UpdateUserCubit.get(context).userProfileModel.gender =
+          userModel.userModel.gender;
+      UpdateUserCubit.get(context).userProfileModel.name =
+          MyDetailsInputFieldsSection.nameControllerUserUpdate.text;
+      UpdateUserCubit.get(context).userProfileModel.phone =
+          MyDetailsInputFieldsSection.phoneControllerUserUpdate.text;
+      await UpdateUserCubit.get(context).updateUser();
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views_models/update_user_cubit/update_user_cubit.dart';
 
 class CustomGenederSelectionWidget extends StatefulWidget {
   const CustomGenederSelectionWidget({super.key});
@@ -24,7 +25,8 @@ class _CustomGenederSelectionWidgetState
           groupValue: CustomGenederSelectionWidget.gender,
           onChanged: (value) {
             setState(() {
-              CustomGenederSelectionWidget.gender = value ?? "";
+              UpdateUserCubit.get(context).userProfileModel.gender =
+                  value ?? "";
             });
           },
           activeColor: AppColors.darkGreen,
@@ -35,7 +37,8 @@ class _CustomGenederSelectionWidgetState
           groupValue: CustomGenederSelectionWidget.gender,
           onChanged: (value) {
             setState(() {
-              CustomGenederSelectionWidget.gender = value ?? "";
+              UpdateUserCubit.get(context).userProfileModel.gender =
+                  value ?? "";
             });
           },
           activeColor: AppColors.darkGreen,
