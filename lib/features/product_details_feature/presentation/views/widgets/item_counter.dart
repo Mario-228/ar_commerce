@@ -5,12 +5,12 @@ import 'package:graduation_project/core/utils/custom_product_item_model/custom_p
 import 'package:graduation_project/core/utils/font_styles/font_styles.dart';
 
 class ItemCounter extends StatefulWidget {
-  const ItemCounter({
+  ItemCounter({
     super.key,
     required this.model,
   });
   final CustomProductItemModel model;
-
+  int counter = 1;
   @override
   State<ItemCounter> createState() => _ItemCounterState();
 }
@@ -18,14 +18,13 @@ class ItemCounter extends StatefulWidget {
 class _ItemCounterState extends State<ItemCounter> {
   @override
   Widget build(BuildContext context) {
-    int counter = 1;
     return Row(
       children: [
         IconButton(
           onPressed: () {
-            if (counter == 1) return;
+            if (widget.counter == 1) return;
             setState(() {
-              counter--;
+              widget.counter--;
             });
           },
           icon: const Icon(
@@ -34,14 +33,14 @@ class _ItemCounterState extends State<ItemCounter> {
           ),
         ),
         Text(
-          "$counter",
+          "${widget.counter}",
           style: FontStyles.textStyleRegular14,
         ),
         IconButton(
           onPressed: () {
-            if (widget.model.quantity == counter) return;
+            if (widget.model.quantity == widget.counter) return;
             setState(() {
-              counter++;
+              widget.counter++;
             });
           },
           icon: const Icon(
