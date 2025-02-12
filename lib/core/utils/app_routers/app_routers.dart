@@ -5,6 +5,7 @@ import 'package:graduation_project/features/accessories_category_feature/present
 import 'package:graduation_project/features/clothes_category_feature/presentation/views/clothes_category_view.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views/email_verification_view.dart';
 import 'package:graduation_project/features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_cubit.dart';
+import 'package:graduation_project/features/favourites_feature/presentation/views/favourites_view.dart';
 import 'package:graduation_project/features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 import 'package:graduation_project/features/furniture_category_feature/presentation/views/furniture_category_view.dart';
 import 'package:graduation_project/features/home_feature/data/repos/home_repo_end_points.dart';
@@ -16,6 +17,8 @@ import 'package:graduation_project/features/login_feature/presentation/views/log
 import 'package:graduation_project/features/login_feature/presentation/views_models/login_cubit/login_cubit.dart';
 import 'package:graduation_project/features/onboarding_view/presentation/views/onboarding_view.dart';
 import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/current_delivery_address_view.dart';
 import 'package:graduation_project/features/reset_password_feature/presentation/views/reset_password_view.dart';
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/product_details_view.dart';
@@ -44,6 +47,9 @@ abstract class AppRouters {
   static const String kEmailVerificationView = '/emailVerificationView';
   static const String kMyDetailsView = '/myDetailsView';
   static const String kChangePassword = '/changePassword';
+  static const String kAddDeliveryAddress = '/addDeliveryAddress';
+  static const String kCurrentDeliveryAddress = '/currentDeliveryAddress';
+  static const String kFavouritesView = '/favouritesView';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
@@ -136,6 +142,18 @@ abstract class AppRouters {
         builder: (context, state) => const MyDetailsView(),
         // used to pass the user model when navigate to my details view screen
         // this may cause problem...
+      ),
+      GoRoute(
+        path: kAddDeliveryAddress,
+        builder: (context, state) => const AddDeliveryAddressView(),
+      ),
+      GoRoute(
+        path: kCurrentDeliveryAddress,
+        builder: (context, state) => const CurrentDeliveryAddressView(),
+      ),
+      GoRoute(
+        path: kFavouritesView,
+        builder: (context, state) => const FavouritesView(),
       ),
     ],
   );
