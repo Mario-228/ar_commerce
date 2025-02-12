@@ -35,7 +35,7 @@ class ProfileInformationListView extends StatelessWidget {
     List<void Function()> functions = [
       () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
       () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
-      () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
+      () => GoRouter.of(context).push(AppRouters.kCurrentDeliveryAddress),
       () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
     ];
     return ListView.separated(
