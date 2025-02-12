@@ -38,6 +38,12 @@ abstract class FontStyles {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle textStyleRegularDarkGrey14 = TextStyle(
+    color: AppColors.darkGrey,
+    fontSize: 14,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+  );
   static const TextStyle textStyleMedium12 = TextStyle(
     color: AppColors.black,
     fontSize: 12,
@@ -112,6 +118,12 @@ abstract class FontStyles {
   );
   static const TextStyle textStyleBold16 = TextStyle(
     color: AppColors.beige,
+    fontSize: 16,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle textStyleDarkGreenBold16 = TextStyle(
+    color: AppColors.darkGreen,
     fontSize: 16,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
