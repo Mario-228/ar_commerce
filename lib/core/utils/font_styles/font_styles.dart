@@ -80,6 +80,12 @@ abstract class FontStyles {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle textStyleSemiBold8 = TextStyle(
+    color: AppColors.greyShade800,
+    fontSize: 8,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+  );
   static const TextStyle textStyleRegular14 = TextStyle(
     color: AppColors.black,
     fontSize: 14,
@@ -87,6 +93,12 @@ abstract class FontStyles {
     fontWeight: FontWeight.w400,
     height: 0.08,
     letterSpacing: -0.17,
+  );
+  static const TextStyle textStyleRegular15 = TextStyle(
+    color: AppColors.greyShade700,
+    fontSize: 14,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w400,
   );
   static const TextStyle textStyleRegularGrey14 = TextStyle(
     color: AppColors.grey,
