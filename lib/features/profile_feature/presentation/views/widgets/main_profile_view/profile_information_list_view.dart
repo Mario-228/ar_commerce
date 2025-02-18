@@ -33,7 +33,7 @@ class ProfileInformationListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<void Function()> functions = [
-      () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
+      () => GoRouter.of(context).push(AppRouters.kMyOrdersView),
       () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
       () => GoRouter.of(context).push(AppRouters.kCurrentDeliveryAddress),
       () => GoRouter.of(context).push(AppRouters.kMyDetailsView),
