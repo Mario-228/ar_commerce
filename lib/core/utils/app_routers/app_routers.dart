@@ -19,6 +19,8 @@ import 'package:graduation_project/features/onboarding_view/presentation/views/o
 import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
 import 'package:graduation_project/features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/current_delivery_address_view.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/orders_profile_view/my_order_details_view/my_order_details_view.dart';
+import 'package:graduation_project/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/my_orders_view.dart';
 import 'package:graduation_project/features/reset_password_feature/presentation/views/reset_password_view.dart';
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
 import 'package:graduation_project/features/product_details_feature/presentation/views/product_details_view.dart';
@@ -50,6 +52,8 @@ abstract class AppRouters {
   static const String kAddDeliveryAddress = '/addDeliveryAddress';
   static const String kCurrentDeliveryAddress = '/currentDeliveryAddress';
   static const String kFavouritesView = '/favouritesView';
+  static const String kMyOrdersView = '/myOrdersView';
+  static const String kMyOrderDetailsView = '/myOrdersDetailsView';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
@@ -154,6 +158,16 @@ abstract class AppRouters {
       GoRoute(
         path: kFavouritesView,
         builder: (context, state) => const FavouritesView(),
+      ),
+      GoRoute(
+        path: kMyOrdersView,
+        builder: (context, state) => const MyOrdersView(),
+      ),
+      GoRoute(
+        path: kMyOrderDetailsView,
+        builder: (context, state) => MyOrderDetailsView(
+          productItemModel: state.extra as CustomProductItemModel,
+        ),
       ),
     ],
   );
