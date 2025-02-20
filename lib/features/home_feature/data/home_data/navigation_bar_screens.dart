@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/features/favourites_feature/presentation/views/favourites_view.dart';
 import 'package:graduation_project/features/home_feature/presentation/widgets/home_view_body.dart';
 import 'package:graduation_project/features/others_category_feature/presentation/views/others_category_view.dart';
 import 'package:graduation_project/features/popular_category_feature/presentation/views/popular_category_view.dart';
@@ -31,9 +32,7 @@ abstract class NavigationBarScreens {
     Center(
       child: Text('Cart'),
     ),
-    Center(
-      child: Text('Favorite'),
-    ),
+    FavouritesView(),
     ProfileView(),
     PopularCategoryView(),
     FurnitureCategoryView(),

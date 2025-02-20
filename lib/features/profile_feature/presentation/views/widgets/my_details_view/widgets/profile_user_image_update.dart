@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:graduation_project/constants.dart';
 import 'package:graduation_project/core/utils/app_colors/app_colors.dart';
 import 'package:graduation_project/core/utils/cache_helper/cache_helper.dart';
@@ -24,7 +25,7 @@ class ProfileUserImageUpdate extends StatelessWidget {
               UpdateUserCubit.get(context).userModelCubit.imageUrl),
         ),
         IconButton(
-          onPressed: () => showImageSourceActionSheet(context),
+          onPressed: () async => await showImageSourceActionSheet(context),
           icon: const Icon(
             Icons.camera_alt,
             size: 30.0,
@@ -39,35 +40,38 @@ class ProfileUserImageUpdate extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Wrap(
-          children: [
-            ListTile(
-              leading: const Icon(Icons.photo_library),
-              title: const Text('Choose from Gallery'),
-              onTap: () async {
-                pickImage(ImageSource.gallery).then((fileValue) async {
-                  CacheHelper.saveUserImage(fileValue).then((voidValue) {
-                    UpdateUserCubit.get(context).userProfileModel.image =
-                        fileValue;
-                    Navigator.pop(context);
+        return BlocProvider(
+          create: (context) => UpdateUserCubit(),
+          child: Wrap(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Choose from Gallery'),
+                onTap: () async {
+                  pickImage(ImageSource.gallery).then((fileValue) async {
+                    CacheHelper.saveUserImage(fileValue).then((voidValue) {
+                      UpdateUserCubit.get(context).userProfileModel.image =
+                          fileValue;
+                      Navigator.pop(context);
+                    });
                   });
-                });
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.camera_alt),
-              title: const Text("Take a Picture"),
-              onTap: () async {
-                pickImage(ImageSource.camera).then((fileValue) async {
-                  CacheHelper.saveUserImage(fileValue).then((voidValue) {
-                    UpdateUserCubit.get(context).userProfileModel.image =
-                        fileValue;
-                    Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text("Take a Picture"),
+                onTap: () async {
+                  pickImage(ImageSource.camera).then((fileValue) async {
+                    CacheHelper.saveUserImage(fileValue).then((voidValue) {
+                      UpdateUserCubit.get(context).userProfileModel.image =
+                          fileValue;
+                      Navigator.pop(context);
+                    });
                   });
-                });
-              },
-            ),
-          ],
+                },
+              ),
+            ],
+          ),
         );
       },
     );
