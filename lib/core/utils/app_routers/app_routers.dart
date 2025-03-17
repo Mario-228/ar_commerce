@@ -21,6 +21,8 @@ import '../../../features/popular_category_feature/presentation/views/popular_ca
 import '../../../features/product_details_feature/presentation/views/product_details_view.dart';
 import '../../../features/profile_feature/presentation/views/profile_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_order_details_view/my_order_details_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/my_orders_view.dart';
 import '../../../features/reset_password_feature/presentation/views/reset_password_view.dart';
 import '../../../features/reset_password_feature/presentation/views_models/reset_password_cubit/reset_password_cubit.dart';
 import '../../../features/signup_feature/data/repo/sign_up_repo_implementation.dart';
@@ -147,6 +149,16 @@ abstract class AppRouters {
       GoRoute(
         path: kFavouritesView,
         builder: (context, state) => const FavouritesView(),
+      ),
+      GoRoute(
+        path: kMyOrdersView,
+        builder: (context, state) => const MyOrdersView(),
+      ),
+      GoRoute(
+        path: kMyOrderDetailsView,
+        builder: (context, state) => MyOrderDetailsView(
+          productItemModel: state.extra as CustomProductItemModel,
+        ),
       ),
     ],
   );
