@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/update_user_cubit/update_user_cubit.dart';
 // import 'package:graduation_project/constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pretty_bloc_observer/pretty_bloc_observer.dart';
@@ -17,7 +18,8 @@ Future<void> main() async {
   await Hive.initFlutter();
   Bloc.observer = PrettyBlocObserver();
   await initializeUserInfoVariables();
-  runApp(const MyApp());
+  runApp(BlocProvider(
+      create: (context) => UpdateUserCubit(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
