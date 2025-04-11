@@ -11,6 +11,7 @@ class MyOrdersViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => OrderListTile(
         productItemModel: productItemModel,
         onTap: () => GoRouter.of(context)
