@@ -5,6 +5,7 @@ import '../../../features/accessories_category_feature/presentation/views/access
 import '../../../features/clothes_category_feature/presentation/views/clothes_category_view.dart';
 import '../../../features/email_verification_feature/presentation/views/email_verification_view.dart';
 import '../../../features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_cubit.dart';
+import '../../../features/favourites_feature/presentation/views/favourites_view.dart';
 import '../../../features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 import '../../../features/furniture_category_feature/presentation/views/furniture_category_view.dart';
 import '../../../features/home_feature/data/repos/home_repo_end_points.dart';
@@ -20,6 +21,8 @@ import '../../../features/popular_category_feature/presentation/views/popular_ca
 import '../../../features/product_details_feature/presentation/views/product_details_view.dart';
 import '../../../features/profile_feature/presentation/views/profile_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_order_details_view/my_order_details_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/my_orders_view.dart';
 import '../../../features/reset_password_feature/presentation/views/reset_password_view.dart';
 import '../../../features/reset_password_feature/presentation/views_models/reset_password_cubit/reset_password_cubit.dart';
 import '../../../features/signup_feature/data/repo/sign_up_repo_implementation.dart';
@@ -45,6 +48,11 @@ abstract class AppRouters {
   static const String kEmailVerificationView = '/emailVerificationView';
   static const String kMyDetailsView = '/myDetailsView';
   static const String kChangePassword = '/changePassword';
+  static const String kAddDeliveryAddress = '/addDeliveryAddress';
+  static const String kCurrentDeliveryAddress = '/currentDeliveryAddress';
+  static const String kFavouritesView = '/favouritesView';
+  static const String kMyOrdersView = '/myOrdersView';
+  static const String kMyOrderDetailsView = '/myOrdersDetailsView';
 
   static final routers = GoRouter(
     routes: <RouteBase>[
@@ -137,6 +145,20 @@ abstract class AppRouters {
         builder: (context, state) => const MyDetailsView(),
         // used to pass the user model when navigate to my details view screen
         // this may cause problem...
+      ),
+      GoRoute(
+        path: kFavouritesView,
+        builder: (context, state) => const FavouritesView(),
+      ),
+      GoRoute(
+        path: kMyOrdersView,
+        builder: (context, state) => const MyOrdersView(),
+      ),
+      GoRoute(
+        path: kMyOrderDetailsView,
+        builder: (context, state) => MyOrderDetailsView(
+          productItemModel: state.extra as CustomProductItemModel,
+        ),
       ),
     ],
   );
