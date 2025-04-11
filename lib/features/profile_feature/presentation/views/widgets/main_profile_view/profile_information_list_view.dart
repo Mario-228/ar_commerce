@@ -13,7 +13,7 @@ class ProfileInformationListView extends StatelessWidget {
       infoText: "Orders",
       infoIcon: Icons.shopping_bag_outlined,
       onInfoProfileItemPressed: (BuildContext context) async =>
-          await GoRouter.of(context).push(AppRouters.kMyDetailsView),
+          await GoRouter.of(context).push(AppRouters.kMyOrdersView),
     ),
     ProfileInfoModel(
       infoText: "My Details",
@@ -25,7 +25,7 @@ class ProfileInformationListView extends StatelessWidget {
       infoText: "Delivery Address",
       infoIcon: Icons.location_on_outlined,
       onInfoProfileItemPressed: (BuildContext context) async =>
-          await GoRouter.of(context).push(AppRouters.kMyDetailsView),
+          await GoRouter.of(context).push(AppRouters.kCurrentDeliveryAddress),
     ),
     ProfileInfoModel(
       infoText: "Contact us",
