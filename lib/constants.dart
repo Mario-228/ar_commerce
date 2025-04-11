@@ -1,3 +1,5 @@
+import 'package:graduation_project_new_version/core/utils/custom_product_item_model/custom_product_item_model.dart';
+
 import 'features/profile_feature/data/models/profile_user_model.dart';
 
 const String anonKey =
@@ -27,3 +29,19 @@ final defaultUser = UserModel(
 );
 
 late UserModel userModel;
+
+var customProductItemModel = CustomProductItemModel(
+  id: 1,
+  name: "Product",
+  description: "product description",
+  pictureUrl: "https://via.placeholder.com/150",
+  price: 500.0,
+  currency: "L.E",
+  isFavorite: false,
+  productBrandId: 0,
+  productTypeId: 0,
+  quantity: 5,
+  productBrand: "",
+  productType: "",
+  image3DUrl: "https://modelviewer.dev/shared-assets/models/astronaut.glb",
+);
