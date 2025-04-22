@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project_new_version/features/reset_password_feature/presentation/views/widgets/reset_password_strength_checker.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/app_routers/app_routers.dart';
 import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
-import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../views_models/reset_password_cubit/reset_password_cubit.dart';
 import '../../views_models/reset_password_cubit/reset_password_states.dart';
 
@@ -35,20 +35,7 @@ class ResetPasswordViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50.0),
-          CustomTextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Enter your password';
-              } else if (value.length < 8) {
-                return "Password must be at least 8 characters long";
-              } else {
-                return null;
-              }
-            },
-            type: TextInputType.visiblePassword,
-            labelText: "Enter Password",
-            controller: passwordController,
-          ),
+          ResetPasswordStrengthChecker(passwordController: passwordController),
           const SizedBox(height: 50.0),
           BlocProvider(
             create: (context) => ResetPasswordCubit(),
