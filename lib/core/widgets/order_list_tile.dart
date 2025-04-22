@@ -26,6 +26,8 @@ class OrderListTile extends StatelessWidget {
           ),
         ),
         leading: Image(
+          width: 60.0,
+          height: double.infinity,
           image: NetworkImage(productItemModel.pictureUrl),
         ),
         title: Text(

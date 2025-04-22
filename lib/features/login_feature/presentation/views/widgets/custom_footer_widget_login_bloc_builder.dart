@@ -36,11 +36,16 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
               if (loginFormKey.currentState!.validate()) {
                 CacheHelper.saveData<String>(CacheHelperKeys.userEmail,
                         LoginTextFormFieldSection.emailController.text)
-                    .then((value) {
-                  LoginCubit.get(context).login(
-                      LoginTextFormFieldSection.emailController.text,
-                      LoginTextFormFieldSection.passwordController.text);
-                });
+                    .then(
+                  (value) {
+                    if (context.mounted) {
+                      LoginCubit.get(context).login(
+                        LoginTextFormFieldSection.emailController.text,
+                        LoginTextFormFieldSection.passwordController.text,
+                      );
+                    }
+                  },
+                );
               }
             },
             formKey: loginFormKey,
@@ -65,7 +70,7 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
   }
 
   Future<void> onSuccessLogin(BuildContext context, LoginSuccess state) async {
-    GoRouter.of(context).push(AppRouters.kHomeView);
+    GoRouter.of(context).pushReplacement(AppRouters.kHomeView);
     showSnackBar(context, "Login successfully");
     await updateUserToken(state);
   }
