@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
 
 import '../../../features/accessories_category_feature/presentation/views/accessories_category_view.dart';
 import '../../../features/clothes_category_feature/presentation/views/clothes_category_view.dart';
@@ -21,6 +22,7 @@ import '../../../features/others_category_feature/presentation/views/others_cate
 import '../../../features/popular_category_feature/presentation/views/popular_category_view.dart';
 import '../../../features/product_details_feature/presentation/views/product_details_view.dart';
 import '../../../features/profile_feature/presentation/views/profile_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/current_delivery_address_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_order_details_view/my_order_details_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/my_orders_view.dart';
@@ -164,6 +166,14 @@ abstract class AppRouters {
       GoRoute(
         path: kCartView,
         builder: (context, state) => const CartView(),
+      ),
+      GoRoute(
+        path: kCurrentDeliveryAddress,
+        builder: (context, state) => const CurrentDeliveryAddressView(),
+      ),
+      GoRoute(
+        path: kAddDeliveryAddress,
+        builder: (context, state) => const AddDeliveryAddressView(),
       ),
     ],
   );
