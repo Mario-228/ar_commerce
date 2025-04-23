@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
@@ -6,10 +7,7 @@ import '../../../../../core/utils/font_styles/font_styles.dart';
 class PasswordFieldAndStrengthChecker extends StatefulWidget {
   const PasswordFieldAndStrengthChecker({
     super.key,
-    required this.passwordController,
   });
-
-  final TextEditingController passwordController;
 
   @override
   State<PasswordFieldAndStrengthChecker> createState() =>
@@ -28,7 +26,7 @@ class _PasswordFieldAndStrengthCheckerState
       },
       textFormFieldConfiguration: TextFormFieldConfiguration(
         obscureText: isVisible,
-        controller: widget.passwordController,
+        controller: SignUpCubit.get(context).passwordController,
         decoration: InputDecoration(
           border: const OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.lightGrey),

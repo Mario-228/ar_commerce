@@ -7,7 +7,6 @@ import '../../../../../core/utils/cache_helper/cache_helper.dart';
 import '../../../../../core/utils/cache_helper/cache_helper_keys.dart';
 import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_footer_widget.dart';
-import '../../../data/models/sign_up_user_model.dart';
 import '../../../data/repo/sign_up_repo_implementation.dart';
 import '../../views_models/sign_up_cubit/sign_up_cubit.dart';
 import '../../views_models/sign_up_cubit/sign_up_states.dart';
@@ -16,17 +15,8 @@ import 'signup_view_body.dart';
 class CustomFooterWidgetBlocBuilder extends StatelessWidget {
   const CustomFooterWidgetBlocBuilder({
     super.key,
-    required this.signUpFormKey,
-    required this.nameController,
-    required this.emailController,
-    required this.passwordController,
   });
 
-  final GlobalKey<FormState> signUpFormKey;
-  final TextEditingController nameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  static late SignUpUserModel user;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpStates>(
@@ -34,8 +24,8 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
         if (state is SignUpError) {
           showSnackBar(context, state.error);
         } else if (state is SignUpSuccess) {
-          onSuccess(context, user);
-          clearSignUpFields();
+          onSuccess(context);
+          clearSignUpFields(context);
         }
       },
       builder: (context, state) {
@@ -43,21 +33,21 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else {
           return CustomFooterWidget(
-            formKey: signUpFormKey,
             buttonTitle: "Sign Up",
             footerText: "Already have an account? ",
             footerLinkText: "Login Here",
             onPressedFooterText: () =>
                 GoRouter.of(context).push(AppRouters.kLoginView),
             onPressedButton: () async {
-              if (signUpFormKey.currentState!.validate()) {
-                user = SignUpUserModel(
-                  name: nameController.text,
-                  email: emailController.text,
-                  password: passwordController.text,
-                );
-                // print(user.toJson());
-                await SignUpCubit.get(context).signUp(user);
+              if (SignUpCubit.get(context)
+                  .signUpFormKey
+                  .currentState!
+                  .validate()) {
+                if (SignUpCubit.get(context).genderController.value == null) {
+                  showSnackBar(context, "Select your gender");
+                  return;
+                }
+                await SignUpCubit.get(context).signUp();
               }
             },
           );
@@ -66,7 +56,8 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
     );
   }
 
-  Future<void> onSuccess(BuildContext context, SignUpUserModel user) async {
+  Future<void> onSuccess(BuildContext context) async {
+    var user = SignUpCubit.get(context).user;
     await CacheHelper.saveData<bool>(CacheHelperKeys.isVerified, false);
     await CacheHelper.saveData<String>(CacheHelperKeys.userEmail, user.email);
     userEmail = user.email;

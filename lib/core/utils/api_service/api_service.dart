@@ -1,4 +1,5 @@
 import 'dart:io';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as path;
 import 'package:dio/dio.dart';
 
@@ -79,6 +80,31 @@ class ApiService {
         headers: {
           'ngrok-skip-browser-warning': 'true',
           'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> postWithImage(
+      String endPoint, Map<String, dynamic> query) async {
+    if (query.containsKey(UpdateUserConstants.imageKey) &&
+        query[UpdateUserConstants.imageKey] is File) {
+      File imageFile = query[UpdateUserConstants.imageKey];
+      String fileName = path.basename(imageFile.path);
+
+      query[UpdateUserConstants.imageKey] = await MultipartFile.fromFile(
+        imageFile.path,
+        filename: fileName,
+      );
+    }
+    FormData formData = FormData.fromMap(query);
+    var response = await dioHelper.post(
+      endPoint,
+      data: formData,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
         },
       ),
     );
