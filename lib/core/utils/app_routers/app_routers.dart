@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
+import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
 
 import '../../../features/accessories_category_feature/presentation/views/accessories_category_view.dart';
@@ -72,7 +73,10 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kForgotPasswordView,
-        builder: (context, state) => const ForgotPasswordView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ForgotPasswordCubit(),
+          child: const ForgotPasswordView(),
+        ),
       ),
       GoRoute(
         path: kOnBoardingView,
