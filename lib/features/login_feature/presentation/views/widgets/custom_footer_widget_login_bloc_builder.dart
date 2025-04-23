@@ -48,7 +48,6 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
                 );
               }
             },
-            formKey: loginFormKey,
             buttonTitle: "Login",
             footerText: "Don't have an account? ",
             footerLinkText: "Create Account Here",

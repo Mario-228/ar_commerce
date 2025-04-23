@@ -1,24 +1,34 @@
+import 'dart:io';
 import '../repo/sign_up_repo_constants.dart';
 
-class SignUpUserModel {
+class SignUpInputModel {
   String email;
   String password;
   String name;
+  String phone;
+  String gender;
+  File image;
 
-  SignUpUserModel(
-      {required this.email, required this.password, required this.name});
-
-  static SignUpUserModel fromJson(Map<String, dynamic> json) => SignUpUserModel(
-        email: json[SignUpRepoConstants.email],
-        password: json[SignUpRepoConstants.password],
-        name: json[SignUpRepoConstants.name],
-      );
-
+  SignUpInputModel({
+    required this.email,
+    required this.password,
+    required this.name,
+    required this.image,
+    this.phone = "01000000000",
+    this.gender = "",
+  });
+/*
+convertAssetImageToFile(
+        'assets/images/user_default_image.jpg', 'default_user_image.png')
+*/
   Map<String, dynamic> toJson() => {
         SignUpRepoConstants.email: email,
         SignUpRepoConstants.password: password,
         SignUpRepoConstants.name: name,
         SignUpRepoConstants.passwordConfirmation: password,
+        SignUpRepoConstants.phone: phone,
+        SignUpRepoConstants.gender: gender,
+        SignUpRepoConstants.image: image,
       };
 }
 /*class SignUpUserModel {
