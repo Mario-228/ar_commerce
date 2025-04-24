@@ -15,7 +15,7 @@ class UserPofileHeader extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 37.5,
-          backgroundImage: NetworkImage(userModel.imageUrl),
+          foregroundImage: NetworkImage(userModel.imageUrl),
         ),
         const SizedBox(width: 25.0),
         Column(

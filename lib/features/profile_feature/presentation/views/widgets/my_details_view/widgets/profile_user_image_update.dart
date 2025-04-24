@@ -15,8 +15,9 @@ class ProfileUserImageUpdate extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 80.0,
-          backgroundImage: NetworkImage(
+          foregroundImage: NetworkImage(
               UpdateUserCubit.get(context).userModelCubit.imageUrl),
+          backgroundColor: AppColors.white,
         ),
         IconButton(
           onPressed: () async => await showImageSourceActionSheet(context),
