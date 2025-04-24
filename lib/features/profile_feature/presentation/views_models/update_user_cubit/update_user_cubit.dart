@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper_keys.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/update_user_cubit/update_user_states.dart';
 import '../../../../../constants.dart';
 import '../../../data/models/profile_user_model.dart';
@@ -32,13 +34,15 @@ class UpdateUserCubit extends Cubit<UpdateUserStates> {
     response.fold(
       (error) => emit(UpdateUserErrorState(errorMessage: error.errorMessage)),
       (value) async {
-        var response =
-            await ProfileRepoImplementation().getUserProfile(userToken);
+        var response = await ProfileRepoImplementation()
+            .getUserProfile(CacheHelper.getUserData().token);
         response.fold(
           (getUserError) =>
               GetUserErrorState(errorMessage: getUserError.errorMessage),
-          (getUserData) {
+          (getUserData) async {
             userModelCubit = getUserData;
+            await CacheHelper.saveData<Map<String, dynamic>>(
+                CacheHelperKeys.userInfo, getUserData.userModel.toJson());
             emit(UpdateUserSuccessState(userModel: getUserData));
           },
         );
