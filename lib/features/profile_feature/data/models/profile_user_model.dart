@@ -29,6 +29,7 @@ class ProfileUserModel {
   String googleId;
   String createdAt;
   String updatedAt;
+  String role;
 
   ProfileUserModel({
     required this.id,
@@ -41,22 +42,23 @@ class ProfileUserModel {
     required this.googleId,
     required this.createdAt,
     required this.updatedAt,
+    required this.role,
   });
 
-  static ProfileUserModel fromJson(Map<String, dynamic> json) {
-    return ProfileUserModel(
-      id: json[ProfileConstants.id] ?? -1,
-      name: json[ProfileConstants.name] ?? "",
-      email: json[ProfileConstants.email] ?? "",
-      phone: json[ProfileConstants.phone] ?? "",
-      image: json[ProfileConstants.image] ?? "",
-      gender: json[ProfileConstants.gender] ?? "",
-      emailVerifiedAt: json[ProfileConstants.emailverifiedAt] ?? "",
-      googleId: json[ProfileConstants.googleId] ?? "",
-      createdAt: json[ProfileConstants.createdAt] ?? "",
-      updatedAt: json[ProfileConstants.updatedAt] ?? "",
-    );
-  }
+  static ProfileUserModel fromJson(Map<String, dynamic> json) =>
+      ProfileUserModel(
+        id: json[ProfileConstants.id] ?? -1,
+        name: json[ProfileConstants.name] ?? "",
+        email: json[ProfileConstants.email] ?? "",
+        phone: json[ProfileConstants.phone] ?? "",
+        image: json[ProfileConstants.image] ?? "",
+        gender: json[ProfileConstants.gender] ?? "",
+        emailVerifiedAt: json[ProfileConstants.emailverifiedAt] ?? "",
+        googleId: json[ProfileConstants.googleId] ?? "",
+        createdAt: json[ProfileConstants.createdAt] ?? "",
+        updatedAt: json[ProfileConstants.updatedAt] ?? "",
+        role: json[ProfileConstants.role] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
         ProfileConstants.id: id,
@@ -69,5 +71,6 @@ class ProfileUserModel {
         ProfileConstants.googleId: googleId,
         ProfileConstants.createdAt: createdAt,
         ProfileConstants.updatedAt: updatedAt,
+        ProfileConstants.role: role,
       };
 }

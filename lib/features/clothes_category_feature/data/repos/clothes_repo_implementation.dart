@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/errors.dart';
 import '../../../../core/utils/api_service/api_service.dart';
 import '../../../../core/utils/api_service/base_url.dart';
-import '../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'clothes_repo.dart';
 
 class ClothesRepoImplementation extends ClothesRepo {

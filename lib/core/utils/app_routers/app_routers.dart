@@ -33,7 +33,7 @@ import '../../../features/signup_feature/data/repo/sign_up_repo_implementation.d
 import '../../../features/signup_feature/presentation/views/signup_view.dart';
 import '../../../features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import '../../../features/splash_view/presentation/views/splash_view.dart';
-import '../custom_product_item_model/custom_product_item_model.dart';
+import '../models/custom_product_item_model/custom_product_item_model.dart';
 
 abstract class AppRouters {
   static const String kSignUpView = '/signUpView';

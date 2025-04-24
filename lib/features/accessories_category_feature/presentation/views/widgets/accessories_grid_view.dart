@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../home_feature/presentation/widgets/custom_product_item.dart';
 import '../../views_models/get_accessories_cubit/get_accessories_cubit.dart';
 import '../../views_models/get_accessories_cubit/get_accessories_states.dart';

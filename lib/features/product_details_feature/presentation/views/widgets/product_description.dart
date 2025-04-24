@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
 class ProductDescription extends StatelessWidget {
