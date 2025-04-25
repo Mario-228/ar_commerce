@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper_keys.dart';
+import 'package:graduation_project_new_version/features/login_feature/data/models/login_output_model.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/update_user_cubit/update_user_states.dart';
 import '../../../../../constants.dart';
 import '../../../data/models/profile_user_model.dart';
@@ -40,9 +41,14 @@ class UpdateUserCubit extends Cubit<UpdateUserStates> {
           (getUserError) =>
               GetUserErrorState(errorMessage: getUserError.errorMessage),
           (getUserData) async {
+            //for using data in the provided area of update user cubit
             userModelCubit = getUserData;
+            //for saving user data in hive
+            LoginOutputModel userSavedModel = CacheHelper.getUserData();
+            userSavedModel.user = getUserData.userModel;
+            //////////////////////////////////////////////
             await CacheHelper.saveData<Map<String, dynamic>>(
-                CacheHelperKeys.userInfo, getUserData.userModel.toJson());
+                CacheHelperKeys.userInfo, userSavedModel.toJson());
             emit(UpdateUserSuccessState(userModel: getUserData));
           },
         );

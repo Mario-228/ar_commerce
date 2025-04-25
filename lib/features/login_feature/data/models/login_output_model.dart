@@ -2,7 +2,7 @@ import 'package:graduation_project_new_version/features/profile_feature/data/mod
 
 class LoginOutputModel {
   final String token;
-  final ProfileUserModel user;
+  ProfileUserModel user;
 
   LoginOutputModel({required this.token, required this.user});
 
