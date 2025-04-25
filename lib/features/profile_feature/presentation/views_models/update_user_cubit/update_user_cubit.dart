@@ -33,7 +33,12 @@ class UpdateUserCubit extends Cubit<UpdateUserStates> {
         .updateUser(model: userProfileModel);
 
     response.fold(
-      (error) => emit(UpdateUserErrorState(errorMessage: error.errorMessage)),
+      (error) {
+        nameController.text = CacheHelper.getUserData().user.name;
+        phoneController.text = CacheHelper.getUserData().user.phone;
+        image = null;
+        emit(UpdateUserErrorState(errorMessage: error.errorMessage));
+      },
       (value) async {
         var response = await ProfileRepoImplementation()
             .getUserProfile(CacheHelper.getUserData().token);

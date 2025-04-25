@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/utils/font_styles/font_styles.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/main_profile_view/user_profile_header_update_user_bloc_builder.dart';
 import '../../../../data/models/profile_user_model.dart';
 
 class UserPofileHeader extends StatelessWidget {
@@ -10,30 +10,6 @@ class UserPofileHeader extends StatelessWidget {
   final UserModel userModel;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CircleAvatar(
-          radius: 37.5,
-          foregroundImage: NetworkImage(userModel.imageUrl),
-        ),
-        const SizedBox(width: 25.0),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              userModel.userModel.name,
-              style: FontStyles.textStyleRegular16,
-            ),
-            const SizedBox(height: 10.0),
-            Text(
-              userModel.userModel.email,
-              style: FontStyles.textStyleRegularGrey14,
-            ),
-            const SizedBox(height: 10.0),
-          ],
-        )
-      ],
-    );
+    return UserProfileHeaderUpdateUserBlocBuilder(userModel: userModel);
   }
 }

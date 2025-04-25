@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/functions/pick_image.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/update_user_cubit/update_user_cubit.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,6 +24,7 @@ Future<void> showImageSourceActionSheet(BuildContext context) async {
               pickImage(ImageSource.gallery).then((fileValue) {
                 if (context.mounted) {
                   UpdateUserCubit.get(context).image = fileValue;
+                  GoRouter.of(context).pop();
                 }
               });
             },
@@ -34,6 +36,7 @@ Future<void> showImageSourceActionSheet(BuildContext context) async {
               pickImage(ImageSource.camera).then((fileValue) {
                 if (context.mounted) {
                   UpdateUserCubit.get(context).image = fileValue;
+                  GoRouter.of(context).pop();
                 }
               });
             },
