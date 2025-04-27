@@ -31,7 +31,19 @@ class CartRepoImplementation implements CartRepo {
   }
 
   @override
-  Future<Either<Errors, CartModel>> getCartItems() {
-    throw UnimplementedError();
+  Future<Either<Errors, CartModel>> getCartItems() async {
+    try {
+      var response = await ApiService(BaseUrl.authentication).getWithToken(
+        CartRepoEndpoint.getCart,
+        CacheHelper.getUserData().token,
+      );
+      return right(CartModel.fromJson(response));
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return left(ServerError.fromDioError(e));
+      } else {
+        return left(ServerError(errorMessage: e.toString()));
+      }
+    }
   }
 }
