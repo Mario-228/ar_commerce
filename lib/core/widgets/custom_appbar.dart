@@ -4,8 +4,9 @@ import 'package:graduation_project_new_version/core/utils/app_colors/app_colors.
 import 'package:graduation_project_new_version/core/utils/font_styles/font_styles.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({super.key, required this.title});
+  const CustomAppbar({super.key, required this.title, this.canGoBack = false});
   final String title;
+  final bool canGoBack;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -13,12 +14,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: AppColors.lightGrey,
       title: Text(title, style: FontStyles.textStyleBold22),
       centerTitle: true,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios),
-        onPressed: () {
-          GoRouter.of(context).pop();
-        },
-      ),
+      leading: canGoBack
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                GoRouter.of(context).pop();
+              },
+            )
+          : null,
     );
   }
 

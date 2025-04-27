@@ -14,5 +14,6 @@ abstract class ProfileConstants {
   static const String updatedAt = 'updated_at';
   static const String user = 'user';
   static const String imageUrl = 'image url';
+  static const String role = 'role';
   static const String addresses = 'addresses';
 }

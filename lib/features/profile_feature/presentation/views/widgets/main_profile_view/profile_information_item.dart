@@ -9,7 +9,7 @@ class ProfileInformationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       minTileHeight: 65.0,
-      onTap: item.onInfoProfileItemPressed,
+      onTap: () => item.onInfoProfileItemPressed(context),
       leading: Icon(item.infoIcon),
       title: Text(
         item.infoText,
