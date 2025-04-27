@@ -123,4 +123,22 @@ class ApiService {
     );
     return response.data;
   }
+
+  Future<Map<String, dynamic>> postDataWithTokenAndQuery({
+    required String endPoint,
+    required String token,
+    required Map<String, dynamic> query,
+    required Map<String, dynamic> data,
+  }) async {
+    var response = await dioHelper.post(
+      endPoint,
+      queryParameters: query,
+      data: FormData.fromMap(data),
+      options: Options(headers: {
+        'ngrok-skip-browser-warning': 'true',
+        'Authorization': 'Bearer $token',
+      }),
+    );
+    return response.data;
+  }
 }
