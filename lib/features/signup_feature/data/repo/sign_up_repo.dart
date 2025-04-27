@@ -5,6 +5,6 @@ import '../models/sign_up_user_model.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class SignUpRepo {
-  Future<Either<Errors, String>> signUpUser(SignUpUserModel signUpUserModel);
+  Future<Either<Errors, String>> signUpUser(SignUpInputModel signUpUserModel);
   Future<Either<Errors, String>> sendVerificationEmail(String email);
 }

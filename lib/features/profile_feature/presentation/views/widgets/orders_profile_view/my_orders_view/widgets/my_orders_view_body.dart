@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../../../core/utils/app_routers/app_routers.dart';
-import '../../../../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../../../../core/widgets/order_list_tile.dart';
 
 class MyOrdersViewBody extends StatelessWidget {
-  const MyOrdersViewBody({super.key, required this.productItemModel});
-  final CustomProductItemModel productItemModel;
+  const MyOrdersViewBody({super.key, required this.productItemsList});
+  final List<CustomProductItemModel> productItemsList;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => OrderListTile(
-        productItemModel: productItemModel,
-        onTap: () => GoRouter.of(context)
-            .push(AppRouters.kMyOrderDetailsView, extra: productItemModel),
+        productItemModel: productItemsList[index],
+        onTap: () => GoRouter.of(context).push(AppRouters.kMyOrderDetailsView,
+            extra: productItemsList[index]),
       ),
-      itemCount: 5,
+      itemCount: productItemsList.length,
     );
   }
 }

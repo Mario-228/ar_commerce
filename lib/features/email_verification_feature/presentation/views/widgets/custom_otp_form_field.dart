@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:graduation_project_new_version/features/email_verification_feature/presentation/views_models/email_verification_cubit/email_verification_cubit.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import 'custom_material_button_bloc_consumer.dart';
 
 class CustomOtpFormField extends StatelessWidget {
-  static String otp = '';
   const CustomOtpFormField({
     super.key,
   });
@@ -22,8 +22,7 @@ class CustomOtpFormField extends StatelessWidget {
             filled: true,
             showFieldAsBox: true,
             onSubmit: (String verificationCode) {
-              otp = verificationCode;
-              print(otp);
+              EmailVerificationCubit.get(context).otp = verificationCode;
             },
           ),
         ),

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 
-Future<File> pickImage(ImageSource source) async {
+Future<File?> pickImage(ImageSource source) async {
   try {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
@@ -10,9 +10,9 @@ Future<File> pickImage(ImageSource source) async {
     if (pickedFile != null) {
       return File(pickedFile.path);
     } else {
-      return File('');
+      return null;
     }
   } catch (e) {
-    return File('');
+    return null;
   }
 }

@@ -15,6 +15,9 @@ abstract class SignUpRepoConstants {
   static const String email = "email";
   static const String password = "password";
   static const String passwordConfirmation = "password_confirmation";
+  static const String phone = "phone";
+  static const String image = "image";
+  static const String gender = "gender";
   static const String registerEndPoint = "register";
   static const String sendEmailVerificationEndPoint = "send/email/verification";
 }

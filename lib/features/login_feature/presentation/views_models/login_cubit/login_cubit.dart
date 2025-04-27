@@ -7,11 +7,13 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitial());
 
   static LoginCubit get(BuildContext context) => BlocProvider.of(context);
-
-  Future<void> login(String email, String password) async {
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  Future<void> login() async {
     emit(LoginLoading());
     var result = await LoginRepoImplementations()
-        .login(email: email, password: password);
+        .login(email: emailController.text, password: passwordController.text);
     result.fold(
       (error) => emit(LoginError(error.errorMessage)),
       (data) => emit(LoginSuccess(data)),

@@ -8,10 +8,12 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordStates> {
 
   static ForgotPasswordCubit get(BuildContext context) =>
       BlocProvider.of(context);
-
-  Future<void> emailRestoration(String email) async {
+  final GlobalKey<FormState> forgetPasswordFormKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  Future<void> emailRestoration() async {
     emit(ForgotPasswordLoading());
-    var result = await ForgotPasswordRepoImplementation().forgotPassword(email);
+    var result = await ForgotPasswordRepoImplementation()
+        .forgotPassword(emailController.text);
     result.fold(
         (error) => emit(ForgotPasswordError(errorMessage: error.errorMessage)),
         (data) => emit(ForgotPasswordSuccess(message: data)));

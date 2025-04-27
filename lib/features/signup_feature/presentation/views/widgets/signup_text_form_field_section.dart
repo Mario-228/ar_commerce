@@ -1,52 +1,22 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/custom_text_form_field.dart';
+import 'package:graduation_project_new_version/features/signup_feature/presentation/views/widgets/signup_gender_section.dart';
+import 'package:graduation_project_new_version/features/signup_feature/presentation/views/widgets/singup_name_and_email_and_phone_fields_section.dart';
 import 'password_field_and_strength_checker.dart';
 
 class SignupTextFormFieldSection extends StatelessWidget {
   const SignupTextFormFieldSection({
     super.key,
-    required this.passwordController,
-    required this.nameController,
-    required this.emailController,
   });
-
-  final TextEditingController passwordController;
-  final TextEditingController nameController;
-  final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomTextFormField(
-          type: TextInputType.name,
-          labelText: "Full Name",
-          controller: nameController,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Insert Name";
-            }
-            return null;
-          },
-        ),
+        SignupNameAndEmailAndPhoneFieldsSection(),
         const SizedBox(height: 30.0),
-        CustomTextFormField(
-          type: TextInputType.emailAddress,
-          labelText: "Enter email address",
-          controller: emailController,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter your email';
-            } else if (!(EmailValidator.validate(value))) {
-              return "Insert valid email";
-            } else {
-              return null;
-            }
-          },
-        ),
+        PasswordFieldAndStrengthChecker(),
         const SizedBox(height: 30.0),
-        PasswordFieldAndStrengthChecker(passwordController: passwordController),
+        SignupGenderSection(),
       ],
     );
   }

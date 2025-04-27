@@ -8,10 +8,13 @@ class ResetPasswordCubit extends Cubit<ResetPasswordStates> {
 
   static ResetPasswordCubit get(BuildContext context) =>
       BlocProvider.of(context);
-  Future<void> resetPassword(String email, String otp, String password) async {
+  String otp = '';
+  final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> resetPasswordFormKey = GlobalKey<FormState>();
+  Future<void> resetPassword({required String email}) async {
     emit(ResetPasswordLoading());
-    var result = await ResetPasswordReposImplementation()
-        .resetPassword(email: email, otp: otp, newPassword: password);
+    var result = await ResetPasswordReposImplementation().resetPassword(
+        email: email, otp: otp, newPassword: passwordController.text);
     result.fold(
       (error) => emit(ResetPasswordError(error.errorMessage)),
       (data) => emit(ResetPasswordSuccess(data)),
