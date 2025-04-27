@@ -56,7 +56,7 @@ class ApiService {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> getUser(
+  Future<Map<String, dynamic>> getWithToken(
     String endPoint,
     String token,
   ) async {
