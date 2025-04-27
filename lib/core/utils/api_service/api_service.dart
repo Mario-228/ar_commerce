@@ -26,6 +26,19 @@ class ApiService {
     return response.data;
   }
 
+  Future<Map<String, dynamic>> postDataWithToken(
+      String endPoint, String token, Map<String, dynamic> query) async {
+    var response = await dioHelper.post(
+      endPoint,
+      queryParameters: query,
+      options: Options(headers: {
+        'ngrok-skip-browser-warning': 'true',
+        'Authorization': 'Bearer $token',
+      }),
+    );
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> signOut(
     String endPoint,
     String token,
@@ -60,7 +73,7 @@ class ApiService {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> postWithToken(
+  Future<Map<String, dynamic>> postWithTokenAndImage(
       String endPoint, String token, Map<String, dynamic> query) async {
     if (query.containsKey(UpdateUserConstants.imageKey) &&
         query[UpdateUserConstants.imageKey] is File) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'product_item_favourite_button.dart';
 
 class ImageWithFavouriteButton extends StatelessWidget {

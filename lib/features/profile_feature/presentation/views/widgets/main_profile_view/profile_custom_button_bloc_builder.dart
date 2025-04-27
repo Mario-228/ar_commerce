@@ -53,6 +53,6 @@ class ProfileCustomButtonBlocConsumer extends StatelessWidget {
     showSnackBar(context, "Logout successfully");
     GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
     await CacheHelper.saveData<String>(CacheHelperKeys.tokenKey, "");
-    userToken = "";
+    userToken = ""; //must change the token variable by LoginOutputModel obeject
   }
 }

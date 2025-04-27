@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 
 class Product3DView extends StatelessWidget {
   const Product3DView({

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:go_router/go_router.dart';
 // import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../home_feature/presentation/widgets/custom_product_item.dart';
 import '../../views_models/get_others_cubit/get_others_cubit.dart';
 import '../../views_models/get_others_cubit/get_others_states.dart';

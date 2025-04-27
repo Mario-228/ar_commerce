@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../utils/app_colors/app_colors.dart';
-import '../utils/custom_product_item_model/custom_product_item_model.dart';
+import '../utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../utils/font_styles/font_styles.dart';
 
 class OrderListTile extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/my_orders_view_body.dart';
 
-import '../../../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../../../core/widgets/custom_appbar.dart';
 
 class MyOrdersView extends StatelessWidget {
