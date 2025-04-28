@@ -16,18 +16,27 @@ class ItemCounter extends StatefulWidget {
 }
 
 class _ItemCounterState extends State<ItemCounter> {
+  int counter = 0;
+  late bool hasQuantity;
+  @override
+  void initState() {
+    super.initState();
+    hasQuantity = (widget.model.quantity > 0);
+  }
+
   @override
   Widget build(BuildContext context) {
-    int counter = 1;
     return Row(
       children: [
         IconButton(
-          onPressed: () {
-            if (counter == 1) return;
-            setState(() {
-              counter--;
-            });
-          },
+          onPressed: hasQuantity
+              ? () {
+                  if (counter == 1) return;
+                  setState(() {
+                    counter--;
+                  });
+                }
+              : null,
           icon: const Icon(
             CupertinoIcons.minus_square,
             color: AppColors.orange,
@@ -38,12 +47,14 @@ class _ItemCounterState extends State<ItemCounter> {
           style: FontStyles.textStyleRegular14,
         ),
         IconButton(
-          onPressed: () {
-            if (widget.model.quantity == counter) return;
-            setState(() {
-              counter++;
-            });
-          },
+          onPressed: hasQuantity
+              ? () {
+                  if (widget.model.quantity == counter) return;
+                  setState(() {
+                    counter++;
+                  });
+                }
+              : null,
           icon: const Icon(
             CupertinoIcons.plus_square,
             color: AppColors.orange,
