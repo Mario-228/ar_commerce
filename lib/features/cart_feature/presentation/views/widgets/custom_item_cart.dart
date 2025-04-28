@@ -5,10 +5,13 @@ import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project_new_version/core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'package:graduation_project_new_version/core/widgets/order_list_tile.dart';
+import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 
 class CustomItemCart extends StatelessWidget {
-  const CustomItemCart({super.key, required this.customProductItemModel});
+  const CustomItemCart(
+      {super.key, required this.customProductItemModel, this.cartItem});
   final CustomProductItemModel customProductItemModel;
+  final CartItem? cartItem;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
@@ -22,6 +25,7 @@ class CustomItemCart extends StatelessWidget {
         alignment: AlignmentDirectional(0.95, -0.95),
         children: [
           OrderListTile(
+            cartItem: cartItem,
             productItemModel: customProductItemModel,
             onTap: () => GoRouter.of(context).push(
               AppRouters.kProductDetailsView,

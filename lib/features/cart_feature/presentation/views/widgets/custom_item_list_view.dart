@@ -12,6 +12,7 @@ class CustomItemCartListView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => CustomItemCart(
         customProductItemModel: customProductItemModel,
+        cartItem: cartModel.cart[index],
       ),
       separatorBuilder: (context, index) => const SizedBox(),
       itemCount: cartModel.cart.length,
