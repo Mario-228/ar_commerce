@@ -16,9 +16,8 @@ class CartRepoImplementation implements CartRepo {
     try {
       var response = await ApiService(BaseUrl.authentication)
           .postDataWithTokenAndQuery(
-              endPoint: CartRepoEndpoint.addToCart,
+              endPoint: CartRepoEndpoint.addToCart + productId.toString(),
               token: CacheHelper.getUserData().token,
-              query: {"product": productId},
               data: {"quantity": quantity});
       return right(AddToCartOuputModel.fromJson(response));
     } on Exception catch (e) {

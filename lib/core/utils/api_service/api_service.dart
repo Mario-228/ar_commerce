@@ -128,7 +128,7 @@ class ApiService {
   Future<Map<String, dynamic>> postDataWithTokenAndQuery({
     required String endPoint,
     required String token,
-    required Map<String, dynamic> query,
+    Map<String, dynamic>? query,
     required Map<String, dynamic> data,
   }) async {
     var response = await dioHelper.post(

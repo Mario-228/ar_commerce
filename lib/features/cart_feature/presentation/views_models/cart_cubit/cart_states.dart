@@ -17,3 +17,19 @@ class GetCartErrorState extends CartStates {
 
   GetCartErrorState({required this.errorMessage});
 }
+
+class DeleteCartLoadingState extends CartStates {}
+
+class DeleteCartErrorState extends CartStates {
+  final String errorMessage;
+
+  DeleteCartErrorState({required this.errorMessage});
+}
+
+class AddProductToCartLoadingState extends CartStates {}
+
+class AddProductToCartErrorState extends CartStates {
+  final String errorMessage;
+
+  AddProductToCartErrorState({required this.errorMessage});
+}
