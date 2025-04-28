@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_new_version/features/cart_feature/presentation/views/widgets/custom_item_list_view.dart';
+import 'package:graduation_project_new_version/features/cart_feature/presentation/views/widgets/custom_item_cart_list_view_bloc_builder.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -9,7 +9,7 @@ class CartViewBody extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: CustomItemCartListView(),
+          child: CustomItemCartListViewBlocBuilder(),
         ),
       ],
     );
