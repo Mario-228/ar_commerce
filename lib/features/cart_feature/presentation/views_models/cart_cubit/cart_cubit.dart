@@ -35,6 +35,16 @@ class CartCubit extends Cubit<CartStates> {
         .addToCart(productId: productId, quantity: quantity);
     response.fold((onError) {
       emit(AddProductToCartErrorState(errorMessage: onError.errorMessage));
+    }, (onSuccess) async => await getCart());
+  }
+
+  Future<void> deleteProductFromCart(
+      {required int productId, int quantity = 1}) async {
+    emit(DeleteProductFromCartLoadingState());
+    var response = await CartRepoImplementation()
+        .deleteOneItem(productId: productId, quantity: quantity);
+    response.fold((onError) {
+      emit(DeleteProductFromCartErrorState(errorMessage: onError.errorMessage));
       log(onError.errorMessage);
     }, (onSuccess) async => await getCart());
   }

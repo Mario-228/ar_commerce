@@ -43,7 +43,9 @@ class ProductDetailsViewFooter extends StatelessWidget {
   Future<void> addItemToCartFromProductDetailsFeature(
       BuildContext context) async {
     await CartRepoImplementation()
-        .addToCart(productId: model.id, quantity: 1)
+        .addToCart(
+            productId: model.id,
+            quantity: 1) //must fix the problem with the quantity
         .then((value) {
       value.fold((onError) {
         showSnackBar(context, onError.errorMessage);

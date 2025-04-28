@@ -33,3 +33,11 @@ class AddProductToCartErrorState extends CartStates {
 
   AddProductToCartErrorState({required this.errorMessage});
 }
+
+class DeleteProductFromCartLoadingState extends CartStates {}
+
+class DeleteProductFromCartErrorState extends CartStates {
+  final String errorMessage;
+
+  DeleteProductFromCartErrorState({required this.errorMessage});
+}

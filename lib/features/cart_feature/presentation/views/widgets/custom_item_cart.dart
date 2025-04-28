@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project_new_version/core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'package:graduation_project_new_version/core/widgets/order_list_tile.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
+import 'package:graduation_project_new_version/features/cart_feature/presentation/views_models/cart_cubit/cart_cubit.dart';
 
 class CustomItemCart extends StatelessWidget {
   const CustomItemCart(
@@ -15,12 +14,11 @@ class CustomItemCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: key ?? Key(""),
-      onDismissed: (direction) {
-        if (direction == DismissDirection.endToStart) {
-          log("deleted");
-        }
-      },
+      key: key ?? Key("CustomItemCart"),
+      onDismissed: (direction) async => await CartCubit.get(context)
+          .deleteProductFromCart(
+              productId: customProductItemModel.id,
+              quantity: 1), //must fix the problem with the quantity
       child: Stack(
         alignment: AlignmentDirectional(0.95, -0.95),
         children: [
@@ -33,7 +31,10 @@ class CustomItemCart extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () async => await CartCubit.get(context)
+                .deleteProductFromCart(
+                    productId: customProductItemModel.id,
+                    quantity: 1), //must fix the problem with the quantity
             icon: const Icon(Icons.close, size: 16.0),
             padding: const EdgeInsets.all(0.0),
             constraints: const BoxConstraints(

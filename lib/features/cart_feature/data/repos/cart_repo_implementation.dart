@@ -67,11 +67,10 @@ class CartRepoImplementation implements CartRepo {
     try {
       var response = await ApiService(BaseUrl.authentication)
           .postDataWithTokenAndQuery(
-              endPoint: CartRepoEndpoint.addToCart,
+              endPoint: CartRepoEndpoint.deleteOneItem + productId.toString(),
               token: CacheHelper.getUserData().token,
-              query: {"product": productId},
               data: {"quantity": quantity});
-      return right(CartItem.fromJson(response));
+      return right(CartItem.fromJson(response['message']));
     } on Exception catch (e) {
       if (e is DioException) {
         return left(ServerError.fromDioError(e));
