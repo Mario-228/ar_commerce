@@ -46,4 +46,19 @@ class CartRepoImplementation implements CartRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Errors, String>> deleteCart() async {
+    try {
+      await ApiService(BaseUrl.authentication).deleteWithToken(
+        CartRepoEndpoint.deleteCart,
+      );
+      return right("Cart Deleted Successfully");
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerError.fromDioError(e));
+      }
+      return left(ServerError(errorMessage: e.toString()));
+    }
+  }
 }

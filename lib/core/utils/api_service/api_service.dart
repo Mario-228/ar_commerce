@@ -1,5 +1,6 @@
 import 'dart:io';
 // ignore: depend_on_referenced_packages
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import 'package:path/path.dart' as path;
 import 'package:dio/dio.dart';
 
@@ -138,6 +139,20 @@ class ApiService {
         'ngrok-skip-browser-warning': 'true',
         'Authorization': 'Bearer $token',
       }),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> deleteWithToken(String endPoint) async {
+    var response = await dioHelper.delete(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer ${CacheHelper.getUserData().token}'
+        },
+        contentType: 'application/json',
+      ),
     );
     return response.data;
   }

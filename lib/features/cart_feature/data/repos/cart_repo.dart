@@ -8,4 +8,5 @@ abstract class CartRepo {
       {required int productId, required int quantity});
 
   Future<Either<Errors, CartModel>> getCartItems();
+  Future<Either<Errors, String>> deleteCart();
 }
