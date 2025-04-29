@@ -9,10 +9,28 @@ import '../../../features/profile_feature/data/repos/update_user_repo/update_use
 class ApiService {
   final Dio dioHelper;
   ApiService(this.dioHelper);
-  Future<Map<String, dynamic>> get(String endPoint) async {
+  Future<Map<String, dynamic>> get(String endPoint, {String? token}) async {
     var response = await dioHelper.get(
       endPoint,
-      options: Options(headers: {'ngrok-skip-browser-warning': 'true'}),
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          if (token != null) 'Authorization': 'Bearer $token'
+        },
+      ),
+    );
+    return response.data;
+  }
+
+  Future getFavourites(String endPoint, {String? token}) async {
+    var response = await dioHelper.get(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          if (token != null) 'Authorization': 'Bearer $token'
+        },
+      ),
     );
     return response.data;
   }
