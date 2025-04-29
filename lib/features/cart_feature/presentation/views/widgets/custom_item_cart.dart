@@ -17,8 +17,9 @@ class CustomItemCart extends StatelessWidget {
       key: key ?? Key("CustomItemCart"),
       onDismissed: (direction) async => await CartCubit.get(context)
           .deleteProductFromCart(
-              productId: customProductItemModel.id,
-              quantity: 1), //must fix the problem with the quantity
+              productId: cartItem?.productId ?? customProductItemModel.id,
+              quantity: cartItem?.quantity ??
+                  1), //must fix the problem with the quantity
       child: Stack(
         alignment: AlignmentDirectional(0.95, -0.95),
         children: [
@@ -33,8 +34,9 @@ class CustomItemCart extends StatelessWidget {
           IconButton(
             onPressed: () async => await CartCubit.get(context)
                 .deleteProductFromCart(
-                    productId: customProductItemModel.id,
-                    quantity: 1), //must fix the problem with the quantity
+                    productId: cartItem?.productId ?? customProductItemModel.id,
+                    quantity: cartItem?.quantity ??
+                        1), //must fix the problem with the quantity
             icon: const Icon(Icons.close, size: 16.0),
             padding: const EdgeInsets.all(0.0),
             constraints: const BoxConstraints(

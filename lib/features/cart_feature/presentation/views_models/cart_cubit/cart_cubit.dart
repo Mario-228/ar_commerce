@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/repos/cart_repo_implementation.dart';
@@ -20,7 +18,7 @@ class CartCubit extends Cubit<CartStates> {
   }
 
   Future<void> deleteCart() async {
-    emit(DeleteCartLoadingState());
+    emit(GetCartLoadingState());
     var response = await CartRepoImplementation().deleteCart();
     response.fold(
         (onError) =>
@@ -40,12 +38,13 @@ class CartCubit extends Cubit<CartStates> {
 
   Future<void> deleteProductFromCart(
       {required int productId, int quantity = 1}) async {
-    emit(DeleteProductFromCartLoadingState());
+    emit(GetCartLoadingState());
     var response = await CartRepoImplementation()
         .deleteOneItem(productId: productId, quantity: quantity);
-    response.fold((onError) {
-      emit(DeleteProductFromCartErrorState(errorMessage: onError.errorMessage));
-      log(onError.errorMessage);
-    }, (onSuccess) async => await getCart());
+    response.fold(
+      (onError) => emit(
+          DeleteProductFromCartErrorState(errorMessage: onError.errorMessage)),
+      (onSuccess) async => await getCart(),
+    );
   }
 }

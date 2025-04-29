@@ -4,12 +4,15 @@ import 'package:graduation_project_new_version/core/utils/app_colors/app_colors.
 import 'package:graduation_project_new_version/core/utils/font_styles/font_styles.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({super.key, required this.title, this.canGoBack = false});
+  const CustomAppbar(
+      {super.key, required this.title, this.canGoBack = false, this.actions});
   final String title;
   final bool canGoBack;
+  final List<Widget>? actions;
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      actions: actions,
       backgroundColor: AppColors.white,
       shadowColor: AppColors.lightGrey,
       title: Text(title, style: FontStyles.textStyleBold22),

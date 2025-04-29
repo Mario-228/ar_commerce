@@ -9,6 +9,6 @@ abstract class CartRepo {
 
   Future<Either<Errors, CartModel>> getCartItems();
   Future<Either<Errors, String>> deleteCart();
-  Future<Either<Errors, CartItem>> deleteOneItem(
+  Future<Either<Errors, void>> deleteOneItem(
       {required int productId, int quantity = 1});
 }

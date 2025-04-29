@@ -62,15 +62,15 @@ class CartRepoImplementation implements CartRepo {
   }
 
   @override
-  Future<Either<Errors, CartItem>> deleteOneItem(
+  Future<Either<Errors, void>> deleteOneItem(
       {required int productId, int quantity = 1}) async {
     try {
-      var response = await ApiService(BaseUrl.authentication)
-          .postDataWithTokenAndQuery(
-              endPoint: CartRepoEndpoint.deleteOneItem + productId.toString(),
-              token: CacheHelper.getUserData().token,
-              data: {"quantity": quantity});
-      return right(CartItem.fromJson(response['message']));
+      // var response =
+      await ApiService(BaseUrl.authentication).postDataWithTokenAndQuery(
+          endPoint: CartRepoEndpoint.deleteOneItem + productId.toString(),
+          token: CacheHelper.getUserData().token,
+          data: {"quantity": quantity});
+      return right(null); //right(CartItem.fromJson(response['message']));
     } on Exception catch (e) {
       if (e is DioException) {
         return left(ServerError.fromDioError(e));
