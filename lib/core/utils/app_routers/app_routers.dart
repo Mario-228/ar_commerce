@@ -133,8 +133,12 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kProductDetailsView,
-        builder: (context, state) =>
-            ProductDetailsView(model: state.extra as CustomProductItemModel),
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          return ProductDetailsView(
+              model: data['model'] as CustomProductItemModel,
+              quantity: data['quantity'] as int?);
+        },
       ),
       GoRoute(
         path: kProfileView,

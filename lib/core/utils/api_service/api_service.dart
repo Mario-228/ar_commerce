@@ -1,5 +1,6 @@
 import 'dart:io';
 // ignore: depend_on_referenced_packages
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import 'package:path/path.dart' as path;
 import 'package:dio/dio.dart';
 
@@ -56,7 +57,7 @@ class ApiService {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> getUser(
+  Future<Map<String, dynamic>> getWithToken(
     String endPoint,
     String token,
   ) async {
@@ -119,6 +120,38 @@ class ApiService {
         headers: {
           'ngrok-skip-browser-warning': 'true',
         },
+      ),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> postDataWithTokenAndQuery({
+    required String endPoint,
+    required String token,
+    Map<String, dynamic>? query,
+    required Map<String, dynamic> data,
+  }) async {
+    var response = await dioHelper.post(
+      endPoint,
+      queryParameters: query,
+      data: FormData.fromMap(data),
+      options: Options(headers: {
+        'ngrok-skip-browser-warning': 'true',
+        'Authorization': 'Bearer $token',
+      }),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> deleteWithToken(String endPoint) async {
+    var response = await dioHelper.delete(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer ${CacheHelper.getUserData().token}'
+        },
+        contentType: 'application/json',
       ),
     );
     return response.data;
