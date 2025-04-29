@@ -43,7 +43,7 @@ class OrderListTile extends StatelessWidget {
           style: FontStyles.textStyleSemiBold8,
         ),
         trailing: Text(
-          "${(cartItem?.product.price) ?? productItemModel.price} ${productItemModel.currency}",
+          "${(cartItem?.quantity ?? "")} x ${(cartItem?.product.price) ?? productItemModel.price} ${productItemModel.currency}",
           style: FontStyles.textStyleBold13,
         ),
         onTap: onTap,
