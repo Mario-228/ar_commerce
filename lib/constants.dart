@@ -40,6 +40,7 @@ var customProductItemModel = CustomProductItemModel(
   price: 500.0,
   currency: "L.E",
   isFavorite: false,
+  isLike: false,
   productBrandId: 0,
   productTypeId: 0,
   quantity: 5,
