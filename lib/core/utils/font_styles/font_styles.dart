@@ -74,6 +74,12 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
   );
+  static const TextStyle textStyleBoldOrange16 = TextStyle(
+    color: AppColors.orange,
+    fontSize: 16,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle textStyleSemiBold14 = TextStyle(
     color: AppColors.blackShade800,
     fontSize: 14,
