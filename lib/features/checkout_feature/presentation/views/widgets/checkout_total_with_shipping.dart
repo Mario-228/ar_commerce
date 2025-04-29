@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/show_payment_method_bottom_sheet.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -49,7 +49,8 @@ class CheckoutTotalWithShipping extends StatelessWidget {
             CustomMaterialButton(
                 text: "Pay Now",
                 color: AppColors.darkGreen,
-                onPressed: () {},
+                onPressed: () async =>
+                    await showPaymentMethodBottomSheet(context: context),
                 height: 60.0),
             SizedBox(height: 30.0),
           ],
