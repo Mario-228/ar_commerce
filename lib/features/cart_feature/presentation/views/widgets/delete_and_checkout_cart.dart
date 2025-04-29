@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project_new_version/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project_new_version/core/utils/font_styles/font_styles.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/widgets/total_cart_bloc_builder.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
@@ -38,7 +40,8 @@ class DeleteAndCheckoutCart extends StatelessWidget {
           child: CustomMaterialButton(
             color: AppColors.darkGreen,
             text: "Checkout",
-            onPressed: () {},
+            onPressed: () =>
+                GoRouter.of(context).push(AppRouters.kCheckoutView),
           ),
         ),
         // Expanded(
