@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/checkout_view.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
 
@@ -58,6 +59,7 @@ abstract class AppRouters {
   static const String kMyOrdersView = '/myOrdersView';
   static const String kMyOrderDetailsView = '/myOrdersDetailsView';
   static const String kCartView = '/cartView';
+  static const String kCheckoutView = '/checkoutView';
   static final routers = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -182,6 +184,10 @@ abstract class AppRouters {
       GoRoute(
         path: kAddDeliveryAddress,
         builder: (context, state) => const AddDeliveryAddressView(),
+      ),
+      GoRoute(
+        path: kCheckoutView,
+        builder: (context, state) => const CheckoutView(),
       ),
     ],
   );
