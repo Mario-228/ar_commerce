@@ -11,14 +11,16 @@ class ProductInfo extends StatelessWidget {
   const ProductInfo({
     super.key,
     required this.model,
+    this.quantity,
   });
+  final int? quantity;
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ProductNameAndPrice(model: model),
+        ProductNameAndPrice(model: model, quantity: quantity),
         const ProductColorChoices(),
         const SizedBox(
           height: 30,

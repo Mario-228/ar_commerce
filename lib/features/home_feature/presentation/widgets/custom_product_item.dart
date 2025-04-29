@@ -14,8 +14,8 @@ class CustomProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => GoRouter.of(context)
-          .push(AppRouters.kProductDetailsView, extra: productItemModel),
+      onTap: () => GoRouter.of(context).push(AppRouters.kProductDetailsView,
+          extra: {"model": productItemModel}),
       child: AspectRatio(
         aspectRatio: 170 / 130,
         child: Column(

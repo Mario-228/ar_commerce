@@ -7,7 +7,9 @@ class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({
     super.key,
     required this.model,
+    this.quantity,
   });
+  final int? quantity;
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ProductDetailsViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                ProductInfo(model: model),
+                ProductInfo(model: model, quantity: quantity),
               ],
             ),
           )

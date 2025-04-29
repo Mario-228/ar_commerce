@@ -28,7 +28,10 @@ class CustomItemCart extends StatelessWidget {
             productItemModel: customProductItemModel,
             onTap: () => GoRouter.of(context).push(
               AppRouters.kProductDetailsView,
-              extra: customProductItemModel,
+              extra: {
+                "model": customProductItemModel,
+                "quantity": cartItem?.quantity ?? 1
+              },
             ),
           ),
           IconButton(

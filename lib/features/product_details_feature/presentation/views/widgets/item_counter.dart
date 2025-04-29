@@ -8,19 +8,22 @@ class ItemCounter extends StatefulWidget {
   const ItemCounter({
     super.key,
     required this.model,
+    this.quantity,
   });
   final CustomProductItemModel model;
+  final int? quantity;
+  static int counter = 0;
 
   @override
   State<ItemCounter> createState() => _ItemCounterState();
 }
 
 class _ItemCounterState extends State<ItemCounter> {
-  int counter = 0;
   late bool hasQuantity;
   @override
   void initState() {
     super.initState();
+    ItemCounter.counter = widget.quantity ?? 0;
     hasQuantity = (widget.model.quantity > 0);
   }
 
@@ -31,9 +34,9 @@ class _ItemCounterState extends State<ItemCounter> {
         IconButton(
           onPressed: hasQuantity
               ? () {
-                  if (counter == 1) return;
+                  if (ItemCounter.counter == 1) return;
                   setState(() {
-                    counter--;
+                    ItemCounter.counter--;
                   });
                 }
               : null,
@@ -43,15 +46,15 @@ class _ItemCounterState extends State<ItemCounter> {
           ),
         ),
         Text(
-          "$counter",
+          "${ItemCounter.counter}",
           style: FontStyles.textStyleRegular14,
         ),
         IconButton(
           onPressed: hasQuantity
               ? () {
-                  if (widget.model.quantity == counter) return;
+                  if (widget.model.quantity == ItemCounter.counter) return;
                   setState(() {
-                    counter++;
+                    ItemCounter.counter++;
                   });
                 }
               : null,
