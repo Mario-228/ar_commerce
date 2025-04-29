@@ -25,7 +25,7 @@ class DeleteAndCheckoutCart extends StatelessWidget {
                     style: FontStyles.textStyleGreySemiBold20,
                   ),
                   SizedBox(width: 10.0),
-                  TotalCartBlocBuilder(),
+                  Expanded(child: TotalCartBlocBuilder()),
                 ],
               ),
               Text(
