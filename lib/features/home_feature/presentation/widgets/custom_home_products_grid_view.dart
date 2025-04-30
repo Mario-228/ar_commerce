@@ -27,8 +27,8 @@ class CustomHomeProductsGridView extends StatelessWidget {
             mainAxisSpacing: 2,
             childAspectRatio: 1,
           ),
-          itemBuilder: (context, index) =>
-              CustomProductItem(productItemModel: productItems[index]),
+          itemBuilder: (context, index) => CustomProductItem(
+              productItemModel: productItems[index], isHome: true),
         );
       } else if (state is GetProductErrorState) {
         return Center(

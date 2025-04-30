@@ -9,8 +9,10 @@ class CustomProductItem extends StatelessWidget {
   const CustomProductItem({
     super.key,
     required this.productItemModel,
+    this.isHome = false,
   });
   final CustomProductItemModel productItemModel;
+  final bool isHome;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +26,8 @@ class CustomProductItem extends StatelessWidget {
               alignment: const Alignment(0.0, 20),
               children: [
                 ProductItemDetails(productItemModel: productItemModel),
-                ImageWithFavouriteButton(productItemModel: productItemModel),
+                ImageWithFavouriteButton(
+                    productItemModel: productItemModel, isHome: isHome),
               ],
             )
           ],
