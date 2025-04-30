@@ -20,6 +20,8 @@ class GetUserFavouriteError extends GetUserFavouriteStates {
   GetUserFavouriteError({required this.errorMessageFromApi});
 }
 
+class AddOrRemoveFavouriteLoading extends GetUserFavouriteStates {}
+
 class AddOrRemoveFavouriteError extends GetUserFavouriteStates {
   final String errorMessageFromApi;
 
