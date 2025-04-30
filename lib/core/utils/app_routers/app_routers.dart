@@ -12,7 +12,6 @@ import '../../../features/email_verification_feature/presentation/views_models/e
 import '../../../features/favourites_feature/presentation/views/favourites_view.dart';
 import '../../../features/forgot_password_feature/presentation/views/forgot_password_view.dart';
 import '../../../features/furniture_category_feature/presentation/views/furniture_category_view.dart';
-import '../../../features/home_feature/data/repos/home_repo_end_points.dart';
 import '../../../features/home_feature/data/repos/home_repo_implementation.dart';
 import '../../../features/home_feature/presentation/home_view.dart';
 import '../../../features/home_feature/presentation/views_models/get_product_cubit/get_product_cubit.dart';
@@ -106,7 +105,7 @@ abstract class AppRouters {
               BlocProvider(
                 create: (context) =>
                     GetProductCubit(homeRepo: HomeRepoImplementation())
-                      ..getProduct(endPoint: HomeRepoEndPoints.product),
+                      ..getProduct(),
               ),
             ],
             child: HomeView(externalIndex: state.extra as int?),
