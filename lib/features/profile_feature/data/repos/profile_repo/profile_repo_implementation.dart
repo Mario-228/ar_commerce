@@ -27,7 +27,7 @@ class ProfileRepoImplementation extends ProfileRepo {
     try {
       print("Token is => $token");
       var result = await ApiService(BaseUrl.authentication)
-          .getUser(ProfileConstants.profile, token);
+          .getWithToken(ProfileConstants.profile, token);
       return Right(UserModel.fromJson(result));
     } catch (e) {
       if (e is DioException) {

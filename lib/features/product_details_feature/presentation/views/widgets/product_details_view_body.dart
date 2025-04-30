@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'product_3d_view.dart';
 import 'product_info.dart';
 
@@ -7,7 +7,9 @@ class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({
     super.key,
     required this.model,
+    this.quantity,
   });
+  final int? quantity;
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ProductDetailsViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                ProductInfo(model: model),
+                ProductInfo(model: model, quantity: quantity),
               ],
             ),
           )

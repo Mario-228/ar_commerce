@@ -1,4 +1,4 @@
-import 'package:graduation_project_new_version/core/utils/custom_product_item_model/custom_product_item_model.dart';
+import 'package:graduation_project_new_version/core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 
 import 'features/profile_feature/data/models/profile_user_model.dart';
 
@@ -25,6 +25,7 @@ final defaultUser = UserModel(
     id: -1,
     createdAt: "createdAt",
     updatedAt: "updatedAt",
+    role: "",
   ),
 );
 
@@ -34,10 +35,12 @@ var customProductItemModel = CustomProductItemModel(
   id: 1,
   name: "Product",
   description: "product description",
-  pictureUrl: "https://via.placeholder.com/150",
+  pictureUrl:
+      "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1733863368~exp=1733866968~hmac=dcf753cc48215353e01269e8d6aaf27adfa1e7eff7d23173fd74e6dda73b5dd2&w=740",
   price: 500.0,
   currency: "L.E",
   isFavorite: false,
+  isLike: false,
   productBrandId: 0,
   productTypeId: 0,
   quantity: 5,

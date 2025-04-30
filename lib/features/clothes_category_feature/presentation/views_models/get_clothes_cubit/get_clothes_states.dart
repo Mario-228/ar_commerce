@@ -1,4 +1,4 @@
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 
 abstract class GetClothesStates {}
 

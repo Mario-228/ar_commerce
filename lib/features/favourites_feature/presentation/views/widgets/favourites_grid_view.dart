@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_new_version/core/utils/custom_product_item_model/custom_product_item_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/features/favourites_feature/presentation/views_models/get_user_favourite_cubit/get_user_favourite_states.dart';
 import 'package:graduation_project_new_version/features/home_feature/presentation/widgets/custom_product_item.dart';
+
+import '../../views_models/get_user_favourite_cubit/get_user_favourites_cubit.dart';
 
 class FavouritesGridView extends StatelessWidget {
   const FavouritesGridView({super.key});
@@ -9,33 +12,37 @@ class FavouritesGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: GridView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: 4,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 2,
-          mainAxisSpacing: 2,
-          childAspectRatio: 1,
-        ),
-        itemBuilder: (context, index) => CustomProductItem(
-          productItemModel: CustomProductItemModel(
-              currency: "",
-              description: "",
-              id: 0,
-              image3DUrl:
-                  "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
-              isFavorite: false,
-              name: "",
-              pictureUrl:
-                  "https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=2048x2048&w=is&k=20&c=CJLIU6nIISsrHLTVO04nxIH2zVaKbnUeUXp7PnpM2h4=",
-              price: 0,
-              productBrand: "",
-              productBrandId: 0,
-              productType: "",
-              productTypeId: 0,
-              quantity: 0),
-        ),
+      child: BlocBuilder<GetUserFavouritesCubit, GetUserFavouriteStates>(
+        builder: (context, state) {
+          if (state is GetUserFavouriteSuccess) {
+            if (state.userFavouritesList.isEmpty) {
+              return const Center(
+                child: Text('No Favourites Yet'),
+              );
+            } else {
+              return GridView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: state.userFavouritesList.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 2,
+                    mainAxisSpacing: 2,
+                    childAspectRatio: 1,
+                  ),
+                  itemBuilder: (context, index) => CustomProductItem(
+                        productItemModel: state.userFavouritesList[index],
+                      ));
+            }
+          } else if (state is GetUserFavouriteError) {
+            return Center(
+              child: Text(state.errorMessageFromApi),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }

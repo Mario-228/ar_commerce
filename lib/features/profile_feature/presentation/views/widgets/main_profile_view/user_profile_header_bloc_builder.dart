@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 // import 'package:graduation_project/features/profile_feature/data/models/profile_user_model.dart';
 import '../../../../../../constants.dart';
 import '../../../../../../core/utils/functions/show_snack_bar.dart';
@@ -30,6 +31,7 @@ class UserProfileHeaderBlocBuilder extends StatelessWidget {
         } else if (state is GetUserLoadingState) {
           return const Center(child: CircularProgressIndicator());
         } else {
+          defaultUser.userModel = CacheHelper.getUserData().user;
           return UserPofileHeader(
             userModel: defaultUser,
           );

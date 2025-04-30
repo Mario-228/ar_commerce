@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../../../core/utils/app_routers/app_routers.dart';
-import '../../../../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../../../../core/widgets/order_list_tile.dart';
 
 class MyOrdersViewBody extends StatelessWidget {

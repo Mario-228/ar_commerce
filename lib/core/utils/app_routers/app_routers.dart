@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/checkout_view.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
 
@@ -33,7 +34,7 @@ import '../../../features/signup_feature/data/repo/sign_up_repo_implementation.d
 import '../../../features/signup_feature/presentation/views/signup_view.dart';
 import '../../../features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import '../../../features/splash_view/presentation/views/splash_view.dart';
-import '../custom_product_item_model/custom_product_item_model.dart';
+import '../models/custom_product_item_model/custom_product_item_model.dart';
 
 abstract class AppRouters {
   static const String kSignUpView = '/signUpView';
@@ -58,6 +59,7 @@ abstract class AppRouters {
   static const String kMyOrdersView = '/myOrdersView';
   static const String kMyOrderDetailsView = '/myOrdersDetailsView';
   static const String kCartView = '/cartView';
+  static const String kCheckoutView = '/checkoutView';
   static final routers = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -133,8 +135,12 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kProductDetailsView,
-        builder: (context, state) =>
-            ProductDetailsView(model: state.extra as CustomProductItemModel),
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          return ProductDetailsView(
+              model: data['model'] as CustomProductItemModel,
+              quantity: data['quantity'] as int?);
+        },
       ),
       GoRoute(
         path: kProfileView,
@@ -178,6 +184,10 @@ abstract class AppRouters {
       GoRoute(
         path: kAddDeliveryAddress,
         builder: (context, state) => const AddDeliveryAddressView(),
+      ),
+      GoRoute(
+        path: kCheckoutView,
+        builder: (context, state) => const CheckoutView(),
       ),
     ],
   );
