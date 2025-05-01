@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:go_router/go_router.dart';
 // import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
-import '../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../views_models/get_product_cubit/get_product_cubit.dart';
 import '../views_models/get_product_cubit/get_product_states.dart';
 import 'custom_product_item.dart';
@@ -27,8 +27,8 @@ class CustomHomeProductsGridView extends StatelessWidget {
             mainAxisSpacing: 2,
             childAspectRatio: 1,
           ),
-          itemBuilder: (context, index) =>
-              CustomProductItem(productItemModel: productItems[index]),
+          itemBuilder: (context, index) => CustomProductItem(
+              productItemModel: productItems[index], isHome: true),
         );
       } else if (state is GetProductErrorState) {
         return Center(

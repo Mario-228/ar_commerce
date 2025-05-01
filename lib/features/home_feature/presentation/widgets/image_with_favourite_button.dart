@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
-import 'product_item_favourite_button.dart';
+import 'package:graduation_project_new_version/features/home_feature/presentation/widgets/favourite_button_bloc_builder.dart';
+import '../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 
 class ImageWithFavouriteButton extends StatelessWidget {
   const ImageWithFavouriteButton({
     super.key,
     required this.productItemModel,
+    this.isHome = false,
   });
   final CustomProductItemModel productItemModel;
+  final bool isHome;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -21,9 +23,9 @@ class ImageWithFavouriteButton extends StatelessWidget {
               image: NetworkImage(productItemModel.pictureUrl),
             ),
           ),
-          ProductItemFavouriteButton(
-              onFavouritePressed: () {},
-              isFavorite: productItemModel.isFavorite)
+          isHome
+              ? SizedBox()
+              : FavouriteButtonBlocBuilder(productItemModel: productItemModel),
         ],
       ),
     );

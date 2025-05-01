@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
-import '../../../../../core/utils/custom_product_item_model/custom_product_item_model.dart';
+import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'description_and_reviews_buttons.dart';
 import 'product_color_choices.dart';
 import 'product_delivery.dart';
@@ -11,14 +11,16 @@ class ProductInfo extends StatelessWidget {
   const ProductInfo({
     super.key,
     required this.model,
+    this.quantity,
   });
+  final int? quantity;
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ProductNameAndPrice(model: model),
+        ProductNameAndPrice(model: model, quantity: quantity),
         const ProductColorChoices(),
         const SizedBox(
           height: 30,

@@ -38,6 +38,12 @@ abstract class FontStyles {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle textStyleRegularDarkGrey14 = TextStyle(
+    color: AppColors.darkGrey,
+    fontSize: 14,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+  );
   static const TextStyle textStyleMedium12 = TextStyle(
     color: AppColors.black,
     fontSize: 12,
@@ -68,9 +74,21 @@ abstract class FontStyles {
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
   );
+  static const TextStyle textStyleBoldOrange16 = TextStyle(
+    color: AppColors.orange,
+    fontSize: 16,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle textStyleSemiBold14 = TextStyle(
     color: AppColors.blackShade800,
     fontSize: 14,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle textStyleSemiBold8 = TextStyle(
+    color: AppColors.greyShade800,
+    fontSize: 8,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
   );
@@ -81,6 +99,12 @@ abstract class FontStyles {
     fontWeight: FontWeight.w400,
     height: 0.08,
     letterSpacing: -0.17,
+  );
+  static const TextStyle textStyleRegular15 = TextStyle(
+    color: AppColors.greyShade700,
+    fontSize: 14,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w400,
   );
   static const TextStyle textStyleRegularGrey14 = TextStyle(
     color: AppColors.grey,
@@ -112,6 +136,12 @@ abstract class FontStyles {
   );
   static const TextStyle textStyleBold16 = TextStyle(
     color: AppColors.beige,
+    fontSize: 16,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle textStyleDarkGreenBold16 = TextStyle(
+    color: AppColors.darkGreen,
     fontSize: 16,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
@@ -158,5 +188,18 @@ abstract class FontStyles {
     fontSize: 28,
     fontFamily: 'Lufga',
     fontWeight: FontWeight.w700,
+  );
+  static const TextStyle textStyleBold24 = TextStyle(
+    color: AppColors.orange,
+    fontSize: 24,
+    fontFamily: 'Lufga',
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle textStyleGreySemiBold20 = TextStyle(
+    color: AppColors.greyShade800,
+    fontSize: 20,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
   );
 }

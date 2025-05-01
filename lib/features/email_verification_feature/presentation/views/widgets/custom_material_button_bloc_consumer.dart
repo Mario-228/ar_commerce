@@ -10,7 +10,6 @@ import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 import '../../views_models/email_verification_cubit/email_verification_cubit.dart';
 import '../../views_models/email_verification_cubit/email_verification_states.dart';
-import 'custom_otp_form_field.dart';
 
 class CustomMaterialButtonBlocConsumer extends StatelessWidget {
   const CustomMaterialButtonBlocConsumer({
@@ -36,12 +35,8 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
           return CustomMaterialButton(
             text: 'Confirm',
             onPressed: () async {
-              if (CustomOtpFormField.otp.length == 6) {
-                // await CacheHelper.getData<String>(CacheHelperKeys.userEmail)
-                //     .then((email) {
-                // });
-                EmailVerificationCubit.get(context)
-                    .verificationEmail(userEmail, CustomOtpFormField.otp);
+              if (EmailVerificationCubit.get(context).otp.length == 6) {
+                EmailVerificationCubit.get(context).verificationEmail();
               } else {
                 showSnackBar(context, 'Please enter a valid OTP');
               }

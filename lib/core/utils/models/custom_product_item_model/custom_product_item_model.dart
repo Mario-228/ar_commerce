@@ -8,7 +8,8 @@ class CustomProductItemModel {
   final int productBrandId;
   final String currency;
   final String productBrand;
-  final bool isFavorite;
+  bool isFavorite;
+  bool isLike;
   final int productTypeId;
   final String productType;
   final String image3DUrl; // final void Function()? onTap;
@@ -27,6 +28,7 @@ class CustomProductItemModel {
     required this.productBrandId,
     required this.pictureUrl,
     required this.isFavorite,
+    required this.isLike,
     required this.image3DUrl,
     // required this.onTap,
     // required this.onFavouritePressed
@@ -40,7 +42,8 @@ class CustomProductItemModel {
         pictureUrl: json['pictureUrl'] ?? "https://via.placeholder.com/150",
         price: json['price'] ?? "0.0",
         currency: 'L.E ',
-        isFavorite: false,
+        isFavorite: json['isFav'] ?? false,
+        isLike: json['isLike'] ?? false,
         productBrandId: json['productBrandId'] ?? 0,
         productTypeId: json['productTypeId'] ?? 0,
         quantity: json['quantity'] ?? 0,

@@ -13,16 +13,17 @@ class ResendCodeVerificationCustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomMaterialButton(
-        text: "Resend Code",
-        color: AppColors.darkGreen,
-        onPressed: () async {
-          var response =
-              await SignUpRepoImplementation().sendVerificationEmail(userEmail);
-          response.fold(
-            (error) => showSnackBar(
-                context, "Something went wrong please try again later ..."),
-            (value) => showSnackBar(context, "Code sent"),
-          );
-        });
+      text: "Resend Code",
+      color: AppColors.darkGreen,
+      onPressed: () async {
+        var response =
+            await SignUpRepoImplementation().sendVerificationEmail(userEmail);
+        response.fold(
+          (error) => showSnackBar(
+              context, "Something went wrong please try again later ..."),
+          (value) => showSnackBar(context, "Code sent"),
+        );
+      },
+    );
   }
 }

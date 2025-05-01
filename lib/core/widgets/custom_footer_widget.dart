@@ -13,14 +13,12 @@ class CustomFooterWidget extends StatelessWidget {
     required this.footerLinkText,
     required this.onPressedButton,
     required this.onPressedFooterText,
-    required this.formKey,
   });
   final String buttonTitle;
   final String footerText;
   final String footerLinkText;
   final void Function() onPressedButton;
   final void Function() onPressedFooterText;
-  final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
     return Column(
