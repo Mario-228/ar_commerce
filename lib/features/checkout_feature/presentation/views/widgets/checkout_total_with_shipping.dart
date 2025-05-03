@@ -49,8 +49,10 @@ class CheckoutTotalWithShipping extends StatelessWidget {
             CustomMaterialButton(
                 text: "Pay Now",
                 color: AppColors.darkGreen,
-                onPressed: () async =>
-                    await showPaymentMethodBottomSheet(context: context),
+                onPressed: () async => await showPaymentMethodBottomSheet(
+                      context: context,
+                      total: total,
+                    ),
                 height: 60.0),
             SizedBox(height: 30.0),
           ],
