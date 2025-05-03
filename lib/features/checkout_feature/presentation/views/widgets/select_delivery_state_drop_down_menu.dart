@@ -1,11 +1,13 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/checkout_cubit/checkout_cubit.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
 class SelectDeliveryStateDropDownMenu extends StatefulWidget {
   const SelectDeliveryStateDropDownMenu({super.key, required this.items});
   final List<AddressModel> items;
+
   @override
   State<SelectDeliveryStateDropDownMenu> createState() =>
       _SelectDeliveryStateDropDownMenuState();
@@ -13,34 +15,42 @@ class SelectDeliveryStateDropDownMenu extends StatefulWidget {
 
 class _SelectDeliveryStateDropDownMenuState
     extends State<SelectDeliveryStateDropDownMenu> {
-  String? selectedValue;
+  int? selectedIndex;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton2(
-      underline: SizedBox(),
+    return DropdownButton2<int>(
+      underline: const SizedBox(),
       isExpanded: true,
       hint: const Text(
         'Select delivery state',
         style: TextStyle(fontSize: 14),
       ),
-      items: widget.items.map((item) {
-        return DropdownMenuItem<String>(
-          value: item.id.toString(),
+      items: widget.items.asMap().entries.map((entry) {
+        return DropdownMenuItem<int>(
+          value: entry.key,
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              item.address,
+              entry.value.address,
               overflow: TextOverflow.ellipsis,
               style: FontStyles.textStyleSemiBold14,
             ),
           ),
         );
       }).toList(),
-      value: selectedValue,
-      onChanged: (value) async {
+      value: selectedIndex,
+      onChanged: (int? value) {
         setState(() {
-          selectedValue = value;
+          selectedIndex = value;
+
+          final selected = widget.items[value ?? 0];
+          CheckoutCubit.get(context).nameController.text =
+              selected.receiverName;
+          CheckoutCubit.get(context).emailController.text =
+              selected.receiverEmail;
+          CheckoutCubit.get(context).phoneController.text = selected.phone;
+          CheckoutCubit.get(context).addressController.text = selected.address;
         });
       },
       buttonStyleData: ButtonStyleData(

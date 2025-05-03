@@ -7,7 +7,14 @@ class CheckoutCubit extends Cubit<CheckoutStates> {
   CheckoutCubit() : super(CheckoutInitialState());
 
   static CheckoutCubit get(BuildContext context) => BlocProvider.of(context);
-
+  TextEditingController nameController =
+      TextEditingController(text: "john smith");
+  TextEditingController emailController =
+      TextEditingController(text: "z2hYh@example.com");
+  TextEditingController addressController =
+      TextEditingController(text: "01012345678");
+  TextEditingController phoneController =
+      TextEditingController(text: "Cairo, Egypt");
   Future<void> getAddresses() async {
     emit(CheckoutLoadingState());
     var result = await CheckoutRepoImplementation().getAddresses();
