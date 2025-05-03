@@ -11,9 +11,19 @@ class CheckoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CheckoutCubit()..getAddresses(),
-      child: const Scaffold(
-        appBar: CustomAppbar(title: "Checkout"),
-        body: CheckoutViewBody(),
+      child: Scaffold(
+        appBar: CustomAppbar(title: "Checkout", actions: [
+          Builder(
+            builder: (context) => IconButton(
+              onPressed: () async =>
+                  await CheckoutCubit.get(context).getAddresses(),
+              icon: Icon(
+                Icons.refresh,
+              ),
+            ),
+          ),
+        ]),
+        body: const CheckoutViewBody(),
       ),
     );
   }

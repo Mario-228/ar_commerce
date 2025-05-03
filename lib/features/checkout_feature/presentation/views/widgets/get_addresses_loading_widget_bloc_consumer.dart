@@ -15,7 +15,8 @@ class GetAddressesLoadingWidgetBlocConsumer extends StatelessWidget {
     return BlocConsumer<CheckoutCubit, CheckoutStates>(
         listener: (context, state) {
           if (state is CheckoutErrorState) {
-            showSnackBar(context, state.error);
+            showSnackBar(
+                context, "${state.error}\nClick Refresh Button To Try Again");
           }
         },
         builder: (context, state) => state is CheckoutLoadingState
