@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/show_payment_method_bottom_sheet.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 
 class CheckoutTotalWithShipping extends StatelessWidget {
-  const CheckoutTotalWithShipping({super.key, required this.total});
+  const CheckoutTotalWithShipping(
+      {super.key, required this.total, required this.cartModel});
   final double total;
+  final CartModel cartModel;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -52,6 +55,7 @@ class CheckoutTotalWithShipping extends StatelessWidget {
                 onPressed: () async => await showPaymentMethodBottomSheet(
                       context: context,
                       total: total,
+                      cartModel: cartModel,
                     ),
                 height: 60.0),
             SizedBox(height: 30.0),
