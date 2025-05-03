@@ -23,6 +23,7 @@ import '../../../features/others_category_feature/presentation/views/others_cate
 import '../../../features/popular_category_feature/presentation/views/popular_category_view.dart';
 import '../../../features/product_details_feature/presentation/views/product_details_view.dart';
 import '../../../features/profile_feature/presentation/views/profile_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/contact_us_view/contact_us_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/current_delivery_address_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_order_details_view/my_order_details_view.dart';
@@ -59,6 +60,7 @@ abstract class AppRouters {
   static const String kMyOrderDetailsView = '/myOrdersDetailsView';
   static const String kCartView = '/cartView';
   static const String kCheckoutView = '/checkoutView';
+  static const String kContactUsView = '/contactUsView';
   static final routers = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -187,6 +189,10 @@ abstract class AppRouters {
       GoRoute(
         path: kCheckoutView,
         builder: (context, state) => const CheckoutView(),
+      ),
+      GoRoute(
+        path: kContactUsView,
+        builder: (context, state) => const ContactUsView(),
       ),
     ],
   );
