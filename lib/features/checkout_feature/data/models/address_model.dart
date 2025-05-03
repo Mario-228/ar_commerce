@@ -1,22 +1,22 @@
 class AddressModel {
-  int id;
-  int userId;
+  int? id;
+  int? userId;
   String address;
   String receiverName;
   String receiverEmail;
   String phone;
-  String createdAt;
-  String updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   AddressModel({
-    required this.id,
-    required this.userId,
+    this.id,
+    this.userId,
     required this.address,
     required this.receiverName,
     required this.receiverEmail,
     required this.phone,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
   static AddressModel fromJson(Map<String, dynamic> json) => AddressModel(
@@ -31,13 +31,13 @@ class AddressModel {
       );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'user_id': userId,
+        if (id != null) 'id': id,
+        if (userId != null) 'user_id': userId,
         'address': address,
         'receiver_name': receiverName,
         'receiver_email': receiverEmail,
         'phone': phone,
-        'created_at': createdAt,
-        'updated_at': updatedAt,
+        if (createdAt != null) 'created_at': createdAt,
+        if (updatedAt != null) 'updated_at': updatedAt,
       };
 }
