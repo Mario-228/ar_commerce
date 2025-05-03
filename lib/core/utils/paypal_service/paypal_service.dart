@@ -18,14 +18,14 @@ abstract class PaypalService {
         name: product.product.name,
         quantity: product.quantity,
         price: product.product.price.toString(),
-        currency: 'EGP',
+        currency: 'USD',
       );
       items.add(item);
     }
     PaypalTransactionModel transactionModel = PaypalTransactionModel(
       amount: Amount(
         total: cartModel.totalCart.toString(),
-        currency: 'EGP',
+        currency: 'USD',
         details: Details(
           subtotal: cartModel.totalCart.toString(),
           shipping: '0',
@@ -44,7 +44,7 @@ abstract class PaypalService {
             sandboxMode: true,
             clientId: PaypalKeys.clientId,
             secretKey: PaypalKeys.secretKey,
-            transactions: _getTransactionModels(cartModel).itemList?.items,
+            transactions: [_getTransactionModels(cartModel).toJson()],
             note: "Contact us for any questions on your order.",
             onSuccess: (Map params) async {
               print("onSuccess: $params");
