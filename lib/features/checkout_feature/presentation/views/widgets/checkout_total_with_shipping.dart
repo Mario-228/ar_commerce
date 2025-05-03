@@ -5,8 +5,8 @@ import '../../../../../core/utils/font_styles/font_styles.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 
 class CheckoutTotalWithShipping extends StatelessWidget {
-  const CheckoutTotalWithShipping({super.key});
-
+  const CheckoutTotalWithShipping({super.key, required this.total});
+  final double total;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,13 +15,13 @@ class CheckoutTotalWithShipping extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
           children: [
-            const ListTile(
-              leading: Text(
+            ListTile(
+              leading: const Text(
                 "Subtotal",
                 style: FontStyles.textStyleSemiBold14,
               ),
               trailing: Text(
-                "200 L.E",
+                "$total L.E",
                 style: FontStyles.textStyleSemiBold14,
               ),
             ),
@@ -35,13 +35,13 @@ class CheckoutTotalWithShipping extends StatelessWidget {
                 style: FontStyles.textStyleSemiBold14,
               ),
             ),
-            const ListTile(
-              leading: Text(
+            ListTile(
+              leading: const Text(
                 "Total",
                 style: FontStyles.textStyleBoldOrange16,
               ),
               trailing: Text(
-                "220 L.E",
+                "${total + 20} L.E",
                 style: FontStyles.textStyleBoldOrange16,
               ),
             ),

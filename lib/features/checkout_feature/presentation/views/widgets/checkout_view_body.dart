@@ -6,7 +6,8 @@ import 'package:graduation_project_new_version/features/checkout_feature/present
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/select_delivery_state_drop_down_menu_bloc_builder.dart';
 
 class CheckoutViewBody extends StatelessWidget {
-  const CheckoutViewBody({super.key});
+  const CheckoutViewBody({super.key, required this.total});
+  final double total;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -25,7 +26,7 @@ class CheckoutViewBody extends StatelessWidget {
             SizedBox(height: 20.0),
             CustomCheckoutTextFormFieldSection(),
             SizedBox(height: 20.0),
-            CheckoutTotalWithShipping(),
+            CheckoutTotalWithShipping(total: total),
             SizedBox(height: 20.0),
           ],
         ),

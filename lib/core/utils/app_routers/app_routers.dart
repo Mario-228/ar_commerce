@@ -188,7 +188,7 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kCheckoutView,
-        builder: (context, state) => const CheckoutView(),
+        builder: (context, state) => CheckoutView(total: state.extra as double),
       ),
       GoRoute(
         path: kContactUsView,

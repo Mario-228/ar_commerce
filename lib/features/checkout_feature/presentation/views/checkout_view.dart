@@ -5,8 +5,8 @@ import 'package:graduation_project_new_version/features/checkout_feature/present
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/checkout_cubit/checkout_cubit.dart';
 
 class CheckoutView extends StatelessWidget {
-  const CheckoutView({super.key});
-
+  const CheckoutView({super.key, required this.total});
+  final double total;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -23,7 +23,7 @@ class CheckoutView extends StatelessWidget {
             ),
           ),
         ]),
-        body: const CheckoutViewBody(),
+        body: CheckoutViewBody(total: total),
       ),
     );
   }
