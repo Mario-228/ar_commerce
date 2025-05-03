@@ -31,7 +31,7 @@ class ProfileInformationListView extends StatelessWidget {
       infoText: "Contact us",
       infoIcon: Icons.call_outlined,
       onInfoProfileItemPressed: (BuildContext context) async =>
-          await GoRouter.of(context).push(AppRouters.kMyDetailsView),
+          await GoRouter.of(context).push(AppRouters.kContactUsView),
     ),
   ];
   @override

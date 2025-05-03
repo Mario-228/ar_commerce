@@ -5,6 +5,7 @@ import 'package:graduation_project_new_version/core/utils/font_styles/font_style
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/widgets/total_cart_bloc_builder.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
+import '../../views_models/cart_cubit/cart_cubit.dart';
 
 class DeleteAndCheckoutCart extends StatelessWidget {
   const DeleteAndCheckoutCart({
@@ -40,8 +41,10 @@ class DeleteAndCheckoutCart extends StatelessWidget {
           child: CustomMaterialButton(
             color: AppColors.darkGreen,
             text: "Checkout",
-            onPressed: () =>
-                GoRouter.of(context).push(AppRouters.kCheckoutView),
+            onPressed: () => GoRouter.of(context).push(
+              AppRouters.kCheckoutView,
+              extra: getTotal(context),
+            ),
           ),
         ),
         // Expanded(
@@ -53,5 +56,18 @@ class DeleteAndCheckoutCart extends StatelessWidget {
         // ),
       ],
     );
+  }
+}
+
+double getTotal(BuildContext context) {
+  var cartModel = CartCubit.get(context).cartModel;
+  if (cartModel == null) {
+    return 0.0;
+  } else {
+    if (cartModel.cart.isNotEmpty) {
+      return cartModel.totalCart;
+    } else {
+      return 0.0;
+    }
   }
 }
