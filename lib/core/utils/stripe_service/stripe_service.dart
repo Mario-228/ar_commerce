@@ -25,12 +25,13 @@ class StripeService {
               initPaymentSheetInputModel}) async =>
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-            customerEphemeralKeySecret:
-                initPaymentSheetInputModel.ephemeralKeySecret,
-            customerId: initPaymentSheetInputModel.customerId,
-            paymentIntentClientSecret:
-                initPaymentSheetInputModel.paymentIntentClientSecret,
-            merchantDisplayName: "Mario Youssef"),
+          customerEphemeralKeySecret:
+              initPaymentSheetInputModel.ephemeralKeySecret,
+          customerId: initPaymentSheetInputModel.customerId,
+          paymentIntentClientSecret:
+              initPaymentSheetInputModel.paymentIntentClientSecret,
+          merchantDisplayName: "Mario Youssef",
+        ),
       );
 
   Future<void> presentPaymentSheet() async =>
@@ -39,12 +40,13 @@ class StripeService {
   Future<void> makePayment({required PaymentIntentInputModel model}) async {
     var data = await createPaymentIntent(model);
     //before creating the ephemeral key we must create the customer id first
-    var ephemeralKeyModel = await createEphemeralKey(model.customerId);
+    // var ephemeralKeyModel = await createEphemeralKey(model.customerId);
     InitPaymentSheetInputModel inputModel = InitPaymentSheetInputModel(
-        paymentIntentClientSecret: data.clientSecret!,
-        customerId: model
-            .customerId, //the customer id must get it from the endPoint in api keys (createCustomerIdUrl) and get the customer id ... must be only one id for one customer
-        ephemeralKeySecret: ephemeralKeyModel.secret!);
+      paymentIntentClientSecret: data.clientSecret!,
+      customerId: model
+          .customerId, //the customer id must get it from the endPoint in api keys (createCustomerIdUrl) and get the customer id ... must be only one id for one customer
+      // ephemeralKeySecret: ephemeralKeyModel.id,
+    );
     await initPaymentSheet(initPaymentSheetInputModel: inputModel);
     await presentPaymentSheet();
   }
