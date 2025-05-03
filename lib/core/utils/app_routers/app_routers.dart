@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/checkout_view.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
@@ -188,7 +189,8 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kCheckoutView,
-        builder: (context, state) => CheckoutView(total: state.extra as double),
+        builder: (context, state) =>
+            CheckoutView(cartModel: state.extra as CartModel),
       ),
       GoRoute(
         path: kContactUsView,

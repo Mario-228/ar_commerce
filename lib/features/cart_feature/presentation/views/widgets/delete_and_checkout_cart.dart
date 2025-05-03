@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project_new_version/core/utils/font_styles/font_styles.dart';
+import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/widgets/total_cart_bloc_builder.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -41,12 +42,10 @@ class DeleteAndCheckoutCart extends StatelessWidget {
           child: CustomMaterialButton(
             color: AppColors.darkGreen,
             text: "Checkout",
-            onPressed: () => GoRouter.of(context).push(
-              AppRouters.kCheckoutView,
-              extra: getTotal(context),
-            ),
+            onPressed: () => passCartToCheckout(context),
           ),
         ),
+
         // Expanded(
         //   child: CustomMaterialButton(
         //     color: AppColors.darkGreen,
@@ -59,15 +58,14 @@ class DeleteAndCheckoutCart extends StatelessWidget {
   }
 }
 
-double getTotal(BuildContext context) {
+void passCartToCheckout(BuildContext context) {
   var cartModel = CartCubit.get(context).cartModel;
-  if (cartModel == null) {
-    return 0.0;
+  if (cartModel != null && cartModel.cart.isNotEmpty) {
+    GoRouter.of(context).push(
+      AppRouters.kCheckoutView,
+      extra: cartModel,
+    );
   } else {
-    if (cartModel.cart.isNotEmpty) {
-      return cartModel.totalCart;
-    } else {
-      return 0.0;
-    }
+    showSnackBar(context, "Your cart is empty");
   }
 }
