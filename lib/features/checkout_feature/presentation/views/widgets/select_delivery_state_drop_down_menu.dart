@@ -1,6 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
 class SelectDeliveryStateDropDownMenu extends StatefulWidget {
@@ -38,7 +37,7 @@ class _SelectDeliveryStateDropDownMenuState
         );
       }).toList(),
       value: selectedValue,
-      onChanged: (value) {
+      onChanged: (value) async {
         setState(() {
           selectedValue = value;
         });
