@@ -177,13 +177,13 @@ class ApiService {
 
   Future<Response> stripePostData({
     required Map<String, dynamic> parameters,
-    required String url,
+    required String endPoint,
     required String token,
     String? contentType,
     Map<String, dynamic>? headers,
   }) async {
     var response = await dioHelper.post(
-      url,
+      endPoint,
       queryParameters: parameters,
       options: Options(
         contentType: contentType,
