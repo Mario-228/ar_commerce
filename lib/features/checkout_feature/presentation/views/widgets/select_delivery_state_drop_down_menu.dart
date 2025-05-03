@@ -26,7 +26,7 @@ class _SelectDeliveryStateDropDownMenuState
       ),
       items: widget.items.map((item) {
         return DropdownMenuItem<String>(
-          value: item.address,
+          value: item.id.toString(),
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(

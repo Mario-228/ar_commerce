@@ -15,8 +15,11 @@ class CheckoutRepoImplementation implements CheckoutRepo {
       var response = await ApiService(BaseUrl.authentication).get(
           CheckoutEndpoints.checkout,
           token: CacheHelper.getUserData().token);
-      return right(
-          response['address'].map((e) => AddressModel.fromJson(e)).toList());
+      List<AddressModel> addresses = [];
+      response['address'].forEach((element) {
+        addresses.add(AddressModel.fromJson(element));
+      });
+      return right(addresses);
     } on Exception catch (e) {
       return left(ServerError.fromDioError(e));
     }
