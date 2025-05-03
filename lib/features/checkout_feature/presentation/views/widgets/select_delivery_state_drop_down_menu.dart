@@ -1,10 +1,11 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
 class SelectDeliveryStateDropDownMenu extends StatefulWidget {
   const SelectDeliveryStateDropDownMenu({super.key, required this.items});
-  final List<String> items;
+  final List<AddressModel> items;
   @override
   State<SelectDeliveryStateDropDownMenu> createState() =>
       _SelectDeliveryStateDropDownMenuState();
@@ -25,11 +26,11 @@ class _SelectDeliveryStateDropDownMenuState
       ),
       items: widget.items.map((item) {
         return DropdownMenuItem<String>(
-          value: item,
+          value: item.address,
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              item,
+              item.address,
               overflow: TextOverflow.ellipsis,
               style: FontStyles.textStyleSemiBold14,
             ),
