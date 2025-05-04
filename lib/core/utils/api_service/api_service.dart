@@ -174,4 +174,25 @@ class ApiService {
     );
     return response.data;
   }
+
+  Future<Response> stripePostData({
+    required Map<String, dynamic> parameters,
+    required String endPoint,
+    required String token,
+    String? contentType,
+    Map<String, dynamic>? headers,
+  }) async {
+    var response = await dioHelper.post(
+      endPoint,
+      queryParameters: parameters,
+      options: Options(
+        contentType: contentType,
+        headers: headers ??
+            {
+              "Authorization": "Bearer $token",
+            },
+      ),
+    );
+    return response;
+  }
 }
