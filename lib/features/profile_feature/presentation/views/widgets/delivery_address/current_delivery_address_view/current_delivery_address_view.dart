@@ -9,13 +9,22 @@ class CurrentDeliveryAddressView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppbar(
-        title: "Delivery Address",
-      ),
-      body: BlocProvider(
-        create: (context) => CheckoutCubit()..getAddresses(),
-        child: const CurrentDeliveryAddressBody(),
+    return BlocProvider(
+      create: (context) => CheckoutCubit()..getAddresses(),
+      child: Scaffold(
+        appBar: CustomAppbar(
+          title: "Delivery Address",
+          actions: [
+            Builder(
+              builder: (context) => IconButton(
+                onPressed: () async =>
+                    await CheckoutCubit.get(context).getAddresses(),
+                icon: const Icon(Icons.refresh),
+              ),
+            ),
+          ],
+        ),
+        body: const CurrentDeliveryAddressBody(),
       ),
     );
   }
