@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:graduation_project_new_version/core/utils/app_routers/app_routers.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
 
 import '../../../../../../../../core/utils/app_colors/app_colors.dart';
@@ -28,7 +30,8 @@ class AddressListTile extends StatelessWidget {
           Text(addressModel.receiverName,
               style: FontStyles.textStyleDarkGreenBold16),
           IconButton(
-            onPressed: () {},
+            onPressed: () => GoRouter.of(context)
+                .push(AppRouters.kEditUserAddressView, extra: addressModel),
             icon: const Icon(Icons.edit_outlined, color: AppColors.darkGrey),
           ),
         ],
