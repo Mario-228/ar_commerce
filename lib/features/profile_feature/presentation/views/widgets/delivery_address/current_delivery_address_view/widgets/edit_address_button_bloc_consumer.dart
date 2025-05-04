@@ -52,6 +52,6 @@ class EditAddressButtonBlocConsunmer extends StatelessWidget {
     EditAddressCubit.get(context)
         .changeTextEditingControllers(state.addressModel);
     showSnackBar(context, "Address Edited successfully");
-    GoRouter.of(context).push(AppRouters.kCurrentDeliveryAddress);
+    GoRouter.of(context).pushReplacement(AppRouters.kCurrentDeliveryAddress);
   }
 }
