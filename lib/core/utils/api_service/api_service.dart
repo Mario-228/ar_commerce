@@ -22,6 +22,19 @@ class ApiService {
     return response.data;
   }
 
+  Future<String> getARUrl(String endPoint, {String? token}) async {
+    var response = await dioHelper.get(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          if (token != null) 'Authorization': 'Bearer $token'
+        },
+      ),
+    );
+    return response.data;
+  }
+
   Future getFavourites(String endPoint, {String? token}) async {
     var response = await dioHelper.get(
       endPoint,
