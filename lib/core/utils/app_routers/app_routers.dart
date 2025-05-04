@@ -2,9 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/checkout_view.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/widgets/edit_user_address.dart';
 
 import '../../../features/accessories_category_feature/presentation/views/accessories_category_view.dart';
 import '../../../features/clothes_category_feature/presentation/views/clothes_category_view.dart';
@@ -62,6 +64,7 @@ abstract class AppRouters {
   static const String kCartView = '/cartView';
   static const String kCheckoutView = '/checkoutView';
   static const String kContactUsView = '/contactUsView';
+  static const String kEditUserAddressView = '/editUserAddressView';
   static final routers = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -195,6 +198,11 @@ abstract class AppRouters {
       GoRoute(
         path: kContactUsView,
         builder: (context, state) => const ContactUsView(),
+      ),
+      GoRoute(
+        path: kEditUserAddressView,
+        builder: (context, state) =>
+            EditUserAddressView(addressModel: state.extra as AddressModel),
       ),
     ],
   );
