@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
 
 import '../../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../../core/utils/font_styles/font_styles.dart';
@@ -6,13 +7,9 @@ import '../../../../../../../../core/utils/font_styles/font_styles.dart';
 class AddressListTile extends StatelessWidget {
   const AddressListTile({
     super.key,
-    required this.name,
-    required this.address,
-    required this.phoneNumber,
+    required this.addressModel,
   });
-  final String name;
-  final String address;
-  final String phoneNumber;
+  final AddressModel addressModel;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -28,8 +25,12 @@ class AddressListTile extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(name, style: FontStyles.textStyleDarkGreenBold16),
-          const Icon(Icons.edit_outlined, color: AppColors.darkGrey),
+          Text(addressModel.receiverName,
+              style: FontStyles.textStyleDarkGreenBold16),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.edit_outlined, color: AppColors.darkGrey),
+          ),
         ],
       ),
       subtitle: Column(
@@ -37,10 +38,10 @@ class AddressListTile extends StatelessWidget {
         children: [
           const SizedBox(height: 10.0),
           Text(
-            address,
+            addressModel.address,
             style: FontStyles.textStyleLight13,
           ),
-          Text(phoneNumber, style: FontStyles.textStyleLight13),
+          Text(addressModel.phone, style: FontStyles.textStyleLight13),
         ],
       ),
     );
