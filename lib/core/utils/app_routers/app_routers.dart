@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/presentation/views/cart_view.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/checkout_view.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/add_delivery_address_view/add_delivery_address_view.dart';
-
+import 'package:graduation_project_new_version/features/search_feature/presentation/views/search_view.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/widgets/edit_user_address.dart';
 import '../../../features/accessories_category_feature/presentation/views/accessories_category_view.dart';
 import '../../../features/clothes_category_feature/presentation/views/clothes_category_view.dart';
 import '../../../features/email_verification_feature/presentation/views/email_verification_view.dart';
@@ -23,6 +26,7 @@ import '../../../features/others_category_feature/presentation/views/others_cate
 import '../../../features/popular_category_feature/presentation/views/popular_category_view.dart';
 import '../../../features/product_details_feature/presentation/views/product_details_view.dart';
 import '../../../features/profile_feature/presentation/views/profile_view.dart';
+import '../../../features/profile_feature/presentation/views/widgets/contact_us_view/contact_us_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/current_delivery_address_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/my_details_view/my_details_view.dart';
 import '../../../features/profile_feature/presentation/views/widgets/orders_profile_view/my_order_details_view/my_order_details_view.dart';
@@ -59,6 +63,9 @@ abstract class AppRouters {
   static const String kMyOrderDetailsView = '/myOrdersDetailsView';
   static const String kCartView = '/cartView';
   static const String kCheckoutView = '/checkoutView';
+  static const String kContactUsView = '/contactUsView';
+  static const String kSearchView = '/searchView';
+  static const String kEditUserAddressView = '/editUserAddressView';
   static final routers = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -186,7 +193,21 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kCheckoutView,
-        builder: (context, state) => const CheckoutView(),
+        builder: (context, state) =>
+            CheckoutView(cartModel: state.extra as CartModel),
+      ),
+      GoRoute(
+        path: kContactUsView,
+        builder: (context, state) => const ContactUsView(),
+      ),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) => const SearchView(),
+      ),
+      GoRoute(
+        path: kEditUserAddressView,
+        builder: (context, state) =>
+            EditUserAddressView(addressModel: state.extra as AddressModel),
       ),
     ],
   );
