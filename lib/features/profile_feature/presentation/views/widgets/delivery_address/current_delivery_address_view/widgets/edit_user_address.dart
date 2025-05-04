@@ -16,9 +16,10 @@ class EditUserAddressView extends StatelessWidget {
           EditAddressCubit()..changeTextEditingControllers(addressModel),
       child: Scaffold(
         appBar: AppBar(title: const Text("Edit Address")),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
             child: Column(children: [
               const Align(
                 alignment: Alignment.centerLeft,
