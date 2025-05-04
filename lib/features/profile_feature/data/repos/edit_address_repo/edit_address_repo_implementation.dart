@@ -13,13 +13,13 @@ class EditAddressRepoImplementation implements EditAddressRepo {
   Future<Either<Errors, AddressModel>> editDeliveryAddress(
       EditAddressUserModel model, int addressId) async {
     try {
-      var response = await ApiService(BaseUrl.products).putData(
+      var response = await ApiService(BaseUrl.authentication).putData(
         endPoint:
             EditAddressEndPoints.editDeliveryAddress + addressId.toString(),
         token: CacheHelper.getUserData().token,
         data: model.toJson(),
       );
-      return right(AddressModel.fromJson(response));
+      return right(AddressModel.fromJson(response['address']));
     } on Exception catch (e) {
       return left(ServerError.fromDioError(e));
     }

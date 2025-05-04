@@ -205,11 +205,14 @@ class ApiService {
     var response = await dioHelper.put(
       endPoint,
       queryParameters: query,
-      data: FormData.fromMap(data),
-      options: Options(headers: {
-        'ngrok-skip-browser-warning': 'true',
-        'Authorization': 'Bearer $token',
-      }),
+      data: data,
+      options: Options(
+        contentType: Headers.formUrlEncodedContentType,
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token',
+        },
+      ),
     );
     return response.data;
   }
