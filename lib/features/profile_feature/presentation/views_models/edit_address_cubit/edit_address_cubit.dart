@@ -39,11 +39,8 @@ class EditAddressCubit extends Cubit<EditAddressStates> {
       model,
       addressId,
     );
-    response
-        .fold((error) => emit(EditAddressErrorState(error: error.errorMessage)),
-            (data) {
-      log("data after sending :${data.toJson()}");
-      emit(EditAddressSuccessState(addressModel: data));
-    });
+    response.fold(
+        (error) => emit(EditAddressErrorState(error: error.errorMessage)),
+        (data) => emit(EditAddressSuccessState(addressModel: data)));
   }
 }
