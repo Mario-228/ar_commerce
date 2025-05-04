@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/utils/app_colors/app_colors.dart';
-import '../../../core/utils/app_routers/app_routers.dart';
-import '../../../core/utils/font_styles/font_styles.dart';
+import '../../../../core/utils/app_colors/app_colors.dart';
+import '../../../../core/utils/app_routers/app_routers.dart';
+import '../../../../core/utils/font_styles/font_styles.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomHomeAppBar({
