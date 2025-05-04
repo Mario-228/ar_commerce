@@ -105,6 +105,22 @@ class ApiService {
     return response.data;
   }
 
+  Future<Map<String, dynamic>> getWithTokenAndQuery(
+      String endPoint, String token, Map<String, dynamic> query) async {
+    var response = await dioHelper.get(
+      endPoint,
+      queryParameters: query,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token'
+        },
+        contentType: 'application/json',
+      ),
+    );
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> postWithTokenAndImage(
       String endPoint, String token, Map<String, dynamic> query) async {
     if (query.containsKey(UpdateUserConstants.imageKey) &&
