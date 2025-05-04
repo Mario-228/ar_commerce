@@ -201,14 +201,13 @@ abstract class AppRouters {
         builder: (context, state) => const ContactUsView(),
       ),
       GoRoute(
-        search_feature
         path: kSearchView,
         builder: (context, state) => const SearchView(),
+      ),
       GoRoute(
         path: kEditUserAddressView,
         builder: (context, state) =>
             EditUserAddressView(addressModel: state.extra as AddressModel),
-
       ),
     ],
   );
