@@ -10,8 +10,8 @@ class ContactContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      width: MediaQuery.of(context).size.width * 0.7,
+      height: 90,
+      width: MediaQuery.of(context).size.width * 0.8,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -26,7 +26,7 @@ class ContactContainer extends StatelessWidget {
             SizedBox(width: 8),
             Text(
               title,
-              style: FontStyles.textStyleRegular20,
+              style: FontStyles.textStyleRegular16,
             ),
           ],
         ),

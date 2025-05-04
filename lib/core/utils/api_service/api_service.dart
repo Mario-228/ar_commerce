@@ -105,6 +105,22 @@ class ApiService {
     return response.data;
   }
 
+  Future<Map<String, dynamic>> getWithTokenAndQuery(
+      String endPoint, String token, Map<String, dynamic> query) async {
+    var response = await dioHelper.get(
+      endPoint,
+      queryParameters: query,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token'
+        },
+        contentType: 'application/json',
+      ),
+    );
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> postWithTokenAndImage(
       String endPoint, String token, Map<String, dynamic> query) async {
     if (query.containsKey(UpdateUserConstants.imageKey) &&
@@ -207,5 +223,26 @@ class ApiService {
       ),
     );
     return response;
+  }
+
+  Future<Map<String, dynamic>> putData({
+    required String endPoint,
+    required String token,
+    Map<String, dynamic>? query,
+    required Map<String, dynamic> data,
+  }) async {
+    var response = await dioHelper.put(
+      endPoint,
+      queryParameters: query,
+      data: data,
+      options: Options(
+        contentType: Headers.formUrlEncodedContentType,
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+    return response.data;
   }
 }

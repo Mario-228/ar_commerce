@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project_new_version/core/utils/paymob_service/paymob_service.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/stripe_keys.dart';
 import 'package:graduation_project_new_version/features/favourites_feature/presentation/views_models/get_user_favourite_cubit/get_user_favourites_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/update_user_cubit/update_user_cubit.dart';
@@ -20,6 +21,7 @@ import 'core/utils/functions/initialize_user_info_variables.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.publishableKey = StripeKeys.publishKey;
+  PaymobService.initPaymob();
   await Hive.initFlutter();
   await CacheHelper.init();
   Bloc.observer = PrettyBlocObserver();
