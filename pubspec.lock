@@ -805,6 +805,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  pay_with_paymob:
+    dependency: "direct main"
+    description:
+      name: pay_with_paymob
+      sha256: b2ee0bf15758a34136efadf6703c625ddf11f32fba16bbb7ebda66a5f37fcc7a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   petitparser:
     dependency: transitive
     description:

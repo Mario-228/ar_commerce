@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:graduation_project_new_version/core/utils/paymob_service/paymob_service.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/payment_method_list_tile_item.dart';
@@ -42,7 +43,13 @@ Future<void> showPaymentMethodBottomSheet({
                     PaypalService.createPaypalPayment(context, cartModel),
                 title: "paypal",
               ),
-              PaymentMethodListTileItem(onTap: () {}, title: "paymob"),
+              PaymentMethodListTileItem(
+                onTap: () => PaymobService.payWithPaymob(
+                  context: context,
+                  price: total,
+                ),
+                title: "paymob",
+              ),
             ],
           ),
         ),
