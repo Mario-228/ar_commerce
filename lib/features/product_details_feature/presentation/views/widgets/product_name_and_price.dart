@@ -22,7 +22,10 @@ class ProductNameAndPrice extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Text(model.name, style: FontStyles.textStyleRegular20),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(model.name, style: FontStyles.textStyleRegular20),
+            ),
             SizedBox(
               height: 35,
               width: 35,
