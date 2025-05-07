@@ -55,6 +55,7 @@ class NewAddressInputFeilds extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           CustomTextFormField(
+            readOnly: true,
             type: TextInputType.streetAddress,
             labelText: "Address",
             controller: AddNewAddressCubit.get(context).address,
@@ -66,8 +67,13 @@ class NewAddressInputFeilds extends StatelessWidget {
               }
             },
             icon: Icons.location_on_outlined,
-            onPressed: () =>
-                GoRouter.of(context).push(AppRouters.kGoogleMapsView),
+            onPressed: () async {
+              var result = await GoRouter.of(context)
+                  .push<String>(AppRouters.kGoogleMapsView);
+              if (result != null && result.isNotEmpty && context.mounted) {
+                AddNewAddressCubit.get(context).address.text = result;
+              }
+            },
           ),
         ],
       ),
