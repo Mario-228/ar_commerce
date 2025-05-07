@@ -17,8 +17,7 @@ class ProductDetailsViewFooter extends StatelessWidget {
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
-    final bool isArSupported =
-        ArCoreDeviceCompatibility().checkDeviceCompatibility() as bool;
+    final bool isArSupported = ArCoreDeviceCompatibility.isArSupported;
     return isArSupported
         ? MaterialButton(
             onPressed: () => addItemToCartFromProductDetailsFeature(context),

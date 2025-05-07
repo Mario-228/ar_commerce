@@ -2,15 +2,15 @@ import 'dart:developer';
 
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 
-class ArCoreDeviceCompatibility {
-  Future<bool> checkDeviceCompatibility() async {
-    bool arCoreSupported = await ArCoreController.checkArCoreAvailability();
+abstract class ArCoreDeviceCompatibility {
+  static late bool isArSupported;
+  static Future<void> checkDeviceCompatibility() async {
+    isArSupported = await ArCoreController.checkArCoreAvailability();
 
-    if (arCoreSupported) {
+    if (isArSupported) {
       log('✅ ARCore is supported');
     } else {
       log('❌ ARCore not supported');
     }
-    return arCoreSupported;
   }
 }

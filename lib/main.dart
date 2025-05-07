@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:graduation_project_new_version/core/utils/ar_service/ar_core_device_compatibility.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import 'package:graduation_project_new_version/core/utils/paymob_service/paymob_service.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/stripe_keys.dart';
@@ -24,6 +25,7 @@ Future<void> main() async {
   PaymobService.initPaymob();
   await Hive.initFlutter();
   await CacheHelper.init();
+  await ArCoreDeviceCompatibility.checkDeviceCompatibility();
   Bloc.observer = PrettyBlocObserver();
   initializeUserInfoVariables();
   runApp(

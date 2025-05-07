@@ -13,8 +13,6 @@ class Product3DView extends StatelessWidget {
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
-    final bool isArSupported =
-        ArCoreDeviceCompatibility().checkDeviceCompatibility() as bool;
     return Stack(
       children: [
         SizedBox(
@@ -25,7 +23,7 @@ class Product3DView extends StatelessWidget {
               backgroundColor: const Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
               src: model.image3DUrl,
               alt: 'A 3D model of an astronaut',
-              ar: isArSupported,
+              ar: ArCoreDeviceCompatibility.isArSupported,
               autoRotate: true,
               iosSrc: model.image3DUrl,
               disableZoom: true,
