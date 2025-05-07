@@ -15,39 +15,36 @@ class ProductNameAndPrice extends StatelessWidget {
   final int? quantity;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ListTile(
-        title: Row(
+    return ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(model.name, style: FontStyles.textStyleRegular20),
+          ),
+          SizedBox(
+            height: 35,
+            width: 35,
+            child: ProductItemFavouriteButton(
+              onFavouritePressed: () {},
+              isFavorite: false,
+            ),
+          ),
+        ],
+      ),
+      subtitle: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(model.name, style: FontStyles.textStyleRegular20),
+            Text(
+              "${model.price}",
+              style: FontStyles.textStyleSemiBold20
+                  .copyWith(color: AppColors.glodenOrange),
             ),
-            SizedBox(
-              height: 35,
-              width: 35,
-              child: ProductItemFavouriteButton(
-                onFavouritePressed: () {},
-                isFavorite: false,
-              ),
-            ),
-          ],
-        ),
-        subtitle: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                "${model.price}",
-                style: FontStyles.textStyleSemiBold20
-                    .copyWith(color: AppColors.glodenOrange),
-              ),
-              ItemCounter(model: model, quantity: quantity),
-            ]),
-      ),
+            ItemCounter(model: model, quantity: quantity),
+          ]),
     );
   }
 }
