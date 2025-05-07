@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 abstract class LocationService {
   //for checking if location is enabled or not
@@ -35,13 +36,15 @@ abstract class LocationService {
     return true;
   }
 
-  static Future<void> checkLocation() async {
+  static Future<LatLng> checkLocation() async {
     bool access = await _ensureLocationAccess();
     if (access) {
       Position position = await Geolocator.getCurrentPosition();
       log("Your location: ${position.latitude}, ${position.longitude}");
+      return LatLng(position.latitude, position.longitude);
     } else {
       log("Can't access location.");
+      return LatLng(31.2026, 29.9187);
     }
   }
 }
