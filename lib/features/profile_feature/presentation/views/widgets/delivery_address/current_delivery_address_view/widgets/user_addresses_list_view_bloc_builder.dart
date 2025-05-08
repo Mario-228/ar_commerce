@@ -11,11 +11,11 @@ class UserAddressesListViewBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CheckoutCubit, CheckoutStates>(
+    return BlocBuilder<CheckoutCubit, CheckoutState>(
       builder: (context, state) {
-        if (state is CheckoutSuccessState) {
-          final addresses = state.addresses;
-          if (addresses.isEmpty) {
+        if (state.getAddressesSuccessState != null) {
+          final addresses = state.getAddressesSuccessState;
+          if (addresses!.isEmpty) {
             return SliverToBoxAdapter(
               child: Center(
                 child: Text("No Addresses Found"),
@@ -33,7 +33,7 @@ class UserAddressesListViewBlocBuilder extends StatelessWidget {
               ),
             );
           }
-        } else if (state is CheckoutLoadingState) {
+        } else if (state.isGetAddressLoading) {
           return const SliverToBoxAdapter(
             child: Center(child: CircularProgressIndicator()),
           );
