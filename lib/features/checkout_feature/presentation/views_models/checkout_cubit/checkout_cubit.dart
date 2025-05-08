@@ -19,7 +19,10 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   TextEditingController phoneController =
       TextEditingController(text: "Receiver phone number");
   Future<void> getAddresses() async {
-    emit(state.copyWith(isGetAddressLoading: true));
+    emit(state.copyWith(
+        isGetAddressLoading: true,
+        getAddressesSuccessState: null,
+        getAddressesErrorState: null));
     var result = await CheckoutRepoImplementation().getAddresses();
     result.fold(
       (onError) => emit(state.copyWith(
@@ -31,7 +34,11 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   }
 
   Future<void> storeOrder() async {
-    emit(state.copyWith(isOrderLoading: true));
+    emit(state.copyWith(
+      isOrderLoading: true,
+      storeOrderErrorState: null,
+      storeOrderSuccessState: null,
+    ));
     StoreAddressInputModel address = StoreAddressInputModel(
       address: addressController.text,
       email: emailController.text,
