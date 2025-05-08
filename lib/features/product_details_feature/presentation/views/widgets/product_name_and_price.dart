@@ -20,13 +20,18 @@ class ProductNameAndPrice extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         children: [
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(model.name, style: FontStyles.textStyleRegular20),
+          Expanded(
+            child: Text(
+              model.name,
+              style: FontStyles.textStyleRegular20,
+              softWrap: true,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           SizedBox(
-            height: 35,
-            width: 35,
+            height: 30,
+            width: 30,
             child: ProductItemFavouriteButton(
               onFavouritePressed: () {},
               isFavorite: false,
