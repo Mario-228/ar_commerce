@@ -1,15 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
-import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/show_payment_method_bottom_sheet.dart';
-import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/checkout_cubit/checkout_cubit.dart';
-import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/checkout_cubit/checkout_states.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/pay_now_button_bloc_consumer.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
-import '../../../../../core/widgets/custom_material_button.dart';
 
 class CheckoutTotalWithShipping extends StatelessWidget {
   const CheckoutTotalWithShipping(
@@ -55,39 +48,7 @@ class CheckoutTotalWithShipping extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.0),
-            BlocConsumer<CheckoutCubit, CheckoutState>(
-                listener: (context, state) {
-              if (state.storeOrderErrorState != null) {
-                showSnackBar(context, state.storeOrderErrorState!);
-              } else if (state.storeOrderSuccessState != null) {
-                showSnackBar(context, "Order Placed Successfully");
-              }
-            }, builder: (context, state) {
-              if (state.isOrderLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else {
-                return CustomMaterialButton(
-                  text: "Pay Now",
-                  color: AppColors.darkGreen,
-                  onPressed: () async {
-                    await CheckoutCubit.get(context)
-                        .storeOrder()
-                        .then((value) async {
-                      if (context.mounted &&
-                          state.storeOrderSuccessState != null) {
-                        log(state.storeOrderSuccessState!.message);
-                        await showPaymentMethodBottomSheet(
-                          context: context,
-                          total: total,
-                          cartModel: cartModel,
-                        );
-                      }
-                    });
-                  },
-                  height: 60.0,
-                );
-              }
-            }),
+            PayNowButtonBlocConsumer(total: total, cartModel: cartModel),
             SizedBox(height: 30.0),
           ],
         ),
