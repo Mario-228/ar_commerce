@@ -65,6 +65,7 @@ class OrderDetail {
   final int orderId;
   final int quantity;
   final double price;
+  final String name;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -74,6 +75,7 @@ class OrderDetail {
     required this.orderId,
     required this.quantity,
     required this.price,
+    required this.name,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -84,6 +86,7 @@ class OrderDetail {
       productId: json['product_id'],
       orderId: json['order_id'],
       quantity: json['quantity'],
+      name: json['name'],
       price: double.parse(json['price']),
       createdAt: DateTime.parse(json['created_at']),
       updatedAt: DateTime.parse(json['updated_at']),
