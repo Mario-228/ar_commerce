@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/show_payment_method_bottom_sheet.dart';
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/order_detail_pdf.dart';
 
@@ -32,9 +33,11 @@ class OrderDetailItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   OutlinedButton.icon(
-                    onPressed: () {
-                      // handlePayment(order);
-                    },
+                    onPressed: () async => await showPaymentMethodBottomSheet(
+                      context: context,
+                      total: order.total,
+                      orderModel: order,
+                    ),
                     icon: const Icon(Icons.payment),
                     label: const Text("Pay Now"),
                   ),
