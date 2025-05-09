@@ -1,44 +1,27 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
-import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_states.dart';
+import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
-import '../../../../../../data/models/get_orders_model.dart';
+class OrderDetailPdf extends StatelessWidget {
+  final GetOrderModel order;
 
-class MyOrdersViewBody extends StatelessWidget {
-  const MyOrdersViewBody({
-    super.key,
-  });
+  const OrderDetailPdf({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetOrderProfileCubit, GetOrderProfileStates>(
-      builder: (context, state) {
-        if (state is GetOrderProfileSuccessState) {
-          return PdfPreview(
-            canDebug: false,
-            allowSharing: true,
-            allowPrinting: true,
-            useActions: true,
-            scrollViewDecoration: BoxDecoration(color: Colors.grey[100]),
-            build: (format) => _generatePdf(format, state.order),
-          );
-        } else if (state is GetOrderProfileErrorState) {
-          return Center(
-            child: Text(
-              state.error,
-              style: const TextStyle(color: Colors.red, fontSize: 20),
-            ),
-          );
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
+    return Scaffold(
+      appBar: AppBar(title: const Text("Order Invoice")),
+      body: PdfPreview(
+        canDebug: false,
+        allowSharing: true,
+        allowPrinting: true,
+        useActions: true,
+        scrollViewDecoration: BoxDecoration(color: Colors.grey[100]),
+        build: (format) => _generatePdf(format, order),
+      ),
     );
   }
 
@@ -49,13 +32,14 @@ class MyOrdersViewBody extends StatelessWidget {
     pdf.addPage(
       pw.MultiPage(
         pageFormat: format,
-        margin: const pw.EdgeInsets.all(24),
+        margin: const pw.EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         build: (context) => [
           pw.Header(
             level: 0,
-            child: pw.Text("Order Invoice",
-                style:
-                    pw.TextStyle(fontSize: 26, fontWeight: pw.FontWeight.bold)),
+            child: pw.Text(
+              "Order Invoice",
+              style: pw.TextStyle(fontSize: 26, fontWeight: pw.FontWeight.bold),
+            ),
           ),
           pw.SizedBox(height: 10),
           pw.Text("Customer Name: ${order.name}"),
@@ -72,9 +56,15 @@ class MyOrdersViewBody extends StatelessWidget {
               style:
                   pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
           pw.SizedBox(height: 10),
-          pw.TableHelper.fromTextArray(
-            border: null,
-            cellAlignment: pw.Alignment.centerLeft,
+          pw.Table.fromTextArray(
+            border: pw.TableBorder.all(width: 0.5, color: PdfColors.grey),
+            headerDecoration: pw.BoxDecoration(color: PdfColors.grey300),
+            cellAlignment: pw.Alignment.center,
+            columnWidths: {
+              0: const pw.FlexColumnWidth(2), // Product ID
+              1: const pw.FlexColumnWidth(2), // Quantity
+              2: const pw.FlexColumnWidth(3), // Price
+            },
             headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold),
             headers: ['Product ID', 'Quantity', 'Price (EGP)'],
             data: order.orderDetail
