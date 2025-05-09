@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 
 import '../utils/app_colors/app_colors.dart';
 import '../utils/models/custom_product_item_model/custom_product_item_model.dart';
@@ -9,9 +10,11 @@ class OrderListTile extends StatelessWidget {
     super.key,
     required this.productItemModel,
     this.onTap,
+    this.cartItem,
   });
 
   final CustomProductItemModel productItemModel;
+  final CartItem? cartItem;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -28,10 +31,11 @@ class OrderListTile extends StatelessWidget {
         leading: Image(
           width: 60.0,
           height: double.infinity,
-          image: NetworkImage(productItemModel.pictureUrl),
+          image: NetworkImage(
+              (cartItem?.product.pictureUrl) ?? productItemModel.pictureUrl),
         ),
         title: Text(
-          productItemModel.name,
+          (cartItem?.product.name) ?? productItemModel.name,
           style: FontStyles.textStyleSemiBold14,
         ),
         subtitle: const Text(
@@ -39,7 +43,7 @@ class OrderListTile extends StatelessWidget {
           style: FontStyles.textStyleSemiBold8,
         ),
         trailing: Text(
-          "${productItemModel.price} ${productItemModel.currency}",
+          "${(cartItem?.quantity ?? "")} x ${(cartItem?.product.price) ?? productItemModel.price} ${productItemModel.currency}",
           style: FontStyles.textStyleBold13,
         ),
         onTap: onTap,

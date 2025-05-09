@@ -8,9 +8,9 @@ class GetProductCubit extends Cubit<GetProductStates> {
   final HomeRepo homeRepo;
   static GetProductCubit get(BuildContext context) => BlocProvider.of(context);
 
-  Future<void> getProduct({required String endPoint}) async {
+  Future<void> getProduct() async {
     emit(GetProductLoadingState());
-    var result = await homeRepo.getProducts(endPoint: endPoint);
+    var result = await homeRepo.getProducts();
     result.fold(
         (error) =>
             emit(GetProductErrorState(errorMessageFromApi: error.errorMessage)),

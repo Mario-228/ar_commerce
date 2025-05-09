@@ -8,8 +8,8 @@ class CustomProductItemModel {
   final int productBrandId;
   final String currency;
   final String productBrand;
-  final bool isFavorite;
-  final bool isLike;
+  bool isFavorite;
+  bool isLike;
   final int productTypeId;
   final String productType;
   final String image3DUrl; // final void Function()? onTap;

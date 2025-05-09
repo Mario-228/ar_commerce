@@ -6,8 +6,10 @@ class ImageWithFavouriteButton extends StatelessWidget {
   const ImageWithFavouriteButton({
     super.key,
     required this.productItemModel,
+    this.isHome = false,
   });
   final CustomProductItemModel productItemModel;
+  final bool isHome;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -21,7 +23,9 @@ class ImageWithFavouriteButton extends StatelessWidget {
               image: NetworkImage(productItemModel.pictureUrl),
             ),
           ),
-          FavouriteButtonBlocBuilder(productItemModel: productItemModel)
+          isHome
+              ? SizedBox()
+              : FavouriteButtonBlocBuilder(productItemModel: productItemModel),
         ],
       ),
     );

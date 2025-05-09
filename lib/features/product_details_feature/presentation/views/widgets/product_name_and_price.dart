@@ -9,8 +9,10 @@ class ProductNameAndPrice extends StatelessWidget {
   const ProductNameAndPrice({
     super.key,
     required this.model,
+    this.quantity,
   });
   final CustomProductItemModel model;
+  final int? quantity;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -40,7 +42,7 @@ class ProductNameAndPrice extends StatelessWidget {
                 style: FontStyles.textStyleSemiBold20
                     .copyWith(color: AppColors.glodenOrange),
               ),
-              ItemCounter(model: model),
+              ItemCounter(model: model, quantity: quantity),
             ]),
       ),
     );

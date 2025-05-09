@@ -25,16 +25,13 @@ class GetUserFavouritesCubit extends Cubit<GetUserFavouriteStates> {
   Future<void> addOrRemoveFavourite({
     required int productId,
   }) async {
-    emit(GetUserFavouriteLoading());
+    emit(AddOrRemoveFavouriteLoading());
     var result = await FavouritesRepoImplementation()
         .removeOrAddFavourite(productId: productId);
     result.fold(
-        (error) => emit(
-            AddOrRemoveFavouriteError(errorMessageFromApi: error.errorMessage)),
-        (data) async {
-      productItemModel = data;
-      await getUserFavourites();
-      emit(AddOrRemoveFavouriteSuccess(productItemModel: productItemModel));
-    });
+      (error) => emit(
+          AddOrRemoveFavouriteError(errorMessageFromApi: error.errorMessage)),
+      (data) async => await getUserFavourites(),
+    );
   }
 }

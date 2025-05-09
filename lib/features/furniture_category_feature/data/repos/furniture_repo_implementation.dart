@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import '../../../../core/errors/errors.dart';
 import '../../../../core/utils/api_service/api_service.dart';
 import '../../../../core/utils/api_service/base_url.dart';
@@ -12,7 +13,8 @@ class FurnitureRepoImplementation extends FurnitureRepo {
   Future<Either<Errors, List<CustomProductItemModel>>> getFurnitureProducts(
       {required String endPoint}) async {
     try {
-      var result = await ApiService(BaseUrl.products).get(endPoint);
+      var result = await ApiService(BaseUrl.products)
+          .get(endPoint, token: CacheHelper.getUserData().token);
       List<CustomProductItemModel> accessoriesProducts = [];
       for (var element in result["data"]) {
         accessoriesProducts.add(CustomProductItemModel.fromJson(element));
