@@ -9,8 +9,10 @@ class GetOrderProfileInitialState extends GetOrderProfileStates {
 }
 
 class GetOrderProfileSuccessState extends GetOrderProfileStates {
-  final GetOrderModel order;
-  const GetOrderProfileSuccessState(this.order);
+  final List<GetOrderModel> completedOrders;
+  final List<GetOrderModel> pendingOrders;
+  const GetOrderProfileSuccessState(
+      {required this.completedOrders, required this.pendingOrders});
 }
 
 class GetOrderProfileErrorState extends GetOrderProfileStates {

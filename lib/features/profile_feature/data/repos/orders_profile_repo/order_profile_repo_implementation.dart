@@ -11,23 +11,21 @@ import 'package:graduation_project_new_version/features/profile_feature/data/rep
 
 class OrderProfileRepoImplementation implements OrdersProfileRepo {
   @override
-  Future<Either<Errors, GetOrderModel>> getOrders() async {
+  Future<Either<Errors, List<GetOrderModel>>> getOrders() async {
     try {
       var response = await ApiService(BaseUrl.authentication).getWithToken(
           OrdersProfileRepoEndpoints.orders, CacheHelper.getUserData().token);
 
-      //  List<OrderDetail> orders = [];
-      // for (var order in response['order']['order_detail']) {
-      //   orders.add(OrderDetail.fromJson(order));
-      // }
+      List<GetOrderModel> orders = [];
+      for (var order in response['order']) {
+        orders.add(GetOrderModel.fromJson(order));
+      }
       if (response['order'] == []) {
         log('empty order');
       }
-      return right(response['order']);
+      return right(orders);
     } catch (e) {
-      return left(
-        ServerError.fromDioError(e),
-      );
+      return left(ServerError.fromDioError(e));
     }
   }
 }
