@@ -31,7 +31,10 @@ class GetUserFavouritesCubit extends Cubit<GetUserFavouriteStates> {
     result.fold(
       (error) => emit(
           AddOrRemoveFavouriteError(errorMessageFromApi: error.errorMessage)),
-      (data) async => await getUserFavourites(),
+      (data) async {
+        productItemModel = data;
+        await getUserFavourites();
+      },
     );
   }
 }
