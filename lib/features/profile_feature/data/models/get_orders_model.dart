@@ -6,10 +6,10 @@ class GetOrderModel {
   final String phone;
   final double total;
   final String status;
-  final String paymentMethod;
-  final String transactionId;
-  final DateTime paidAt;
-  final String note;
+  final String? paymentMethod;
+  final String? transactionId;
+  final String? paidAt;
+  final String? note;
   final int userId;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -46,7 +46,7 @@ class GetOrderModel {
       status: json['status'],
       paymentMethod: json['payment_method'],
       transactionId: json['transaction_id'],
-      paidAt: DateTime.parse(json['paid_at']),
+      paidAt: json['paid_at'],
       note: json['note'],
       userId: json['user_id'],
       createdAt: DateTime.parse(json['created_at']),
