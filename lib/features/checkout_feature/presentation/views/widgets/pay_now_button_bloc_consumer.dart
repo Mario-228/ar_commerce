@@ -31,6 +31,7 @@ class PayNowButtonBlocConsumer extends StatelessWidget {
           context: context,
           total: total,
           cartModel: cartModel,
+          id: state.storeOrderSuccessState!.order.id,
         );
         log(state.storeOrderSuccessState!.order.id.toString());
       }
