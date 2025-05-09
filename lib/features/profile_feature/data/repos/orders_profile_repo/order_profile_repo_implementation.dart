@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:graduation_project_new_version/core/errors/errors.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/api_service.dart';
@@ -15,16 +13,12 @@ class OrderProfileRepoImplementation implements OrdersProfileRepo {
     try {
       var response = await ApiService(BaseUrl.authentication).getWithToken(
           OrdersProfileRepoEndpoints.orders, CacheHelper.getUserData().token);
-
       List<GetOrderModel> orders = [];
       for (var order in response['order']) {
         orders.add(GetOrderModel.fromJson(order));
       }
-      if (response['order'] == []) {
-        log('empty order');
-      }
       return right(orders);
-    } catch (e) {
+    } on Exception catch (e) {
       return left(ServerError.fromDioError(e));
     }
   }
