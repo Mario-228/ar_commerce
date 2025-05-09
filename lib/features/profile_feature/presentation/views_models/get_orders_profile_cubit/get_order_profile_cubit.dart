@@ -9,10 +9,10 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileStates> {
   static GetOrderProfileCubit get(context) => BlocProvider.of(context);
 
   Future<void> getOrders() async {
-    emit(GetOrderProfileInitialState());
+    emit(GetOrderProfileLoadingState());
     var result = await OrderProfileRepoImplementation().getOrders();
     result.fold(
-      (error) => emit(GetOrderProfileErrorState(error.toString())),
+      (error) => emit(GetOrderProfileErrorState(error: error.toString())),
       (order) {
         List<GetOrderModel> pendingOrders = [];
         List<GetOrderModel> completedOrders = [];
