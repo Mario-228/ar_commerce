@@ -1,30 +1,62 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_states.dart';
-
 import '../../../data/repos/orders_profile_repo/order_profile_repo_implementation.dart';
 
-class GetOrderProfileCubit extends Cubit<GetOrderProfileStates> {
-  GetOrderProfileCubit() : super(GetOrderProfileInitialState());
+class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
+  GetOrderProfileCubit() : super(const GetOrderProfileState());
+
   static GetOrderProfileCubit get(context) => BlocProvider.of(context);
 
   Future<void> getOrders() async {
-    emit(GetOrderProfileLoadingState());
-    var result = await OrderProfileRepoImplementation().getOrders();
+    emit(state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+      completedOrders: null,
+      pendingOrders: null,
+      isDeleted: false,
+      isLoadingWhenDeleteOrder: false,
+    ));
+
+    final result = await OrderProfileRepoImplementation().getOrders();
     result.fold(
-      (error) => emit(GetOrderProfileErrorState(error: error.toString())),
-      (order) {
-        List<GetOrderModel> pendingOrders = [];
-        List<GetOrderModel> completedOrders = [];
-        for (GetOrderModel value in order) {
-          if (value.status == 'complete') {
-            completedOrders.add(value);
+      (error) => emit(state.copyWith(
+        isLoading: false,
+        errorMessage: error.toString(),
+      )),
+      (orders) {
+        List<GetOrderModel> completed = <GetOrderModel>[];
+        List<GetOrderModel> pending = <GetOrderModel>[];
+        for (GetOrderModel order in orders) {
+          if (order.status == 'complete') {
+            completed.add(order);
           } else {
-            pendingOrders.add(value);
+            pending.add(order);
           }
         }
-        emit(GetOrderProfileSuccessState(
-            completedOrders: completedOrders, pendingOrders: pendingOrders));
+        emit(state.copyWith(
+          isLoading: false,
+          completedOrders: completed,
+          pendingOrders: pending,
+          errorMessage: null,
+        ));
+      },
+    );
+  }
+
+  Future<void> deleteOrder({required int orderId}) async {
+    emit(state.copyWith(isLoadingWhenDeleteOrder: true, isDeleted: false));
+    final result =
+        await OrderProfileRepoImplementation().deleteOrder(orderId: orderId);
+
+    result.fold(
+      (error) => emit(state.copyWith(
+          errorMessage: error.toString(),
+          isLoadingWhenDeleteOrder: false,
+          isDeleted: false)),
+      (value) {
+        emit(state.copyWith(isLoadingWhenDeleteOrder: false, isDeleted: true));
+        getOrders();
       },
     );
   }
