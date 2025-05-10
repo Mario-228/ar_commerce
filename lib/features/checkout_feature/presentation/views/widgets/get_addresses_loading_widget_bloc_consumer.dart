@@ -12,15 +12,14 @@ class GetAddressesLoadingWidgetBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CheckoutCubit, CheckoutStates>(
+    return BlocConsumer<CheckoutCubit, CheckoutState>(
         listener: (context, state) {
-          if (state is CheckoutErrorState) {
-            showSnackBar(
-                context, "${state.error}\nClick Refresh Button To Try Again");
+          if (state.getAddressesErrorState != null) {
+            showSnackBar(context,
+                "${state.getAddressesErrorState}\nClick Refresh Button To Try Again");
           }
         },
-        builder: (context, state) => state is CheckoutLoadingState
-            ? LinearProgressIndicator()
-            : SizedBox());
+        builder: (context, state) =>
+            state.isGetAddressLoading ? LinearProgressIndicator() : SizedBox());
   }
 }
