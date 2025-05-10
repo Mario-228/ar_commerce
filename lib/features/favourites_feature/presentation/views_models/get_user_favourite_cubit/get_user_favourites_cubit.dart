@@ -37,4 +37,8 @@ class GetUserFavouritesCubit extends Cubit<GetUserFavouriteStates> {
       },
     );
   }
+
+  bool isFavourite(int productId) {
+    return userFavourites.any((item) => item.id == productId);
+  }
 }
