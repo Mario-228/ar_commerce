@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
-import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/show_payment_method_bottom_sheet.dart';
+import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/pay_now_button_bloc_consumer.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
-import '../../../../../core/widgets/custom_material_button.dart';
 
 class CheckoutTotalWithShipping extends StatelessWidget {
   const CheckoutTotalWithShipping(
@@ -49,15 +48,7 @@ class CheckoutTotalWithShipping extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.0),
-            CustomMaterialButton(
-                text: "Pay Now",
-                color: AppColors.darkGreen,
-                onPressed: () async => await showPaymentMethodBottomSheet(
-                      context: context,
-                      total: total,
-                      cartModel: cartModel,
-                    ),
-                height: 60.0),
+            PayNowButtonBlocConsumer(total: total, cartModel: cartModel),
             SizedBox(height: 30.0),
           ],
         ),

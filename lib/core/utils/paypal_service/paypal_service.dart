@@ -8,9 +8,11 @@ import 'package:graduation_project_new_version/core/utils/paypal_service/paypal_
 import 'package:graduation_project_new_version/core/utils/paypal_service/paypal_transaction_model/item_list.dart';
 import 'package:graduation_project_new_version/core/utils/paypal_service/paypal_transaction_model/paypal_transaction_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
+import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 
 abstract class PaypalService {
-  static PaypalTransactionModel _getTransactionModels(CartModel cartModel) {
+  static PaypalTransactionModel _getTransactionFromCartModelModel(
+      CartModel cartModel) {
     List<Item> items = [];
     Item item;
     for (var product in cartModel.cart) {
@@ -37,14 +39,47 @@ abstract class PaypalService {
     return transactionModel;
   }
 
-  static void createPaypalPayment(BuildContext context, CartModel cartModel) =>
+  static PaypalTransactionModel _getTransactionFromGetOrderModel(
+      GetOrderModel orderModel) {
+    List<Item> items = [];
+    Item item;
+    for (var product in orderModel.orderDetail) {
+      item = Item(
+        name: product.name,
+        quantity: product.quantity,
+        price: product.price.toString(),
+        currency: 'USD',
+      );
+      items.add(item);
+    }
+    PaypalTransactionModel transactionModel = PaypalTransactionModel(
+      amount: Amount(
+        total: orderModel.total.toString(),
+        currency: 'USD',
+        details: Details(
+          subtotal: orderModel.total.toString(),
+          shipping: '0',
+          shippingDiscount: 0,
+        ),
+      ),
+      itemList: ItemList(items: items),
+    );
+    return transactionModel;
+  }
+
+  static void createPaypalPayment(BuildContext context,
+          {CartModel? cartModel, GetOrderModel? orderModel}) =>
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (BuildContext context) => PaypalCheckoutView(
             sandboxMode: true,
             clientId: PaypalKeys.clientId,
             secretKey: PaypalKeys.secretKey,
-            transactions: [_getTransactionModels(cartModel).toJson()],
+            transactions: [
+              cartModel != null
+                  ? _getTransactionFromCartModelModel(cartModel).toJson()
+                  : _getTransactionFromGetOrderModel(orderModel!).toJson()
+            ],
             note: "Contact us for any questions on your order.",
             onSuccess: (Map params) async {
               print("onSuccess: $params");
