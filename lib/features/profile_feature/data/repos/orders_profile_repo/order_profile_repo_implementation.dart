@@ -22,4 +22,15 @@ class OrderProfileRepoImplementation implements OrdersProfileRepo {
       return left(ServerError.fromDioError(e));
     }
   }
+
+  @override
+  Future<Either<Errors, String>> deleteOrder({required int orderId}) async {
+    try {
+      var response = await ApiService(BaseUrl.authentication).deleteWithToken(
+          OrdersProfileRepoEndpoints.deleteOrder + orderId.toString());
+      return right(response['message']);
+    } on Exception catch (e) {
+      return left(ServerError.fromDioError(e));
+    }
+  }
 }

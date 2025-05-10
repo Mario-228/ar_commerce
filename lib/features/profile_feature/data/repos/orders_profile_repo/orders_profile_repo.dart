@@ -4,4 +4,5 @@ import 'package:graduation_project_new_version/features/profile_feature/data/mod
 
 abstract class OrdersProfileRepo {
   Future<Either<Errors, List<GetOrderModel>>> getOrders();
+  Future<Either<Errors, String>> deleteOrder({required int orderId});
 }
