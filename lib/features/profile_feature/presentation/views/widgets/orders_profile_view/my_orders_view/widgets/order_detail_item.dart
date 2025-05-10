@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/show_payment_method_bottom_sheet.dart';
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/delete_order_button_bloc_consumer.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/order_detail_pdf.dart';
 
 class OrderDetailItem extends StatelessWidget {
@@ -42,38 +43,7 @@ class OrderDetailItem extends StatelessWidget {
                     label: const Text("Pay Now"),
                   ),
                   const SizedBox(width: 8),
-                  ElevatedButton.icon(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    onPressed: () {
-                      // Show confirmation dialog
-                      showDialog(
-                        context: context,
-                        builder: (_) => AlertDialog(
-                          title: const Text("Delete Order"),
-                          content: const Text(
-                              "Are you sure you want to delete this order?"),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text("Cancel"),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                // deleteOrder(order.id);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red),
-                              child: const Text("Delete"),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.delete),
-                    label: const Text("Delete"),
-                  ),
+                  DeleteOrderButtonBlocConsumer(order: order),
                 ],
               ),
             ],

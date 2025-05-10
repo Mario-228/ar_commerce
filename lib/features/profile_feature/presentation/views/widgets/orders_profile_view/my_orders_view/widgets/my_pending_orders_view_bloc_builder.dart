@@ -11,26 +11,32 @@ class MyPendingOrdersViewBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetOrderProfileCubit, GetOrderProfileStates>(
+    return BlocBuilder<GetOrderProfileCubit, GetOrderProfileState>(
       builder: (context, state) {
-        if (state is GetOrderProfileSuccessState) {
-          return ListView.separated(
-            padding: const EdgeInsets.all(20.0),
-            itemCount: state.pendingOrders.length,
-            physics: const BouncingScrollPhysics(),
-            separatorBuilder: (context, index) => const SizedBox(height: 10.0),
-            itemBuilder: (context, index) => OrderDetailItem(
-              order: state.pendingOrders[index],
-            ),
-          );
-        } else if (state is GetOrderProfileLoadingState) {
-          return Center(child: CircularProgressIndicator());
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
         } else {
-          return const CircleAvatar(
-            radius: 80,
-            backgroundColor: AppColors.darkGreen,
-            child: Text("No Pending Orders", style: FontStyles.textStyleBold19),
-          );
+          if (state.pendingOrders.isNotEmpty) {
+            return ListView.separated(
+              padding: const EdgeInsets.all(20.0),
+              itemCount: state.pendingOrders.length,
+              physics: const BouncingScrollPhysics(),
+              separatorBuilder: (context, index) =>
+                  const SizedBox(height: 10.0),
+              itemBuilder: (context, index) => OrderDetailItem(
+                order: state.pendingOrders[index],
+              ),
+            );
+          } else {
+            return const Center(
+              child: CircleAvatar(
+                radius: 120.0,
+                backgroundColor: AppColors.darkGreen,
+                child: Text("No Pending Orders",
+                    style: FontStyles.textStyleBold19),
+              ),
+            );
+          }
         }
       },
     );
