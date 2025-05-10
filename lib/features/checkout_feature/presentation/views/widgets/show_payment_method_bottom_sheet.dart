@@ -10,11 +10,11 @@ import 'package:graduation_project_new_version/features/profile_feature/data/mod
 
 import '../../../../../core/utils/paypal_service/paypal_service.dart';
 
-
 Future<void> showPaymentMethodBottomSheet({
   required BuildContext context,
   required double total,
-  required CartModel cartModel,
+  CartModel? cartModel,
+  GetOrderModel? orderModel,
   required int id,
 }) async {
   showModalBottomSheet(

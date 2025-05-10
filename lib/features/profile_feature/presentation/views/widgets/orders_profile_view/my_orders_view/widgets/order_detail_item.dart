@@ -38,6 +38,7 @@ class OrderDetailItem extends StatelessWidget {
                       context: context,
                       total: order.total,
                       orderModel: order,
+                      id: order.id,
                     ),
                     icon: const Icon(Icons.payment),
                     label: const Text("Pay Now"),
