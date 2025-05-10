@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
 import '../../../../../../data/models/get_orders_model.dart';
 import '../../../../../views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
 import '../../../../../views_models/get_orders_profile_cubit/get_order_profile_states.dart';
@@ -13,16 +12,18 @@ class DeleteOrderButtonBlocConsumer extends StatelessWidget {
   final GetOrderModel order;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetOrderProfileCubit, GetOrderProfileState>(
-      listener: (context, state) {
-        if (state.errorMessage != null) {
-          showSnackBar(context, state.errorMessage!);
-        } else if (state.isDeleted) {
-          showSnackBar(context, "Order deleted successfully");
-        }
-      },
+    return BlocBuilder<GetOrderProfileCubit, GetOrderProfileState>(
+      // listener: (context, state) {
+      //   final isLoading = state.ordersLoadingStatus[order.id] ?? false;
+      //   if (state.errorMessage != null && !isLoading) {
+      //     showSnackBar(context, state.errorMessage!);
+      //   } else if (state.isDeleted && !isLoading) {
+      //     showSnackBar(context, "Order deleted successfully");
+      //   }
+      // },
       builder: (context, state) {
-        if (state.isLoadingWhenDeleteOrder) {
+        final isLoading = state.ordersLoadingStatus[order.id] ?? false;
+        if (isLoading) {
           return const Center(child: CircularProgressIndicator());
         } else {
           return ElevatedButton(

@@ -7,7 +7,7 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
   GetOrderProfileCubit() : super(const GetOrderProfileState());
 
   static GetOrderProfileCubit get(context) => BlocProvider.of(context);
-
+  Map<int, bool> loadingStatus = <int, bool>{};
   Future<void> getOrders() async {
     emit(state.copyWith(
       isLoading: true,
@@ -15,19 +15,17 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
       completedOrders: null,
       pendingOrders: null,
       isDeleted: false,
-      isLoadingWhenDeleteOrder: false,
     ));
 
     final result = await OrderProfileRepoImplementation().getOrders();
     result.fold(
-      (error) => emit(state.copyWith(
-        isLoading: false,
-        errorMessage: error.toString(),
-      )),
+      (error) => emit(
+          state.copyWith(isLoading: false, errorMessage: error.errorMessage)),
       (orders) {
         List<GetOrderModel> completed = <GetOrderModel>[];
         List<GetOrderModel> pending = <GetOrderModel>[];
         for (GetOrderModel order in orders) {
+          loadingStatus[order.id] = false;
           if (order.status == 'complete') {
             completed.add(order);
           } else {
@@ -39,23 +37,39 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
           completedOrders: completed,
           pendingOrders: pending,
           errorMessage: null,
+          ordersLoadingStatus: loadingStatus,
         ));
       },
     );
   }
 
   Future<void> deleteOrder({required int orderId}) async {
-    emit(state.copyWith(isLoadingWhenDeleteOrder: true, isDeleted: false));
+    emit(
+      state.copyWith(
+          ordersLoadingStatus: {...state.ordersLoadingStatus, orderId: true},
+          isDeleted: false),
+    );
     final result =
         await OrderProfileRepoImplementation().deleteOrder(orderId: orderId);
 
     result.fold(
-      (error) => emit(state.copyWith(
-          errorMessage: error.toString(),
-          isLoadingWhenDeleteOrder: false,
-          isDeleted: false)),
+      (error) {
+        emit(state.copyWith(
+            errorMessage: error.errorMessage,
+            isDeleted: false,
+            ordersLoadingStatus: {
+              ...state.ordersLoadingStatus,
+              orderId: false
+            }));
+      },
       (value) {
-        emit(state.copyWith(isLoadingWhenDeleteOrder: false, isDeleted: true));
+        state.ordersLoadingStatus[orderId] = false;
+        emit(
+          state.copyWith(isDeleted: true, ordersLoadingStatus: {
+            ...state.ordersLoadingStatus,
+            orderId: false
+          }),
+        );
         getOrders();
       },
     );

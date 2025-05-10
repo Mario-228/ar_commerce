@@ -6,15 +6,15 @@ class GetOrderProfileState extends Equatable {
   final String? errorMessage;
   final List<GetOrderModel> completedOrders;
   final List<GetOrderModel> pendingOrders;
-  final bool isLoadingWhenDeleteOrder;
   final bool isDeleted;
+  final Map<int, bool> ordersLoadingStatus;
   const GetOrderProfileState({
     this.isDeleted = false,
     this.isLoading = false,
     this.errorMessage,
     this.completedOrders = const [],
     this.pendingOrders = const [],
-    this.isLoadingWhenDeleteOrder = false,
+    this.ordersLoadingStatus = const {},
   });
 
   GetOrderProfileState copyWith({
@@ -22,17 +22,16 @@ class GetOrderProfileState extends Equatable {
     String? errorMessage,
     List<GetOrderModel>? completedOrders,
     List<GetOrderModel>? pendingOrders,
-    bool? isLoadingWhenDeleteOrder,
     bool? isDeleted,
+    Map<int, bool>? ordersLoadingStatus,
   }) {
     return GetOrderProfileState(
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage,
       completedOrders: completedOrders ?? this.completedOrders,
       pendingOrders: pendingOrders ?? this.pendingOrders,
-      isLoadingWhenDeleteOrder:
-          isLoadingWhenDeleteOrder ?? this.isLoadingWhenDeleteOrder,
       isDeleted: isDeleted ?? this.isDeleted,
+      ordersLoadingStatus: ordersLoadingStatus ?? this.ordersLoadingStatus,
     );
   }
 
@@ -42,7 +41,7 @@ class GetOrderProfileState extends Equatable {
         errorMessage,
         completedOrders,
         pendingOrders,
-        isLoadingWhenDeleteOrder,
         isDeleted,
+        ordersLoadingStatus
       ];
 }
