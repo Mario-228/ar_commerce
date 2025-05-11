@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import 'description_and_reviews_buttons.dart';
-import 'product_color_choices.dart';
 import 'product_delivery.dart';
 import 'product_details_view_footer.dart';
 import 'product_name_and_price.dart';
@@ -21,7 +20,7 @@ class ProductInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ProductNameAndPrice(model: model, quantity: quantity),
-        const ProductColorChoices(),
+        // const ProductColorChoices(),
         const SizedBox(
           height: 30,
         ),
