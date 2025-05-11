@@ -16,21 +16,22 @@ class FavouriteButtonBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetUserFavouritesCubit, GetUserFavouriteStates>(
-      listener: (BuildContext context, GetUserFavouriteStates state) {},
+    return BlocBuilder<GetUserFavouritesCubit, GetUserFavouriteState>(
       builder: (context, state) {
-        if (state is AddOrRemoveFavouriteLoading) {
-          return CircularProgressIndicator(
-            color: AppColors.glodenOrange,
-            strokeWidth: 2,
+        final isFavorite = state.favouritesMap[model.id] ?? false;
+        if (state.isUpdatingFavourite) {
+          return const Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: AppColors.glodenOrange,
+            ),
           );
         } else {
           return ProductItemFavouriteButton(
-            onFavouritePressed: () async =>
-                await GetUserFavouritesCubit.get(context)
-                    .addOrRemoveFavourite(productId: model.id),
-            isFavorite:
-                GetUserFavouritesCubit.get(context).isFavourite(model.id),
+            onFavouritePressed: () => context
+                .read<GetUserFavouritesCubit>()
+                .addOrRemoveFavourite(productId: model.id),
+            isFavorite: isFavorite,
           );
         }
       },
