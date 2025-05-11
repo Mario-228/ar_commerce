@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_new_version/features/home_feature/presentation/widgets/favourite_button_bloc_builder.dart';
+import 'package:graduation_project_new_version/features/product_details_feature/presentation/views/widgets/favourite_button_bloc_builder.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
@@ -26,7 +26,7 @@ class ProductNameAndPrice extends StatelessWidget {
             SizedBox(
               height: 35,
               width: 35,
-              child: FavouriteButtonBlocBuilder(productItemModel: model),
+              child: FavouriteButtonBlocBuilder(model: model),
             ),
           ],
         ),
