@@ -53,6 +53,10 @@ class ProductDetailsViewFooter extends StatelessWidget {
 
   Future<void> addItemToCartFromProductDetailsFeature(
       BuildContext context) async {
+    if (ItemCounter.counter < 1) {
+      showSnackBar(context, "Please Insert Quantity");
+      return;
+    }
     await CartRepoImplementation()
         .addToCart(
             productId: model.id,
