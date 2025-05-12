@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:graduation_project_new_version/core/errors/errors.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/api_service.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/base_url.dart';
@@ -21,11 +20,7 @@ class CartRepoImplementation implements CartRepo {
               data: {"quantity": quantity});
       return right(AddToCartOuputModel.fromJson(response));
     } on Exception catch (e) {
-      if (e is DioException) {
-        return left(ServerError.fromDioError(e));
-      } else {
-        return left(ServerError(errorMessage: e.toString()));
-      }
+      return left(ServerError.fromDioError(e));
     }
   }
 
@@ -38,11 +33,7 @@ class CartRepoImplementation implements CartRepo {
       );
       return right(CartModel.fromJson(response));
     } on Exception catch (e) {
-      if (e is DioException) {
-        return left(ServerError.fromDioError(e));
-      } else {
-        return left(ServerError(errorMessage: e.toString()));
-      }
+      return left(ServerError.fromDioError(e));
     }
   }
 
@@ -54,15 +45,12 @@ class CartRepoImplementation implements CartRepo {
       );
       return right("Cart Deleted Successfully");
     } catch (e) {
-      if (e is DioException) {
-        return left(ServerError.fromDioError(e));
-      }
-      return left(ServerError(errorMessage: e.toString()));
+      return left(ServerError.fromDioError(e));
     }
   }
 
   @override
-  Future<Either<Errors, void>> deleteOneItem(
+  Future<Either<Errors, void>> deleteItemWithQuantity(
       {required int productId, int quantity = 1}) async {
     try {
       // var response =
@@ -72,11 +60,7 @@ class CartRepoImplementation implements CartRepo {
           data: {"quantity": quantity});
       return right(null); //right(CartItem.fromJson(response['message']));
     } on Exception catch (e) {
-      if (e is DioException) {
-        return left(ServerError.fromDioError(e));
-      } else {
-        return left(ServerError(errorMessage: e.toString()));
-      }
+      return left(ServerError.fromDioError(e));
     }
   }
 }

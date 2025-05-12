@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/core/utils/ar_service/ar_sevice.dart';
 import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/repos/cart_repo_implementation.dart';
+import 'package:graduation_project_new_version/features/product_details_feature/data/repos/get_ar_url_repo_implementation.dart';
 import 'package:graduation_project_new_version/features/product_details_feature/presentation/views/widgets/item_counter.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
@@ -27,7 +29,15 @@ class ProductDetailsViewFooter extends StatelessWidget {
           width: 20.0,
         ),
         MaterialButton(
-          onPressed: () {},
+          onPressed: () async {
+            var url = await GetArUrlRepoImplementation()
+                .getArUrl(productId: model.id);
+            url.fold((onError) {
+              showSnackBar(context, onError.errorMessage);
+            }, (onSuccess) {
+              ARService.launch(onSuccess);
+            });
+          },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -43,6 +53,10 @@ class ProductDetailsViewFooter extends StatelessWidget {
 
   Future<void> addItemToCartFromProductDetailsFeature(
       BuildContext context) async {
+    if (ItemCounter.counter < 1) {
+      showSnackBar(context, "Please Insert Quantity");
+      return;
+    }
     await CartRepoImplementation()
         .addToCart(
             productId: model.id,

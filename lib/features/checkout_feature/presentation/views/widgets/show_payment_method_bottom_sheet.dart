@@ -6,13 +6,16 @@ import 'package:graduation_project_new_version/core/utils/stripe_service/models/
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/payment_method_list_tile_item.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/payment_methods_cubit/payment_methods_cubit.dart';
+import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 
 import '../../../../../core/utils/paypal_service/paypal_service.dart';
 
 Future<void> showPaymentMethodBottomSheet({
   required BuildContext context,
   required double total,
-  required CartModel cartModel,
+  CartModel? cartModel,
+  GetOrderModel? orderModel,
+  required int id,
 }) async {
   showModalBottomSheet(
     context: context,
@@ -39,8 +42,8 @@ Future<void> showPaymentMethodBottomSheet({
                     title: "stripe");
               }),
               PaymentMethodListTileItem(
-                onTap: () =>
-                    PaypalService.createPaypalPayment(context, cartModel),
+                onTap: () => PaypalService.createPaypalPayment(context,
+                    cartModel: cartModel, orderModel: orderModel),
                 title: "paypal",
               ),
               PaymentMethodListTileItem(

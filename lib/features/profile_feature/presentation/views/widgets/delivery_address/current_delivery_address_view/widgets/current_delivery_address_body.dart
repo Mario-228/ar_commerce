@@ -13,9 +13,9 @@ class CurrentDeliveryAddressBody extends StatelessWidget {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        SliverToBoxAdapter(child: const SizedBox(height: 20.0)),
-        SliverFillRemaining(child: UserAddressesListViewBlocBuilder()),
-        SliverToBoxAdapter(child: const SizedBox(height: 40.0)),
+        const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+        UserAddressesListViewBlocBuilder(),
+        const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -29,7 +29,7 @@ class CurrentDeliveryAddressBody extends StatelessWidget {
             ),
           ),
         ),
-        SliverToBoxAdapter(child: const SizedBox(height: 20.0)),
+        const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
       ],
     );
   }

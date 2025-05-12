@@ -13,7 +13,7 @@ class HomeBackgroundContainer extends StatelessWidget {
         fit: BoxFit.fill,
         opacity: AlwaysStoppedAnimation(0.5),
         width: double.infinity,
-        height: 270.0,
+        height: 230.0,
       ),
     );
   }

@@ -22,6 +22,19 @@ class ApiService {
     return response.data;
   }
 
+  Future<String> getARUrl(String endPoint, {String? token}) async {
+    var response = await dioHelper.get(
+      endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          if (token != null) 'Authorization': 'Bearer $token'
+        },
+      ),
+    );
+    return response.data;
+  }
+
   Future getFavourites(String endPoint, {String? token}) async {
     var response = await dioHelper.get(
       endPoint,
@@ -81,6 +94,22 @@ class ApiService {
   ) async {
     var response = await dioHelper.get(
       endPoint,
+      options: Options(
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'Authorization': 'Bearer $token'
+        },
+        contentType: 'application/json',
+      ),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> getWithTokenAndQuery(
+      String endPoint, String token, Map<String, dynamic> query) async {
+    var response = await dioHelper.get(
+      endPoint,
+      queryParameters: query,
       options: Options(
         headers: {
           'ngrok-skip-browser-warning': 'true',

@@ -31,7 +31,10 @@ class AddAddressButtonBlocCounsumer extends StatelessWidget {
             color: AppColors.darkGreen,
             text: "Add New Address",
             onPressed: () async {
-              if (AddNewAddressCubit.formKey.currentState!.validate()) {
+              if (AddNewAddressCubit.get(context)
+                  .formKey
+                  .currentState!
+                  .validate()) {
                 await AddNewAddressCubit.get(context).addNewAddress();
               }
             },
