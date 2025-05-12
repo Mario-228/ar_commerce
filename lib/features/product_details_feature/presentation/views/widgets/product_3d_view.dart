@@ -23,7 +23,7 @@ class Product3DView extends StatelessWidget {
               backgroundColor: const Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
               src: model.image3DUrl,
               alt: 'A 3D model of an astronaut',
-              ar: true,
+              ar: ArCoreDeviceCompatibility.isArSupported,
               autoRotate: false,
               iosSrc: model.image3DUrl,
               disableZoom: false,
