@@ -1,35 +1,45 @@
+import 'package:flutter/foundation.dart';
+import 'package:equatable/equatable.dart';
 import 'package:graduation_project_new_version/core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 
-abstract class GetUserFavouriteStates {
-  GetUserFavouriteStates();
-}
+@immutable
+class GetUserFavouriteState extends Equatable {
+  final bool isLoading;
+  final bool isUpdatingFavourite;
+  final String? errorMessage;
+  final List<CustomProductItemModel> favourites;
+  final Map<int, bool> favouritesMap;
 
-class GetUserFavouriteInitialState extends GetUserFavouriteStates {}
+  const GetUserFavouriteState({
+    this.isLoading = false,
+    this.isUpdatingFavourite = false,
+    this.errorMessage,
+    this.favourites = const [],
+    this.favouritesMap = const {},
+  });
 
-class GetUserFavouriteLoading extends GetUserFavouriteStates {}
+  GetUserFavouriteState copyWith({
+    bool? isLoading,
+    bool? isUpdatingFavourite,
+    String? errorMessage,
+    List<CustomProductItemModel>? favourites,
+    Map<int, bool>? favouritesMap,
+  }) {
+    return GetUserFavouriteState(
+      isLoading: isLoading ?? this.isLoading,
+      isUpdatingFavourite: isUpdatingFavourite ?? this.isUpdatingFavourite,
+      errorMessage: errorMessage,
+      favourites: favourites ?? this.favourites,
+      favouritesMap: favouritesMap ?? this.favouritesMap,
+    );
+  }
 
-class GetUserFavouriteSuccess extends GetUserFavouriteStates {
-  List<CustomProductItemModel> userFavouritesList;
-
-  GetUserFavouriteSuccess({required this.userFavouritesList});
-}
-
-class GetUserFavouriteError extends GetUserFavouriteStates {
-  final String errorMessageFromApi;
-
-  GetUserFavouriteError({required this.errorMessageFromApi});
-}
-
-class AddOrRemoveFavouriteLoading extends GetUserFavouriteStates {}
-
-class AddOrRemoveFavouriteError extends GetUserFavouriteStates {
-  final String errorMessageFromApi;
-
-  AddOrRemoveFavouriteError({required this.errorMessageFromApi});
-}
-
-class AddOrRemoveFavouriteSuccess extends GetUserFavouriteStates {
-  CustomProductItemModel productItemModel;
-
-  AddOrRemoveFavouriteSuccess({required this.productItemModel});
+  @override
+  List<Object?> get props => [
+        isLoading,
+        isUpdatingFavourite,
+        errorMessage,
+        favourites,
+        favouritesMap,
+      ];
 }

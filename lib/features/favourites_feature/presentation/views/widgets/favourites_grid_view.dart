@@ -9,37 +9,29 @@ class FavouritesGridView extends StatelessWidget {
   const FavouritesGridView({super.key});
 
   @override
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: BlocBuilder<GetUserFavouritesCubit, GetUserFavouriteStates>(
+      child: BlocBuilder<GetUserFavouritesCubit, GetUserFavouriteState>(
         builder: (context, state) {
-          if (state is GetUserFavouriteSuccess) {
-            if (state.userFavouritesList.isEmpty) {
-              return const Center(
-                child: Text('No Favourites Yet'),
-              );
-            } else {
-              return GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: state.userFavouritesList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 2,
-                    mainAxisSpacing: 2,
-                    childAspectRatio: 1,
-                  ),
-                  itemBuilder: (context, index) => CustomProductItem(
-                        productItemModel: state.userFavouritesList[index],
-                      ));
-            }
-          } else if (state is GetUserFavouriteError) {
-            return Center(
-              child: Text(state.errorMessageFromApi),
-            );
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state.favourites.isEmpty) {
+            return const Center(child: Text('No Favourites Yet'));
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return GridView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.favourites.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+                childAspectRatio: 1,
+              ),
+              itemBuilder: (context, index) => CustomProductItem(
+                productItemModel: state.favourites[index],
+              ),
             );
           }
         },

@@ -11,16 +11,10 @@ class SelectDeliveryStateDropDownMenuBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CheckoutCubit, CheckoutState>(builder: (context, state) {
-      if (state.getAddressesSuccessState != null) {
-        return SelectDeliveryStateDropDownMenu(
-          items: state.getAddressesSuccessState!,
-        );
-      } else {
-        return const SelectDeliveryStateDropDownMenu(
-          items: [],
-        );
-      }
-    });
+    return BlocBuilder<CheckoutCubit, CheckoutState>(
+      builder: (context, state) => SelectDeliveryStateDropDownMenu(
+        items: state.getAddressesSuccessState,
+      ),
+    );
   }
 }
