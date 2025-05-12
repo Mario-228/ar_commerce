@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project_new_version/features/home_feature/presentation/widgets/favourite_button_bloc_builder.dart';
 import '../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 
 class ImageWithFavouriteButton extends StatelessWidget {
@@ -23,9 +22,9 @@ class ImageWithFavouriteButton extends StatelessWidget {
               image: NetworkImage(productItemModel.pictureUrl),
             ),
           ),
-          isHome
-              ? SizedBox()
-              : FavouriteButtonBlocBuilder(productItemModel: productItemModel),
+          // isHome
+          //     ? SizedBox()
+          //     : FavouriteButtonBlocBuilder(productItemModel: productItemModel),
         ],
       ),
     );

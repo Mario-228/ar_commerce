@@ -7,11 +7,11 @@ import 'package:graduation_project_new_version/features/profile_feature/presenta
 class AddNewAddressCubit extends Cubit<AddNewAddressStates> {
   AddNewAddressCubit() : super(AddNewAddressInitialState());
   static AddNewAddressCubit get(context) => BlocProvider.of(context);
-  static GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  static TextEditingController address = TextEditingController();
-  static TextEditingController name = TextEditingController();
-  static TextEditingController email = TextEditingController();
-  static TextEditingController phone = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController address = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
 
   Future<void> addNewAddress() async {
     emit(AddNewAddressLoadingState());

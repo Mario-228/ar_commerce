@@ -45,7 +45,7 @@ class CartCubit extends Cubit<CartStates> {
       {required int productId, int quantity = 1}) async {
     emit(GetCartLoadingState());
     var response = await CartRepoImplementation()
-        .deleteOneItem(productId: productId, quantity: quantity);
+        .deleteItemWithQuantity(productId: productId, quantity: quantity);
     response.fold(
       (onError) => emit(
           DeleteProductFromCartErrorState(errorMessage: onError.errorMessage)),

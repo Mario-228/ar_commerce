@@ -32,7 +32,7 @@ Future<void> main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GetUserFavouritesCubit(),
+          create: (context) => GetUserFavouritesCubit()..getUserFavourites(),
         ),
         BlocProvider(
           create: (context) => UpdateUserCubit(),
