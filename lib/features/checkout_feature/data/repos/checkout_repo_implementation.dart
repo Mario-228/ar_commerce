@@ -39,6 +39,7 @@ class CheckoutRepoImplementation implements CheckoutRepo {
     }
   }
 
+  @override
   Future<Either<Errors, StoreOrderOutputModel>> storeOrder(
       {required StoreAddressInputModel address}) async {
     try {
@@ -51,6 +52,18 @@ class CheckoutRepoImplementation implements CheckoutRepo {
         return left(ServerError(errorMessage: result['message']));
       }
       return right(StoreOrderOutputModel.fromJson(result));
+    } on Exception catch (e) {
+      return left(ServerError.fromDioError(e));
+    }
+  }
+
+  @override
+  Future<Either<Errors, String>> deleteAddress({required int addressId}) async {
+    try {
+      var response = await ApiService(BaseUrl.authentication).deleteWithToken(
+        CheckoutEndpoints.deleteAddress + addressId.toString(),
+      );
+      return right(response['message']);
     } on Exception catch (e) {
       return left(ServerError.fromDioError(e));
     }

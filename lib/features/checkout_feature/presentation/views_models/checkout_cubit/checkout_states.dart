@@ -5,7 +5,7 @@ import '../../../data/models/store_order_output_model.dart';
 class CheckoutState {
   final bool isGetAddressLoading;
   final String? getAddressesErrorState;
-  final List<AddressModel>? getAddressesSuccessState;
+  final List<AddressModel> getAddressesSuccessState;
   final StoreOrderOutputModel? storeOrderSuccessState;
   final bool isOrderLoading;
   final String? storeOrderErrorState;
@@ -13,7 +13,7 @@ class CheckoutState {
   CheckoutState({
     this.isGetAddressLoading = false,
     this.getAddressesErrorState,
-    this.getAddressesSuccessState,
+    this.getAddressesSuccessState = const [],
     this.storeOrderSuccessState,
     this.isOrderLoading = false,
     this.storeOrderErrorState,
