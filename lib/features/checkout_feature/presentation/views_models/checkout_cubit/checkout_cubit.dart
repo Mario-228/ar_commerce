@@ -67,4 +67,28 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       },
     );
   }
+
+  Future<void> deleteAddress({required int addressId}) async {
+    emit(state.copyWith(
+        isGetAddressLoading: true, getAddressesErrorState: null));
+    var result =
+        await CheckoutRepoImplementation().deleteAddress(addressId: addressId);
+    result.fold(
+      (onError) => emit(state.copyWith(
+          isGetAddressLoading: false,
+          getAddressesErrorState: onError.errorMessage)),
+      (onSuccess) {
+        state.getAddressesSuccessState
+            .removeWhere((element) => element.id == addressId);
+        emit(
+          state.copyWith(
+              getAddressesSuccessState: state.getAddressesSuccessState,
+              isGetAddressLoading: false,
+              getAddressesErrorState: null,
+              isOrderLoading: false,
+              storeOrderErrorState: null),
+        );
+      },
+    );
+  }
 }
