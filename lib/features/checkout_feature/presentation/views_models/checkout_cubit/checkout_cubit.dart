@@ -85,7 +85,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
               getAddressesSuccessState: state.getAddressesSuccessState,
               isGetAddressLoading: false,
               getAddressesErrorState: null,
-              isOrderLoading: false,
               storeOrderErrorState: null),
         );
       },
