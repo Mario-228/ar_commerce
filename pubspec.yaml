@@ -33,6 +33,7 @@ dependencies:
   crypt: ^4.3.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
+  device_info_plus: ^11.4.0
   device_preview: ^1.2.0
   dio: ^5.7.0
   dropdown_button2: ^2.3.9
@@ -63,7 +64,6 @@ dependencies:
   shared_preferences: ^2.3.3
   smooth_page_indicator: ^1.2.0+3
   supabase_flutter: ^2.8.1
-  # arcore_flutter_plugin: ^0.1.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -84,6 +84,8 @@ flutter:
   assets:
     - assets/images/
     - assets/languages/
+    - assets/arcore_supported_devices/
+    
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
