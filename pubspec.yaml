@@ -56,6 +56,7 @@ dependencies:
   password_strength_checker: ^1.2.4
   path_provider: ^2.1.5
   pay_with_paymob: ^1.4.0
+  paymob_payment: ^0.0.1+1
   pdf: ^3.10.4
   pretty_bloc_observer: ^1.0.4
   printing: ^5.12.0
@@ -63,7 +64,6 @@ dependencies:
   shared_preferences: ^2.3.3
   smooth_page_indicator: ^1.2.0+3
   supabase_flutter: ^2.8.1
-  # arcore_flutter_plugin: ^0.1.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
