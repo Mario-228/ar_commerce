@@ -5,7 +5,7 @@ import 'package:graduation_project_new_version/features/cart_feature/data/repos/
 import 'package:graduation_project_new_version/features/product_details_feature/data/repos/get_ar_url_repo_implementation.dart';
 import 'package:graduation_project_new_version/features/product_details_feature/presentation/views/widgets/item_counter.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
-import '../../../../../core/utils/ar_service/ar_core_device_compatibility.dart';
+import '../../../../../core/utils/ar_service/ar_device_compatibility_checker.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
@@ -17,7 +17,7 @@ class ProductDetailsViewFooter extends StatelessWidget {
   final CustomProductItemModel model;
   @override
   Widget build(BuildContext context) {
-    final bool isArSupported = ArCoreDeviceCompatibility.isArSupported;
+    final bool isArSupported = ARDeviceCompatibilityChecker.isARSupported;
     return isArSupported
         ? MaterialButton(
             onPressed: () => addItemToCartFromProductDetailsFeature(context),

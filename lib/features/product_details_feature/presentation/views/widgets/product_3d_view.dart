@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:graduation_project_new_version/core/utils/ar_service/ar_core_device_compatibility.dart';
+import 'package:graduation_project_new_version/core/utils/ar_service/ar_device_compatibility_checker.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
@@ -23,7 +23,7 @@ class Product3DView extends StatelessWidget {
               backgroundColor: const Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
               src: model.image3DUrl,
               alt: 'A 3D model of an astronaut',
-              ar: ArCoreDeviceCompatibility.isArSupported,
+              ar: ARDeviceCompatibilityChecker.isARSupported,
               autoRotate: false,
               iosSrc: model.image3DUrl,
               disableZoom: false,
