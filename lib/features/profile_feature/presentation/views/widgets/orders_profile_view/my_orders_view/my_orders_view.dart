@@ -14,23 +14,33 @@ class MyOrdersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            "My Orders",
-            style: FontStyles.textStyleBold22,
-          ),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: "Completed"),
-              Tab(text: "Pending"),
+      child: BlocProvider(
+        create: (context) => GetOrderProfileCubit()..getOrders(),
+        child: Scaffold(
+          appBar: AppBar(
+            actions: [
+              Builder(
+                builder: (context) => IconButton(
+                  onPressed: () async =>
+                      await GetOrderProfileCubit.get(context).getOrders(),
+                  icon: const Icon(Icons.refresh),
+                  tooltip: "Refresh Orders",
+                ),
+              ),
             ],
+            centerTitle: true,
+            title: const Text(
+              "My Orders",
+              style: FontStyles.textStyleBold22,
+            ),
+            bottom: const TabBar(
+              tabs: [
+                Tab(text: "Completed"),
+                Tab(text: "Pending"),
+              ],
+            ),
           ),
-        ),
-        body: CustomBackGroundContainer(
-          child: BlocProvider(
-            create: (context) => GetOrderProfileCubit()..getOrders(),
+          body: CustomBackGroundContainer(
             child: const TabBarView(
               children: [
                 MyCompletedOrdersListViewBlocBuilder(),
