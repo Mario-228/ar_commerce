@@ -65,7 +65,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToLoginScreen() {
     Future.delayed(
       const Duration(milliseconds: 4000),
-      () => GoRouter.of(context).pushReplacement(AppRouters.kLoginView),
+      () {
+        if (mounted) {
+          GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
+        }
+      },
     );
   }
 }

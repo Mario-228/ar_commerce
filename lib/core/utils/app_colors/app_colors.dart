@@ -7,7 +7,10 @@ abstract class AppColors {
   static const Color whiteShade800 = Color(0xFFF0F0F0);
   static const Color whiteShade700 = Color(0xFFE5E5E5);
   static Color linearWhite = Color.lerp(
-      Colors.white.withOpacity(0.87), Colors.white.withOpacity(0.93), 0.5)!;
+    Color.fromRGBO(255, 255, 255, 0.87),
+    Color.fromRGBO(255, 255, 255, 0.93),
+    0.5,
+  )!;
 
   //green
   static const Color darkGreen = Color(0xFF284F49);

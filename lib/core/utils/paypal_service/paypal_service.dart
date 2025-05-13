@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
@@ -82,12 +83,12 @@ abstract class PaypalService {
             ],
             note: "Contact us for any questions on your order.",
             onSuccess: (Map params) async {
-              print("onSuccess: $params");
+              log("onSuccess: $params");
               showSnackBar(context, 'Payment Successfull');
               Navigator.pop(context);
             },
             onError: (error) {
-              print("onError: $error");
+              log("onError: $error");
               showSnackBar(context, 'Payment Failed');
               Navigator.pop(context);
             },
