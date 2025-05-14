@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_new_version/features/home_feature/presentation/custom_home_app_bar.dart';
 import '../../../core/utils/app_colors/app_colors.dart';
 import '../data/home_data/navigation_bar_screens.dart';
 import 'views_models/home_navigation_bar_cubit/home_navigation_bar_cubit.dart';
@@ -15,7 +14,6 @@ class HomeView extends StatelessWidget {
     return BlocBuilder<HomeNavigationBarCubit, HomeNavigationBarStates>(
       builder: (context, state) => Scaffold(
         backgroundColor: AppColors.whiteShade700,
-        appBar: CustomHomeAppBar(),
         body: NavigationBarScreens.screens[indexFromExternal ??
             HomeNavigationBarCubit.get(context).selectedIndex],
         bottomNavigationBar: BottomNavigationBar(

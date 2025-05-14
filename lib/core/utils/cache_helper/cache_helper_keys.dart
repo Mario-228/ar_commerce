@@ -4,4 +4,5 @@ abstract class CacheHelperKeys {
   static const String isVerified = 'isVerified';
   static const String userImage = 'userImage';
   static const String userInfo = 'userInfo';
+  static const String isSupported = "isARSupported";
 }
