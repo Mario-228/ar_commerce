@@ -57,6 +57,7 @@ dependencies:
   password_strength_checker: ^1.2.4
   path_provider: ^2.1.5
   pay_with_paymob: ^1.4.0
+  paymob_payment: ^0.0.1+1
   pdf: ^3.10.4
   pretty_bloc_observer: ^1.0.4
   printing: ^5.12.0

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../../core/errors/errors.dart';
@@ -25,7 +26,7 @@ class ProfileRepoImplementation extends ProfileRepo {
   @override
   Future<Either<Errors, UserModel>> getUserProfile(String token) async {
     try {
-      print("Token is => $token");
+      log("Token is => $token");
       var result = await ApiService(BaseUrl.authentication)
           .getWithToken(ProfileConstants.profile, token);
       return Right(UserModel.fromJson(result));

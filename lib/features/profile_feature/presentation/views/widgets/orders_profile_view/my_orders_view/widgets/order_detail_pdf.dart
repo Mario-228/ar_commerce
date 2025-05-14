@@ -56,7 +56,7 @@ class OrderDetailPdf extends StatelessWidget {
               style:
                   pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
           pw.SizedBox(height: 10),
-          pw.Table.fromTextArray(
+          pw.TableHelper.fromTextArray(
             border: pw.TableBorder.all(width: 0.5, color: PdfColors.grey),
             headerDecoration: pw.BoxDecoration(color: PdfColors.grey300),
             cellAlignment: pw.Alignment.center,

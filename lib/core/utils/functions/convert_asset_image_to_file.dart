@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,6 +13,6 @@ Future<File> convertAssetImageToFile(String assetPath, String fileName) async {
   path2 = path2.replaceAll('\\', '/');
   final File file = File(path2);
   await file.writeAsBytes(bytes);
-  print(file.path);
+  log(file.path);
   return file;
 }

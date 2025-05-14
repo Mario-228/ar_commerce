@@ -47,10 +47,14 @@ Future<void> showPaymentMethodBottomSheet({
                 title: "paypal",
               ),
               PaymentMethodListTileItem(
-                onTap: () => PaymobService.payWithPaymob(
-                  context: context,
-                  price: total,
-                ),
+                onTap: () {
+                  PaymobService.payWithPaymob(
+                    context: context,
+                    price: total,
+                    orderID: id,
+                  );
+                  // GoRouter.of(context).pop();
+                },
                 title: "paymob",
               ),
             ],

@@ -965,6 +965,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  paymob_payment:
+    dependency: "direct main"
+    description:
+      name: paymob_payment
+      sha256: "5a7f6ef9c1d538b5bdff52e757f09a97755b0c0cabe9f5098a13cc005477584c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1+1"
   pdf:
     dependency: "direct main"
     description:
