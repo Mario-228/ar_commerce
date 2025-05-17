@@ -4,26 +4,26 @@ import '../../../../../core/utils/models/custom_product_item_model/custom_produc
 import 'product_description.dart';
 
 class ProductDescriptionAndReviewsSection extends StatelessWidget {
-  const ProductDescriptionAndReviewsSection(
-      {super.key, required this.model, required this.isDescriptionSelected});
+  const ProductDescriptionAndReviewsSection({
+    super.key,
+    required this.model,
+  });
   final CustomProductItemModel model;
-  final bool isDescriptionSelected;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: isDescriptionSelected
-          ? ProductDescription(model: model)
-          : MaterialButton(
-              onPressed: () {
-                reviewModalBottomSheet(context);
-              },
-              color: AppColors.lightOrange,
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Text("Write a review")),
-    );
+    return SizedBox(child: ProductDescription(model: model)
+        // : MaterialButton(
+        //     onPressed: () {
+        //       reviewModalBottomSheet(context);
+        //     },
+        //     color: AppColors.lightOrange,
+        //     elevation: 0,
+        //     shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(10),
+        //     ),
+        //     child: const Text("Write a review")),
+        );
   }
 }
 
