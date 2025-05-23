@@ -93,14 +93,41 @@ APK will be in: `build/app/outputs/flutter-apk/app-release.apk`
 
 ## 🧩 Dependencies
 
-Key packages used:
+This project uses a number of Dart & Flutter packages. Below are the major dependencies listed in `pubspec.yaml`:
 
-- `ar_flutter_plugin`
-- `flutter_3d_obj`
-- `flutter_stripe`
-- `paypal_sdk`
-- `paymob_package` (customized)
-- `provider`, `http`, `shared_preferences`, etc.
+| Package | Version | Description |
+|--------|---------|-------------|
+| `carousel_slider` | ^5.0.0 | Create image and content sliders |
+| `cupertino_icons` | ^1.0.8 | iOS-style icons |
+| `dartz` | ^0.10.1 | Functional programming for Dart |
+| `device_info_plus` | ^11.4.0 | Device information utility |
+| `device_preview` | ^1.2.0 | Preview app on multiple devices |
+| `dio` | ^5.7.0 | Powerful HTTP client |
+| `dropdown_button2` | ^2.3.9 | Custom dropdowns |
+| `email_validator` | ^3.0.0 | Validate email formats |
+| `equatable` | ^2.0.7 | Simplifies equality comparisons |
+| `flutter_bloc` | ^8.1.6 | State management (Bloc) |
+| `flutter_otp_text_field` | ^1.4.0+2 | OTP input field UI |
+| `flutter_paypal_payment` | ^1.0.8 | PayPal integration |
+| `flutter_stripe` | ^11.4.0 | Stripe payment SDK |
+| `flutter_svg` | ^2.0.10+1 | Display SVG images |
+| `geocoding` | ^3.0.0 | Convert coordinates to addresses |
+| `geolocator` | 10.1.0 | Location services |
+| `go_router` | ^14.3.0 | Declarative routing |
+| `google_maps_flutter` | ^2.12.1 | Google Maps SDK |
+| `hive` | ^2.2.3 | Lightweight key-value DB |
+| `hive_flutter` | ^1.1.0 | Hive support for Flutter |
+| `image_picker` | ^1.1.2 | Pick images from gallery/camera |
+| `model_viewer_plus` | ^1.9.0 | Display 3D models |
+| `password_strength_checker` | ^1.2.4 | Validate password strength |
+| `path_provider` | ^2.1.5 | File system paths |
+| `paymob_payment` | ^0.0.1+1 | (Custom integration) |
+| `pdf` | ^3.10.4 | Generate PDFs |
+| `pretty_bloc_observer` | ^1.0.4 | Debug Bloc state transitions |
+| `printing` | ^5.12.0 | Print PDFs and images |
+| `radio_group_v2` | ^3.3.1 | Radio buttons group |
+| `shared_preferences` | ^2.3.3 | Store simple data locally |
+| `smooth_page_indicator` | ^1.2.0+3 | Page indicators |
 
 ---
 
