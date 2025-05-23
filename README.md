@@ -44,7 +44,7 @@ AR-Commerce is a mobile e-commerce application built with Flutter, designed excl
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/ar-commerce.git
+git clone https://github.com/Mario-228/ar_commerce.git
 cd ar-commerce
 ```
 
