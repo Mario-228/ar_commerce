@@ -73,7 +73,7 @@ flutter.sdk=D:\Flutter\flutter
 
 ### 5. Run on Android device
 
-Connect your ARCore-compatible Android device and run:
+Connect your Android device (ARCore support is optional). Then run:
 
 ```bash
 flutter run
