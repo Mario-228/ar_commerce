@@ -43,7 +43,7 @@ Future<void> showPaymentMethodBottomSheet({
               }),
               PaymentMethodListTileItem(
                 onTap: () => PaypalService.createPaypalPayment(context,
-                    cartModel: cartModel, orderModel: orderModel),
+                    cartModel: cartModel, orderModel: orderModel, orderId: id),
                 title: "paypal",
               ),
               PaymentMethodListTileItem(

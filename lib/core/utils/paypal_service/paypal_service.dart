@@ -11,6 +11,8 @@ import 'package:graduation_project_new_version/core/utils/paypal_service/paypal_
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 
+import '../payment_to_api/payment_to_api.dart';
+
 abstract class PaypalService {
   static PaypalTransactionModel _getTransactionFromCartModelModel(
       CartModel cartModel) {
@@ -69,7 +71,9 @@ abstract class PaypalService {
   }
 
   static void createPaypalPayment(BuildContext context,
-          {CartModel? cartModel, GetOrderModel? orderModel}) =>
+          {CartModel? cartModel,
+          GetOrderModel? orderModel,
+          required int orderId}) =>
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (BuildContext context) => PaypalCheckoutView(
@@ -83,9 +87,15 @@ abstract class PaypalService {
             ],
             note: "Contact us for any questions on your order.",
             onSuccess: (Map params) async {
-              log("onSuccess: $params");
-              showSnackBar(context, 'Payment Successfull');
-              Navigator.pop(context);
+              var result = await PaymentToApi.paymentToApi(
+                  transactionId: params['data']['id'],
+                  paymentMethod: "paypal",
+                  orderID: orderId);
+              result.fold((onError) {
+                showSnackBar(context, onError.errorMessage);
+              }, (onSuccess) {
+                showSnackBar(context, onSuccess);
+              });
             },
             onError: (error) {
               log("onError: $error");
