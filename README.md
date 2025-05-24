@@ -93,7 +93,7 @@ APK will be in: `build/app/outputs/flutter-apk/app-release.apk`
 
 ## 🔽 Download APK
 
-You can try the app directly by downloading the prebuilt APK from the link below:
+You can try the app directly by downloading the APK from the link below:
 
 👉 [Download AR-Commerce APK v1.0.0](https://github.com/Mario-228/ar_commerce/releases/tag/v1.0.0)
 
