@@ -91,6 +91,16 @@ APK will be in: `build/app/outputs/flutter-apk/app-release.apk`
 
 ---
 
+## 🔽 Download APK
+
+You can try the app directly by downloading the prebuilt APK from the link below:
+
+👉 [Download AR-Commerce APK v1.0.0](https://github.com/Mario-228/ar_commerce/releases/tag/v1.0.0)
+
+> Note: You may need to allow installs from unknown sources in your phone settings.
+
+---
+
 ## 🧩 Dependencies
 
 This project uses a number of Dart & Flutter packages. Below are the major dependencies listed in `pubspec.yaml`:
