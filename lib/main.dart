@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:graduation_project_new_version/core/utils/ar_service/ar_device_compatibility_checker.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
+import 'package:graduation_project_new_version/core/utils/get_it_service/get_it_service.dart';
 import 'package:graduation_project_new_version/core/utils/paymob_service/paymob_service.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/stripe_keys.dart';
 import 'package:graduation_project_new_version/features/favourites_feature/presentation/views_models/get_user_favourite_cubit/get_user_favourites_cubit.dart';
@@ -26,7 +27,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   await CacheHelper.init();
   await ARDeviceCompatibilityChecker.isDeviceARCoreSupported();
-
+  GetItService.init();
   Bloc.observer = PrettyBlocObserver();
   initializeUserInfoVariables();
   runApp(
