@@ -7,13 +7,18 @@ import 'get_user_states.dart';
 class GetUserCubit extends Cubit<GetUserStates> {
   GetUserCubit() : super(GetUserInitialState());
   static GetUserCubit get(BuildContext context) => BlocProvider.of(context);
+  bool isLoaded = false;
   Future<void> getUser() async {
+    if (isLoaded) return;
     emit(GetUserLoadingState());
     var result = await ProfileRepoImplementation()
         .getUserProfile(CacheHelper.getUserData().token); //temp token
     result.fold(
       (error) => emit(GetUserErrorState(errorMessage: error.errorMessage)),
-      (data) => emit(GetUserSuccessState(userModel: data)),
+      (data) {
+        isLoaded = true;
+        emit(GetUserSuccessState(userModel: data));
+      },
     );
   }
 }
