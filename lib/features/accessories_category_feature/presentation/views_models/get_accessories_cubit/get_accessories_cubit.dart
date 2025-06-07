@@ -9,18 +9,18 @@ class GetAccessoriesCubit extends Cubit<GetAccessoriesStates> {
   final AccessoriesRepo accessoriesRepo;
   static GetAccessoriesCubit get(BuildContext context) =>
       BlocProvider.of(context);
-
+  bool isLoaded = false;
   Future<void> getAccessories({required String endPoint}) async {
+    if (isLoaded) return;
     emit(GetAccessoriesLoadingState());
     var result =
         await accessoriesRepo.getAccessoriesProducts(endPoint: endPoint);
     result.fold(
-      (error) => emit(
-        GetAccessoriesFailedState(errorMsg: error.errorMessage),
-      ),
-      (data) => emit(
-        GetAccessoriesSuccessState(accessoriesProducts: data),
-      ),
+      (error) => emit(GetAccessoriesFailedState(errorMsg: error.errorMessage)),
+      (data) {
+        isLoaded = true;
+        emit(GetAccessoriesSuccessState(accessoriesProducts: data));
+      },
     );
   }
 }

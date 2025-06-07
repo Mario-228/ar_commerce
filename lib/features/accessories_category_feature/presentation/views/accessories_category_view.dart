@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/core/utils/get_it_service/get_it_service.dart';
 import '../../../../core/widgets/category_app_bar.dart';
 import '../../data/repos/accessories_repo_endpoints.dart';
-import '../../data/repos/accessories_repo_implementation.dart';
 import '../views_models/get_accessories_cubit/get_accessories_cubit.dart';
 import 'widgets/accessories_grid_view.dart';
 
@@ -15,12 +15,11 @@ class AccessoriesCategoryView extends StatelessWidget {
       appBar: const CategoryAppbar(
         title: "Accessories",
       ),
-      body: BlocProvider(
-        create: (context) =>
-            GetAccessoriesCubit(AccessoriesRepoImplementation())
-              ..getAccessories(
-                  endPoint: AccessoriesRepoEndpoints.product +
-                      AccessoriesRepoEndpoints.id),
+      body: BlocProvider.value(
+        value: GetItService.getIt.get<GetAccessoriesCubit>()
+          ..getAccessories(
+              endPoint: AccessoriesRepoEndpoints.product +
+                  AccessoriesRepoEndpoints.id),
         child: const AccessoriesProductsGridView(),
       ),
     );
