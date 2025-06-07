@@ -7,6 +7,7 @@ import 'package:graduation_project_new_version/features/furniture_category_featu
 import 'package:graduation_project_new_version/features/furniture_category_feature/presentation/views_models/get_furniture_cubit/get_furniture_cubit.dart';
 import 'package:graduation_project_new_version/features/others_category_feature/data/repos/others_repo_implementation.dart';
 import 'package:graduation_project_new_version/features/others_category_feature/presentation/views_models/get_others_cubit/get_others_cubit.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_user_cubit/get_user_cubit.dart';
 import '../../../features/home_feature/data/repos/home_repo_implementation.dart';
 import '../../../features/home_feature/presentation/views_models/get_product_cubit/get_product_cubit.dart';
@@ -30,5 +31,6 @@ abstract class GetItService {
     getIt.registerSingleton<GetOthersCubit>(
       GetOthersCubit(OthersRepoImplementation()),
     );
+    getIt.registerSingleton<GetOrderProfileCubit>(GetOrderProfileCubit());
   }
 }

@@ -7,8 +7,10 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
   GetOrderProfileCubit() : super(const GetOrderProfileState());
 
   static GetOrderProfileCubit get(context) => BlocProvider.of(context);
+  bool isLoaded = false;
   Map<int, bool> loadingStatus = <int, bool>{};
   Future<void> getOrders() async {
+    if (isLoaded) return;
     emit(state.copyWith(
       isLoading: true,
       errorMessage: null,
@@ -39,6 +41,7 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
           errorMessage: null,
           ordersLoadingStatus: loadingStatus,
         ));
+        isLoaded = true;
       },
     );
   }
@@ -64,13 +67,14 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
       },
       (value) {
         state.ordersLoadingStatus[orderId] = false;
+        state.pendingOrders.removeWhere((element) => element.id == orderId);
         emit(
-          state.copyWith(isDeleted: true, ordersLoadingStatus: {
-            ...state.ordersLoadingStatus,
-            orderId: false
-          }),
+          state.copyWith(
+            isDeleted: true,
+            ordersLoadingStatus: {...state.ordersLoadingStatus, orderId: false},
+            pendingOrders: state.pendingOrders,
+          ),
         );
-        getOrders();
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/core/utils/get_it_service/get_it_service.dart';
 import 'package:graduation_project_new_version/core/widgets/custom_back_ground_container.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/my_completed_orders_view_bloc_builder.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/my_pending_orders_view_bloc_builder.dart';
@@ -14,8 +15,8 @@ class MyOrdersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: BlocProvider(
-        create: (context) => GetOrderProfileCubit()..getOrders(),
+      child: BlocProvider.value(
+        value: GetItService.getIt.get<GetOrderProfileCubit>()..getOrders(),
         child: Scaffold(
           appBar: AppBar(
             actions: [
