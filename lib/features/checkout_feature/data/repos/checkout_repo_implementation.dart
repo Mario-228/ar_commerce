@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/api_service.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/base_url.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
@@ -30,9 +31,11 @@ class CheckoutRepoImplementation implements CheckoutRepo {
 
   @override
   Future<Either<Errors, void>> makePayment(
-      {required PaymentIntentInputModel model}) async {
+      {required PaymentIntentInputModel model,
+      required BuildContext context}) async {
     try {
-      var result = await StripeService().makePayment(model: model);
+      var result =
+          await StripeService().makePayment(model: model, context: context);
       return right(result);
     } on Exception catch (e) {
       return left(ServerError.fromDioError(e));

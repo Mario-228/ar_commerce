@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/paymob_service/paymob_service.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/payment_method_list_tile_item.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/payment_methods_cubit/payment_methods_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
-
 import '../../../../../core/utils/paypal_service/paypal_service.dart';
 
 Future<void> showPaymentMethodBottomSheet({
@@ -66,13 +64,11 @@ Future<void> showPaymentMethodBottomSheet({
 }
 
 Future<void> stripePayment(BuildContext context, double total) async {
-  await PaymentMethodsCubit.get(context)
-      .payWithStripe(
-    PaymentIntentInputModel(amount: total.toString()),
-  )
-      .then(
-    (value) {
-      if (context.mounted) GoRouter.of(context).pop();
-    },
-  );
+  await PaymentMethodsCubit.get(context).payWithStripe(
+      PaymentIntentInputModel(amount: total.toString()), context);
+  //     .then(
+  //   (value) {
+  //     if (context.mounted) GoRouter.of(context).pop();
+  //   },
+  // );
 }
