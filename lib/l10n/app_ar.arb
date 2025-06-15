@@ -6,11 +6,13 @@
   "login": "تسجيل الدخول",
    "enterYourEmail": "أدخل بريدك الإلكتروني",
   "insertValidEmail": "الرجاء إدخال بريد إلكتروني صالح",
+  "insertName": "أدخل الاسم",
   "createAccount": "إنشاء حساب",
   "enterDetails": "أدخل بياناتك لإنشاء حساب جديد",
   "fullName": "الاسم الكامل",
   "enterEmail": "أدخل البريد الإلكتروني",
   "phoneNumber": "رقم الهاتف",
+  "insertPhoneNumber": "أدخل رقم الهاتف",
   "password": "كلمة المرور",
   "selectGender": "اختر النوع",
   "male": "ذكر",
@@ -88,7 +90,7 @@
   "resendCode": "إعادة إرسال الرمز",
   "somethingWentWrong": "حدث خطأ ما",
   "codeSent": "تم إرسال الرمز",
-  "sendVerificationCode": "إرسال رمز التحقق"
-
+  "sendVerificationCode": "إرسال رمز التحقق",
+  "checkEmailVerification": "الرجاء التحقق من بريدك الإلكتروني للتحقق من الحساب"
 
 }

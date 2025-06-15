@@ -6,11 +6,13 @@
   "login": "Login",
   "enterYourEmail": "Enter your email",
   "insertValidEmail": "Insert valid email",
+  "insertName": "Insert Name",
   "createAccount": "Create Account",
   "enterDetails": "Enter your details for a new account",
   "fullName": "Full Name",
   "enterEmail": "Enter email address",
   "phoneNumber": "Phone Number",
+  "insertPhoneNumber": "Insert phone number",
   "password": "Password",
   "selectGender": "Select Gender:",
   "male": "male",
@@ -88,7 +90,8 @@
   "resendCode": "Resend Code",
   "somethingWentWrong": "Something went wrong please try again later ...",
   "codeSent": "Code sent",
-  "sendVerificationCode":"Send Verification Code"
+  "sendVerificationCode":"Send Verification Code",
+  "checkEmailVerification":"Check your email to verify your account"
 
 }
 
