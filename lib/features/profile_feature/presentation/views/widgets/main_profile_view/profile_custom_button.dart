@@ -12,6 +12,7 @@ class ProfileCustomButton extends StatelessWidget {
     this.height = 50.0,
     this.radius = 7.0,
     this.width = double.infinity,
+    this.icon = Icons.logout,
   });
   final String text;
   final Color color;
@@ -20,6 +21,8 @@ class ProfileCustomButton extends StatelessWidget {
   final double height;
   final double radius;
   final double width;
+  final IconData? icon;
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -33,7 +36,7 @@ class ProfileCustomButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.logout, color: AppColors.lightLimeGreen),
+            Icon(icon, color: AppColors.lightLimeGreen),
             const SizedBox(width: 10.0),
             Text(
               text,
