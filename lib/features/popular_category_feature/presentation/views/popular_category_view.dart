@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/utils/get_it_service/get_it_service.dart';
 import '../../../../core/widgets/category_app_bar.dart';
+import '../../../home_feature/presentation/views_models/get_product_cubit/get_product_cubit.dart';
 import 'widgets/popular_grid_view.dart';
 
 class PopularCategoryView extends StatelessWidget {
@@ -7,11 +10,13 @@ class PopularCategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CategoryAppbar(
+    return Scaffold(
+      appBar: const CategoryAppbar(
         title: "Popular",
       ),
-      body: PopularProductsGridView(),
+      body: BlocProvider.value(
+          value: GetItService.getIt.get<GetProductCubit>()..getProduct(),
+          child: PopularProductsGridView()),
     );
   }
 }
