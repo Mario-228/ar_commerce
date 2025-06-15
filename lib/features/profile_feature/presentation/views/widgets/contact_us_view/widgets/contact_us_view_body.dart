@@ -30,9 +30,15 @@ class ContactUsViewBody extends StatelessWidget {
             style: FontStyles.textStyleRegular14,
           ),
           SizedBox(height: 40),
-          ContactContainer(icon: Icons.phone, title: "+20 123 456 7890"),
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: ContactContainer(
+                  icon: Icons.phone, title: "+20 123 456 7890")),
           SizedBox(height: 40),
-          ContactContainer(icon: Icons.email, title: "3MKMart@gmail.com"),
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: ContactContainer(
+                  icon: Icons.email, title: "3MKMart@gmail.com")),
           SizedBox(height: 40),
           ContactContainer(
               icon: Icons.location_on,
