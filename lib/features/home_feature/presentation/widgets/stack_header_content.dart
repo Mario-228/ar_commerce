@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/utils/font_styles/font_styles.dart';
 
@@ -14,7 +15,7 @@ class StackHeaderContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         children: [
-          const Text("Set up your space easily",
+          Text(AppLocalizations.of(context)!.setupYourSpace,
               style: FontStyles.textStyleBold19),
           const SizedBox(height: 25.0),
         ],
