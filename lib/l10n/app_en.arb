@@ -4,6 +4,8 @@
   "loginToAccount": "Login to your MiniFurs account",
   "enterPassword": "Enter your Password",
   "login": "Login",
+  "enterYourEmail": "Enter your email",
+  "insertValidEmail": "Insert valid email",
   "createAccount": "Create Account",
   "enterDetails": "Enter your details for a new account",
   "fullName": "Full Name",
@@ -14,7 +16,7 @@
   "male": "male",
   "female": "female",
   "signUp": "Sign Up",
-  "alreadyHaveAccount": "Already have an account? Login Here",
+  "alreadyHaveAccount": "Already have an account?",
   "insertValidPhone": "Insert valid phone number",
   "passwordEmpty": "Password cannot be empty",
   "numberMustBe11Digits": "Number must be 11 digits",
@@ -57,12 +59,14 @@
   "paymentMethod": "Payment Method",
   "total": "Total",
   "orders": "Orders",
+  "successfulOrder": "Order Placed Successfully",
   "myDetails": "My Details",
   "deliveryAddress": "Delivery Address",
   "contactUs": "Contact Us",
   "logout": "Logout",
   "orderInvoice": "Order Invoice",
   "name": "Name",
+  "email": "Email",
   "phone": "Phone",
   "update": "Update",
   "addNewAddress": "Add New Address",
@@ -72,7 +76,9 @@
   "changeLanguage": "Switch to Arabic",
   "dontHaveAccount": "Don't have an account?",
   "createAccountHere": "Create Account Here",
-  "loginHere": "Login Here"
+  "loginHere": "Login Here",
+  "popular": "Popular"
+  
 
 }
 

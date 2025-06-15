@@ -5,6 +5,7 @@ import '../../../../core/widgets/category_app_bar.dart';
 import '../../data/repos/furniture_repo_endpoints.dart';
 import '../views_models/get_furniture_cubit/get_furniture_cubit.dart';
 import 'widgets/furniture_grid_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FurnitureCategoryView extends StatelessWidget {
   const FurnitureCategoryView({super.key});
@@ -12,7 +13,8 @@ class FurnitureCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CategoryAppbar(title: "Furniture"),
+      appBar: CategoryAppbar(
+          title: AppLocalizations.of(context)!.furnitureCategory),
       body: BlocProvider.value(
         value: GetItService.getIt.get<GetFurnitureCubit>()
           ..getFurnitureProducts(

@@ -5,6 +5,7 @@ import '../../../../core/widgets/category_app_bar.dart';
 import '../../data/repos/others_repo_endpoints.dart';
 import '../views_models/get_others_cubit/get_others_cubit.dart';
 import 'widgets/others_grid_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OthersCategoryView extends StatelessWidget {
   const OthersCategoryView({super.key});
@@ -12,8 +13,8 @@ class OthersCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CategoryAppbar(
-        title: "Others",
+      appBar: CategoryAppbar(
+        title: AppLocalizations.of(context)!.othersCategory,
       ),
       body: BlocProvider.value(
         value: GetItService.getIt.get<GetOthersCubit>()

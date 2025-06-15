@@ -4,6 +4,8 @@
   "loginToAccount": "سجّل الدخول إلى حسابك على MiniFurs",
   "enterPassword": "أدخل كلمة المرور",
   "login": "تسجيل الدخول",
+   "enterYourEmail": "أدخل بريدك الإلكتروني",
+  "insertValidEmail": "الرجاء إدخال بريد إلكتروني صالح",
   "createAccount": "إنشاء حساب",
   "enterDetails": "أدخل بياناتك لإنشاء حساب جديد",
   "fullName": "الاسم الكامل",
@@ -14,7 +16,7 @@
   "male": "ذكر",
   "female": "أنثى",
   "signUp": "تسجيل",
-  "alreadyHaveAccount": "هل لديك حساب بالفعل؟ سجّل الدخول من هنا",
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
   "insertValidPhone": "الرجاء إدخال رقم هاتف صحيح",
   "passwordEmpty": "لا يمكن ترك كلمة المرور فارغة",
   "numberMustBe11Digits": "يجب أن يحتوي الرقم على 11 رقمًا",
@@ -57,12 +59,14 @@
   "paymentMethod": "طريقة الدفع",
   "total": "الإجمالي",
   "orders": "الطلبات",
+  "successfulOrder": "تم الطلب بنجاح",
   "myDetails": "بياناتي",
   "deliveryAddress": "عنوان التوصيل",
   "contactUs": "اتصل بنا",
   "logout": "تسجيل الخروج",
   "orderInvoice": "فاتورة الطلب",
   "name": "الاسم",
+  "email": "البريد الإلكتروني",
   "phone": "رقم الهاتف",
   "update": "تحديث",
   "addNewAddress": "أضف عنوانًا جديدًا",
@@ -72,7 +76,8 @@
   "changeLanguage": "اللغة الانجليزية",
   "dontHaveAccount": "ليس لديك حساب؟",
   "createAccountHere": "أنشئ حساب من هنا",
-  "loginHere": "سجّل الدخول من هنا"
+  "loginHere": "سجّل الدخول من هنا",
+    "popular": "الأكثر شعبية"
 
 
 }

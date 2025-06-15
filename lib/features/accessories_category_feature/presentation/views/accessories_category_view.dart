@@ -5,6 +5,7 @@ import '../../../../core/widgets/category_app_bar.dart';
 import '../../data/repos/accessories_repo_endpoints.dart';
 import '../views_models/get_accessories_cubit/get_accessories_cubit.dart';
 import 'widgets/accessories_grid_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccessoriesCategoryView extends StatelessWidget {
   const AccessoriesCategoryView({super.key});
@@ -12,8 +13,8 @@ class AccessoriesCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CategoryAppbar(
-        title: "Accessories",
+      appBar: CategoryAppbar(
+        title: AppLocalizations.of(context)!.accessoriesCategory,
       ),
       body: BlocProvider.value(
         value: GetItService.getIt.get<GetAccessoriesCubit>()

@@ -5,6 +5,7 @@ import '../../../../core/widgets/category_app_bar.dart';
 import '../../data/repos/clothes_repo_endpoints.dart';
 import '../views_models/get_clothes_cubit/get_clothes_cubit.dart';
 import 'widgets/clothes_grid_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ClothesCategoryView extends StatelessWidget {
   const ClothesCategoryView({super.key});
@@ -12,8 +13,8 @@ class ClothesCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CategoryAppbar(
-        title: "Clothes",
+      appBar: CategoryAppbar(
+        title: AppLocalizations.of(context)!.clothesCategory,
       ),
       body: BlocProvider.value(
         value: GetItService.getIt.get<GetClothesCubit>()
