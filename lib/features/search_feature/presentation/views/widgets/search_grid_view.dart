@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_new_version/features/search_feature/presentation/models_views/get_search_products_cubit/get_search_products_cubit.dart';
 import 'package:graduation_project_new_version/features/search_feature/presentation/models_views/get_search_products_cubit/get_search_products_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../home_feature/presentation/widgets/custom_product_item.dart';
 
 class SearchGridView extends StatelessWidget {
@@ -39,9 +40,9 @@ class SearchGridView extends StatelessWidget {
             );
           }
         } else {
-          return const Center(
+          return Center(
             child: Text(
-              "Please enter a search term",
+              AppLocalizations.of(context)!.enterSearchTerm,
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
           );
