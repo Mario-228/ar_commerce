@@ -26,6 +26,7 @@
   "resetPassword": "إعادة تعيين كلمة المرور",
   "enterNewPassword": "أدخل كلمة مرور جديدة",
   "restoreAccount": "استعادة الحساب",
+  "passwordResetSuccessfully": "تم إعادة تعيين كلمة المرور بنجاح",
   "confirm": "تأكيد",
   "setupYourSpace": "جهّز مساحتك بسهولة",
   "latestRelease": "أحدث الإصدارات",

@@ -26,6 +26,7 @@
   "resetPassword": "Reset Password",
   "enterNewPassword": "Enter New Password",
   "restoreAccount": "Restore Account",
+  "passwordResetSuccessfully": "Password reset successfully",
   "confirm": "Confirm",
   "setupYourSpace": "Set up your space easily",
   "latestRelease": "Latest Release",
