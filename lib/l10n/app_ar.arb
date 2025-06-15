@@ -84,7 +84,8 @@
   "enterValidOTP": "الرجاء إدخال OTP صحيح",
   "resendCode": "إعادة إرسال الرمز",
   "somethingWentWrong": "حدث خطأ ما",
-  "codeSent": "تم إرسال الرمز"
+  "codeSent": "تم إرسال الرمز",
+  "sendVerificationCode": "إرسال رمز التحقق"
 
 
 }

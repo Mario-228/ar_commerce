@@ -84,7 +84,8 @@
   "enterValidOTP":"Please enter a valid OTP",
   "resendCode": "Resend Code",
   "somethingWentWrong": "Something went wrong please try again later ...",
-  "codeSent": "Code sent"
+  "codeSent": "Code sent",
+  "sendVerificationCode":"Send Verification Code"
 
 }
 
