@@ -37,7 +37,7 @@ class OrderDetailItem extends StatelessWidget {
                   OutlinedButton.icon(
                     onPressed: () async => await showPaymentMethodBottomSheet(
                       context: context,
-                      total: order.total,
+                      total: order.total + 20.0,
                       orderModel: order,
                       id: order.id,
                       afterPayment: () =>
