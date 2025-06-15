@@ -77,8 +77,13 @@
   "dontHaveAccount": "Don't have an account?",
   "createAccountHere": "Create Account Here",
   "loginHere": "Login Here",
-  "popular": "Popular"
-  
+  "popular": "Popular",
+  "emailVerification": "Email Verification",
+  "emailVerificationSuccess": "Email verified successfully",
+  "enterValidOTP":"Please enter a valid OTP",
+  "resendCode": "Resend Code",
+  "somethingWentWrong": "Something went wrong please try again later ...",
+  "codeSent": "Code sent"
 
 }
 

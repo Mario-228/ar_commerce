@@ -77,7 +77,13 @@
   "dontHaveAccount": "ليس لديك حساب؟",
   "createAccountHere": "أنشئ حساب من هنا",
   "loginHere": "سجّل الدخول من هنا",
-    "popular": "الأكثر شعبية"
+  "popular": "الأكثر شعبية",
+  "emailVerification": "التحقق من البريد الإلكتروني",
+  "emailVerificationSuccess": "تم التحقق من البريد الإلكتروني بنجاح",
+  "enterValidOTP": "الرجاء إدخال OTP صحيح",
+  "resendCode": "إعادة إرسال الرمز",
+  "somethingWentWrong": "حدث خطأ ما",
+  "codeSent": "تم إرسال الرمز"
 
 
 }
