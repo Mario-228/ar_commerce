@@ -6,6 +6,7 @@ import 'package:graduation_project_new_version/core/widgets/custom_appbar.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/checkout_view_body.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/checkout_cubit/checkout_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key, required this.cartModel});
@@ -19,7 +20,7 @@ class CheckoutView extends StatelessWidget {
           canGoBack: true,
           leadingOnPressed: () =>
               GoRouter.of(context).pushReplacement(AppRouters.kHomeView),
-          title: "Checkout",
+          title: AppLocalizations.of(context)!.checkout,
           actions: [
             Builder(
               builder: (context) => IconButton(

@@ -9,6 +9,7 @@ import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_footer_widget.dart';
 import '../../views_models/login_cubit/login_cubit.dart';
 import '../../views_models/login_cubit/login_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
   const CustomFooterWidgetLoginBlocBuilder({
@@ -32,9 +33,9 @@ class CustomFooterWidgetLoginBlocBuilder extends StatelessWidget {
             onPressedButton: () async {
               loginCubitFunction(context);
             },
-            buttonTitle: "Login",
-            footerText: "Don't have an account? ",
-            footerLinkText: "Create Account Here",
+            buttonTitle: AppLocalizations.of(context)!.login,
+            footerText: AppLocalizations.of(context)!.dontHaveAccount,
+            footerLinkText: AppLocalizations.of(context)!.createAccountHere,
             onPressedFooterText: () =>
                 GoRouter.of(context).push(AppRouters.kSignUpView),
           );

@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/data/models/address_model.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/checkout_cubit/checkout_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
 class SelectDeliveryStateDropDownMenu extends StatefulWidget {
@@ -22,8 +23,8 @@ class _SelectDeliveryStateDropDownMenuState
     return DropdownButton2<int>(
       underline: const SizedBox(),
       isExpanded: true,
-      hint: const Text(
-        'Select delivery state',
+      hint: Text(
+        AppLocalizations.of(context)!.selectDeliveryState,
         style: TextStyle(fontSize: 14),
       ),
       items: widget.items.asMap().entries.map((entry) {

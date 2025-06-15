@@ -4,6 +4,7 @@ import 'package:graduation_project_new_version/features/cart_feature/presentatio
 
 import '../../../../../core/utils/font_styles/font_styles.dart';
 import '../../views_models/cart_cubit/cart_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TotalCartBlocBuilder extends StatelessWidget {
   const TotalCartBlocBuilder({
@@ -18,13 +19,13 @@ class TotalCartBlocBuilder extends StatelessWidget {
           return FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              "${state.cartModel.totalCart} LE",
+              "${state.cartModel.totalCart} ${AppLocalizations.of(context)!.le}",
               style: FontStyles.textStyleBold24,
             ),
           );
         }
         return Text(
-          "0 LE",
+          "0 ${AppLocalizations.of(context)!.le}",
           style: FontStyles.textStyleBold24,
         );
       },
