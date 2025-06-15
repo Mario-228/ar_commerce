@@ -3,6 +3,7 @@ import 'package:graduation_project_new_version/features/checkout_feature/present
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/delete_order_button_bloc_consumer.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/order_detail_pdf.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
 
 class OrderDetailItem extends StatelessWidget {
   const OrderDetailItem({
@@ -39,6 +40,8 @@ class OrderDetailItem extends StatelessWidget {
                       total: order.total,
                       orderModel: order,
                       id: order.id,
+                      afterPayment: () =>
+                          GetOrderProfileCubit.get(context).getOrders(),
                     ),
                     icon: const Icon(Icons.payment),
                     label: const Text("Pay Now"),

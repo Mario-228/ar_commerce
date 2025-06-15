@@ -14,6 +14,7 @@ import 'package:graduation_project_new_version/core/utils/stripe_service/models/
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/init_payment_sheet_input_model/init_payment_sheet_input_model.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_model/payment_intent_model.dart';
+import 'package:graduation_project_new_version/core/utils/stripe_service/update_service.dart';
 import '../../widgets/loading_without_action.dart';
 import 'stripe_keys.dart';
 
@@ -74,7 +75,7 @@ class StripeService {
     if (context.mounted) LoadingWithoutAction.show(context);
     if (paymentIntentDetails.status == "succeeded") {
       if (context.mounted) {
-        var result = await stripePaymentWithOrderId(
+        var result = await updateOrderStatus(
             orderId: orderId, transactionId: paymentIntentDetails.id!);
         result.fold((onError) async {
           await CacheHelper.saveData<bool>(orderId.toString(), false);

@@ -14,6 +14,7 @@ Future<void> showPaymentMethodBottomSheet({
   CartModel? cartModel,
   GetOrderModel? orderModel,
   required int id,
+  Future<void> Function()? afterPayment,
 }) async {
   showModalBottomSheet(
     context: context,
@@ -36,21 +37,36 @@ Future<void> showPaymentMethodBottomSheet({
               const SizedBox(height: 20),
               Builder(builder: (context) {
                 return PaymentMethodListTileItem(
-                    onTap: () async => await stripePayment(context, total, id),
+                    onTap: () async {
+                      await stripePayment(context, total, id);
+                      if (afterPayment != null) {
+                        await afterPayment();
+                      }
+                    },
                     title: "stripe");
               }),
               PaymentMethodListTileItem(
-                onTap: () => PaypalService.createPaypalPayment(context,
-                    cartModel: cartModel, orderModel: orderModel, orderId: id),
+                onTap: () async {
+                  PaypalService.createPaypalPayment(context,
+                      cartModel: cartModel,
+                      orderModel: orderModel,
+                      orderId: id);
+                  if (afterPayment != null) {
+                    await afterPayment();
+                  }
+                },
                 title: "paypal",
               ),
               PaymentMethodListTileItem(
-                onTap: () {
+                onTap: () async {
                   PaymobService.payWithPaymob(
                     context: context,
                     price: total,
                     orderID: id,
                   );
+                  if (afterPayment != null) {
+                    await afterPayment();
+                  }
                   // GoRouter.of(context).pop();
                 },
                 title: "paymob",
