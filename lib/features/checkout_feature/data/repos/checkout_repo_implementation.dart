@@ -32,10 +32,11 @@ class CheckoutRepoImplementation implements CheckoutRepo {
   @override
   Future<Either<Errors, void>> makePayment(
       {required PaymentIntentInputModel model,
-      required BuildContext context}) async {
+      required BuildContext context,
+      required int orderId}) async {
     try {
-      var result =
-          await StripeService().makePayment(model: model, context: context);
+      var result = await StripeService()
+          .makePayment(model: model, context: context, orderId: orderId);
       return right(result);
     } on Exception catch (e) {
       return left(ServerError.fromDioError(e));

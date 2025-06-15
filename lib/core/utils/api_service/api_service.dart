@@ -58,6 +58,17 @@ class ApiService {
     return response.data;
   }
 
+  Future<Map<String, dynamic>> putDataForStripe(String endPoint) async {
+    var response = await dioHelper.put(
+      endPoint,
+      options: Options(headers: {
+        'ngrok-skip-browser-warning': 'true',
+        'Authorization': 'Bearer ${CacheHelper.getUserData().token}',
+      }),
+    );
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> postDataWithToken(
       String endPoint, String token, Map<String, dynamic> query) async {
     var response = await dioHelper.post(

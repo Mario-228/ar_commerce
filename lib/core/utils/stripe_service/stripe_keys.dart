@@ -7,5 +7,5 @@ abstract class StripeKeys {
   static const String createCustomerIdUrl = "customers";
   static const String publishKey =
       "pk_test_51QrdCTPjQ1S8Quy0ipVYWDqDWrfEtRQ109iOo9wJphThx8Sa0xk9qG4FZR1JVLggjtDiw8EhAoRaOFJ7LUZZJlgX00XYJhzBXl";
-  static const String stripeEndPoint = "create/checkout/session/";
+  static const String stripeEndPoint = "Orders/";
 }

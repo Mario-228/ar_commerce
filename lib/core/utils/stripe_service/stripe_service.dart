@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +8,13 @@ import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/errors/errors.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/api_service.dart';
 import 'package:graduation_project_new_version/core/utils/api_service/base_url.dart';
+import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/ephemeral_key_model/ephemeral_key_model.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/init_payment_sheet_input_model/init_payment_sheet_input_model.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_model/payment_intent_model.dart';
+import '../../widgets/loading_without_action.dart';
 import 'stripe_keys.dart';
 
 class StripeService {
@@ -52,7 +56,8 @@ class StripeService {
 
   Future<void> makePayment(
       {required PaymentIntentInputModel model,
-      required BuildContext context}) async {
+      required BuildContext context,
+      required int orderId}) async {
     var data = await createPaymentIntent(model);
     //before creating the ephemeral key we must create the customer id first
     // var ephemeralKeyModel = await createEphemeralKey(model.customerId);
@@ -65,10 +70,20 @@ class StripeService {
     await initPaymentSheet(initPaymentSheetInputModel: inputModel);
     await presentPaymentSheet();
     var paymentIntentDetails = await retrievePaymentIntent(data.id!);
+    log("The payment intent id is = ${paymentIntentDetails.id}");
+    if (context.mounted) LoadingWithoutAction.show(context);
     if (paymentIntentDetails.status == "succeeded") {
       if (context.mounted) {
-        showSnackBar(context, "Payment Success");
-        GoRouter.of(context).pop();
+        var result = await stripePaymentWithOrderId(
+            orderId: orderId, transactionId: paymentIntentDetails.id!);
+        result.fold((onError) async {
+          await CacheHelper.saveData<bool>(orderId.toString(), false);
+          if (context.mounted) showSnackBar(context, onError.errorMessage);
+        }, (onSuccess) {
+          CacheHelper.saveData<bool>(orderId.toString(), true);
+          showSnackBar(context, "Payment Success");
+        });
+        if (context.mounted) GoRouter.of(context).pop();
       }
     } else {
       if (context.mounted) {
@@ -76,6 +91,7 @@ class StripeService {
         GoRouter.of(context).pop();
       }
     }
+    if (context.mounted) LoadingWithoutAction.hide(context);
   }
 
   Future<EphemeralKeyModel> createEphemeralKey(String customerId) async {
@@ -93,12 +109,12 @@ class StripeService {
 
 //////From ApI With orderId/////
   Future<Either<Errors, String>> stripePaymentWithOrderId(
-      {required int orderId}) async {
+      {required int orderId, required String transactionId}) async {
     try {
-      var reponse = await ApiService(BaseUrl.authentication)
-          .postData(StripeKeys.stripeEndPoint + orderId.toString(), null);
-      return right(
-          reponse['message']); //may be the key is url instead of message
+      var reponse = await ApiService(BaseUrl.products).putDataForStripe(
+          "${StripeKeys.stripeEndPoint}$orderId/$transactionId");
+      log("The reponse from api is = $reponse");
+      return right("Success");
     } on Exception catch (e) {
       return left(ServerError.fromDioError(e));
     }

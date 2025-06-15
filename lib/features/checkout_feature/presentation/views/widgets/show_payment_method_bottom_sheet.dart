@@ -36,7 +36,7 @@ Future<void> showPaymentMethodBottomSheet({
               const SizedBox(height: 20),
               Builder(builder: (context) {
                 return PaymentMethodListTileItem(
-                    onTap: () async => await stripePayment(context, total),
+                    onTap: () async => await stripePayment(context, total, id),
                     title: "stripe");
               }),
               PaymentMethodListTileItem(
@@ -63,9 +63,10 @@ Future<void> showPaymentMethodBottomSheet({
   );
 }
 
-Future<void> stripePayment(BuildContext context, double total) async {
+Future<void> stripePayment(
+    BuildContext context, double total, int orderId) async {
   await PaymentMethodsCubit.get(context).payWithStripe(
-      PaymentIntentInputModel(amount: total.toString()), context);
+      PaymentIntentInputModel(amount: total.toString()), context, orderId);
   //     .then(
   //   (value) {
   //     if (context.mounted) GoRouter.of(context).pop();

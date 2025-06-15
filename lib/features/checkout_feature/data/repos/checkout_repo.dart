@@ -10,7 +10,9 @@ import '../../../../core/utils/stripe_service/models/payment_intent_input_model/
 abstract class CheckoutRepo {
   Future<Either<Errors, List<AddressModel>>> getAddresses();
   Future<Either<Errors, void>> makePayment(
-      {required PaymentIntentInputModel model, required BuildContext context});
+      {required PaymentIntentInputModel model,
+      required BuildContext context,
+      required int orderId});
   Future<Either<Errors, StoreOrderOutputModel>> storeOrder(
       {required StoreAddressInputModel address});
   Future<Either<Errors, String>> deleteAddress({required int addressId});
