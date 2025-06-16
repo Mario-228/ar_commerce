@@ -7,6 +7,7 @@ import '../../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../views_models/get_user_cubit/get_user_cubit.dart';
 import '../../../views_models/get_user_cubit/get_user_states.dart';
 import 'user_profile_header.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UserProfileHeaderBlocBuilder extends StatelessWidget {
   const UserProfileHeaderBlocBuilder({
@@ -18,8 +19,8 @@ class UserProfileHeaderBlocBuilder extends StatelessWidget {
     return BlocConsumer<GetUserCubit, GetUserStates>(
       listener: (context, state) {
         if (state is GetUserErrorState) {
-          showSnackBar(context,
-              "Something Wrong Happened Try To Click the Refresh Button");
+          showSnackBar(
+              context, AppLocalizations.of(context)!.somethingWentWrongReload);
         }
       },
       builder: (context, state) {
