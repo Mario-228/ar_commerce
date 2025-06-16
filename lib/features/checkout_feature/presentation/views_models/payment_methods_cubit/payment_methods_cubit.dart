@@ -10,9 +10,11 @@ class PaymentMethodsCubit extends Cubit<PaymentMethodsStates> {
 
   static PaymentMethodsCubit get(BuildContext context) =>
       BlocProvider.of(context);
-  Future<void> payWithStripe(PaymentIntentInputModel model) async {
+  Future<void> payWithStripe(
+      PaymentIntentInputModel model, BuildContext context, int orderId) async {
     emit(StripeLoadingState());
-    var response = await CheckoutRepoImplementation().makePayment(model: model);
+    var response = await CheckoutRepoImplementation()
+        .makePayment(model: model, context: context, orderId: orderId);
     response.fold(
       (error) => emit(StripeErrorState(error: error.errorMessage)),
       (value) => emit(StripeSuccessState()),

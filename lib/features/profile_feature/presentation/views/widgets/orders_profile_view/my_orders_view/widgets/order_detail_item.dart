@@ -4,6 +4,7 @@ import 'package:graduation_project_new_version/features/profile_feature/data/mod
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/delete_order_button_bloc_consumer.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/order_detail_pdf.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
 
 class OrderDetailItem extends StatelessWidget {
   const OrderDetailItem({
@@ -37,9 +38,11 @@ class OrderDetailItem extends StatelessWidget {
                   OutlinedButton.icon(
                     onPressed: () async => await showPaymentMethodBottomSheet(
                       context: context,
-                      total: order.total,
+                      total: order.total + 20.0,
                       orderModel: order,
                       id: order.id,
+                      afterPayment: () =>
+                          GetOrderProfileCubit.get(context).getOrders(),
                     ),
                     icon: const Icon(Icons.payment),
                     label: Text(AppLocalizations.of(context)!.payNow),

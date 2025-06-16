@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/paymob_service/paymob_service.dart';
 import 'package:graduation_project_new_version/core/utils/stripe_service/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:graduation_project_new_version/features/cart_feature/data/models/cart_model.dart';
@@ -16,6 +15,7 @@ Future<void> showPaymentMethodBottomSheet({
   CartModel? cartModel,
   GetOrderModel? orderModel,
   required int id,
+  Future<void> Function()? afterPayment,
 }) async {
   showModalBottomSheet(
     context: context,
@@ -38,21 +38,36 @@ Future<void> showPaymentMethodBottomSheet({
               const SizedBox(height: 20),
               Builder(builder: (context) {
                 return PaymentMethodListTileItem(
-                    onTap: () async => await stripePayment(context, total),
+                    onTap: () async {
+                      await stripePayment(context, total, id);
+                      if (afterPayment != null) {
+                        await afterPayment();
+                      }
+                    },
                     title: "stripe");
               }),
               PaymentMethodListTileItem(
-                onTap: () => PaypalService.createPaypalPayment(context,
-                    cartModel: cartModel, orderModel: orderModel, orderId: id),
+                onTap: () async {
+                  PaypalService.createPaypalPayment(context,
+                      cartModel: cartModel,
+                      orderModel: orderModel,
+                      orderId: id);
+                  if (afterPayment != null) {
+                    await afterPayment();
+                  }
+                },
                 title: "paypal",
               ),
               PaymentMethodListTileItem(
-                onTap: () {
+                onTap: () async {
                   PaymobService.payWithPaymob(
                     context: context,
                     price: total,
                     orderID: id,
                   );
+                  if (afterPayment != null) {
+                    await afterPayment();
+                  }
                   // GoRouter.of(context).pop();
                 },
                 title: "paymob",
@@ -65,14 +80,13 @@ Future<void> showPaymentMethodBottomSheet({
   );
 }
 
-Future<void> stripePayment(BuildContext context, double total) async {
-  await PaymentMethodsCubit.get(context)
-      .payWithStripe(
-    PaymentIntentInputModel(amount: total.toString()),
-  )
-      .then(
-    (value) {
-      if (context.mounted) GoRouter.of(context).pop();
-    },
-  );
+Future<void> stripePayment(
+    BuildContext context, double total, int orderId) async {
+  await PaymentMethodsCubit.get(context).payWithStripe(
+      PaymentIntentInputModel(amount: total.toString()), context, orderId);
+  //     .then(
+  //   (value) {
+  //     if (context.mounted) GoRouter.of(context).pop();
+  //   },
+  // );
 }

@@ -49,7 +49,7 @@ class CheckoutTotalWithShipping extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.0),
-            PayNowButtonBlocConsumer(total: total, cartModel: cartModel),
+            PayNowButtonBlocConsumer(total: total + 20.0, cartModel: cartModel),
             SizedBox(height: 30.0),
           ],
         ),
