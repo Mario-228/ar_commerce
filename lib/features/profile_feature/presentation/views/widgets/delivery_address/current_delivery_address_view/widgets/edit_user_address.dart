@@ -4,6 +4,7 @@ import 'package:graduation_project_new_version/features/checkout_feature/data/mo
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/widgets/edit_address_button_bloc_consumer.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/delivery_address/current_delivery_address_view/widgets/edit_user_address_input_fields_section.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/edit_address_cubit/edit_address_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../../../core/utils/font_styles/font_styles.dart';
 
 class EditUserAddressView extends StatelessWidget {
@@ -15,16 +16,16 @@ class EditUserAddressView extends StatelessWidget {
       create: (context) =>
           EditAddressCubit()..changeTextEditingControllers(addressModel),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Edit Address")),
+        appBar: AppBar(title: Text(AppLocalizations.of(context)!.editAddress)),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(children: [
-              const Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Delivery Details",
+                  AppLocalizations.of(context)!.deliveryDetails,
                   style: FontStyles.textStyleRegular16,
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/font_styles/font_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomLatestRelease extends StatelessWidget {
   const CustomLatestRelease({
@@ -11,8 +12,8 @@ class CustomLatestRelease extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          "Latest Release",
+        Text(
+          AppLocalizations.of(context)!.latestRelease,
           style: FontStyles.textStyleSemiBold20,
         ),
         // GestureDetector(

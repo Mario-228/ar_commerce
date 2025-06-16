@@ -4,6 +4,7 @@ import 'package:graduation_project_new_version/features/login_feature/presentati
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../views_models/change_visibility_cubit/change_visibility_cubit.dart';
 import '../../views_models/change_visibility_cubit/change_visibility_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomPasswordFieldBlocBuilder extends StatelessWidget {
   const CustomPasswordFieldBlocBuilder({
@@ -17,13 +18,13 @@ class CustomPasswordFieldBlocBuilder extends StatelessWidget {
       return CustomTextFormField(
         isPassword: ChangeVisibilityCubit.get(context).isVisible,
         type: TextInputType.visiblePassword,
-        labelText: 'Password',
+        labelText: AppLocalizations.of(context)!.password,
         controller: LoginCubit.get(context).passwordController,
         icon: ChangeVisibilityCubit.get(context).eye,
         onPressed: ChangeVisibilityCubit.get(context).changeLoginVisibility,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Enter your Password';
+            return AppLocalizations.of(context)!.enterPassword;
           }
           return null;
         },

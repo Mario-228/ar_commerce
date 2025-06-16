@@ -5,6 +5,7 @@ import 'package:graduation_project_new_version/features/checkout_feature/present
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/custom_checkout_text_form_field_section.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/get_addresses_loading_widget_bloc_consumer.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/select_delivery_state_drop_down_menu_bloc_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutViewBody extends StatelessWidget {
   const CheckoutViewBody(
@@ -21,7 +22,7 @@ class CheckoutViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20.0),
-            Text("Select Delivery State:",
+            Text(AppLocalizations.of(context)!.selectDeliveryState,
                 style: FontStyles.textStyleRegular16),
             SizedBox(height: 20.0),
             GetAddressesLoadingWidgetBlocConsumer(),

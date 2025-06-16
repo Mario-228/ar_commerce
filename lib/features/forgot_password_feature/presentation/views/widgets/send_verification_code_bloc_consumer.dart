@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_cubit.dart';
 import 'package:graduation_project_new_version/features/forgot_password_feature/presentation/views_models/reset_password_cubit/forgot_password_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/app_routers/app_routers.dart';
 import '../../../../../core/utils/functions/show_snack_bar.dart';
@@ -18,11 +19,12 @@ class SendVerificationCodeBlocConusmer extends StatelessWidget {
     return BlocConsumer<ForgotPasswordCubit, ForgotPasswordStates>(
       listener: (context, state) {
         if (state is ForgotPasswordSuccess) {
-          showSnackBar(context, 'Code sent successfully');
+          showSnackBar(context, AppLocalizations.of(context)!.codeSent);
           GoRouter.of(context).push(AppRouters.kResetPasswordView,
               extra: ForgotPasswordCubit.get(context).emailController.text);
         } else if (state is ForgotPasswordError) {
-          showSnackBar(context, "Something went wrong please try again");
+          showSnackBar(
+              context, AppLocalizations.of(context)!.somethingWentWrong);
         }
       },
       builder: (context, state) {
@@ -30,7 +32,7 @@ class SendVerificationCodeBlocConusmer extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else {
           return CustomMaterialButton(
-            text: "Send Verification Code",
+            text: AppLocalizations.of(context)!.sendVerificationCode,
             color: AppColors.darkGreen,
             onPressed: () async {
               if (ForgotPasswordCubit.get(context)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_new_version/core/utils/functions/show_snack_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../views_models/add_new_address_cubit/add_new_address_cubit.dart';
@@ -18,7 +19,8 @@ class AddAddressButtonBlocCounsumer extends StatelessWidget {
         if (state is AddNewAddressErrorState) {
           showSnackBar(context, state.errorMessage);
         } else if (state is AddNewAddressSuccessState) {
-          showSnackBar(context, "Address added successfully");
+          showSnackBar(
+              context, AppLocalizations.of(context)!.addressAddedSuccessfully);
         }
       },
       builder: (context, state) {
@@ -29,7 +31,7 @@ class AddAddressButtonBlocCounsumer extends StatelessWidget {
         } else {
           return CustomMaterialButton(
             color: AppColors.darkGreen,
-            text: "Add New Address",
+            text: AppLocalizations.of(context)!.addNewAddress,
             onPressed: () async {
               if (AddNewAddressCubit.get(context)
                   .formKey

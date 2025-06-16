@@ -7,6 +7,7 @@ import 'package:graduation_project_new_version/features/cart_feature/presentatio
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 import '../../views_models/cart_cubit/cart_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeleteAndCheckoutCart extends StatelessWidget {
   const DeleteAndCheckoutCart({
@@ -23,7 +24,7 @@ class DeleteAndCheckoutCart extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Total:",
+                    AppLocalizations.of(context)!.total,
                     style: FontStyles.textStyleGreySemiBold20,
                   ),
                   SizedBox(width: 10.0),
@@ -41,7 +42,7 @@ class DeleteAndCheckoutCart extends StatelessWidget {
         Expanded(
           child: CustomMaterialButton(
             color: AppColors.darkGreen,
-            text: "Checkout",
+            text: AppLocalizations.of(context)!.checkout,
             onPressed: () => passCartToCheckout(context),
           ),
         ),

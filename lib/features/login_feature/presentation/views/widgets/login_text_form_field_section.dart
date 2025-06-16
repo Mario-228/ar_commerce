@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/login_feature/presentation/views_models/login_cubit/login_cubit.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import 'custom_password_field_bloc_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginTextFormFieldSection extends StatelessWidget {
   const LoginTextFormFieldSection({
@@ -15,13 +16,13 @@ class LoginTextFormFieldSection extends StatelessWidget {
       children: [
         CustomTextFormField(
           type: TextInputType.emailAddress,
-          labelText: 'Enter Email Address',
+          labelText: AppLocalizations.of(context)!.enterEmail,
           controller: LoginCubit.get(context).emailController,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Enter your email';
+              return AppLocalizations.of(context)!.enterYourEmail;
             } else if (!(EmailValidator.validate(value))) {
-              return "Insert valid email";
+              return AppLocalizations.of(context)!.insertValidEmail;
             } else {
               return null;
             }

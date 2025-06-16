@@ -3,6 +3,7 @@ import 'package:graduation_project_new_version/features/cart_feature/data/models
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/pay_now_button_bloc_consumer.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutTotalWithShipping extends StatelessWidget {
   const CheckoutTotalWithShipping(
@@ -18,32 +19,32 @@ class CheckoutTotalWithShipping extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              leading: const Text(
-                "Subtotal",
-                style: FontStyles.textStyleSemiBold14,
-              ),
-              trailing: Text(
-                "$total L.E",
-                style: FontStyles.textStyleSemiBold14,
-              ),
-            ),
-            const ListTile(
               leading: Text(
-                "Shipping",
+                AppLocalizations.of(context)!.subtotal,
                 style: FontStyles.textStyleSemiBold14,
               ),
               trailing: Text(
-                "20 L.E",
+                "$total ${AppLocalizations.of(context)!.le}",
                 style: FontStyles.textStyleSemiBold14,
               ),
             ),
             ListTile(
-              leading: const Text(
-                "Total",
+              leading: Text(
+                AppLocalizations.of(context)!.shipping,
+                style: FontStyles.textStyleSemiBold14,
+              ),
+              trailing: Text(
+                "20 ${AppLocalizations.of(context)!.le}",
+                style: FontStyles.textStyleSemiBold14,
+              ),
+            ),
+            ListTile(
+              leading: Text(
+                AppLocalizations.of(context)!.total,
                 style: FontStyles.textStyleBoldOrange16,
               ),
               trailing: Text(
-                "${total + 20} L.E",
+                "${total + 20} ${AppLocalizations.of(context)!.le}",
                 style: FontStyles.textStyleBoldOrange16,
               ),
             ),

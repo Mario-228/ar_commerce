@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/main_profile_view/change_language_button.dart';
 import 'profile_custom_button_bloc_builder.dart';
 import 'profile_information_list_view.dart';
 import 'user_profile_header_bloc_builder.dart';
@@ -18,8 +19,10 @@ class ProfileViewBody extends StatelessWidget {
             UserProfileHeaderBlocBuilder(),
             SizedBox(height: 50.0),
             ProfileInformationListView(),
-            SizedBox(height: 60.0),
-            ProfileCustomButtonBlocConsumer()
+            SizedBox(height: 30.0),
+            ProfileCustomButtonBlocConsumer(),
+            SizedBox(height: 30.0),
+            ChangeLanguageButton()
           ],
         ),
       ),

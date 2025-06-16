@@ -5,6 +5,7 @@ import 'package:graduation_project_new_version/features/profile_feature/presenta
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/get_orders_profile_cubit/get_order_profile_states.dart';
 import '../../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../../core/utils/font_styles/font_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyCompletedOrdersListViewBlocBuilder extends StatelessWidget {
   const MyCompletedOrdersListViewBlocBuilder({super.key});
@@ -28,11 +29,11 @@ class MyCompletedOrdersListViewBlocBuilder extends StatelessWidget {
               ),
             );
           } else {
-            return const Center(
+            return Center(
               child: CircleAvatar(
                 radius: 120.0,
                 backgroundColor: AppColors.darkGreen,
-                child: Text("No Completed Orders",
+                child: Text(AppLocalizations.of(context)!.noCompletedOrders,
                     style: FontStyles.textStyleBold19),
               ),
             );

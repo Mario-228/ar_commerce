@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../../core/utils/font_styles/font_styles.dart';
 
@@ -27,8 +27,8 @@ class _AddAddressViewFooterState extends State<AddAddressViewFooter> {
           activeColor: AppColors.darkGreen,
           checkColor: AppColors.white,
         ),
-        const Text(
-          "Use as the shipping address",
+        Text(
+          AppLocalizations.of(context)!.useAsTheShippingAddress,
           style: FontStyles.textStyleRegularDarkGrey14,
         ),
       ],

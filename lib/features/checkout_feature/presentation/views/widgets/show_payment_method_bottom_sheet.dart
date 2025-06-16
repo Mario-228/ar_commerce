@@ -6,6 +6,7 @@ import 'package:graduation_project_new_version/features/cart_feature/data/models
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views/widgets/payment_method_list_tile_item.dart';
 import 'package:graduation_project_new_version/features/checkout_feature/presentation/views_models/payment_methods_cubit/payment_methods_cubit.dart';
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/paypal_service/paypal_service.dart';
 
 Future<void> showPaymentMethodBottomSheet({
@@ -30,8 +31,8 @@ Future<void> showPaymentMethodBottomSheet({
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Payment Method',
+              Text(
+                AppLocalizations.of(context)!.paymentMethod,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/reset_password_feature/presentation/views_models/reset_password_cubit/reset_password_cubit.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
@@ -33,7 +34,7 @@ class _ResetPasswordStrengthCheckerState
               Radius.circular(6.0),
             ),
           ),
-          labelText: "Enter New Password",
+          labelText: AppLocalizations.of(context)!.enterNewPassword,
           labelStyle:
               FontStyles.textStyleLight13.copyWith(fontWeight: FontWeight.w400),
           suffixIcon: IconButton(

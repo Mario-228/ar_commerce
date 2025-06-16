@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_new_version/features/signup_feature/presentation/views_models/sign_up_cubit/sign_up_cubit.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
@@ -34,7 +35,7 @@ class _PasswordFieldAndStrengthCheckerState
               Radius.circular(6.0),
             ),
           ),
-          labelText: "Password",
+          labelText: AppLocalizations.of(context)!.password,
           labelStyle:
               FontStyles.textStyleLight13.copyWith(fontWeight: FontWeight.w400),
           suffixIcon: IconButton(

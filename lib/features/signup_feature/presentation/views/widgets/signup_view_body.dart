@@ -3,6 +3,7 @@ import 'package:graduation_project_new_version/features/signup_feature/presentat
 import '../../../../../core/widgets/custom_header_widget.dart';
 import 'custom_footer_widget_bloc_builder.dart';
 import 'signup_text_form_field_section.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignupViewBody extends StatelessWidget {
   const SignupViewBody({super.key});
@@ -18,9 +19,9 @@ class SignupViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 30.0),
-              const CustomHeaderWidget(
-                title: "Create Account",
-                subtitle: "Enter your details for a new account",
+              CustomHeaderWidget(
+                title: AppLocalizations.of(context)!.createAccount,
+                subtitle: AppLocalizations.of(context)!.enterDetails,
               ),
               const SizedBox(height: 30.0),
               SignupTextFormFieldSection(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../../../data/models/get_orders_model.dart';
 import '../../../../../views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
 import '../../../../../views_models/get_orders_profile_cubit/get_order_profile_states.dart';
@@ -30,7 +32,7 @@ class DeleteOrderButtonBlocConsumer extends StatelessWidget {
             onPressed: () async => await GetOrderProfileCubit.get(context)
                 .deleteOrder(orderId: order.id),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text("Delete"),
+            child: Text(AppLocalizations.of(context)!.delete),
           );
         }
       },
