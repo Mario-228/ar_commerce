@@ -3,6 +3,7 @@ import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 import 'product_description_and_reviews_section.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DescriptionAndReviewsButtons extends StatelessWidget {
   const DescriptionAndReviewsButtons({
@@ -21,7 +22,7 @@ class DescriptionAndReviewsButtons extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                "Description",
+                AppLocalizations.of(context)!.description,
                 style: FontStyles.textStyleSemiBold14.copyWith(
                   color: AppColors.orange,
                 ),

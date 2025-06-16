@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/font_styles/font_styles.dart';
 
 class ProductDelivery extends StatelessWidget {
@@ -8,14 +9,14 @@ class ProductDelivery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
         Text(
-          "Dilivery: ",
+          AppLocalizations.of(context)!.delivery,
           style: FontStyles.textStyleBold13,
         ),
         Text(
-          "15 days after payment confirmation",
+          AppLocalizations.of(context)!.deliveryDays,
           style: FontStyles.textStyleRegularGrey14,
         ),
       ],

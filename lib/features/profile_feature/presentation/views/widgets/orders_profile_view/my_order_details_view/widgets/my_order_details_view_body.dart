@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
 import '../../../../../../../../core/utils/font_styles/font_styles.dart';
@@ -19,8 +19,8 @@ class MyOrderDetailsViewBody extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             OrderListTile(productItemModel: productItemModel),
-            const Text(
-              "Tracking details will be \n available in your email",
+            Text(
+              AppLocalizations.of(context)!.trackingDetails,
               style: FontStyles.textStyleRegular15,
             ),
             const SizedBox(

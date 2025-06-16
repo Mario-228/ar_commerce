@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/core/utils/get_it_service/get_it_service.dart';
 import '../../../../core/widgets/category_app_bar.dart';
 import '../../data/repos/others_repo_endpoints.dart';
-import '../../data/repos/others_repo_implementation.dart';
 import '../views_models/get_others_cubit/get_others_cubit.dart';
 import 'widgets/others_grid_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OthersCategoryView extends StatelessWidget {
   const OthersCategoryView({super.key});
@@ -12,11 +13,11 @@ class OthersCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CategoryAppbar(
-        title: "Others",
+      appBar: CategoryAppbar(
+        title: AppLocalizations.of(context)!.othersCategory,
       ),
-      body: BlocProvider(
-        create: (context) => GetOthersCubit(OthersRepoImplementation())
+      body: BlocProvider.value(
+        value: GetItService.getIt.get<GetOthersCubit>()
           ..getOthersProducts(
               endPoint: OthersRepoEndpoints.product + OthersRepoEndpoints.id),
         child: const OthersProductsGridView(),

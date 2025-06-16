@@ -8,6 +8,7 @@ import '../../../../../core/widgets/custom_material_button.dart';
 import '../../../../cart_feature/data/models/cart_model.dart';
 import '../../views_models/checkout_cubit/checkout_cubit.dart';
 import '../../views_models/checkout_cubit/checkout_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PayNowButtonBlocConsumer extends StatelessWidget {
   const PayNowButtonBlocConsumer({
@@ -26,7 +27,7 @@ class PayNowButtonBlocConsumer extends StatelessWidget {
       if (state.storeOrderErrorState != null) {
         showSnackBar(context, state.storeOrderErrorState!);
       } else if (state.storeOrderSuccessState != null) {
-        showSnackBar(context, "Order Placed Successfully");
+        showSnackBar(context, AppLocalizations.of(context)!.successfulOrder);
         await showPaymentMethodBottomSheet(
           context: context,
           total: total,

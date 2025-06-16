@@ -48,6 +48,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   geocoding: ^3.0.0
   geolocator: 10.1.0
+  get_it: ^8.0.3
   go_router: ^14.3.0
   google_maps_flutter: ^2.12.1
   hive: ^2.2.3
@@ -80,13 +81,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
     - assets/languages/
     - assets/arcore_supported_devices/
-    
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

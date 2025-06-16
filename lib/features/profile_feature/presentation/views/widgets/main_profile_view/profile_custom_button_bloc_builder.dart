@@ -10,6 +10,7 @@ import '../../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../views_models/logout_user_cubit/logout_user_cubit.dart';
 import '../../../views_models/logout_user_cubit/logout_user_states.dart';
 import 'profile_custom_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileCustomButtonBlocConsumer extends StatelessWidget {
   const ProfileCustomButtonBlocConsumer({
@@ -37,7 +38,7 @@ class ProfileCustomButtonBlocConsumer extends StatelessWidget {
             radius: 20.0,
             height: 60.0,
             width: 300.0,
-            text: "Logout",
+            text: AppLocalizations.of(context)!.logout,
             color: AppColors.greyShade500,
             onPressed: () async {
               await LogoutUserCubit.get(context).logoutUser();
@@ -50,7 +51,7 @@ class ProfileCustomButtonBlocConsumer extends StatelessWidget {
   }
 
   Future<void> logoutSuccessfully(BuildContext context) async {
-    showSnackBar(context, "Logout successfully");
+    showSnackBar(context, AppLocalizations.of(context)!.logoutSuccess);
     GoRouter.of(context).pushReplacement(AppRouters.kLoginView);
     await CacheHelper.saveData<String>(CacheHelperKeys.tokenKey, "");
     userToken = ""; //must change the token variable by LoginOutputModel obeject

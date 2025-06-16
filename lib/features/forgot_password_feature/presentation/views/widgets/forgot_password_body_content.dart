@@ -4,6 +4,7 @@ import 'package:graduation_project_new_version/features/forgot_password_feature/
 import '../../../../../core/widgets/custom_header_widget.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../views_models/reset_password_cubit/forgot_password_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgotPasswordBodyContent extends StatelessWidget {
   const ForgotPasswordBodyContent({
@@ -19,22 +20,22 @@ class ForgotPasswordBodyContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 30.0),
-          const CustomHeaderWidget(
-              title: "Forgot Password",
-              subtitle: "Login to your minifurs account"),
+          CustomHeaderWidget(
+              title: AppLocalizations.of(context)!.forgotPassword,
+              subtitle: AppLocalizations.of(context)!.loginToAccount),
           const SizedBox(height: 40.0),
           CustomTextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Enter your email';
+                  return AppLocalizations.of(context)!.enterYourEmail;
                 } else if (!(EmailValidator.validate(value))) {
-                  return "Insert valid email";
+                  return AppLocalizations.of(context)!.insertValidEmail;
                 } else {
                   return null;
                 }
               },
               type: TextInputType.emailAddress,
-              labelText: "Enter Email Address",
+              labelText: AppLocalizations.of(context)!.enterEmail,
               controller: ForgotPasswordCubit.get(context).emailController),
           const SizedBox(height: 35.0),
           SendVerificationCodeBlocConusmer(),

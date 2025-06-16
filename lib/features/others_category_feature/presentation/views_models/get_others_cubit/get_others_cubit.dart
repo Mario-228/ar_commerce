@@ -7,13 +7,17 @@ class GetOthersCubit extends Cubit<GetOthersStates> {
   final OthersRepo othersRepo;
 
   static GetOthersCubit get(context) => BlocProvider.of(context);
-
+  bool isLoaded = false;
   Future<void> getOthersProducts({required String endPoint}) async {
+    if (isLoaded) return;
     emit(GetOthersLoadingState());
     final result = await othersRepo.getOthersProducts(endPoint: endPoint);
     result.fold(
       (error) => emit(GetOthersFailedState(errorMsg: error.errorMessage)),
-      (data) => emit(GetOthersSuccessState(productItems: data)),
+      (data) {
+        isLoaded = true;
+        emit(GetOthersSuccessState(productItems: data));
+      },
     );
   }
 }

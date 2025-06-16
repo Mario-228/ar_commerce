@@ -5,6 +5,7 @@ import 'package:graduation_project_new_version/features/cart_feature/presentatio
 import '../../../../../core/utils/font_styles/font_styles.dart';
 import '../../views_models/cart_cubit/cart_cubit.dart';
 import '../../views_models/cart_cubit/cart_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomItemCartListViewBlocBuilder extends StatelessWidget {
   const CustomItemCartListViewBlocBuilder({
@@ -20,10 +21,11 @@ class CustomItemCartListViewBlocBuilder extends StatelessWidget {
         } else if (state is GetCartLoadingState) {
           return const Center(child: CircularProgressIndicator());
         } else {
-          return const CircleAvatar(
+          return CircleAvatar(
             radius: 80,
             backgroundColor: AppColors.darkGreen,
-            child: Text("Empty Cart", style: FontStyles.textStyleBold19),
+            child: Text(AppLocalizations.of(context)!.emptyCart,
+                style: FontStyles.textStyleBold19),
           );
         }
       },

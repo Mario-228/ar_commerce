@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_routers/app_routers.dart';
 import '../../../../../core/utils/cache_helper/cache_helper.dart';
@@ -33,9 +34,9 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else {
           return CustomFooterWidget(
-            buttonTitle: "Sign Up",
-            footerText: "Already have an account? ",
-            footerLinkText: "Login Here",
+            buttonTitle: AppLocalizations.of(context)!.signUp,
+            footerText: AppLocalizations.of(context)!.alreadyHaveAccount,
+            footerLinkText: AppLocalizations.of(context)!.loginHere,
             onPressedFooterText: () =>
                 GoRouter.of(context).push(AppRouters.kLoginView),
             onPressedButton: () async {
@@ -44,7 +45,8 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
                   .currentState!
                   .validate()) {
                 if (SignUpCubit.get(context).genderController.value == null) {
-                  showSnackBar(context, "Select your gender");
+                  showSnackBar(
+                      context, AppLocalizations.of(context)!.selectYourGender);
                   return;
                 }
                 await SignUpCubit.get(context).signUp();
@@ -64,11 +66,12 @@ class CustomFooterWidgetBlocBuilder extends StatelessWidget {
     var response =
         await SignUpRepoImplementation().sendVerificationEmail(user.email);
     response.fold(
-        (error) =>
-            showSnackBar(context, "Something went wrong please try again..."),
+        (error) => showSnackBar(
+            context, AppLocalizations.of(context)!.somethingWentWrong),
         (value) {
       GoRouter.of(context).push(AppRouters.kEmailVerificationView);
-      showSnackBar(context, "Check your email to verify your account");
+      showSnackBar(
+          context, AppLocalizations.of(context)!.checkEmailVerification);
     });
   }
 }

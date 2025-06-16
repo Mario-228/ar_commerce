@@ -49,11 +49,22 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> postData(
-      String endPoint, Map<String, dynamic> query) async {
+      String endPoint, Map<String, dynamic>? query) async {
     var response = await dioHelper.post(
       endPoint,
       queryParameters: query,
       options: Options(headers: {'ngrok-skip-browser-warning': 'true'}),
+    );
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> putDataForStripe(String endPoint) async {
+    var response = await dioHelper.put(
+      endPoint,
+      options: Options(headers: {
+        'ngrok-skip-browser-warning': 'true',
+        'Authorization': 'Bearer ${CacheHelper.getUserData().token}',
+      }),
     );
     return response.data;
   }
@@ -214,6 +225,25 @@ class ApiService {
     var response = await dioHelper.post(
       endPoint,
       queryParameters: parameters,
+      options: Options(
+        contentType: contentType,
+        headers: headers ??
+            {
+              "Authorization": "Bearer $token",
+            },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> stripeGetData({
+    required String endPoint,
+    required String token,
+    String? contentType,
+    Map<String, dynamic>? headers,
+  }) async {
+    var response = await dioHelper.get(
+      endPoint,
       options: Options(
         contentType: contentType,
         headers: headers ??

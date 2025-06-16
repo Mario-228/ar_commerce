@@ -10,6 +10,7 @@ import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 import '../../views_models/email_verification_cubit/email_verification_cubit.dart';
 import '../../views_models/email_verification_cubit/email_verification_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomMaterialButtonBlocConsumer extends StatelessWidget {
   const CustomMaterialButtonBlocConsumer({
@@ -21,7 +22,8 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
     return BlocConsumer<EmailVerificationCubit, EmailVerificationStates>(
       listener: (context, state) async {
         if (state is EmailVerificationSuccess) {
-          showSnackBar(context, 'Email verified successfully');
+          showSnackBar(
+              context, AppLocalizations.of(context)!.emailVerificationSuccess);
           GoRouter.of(context).push(AppRouters.kLoginView);
           await updateVerified();
         } else if (state is EmailVerificationError) {
@@ -38,7 +40,8 @@ class CustomMaterialButtonBlocConsumer extends StatelessWidget {
               if (EmailVerificationCubit.get(context).otp.length == 6) {
                 EmailVerificationCubit.get(context).verificationEmail();
               } else {
-                showSnackBar(context, 'Please enter a valid OTP');
+                showSnackBar(
+                    context, AppLocalizations.of(context)!.enterValidOTP);
               }
             },
             color: AppColors.darkGreen,

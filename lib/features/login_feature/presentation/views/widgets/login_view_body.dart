@@ -6,6 +6,7 @@ import '../../views_models/change_visibility_cubit/change_visibility_cubit.dart'
 import 'custom_footer_widget_login_bloc_builder.dart';
 import 'forget_password_widget.dart';
 import 'login_text_form_field_section.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -21,9 +22,9 @@ class LoginViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 30.0),
-              const CustomHeaderWidget(
-                title: 'Welcome Back',
-                subtitle: 'Login to your minifurs account',
+              CustomHeaderWidget(
+                title: AppLocalizations.of(context)!.welcomeBack,
+                subtitle: AppLocalizations.of(context)!.loginToAccount,
               ),
               const SizedBox(height: 30.0),
               BlocProvider(

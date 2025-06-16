@@ -5,6 +5,7 @@ import '../../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../../core/utils/font_styles/font_styles.dart';
 import '../../../../../views_models/get_orders_profile_cubit/get_order_profile_cubit.dart';
 import '../../../../../views_models/get_orders_profile_cubit/get_order_profile_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyPendingOrdersViewBlocBuilder extends StatelessWidget {
   const MyPendingOrdersViewBlocBuilder({super.key});
@@ -28,11 +29,11 @@ class MyPendingOrdersViewBlocBuilder extends StatelessWidget {
               ),
             );
           } else {
-            return const Center(
+            return Center(
               child: CircleAvatar(
                 radius: 120.0,
                 backgroundColor: AppColors.darkGreen,
-                child: Text("No Pending Orders",
+                child: Text(AppLocalizations.of(context)!.noPendingOrders,
                     style: FontStyles.textStyleBold19),
               ),
             );

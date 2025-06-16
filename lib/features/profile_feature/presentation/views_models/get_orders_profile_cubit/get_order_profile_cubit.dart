@@ -64,13 +64,14 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
       },
       (value) {
         state.ordersLoadingStatus[orderId] = false;
+        state.pendingOrders.removeWhere((element) => element.id == orderId);
         emit(
-          state.copyWith(isDeleted: true, ordersLoadingStatus: {
-            ...state.ordersLoadingStatus,
-            orderId: false
-          }),
+          state.copyWith(
+            isDeleted: true,
+            ordersLoadingStatus: {...state.ordersLoadingStatus, orderId: false},
+            pendingOrders: state.pendingOrders,
+          ),
         );
-        getOrders();
       },
     );
   }
