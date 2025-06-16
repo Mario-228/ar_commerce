@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
             HomeNavigationBarCubit.get(context).selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: AppColors.white,
-          items: NavigationBarScreens.items,
+          items: NavigationBarScreens.items(context),
           elevation: 5.0,
           selectedItemColor: AppColors.orange,
           unselectedItemColor: AppColors.grey,

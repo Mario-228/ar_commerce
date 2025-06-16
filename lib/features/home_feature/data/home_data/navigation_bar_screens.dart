@@ -8,26 +8,27 @@ import '../../../others_category_feature/presentation/views/others_category_view
 import '../../../popular_category_feature/presentation/views/popular_category_view.dart';
 import '../../../profile_feature/presentation/views/profile_view.dart';
 import '../../presentation/widgets/home_view_body.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 abstract class NavigationBarScreens {
-  static const List<BottomNavigationBarItem> items = [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: 'Home',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.shopping_bag),
-      label: 'Cart',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.favorite),
-      label: 'Favorite',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      label: 'Profile',
-    ),
-  ];
+  static List<BottomNavigationBarItem> items(BuildContext context) => [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: AppLocalizations.of(context)!.home,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_bag),
+          label: AppLocalizations.of(context)!.cart,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: AppLocalizations.of(context)!.favorite,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: AppLocalizations.of(context)!.profile,
+        ),
+      ];
   static const List<Widget> screens = [
     HomeViewBody(),
     CartView(),

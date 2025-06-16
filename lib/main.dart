@@ -19,6 +19,7 @@ import 'core/utils/app_colors/app_colors.dart';
 import 'core/utils/app_routers/app_routers.dart';
 import 'core/utils/functions/initialize_user_info_variables.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 // import 'package:graduation_project/features/login_feature/presentation/views/login_view.dart';
