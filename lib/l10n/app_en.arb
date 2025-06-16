@@ -104,7 +104,10 @@
   "somethingWentWrongReload":"Something Wrong Happened Try To Click the Refresh Button",
   "codeSent": "Code sent",
   "sendVerificationCode":"Send Verification Code",
-  "checkEmailVerification":"Check your email to verify your account"
+  "checkEmailVerification":"Check your email to verify your account",
+  "chooseFromGallery": "Choose from Gallery",
+  "takePhoto": "Take a Photo",
+  "updatedSuccessfully": "Updated Successfully"
 
 }
 

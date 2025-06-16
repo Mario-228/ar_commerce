@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:graduation_project_new_version/core/utils/functions/pick_image.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views_models/update_user_cubit/update_user_cubit.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:image_picker/image_picker.dart';
 // import '../../../../../../../core/utils/cache_helper/cache_helper.dart';
@@ -19,7 +20,7 @@ Future<void> showImageSourceActionSheet(BuildContext context) async {
         children: [
           ListTile(
             leading: const Icon(Icons.photo_library),
-            title: const Text('Choose from Gallery'),
+            title: Text(AppLocalizations.of(context)!.chooseFromGallery),
             onTap: () {
               pickImage(ImageSource.gallery).then((fileValue) {
                 if (context.mounted) {
@@ -31,7 +32,7 @@ Future<void> showImageSourceActionSheet(BuildContext context) async {
           ),
           ListTile(
             leading: const Icon(Icons.camera_alt),
-            title: const Text("Take a Picture"),
+            title: Text(AppLocalizations.of(context)!.takePhoto),
             onTap: () {
               pickImage(ImageSource.camera).then((fileValue) {
                 if (context.mounted) {

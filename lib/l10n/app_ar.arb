@@ -104,6 +104,9 @@
   "somethingWentWrongReload": "حدث خطأ ما، الرجاء إعادة تحميل الصفحة",
   "codeSent": "تم إرسال الرمز",
   "sendVerificationCode": "إرسال رمز التحقق",
-  "checkEmailVerification": "الرجاء التحقق من بريدك الإلكتروني للتحقق من الحساب"
+  "checkEmailVerification": "الرجاء التحقق من بريدك الإلكتروني للتحقق من الحساب",
+  "chooseFromGallery": "اختر من المعرض",
+  "takePhoto": "التقط صورة",
+  "updatedSuccessfully": "تم التحديث بنجاح"
 
 }

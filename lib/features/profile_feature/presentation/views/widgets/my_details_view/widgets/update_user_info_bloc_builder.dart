@@ -5,6 +5,7 @@ import 'package:graduation_project_new_version/features/profile_feature/presenta
 import '../../../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../views_models/update_user_cubit/update_user_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UpdateUserInfoButtonBlocBuilder extends StatelessWidget {
   const UpdateUserInfoButtonBlocBuilder({
@@ -15,7 +16,8 @@ class UpdateUserInfoButtonBlocBuilder extends StatelessWidget {
     return BlocConsumer<UpdateUserCubit, UpdateUserStates>(
         listener: (context, state) {
       if (state is UpdateUserSuccessState) {
-        showSnackBar(context, "Updated successfully");
+        showSnackBar(
+            context, AppLocalizations.of(context)!.updatedSuccessfully);
       } else if (state is UpdateUserErrorState) {
         showSnackBar(context, state.errorMessage);
       }
@@ -26,7 +28,7 @@ class UpdateUserInfoButtonBlocBuilder extends StatelessWidget {
         );
       } else {
         return CustomMaterialButton(
-          text: "Update",
+          text: AppLocalizations.of(context)!.update,
           color: AppColors.darkGreen,
           onPressed: () async {
             if (UpdateUserCubit.get(context)
