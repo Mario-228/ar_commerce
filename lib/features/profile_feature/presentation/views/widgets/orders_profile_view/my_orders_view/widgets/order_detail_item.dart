@@ -3,6 +3,7 @@ import 'package:graduation_project_new_version/features/checkout_feature/present
 import 'package:graduation_project_new_version/features/profile_feature/data/models/get_orders_model.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/delete_order_button_bloc_consumer.dart';
 import 'package:graduation_project_new_version/features/profile_feature/presentation/views/widgets/orders_profile_view/my_orders_view/widgets/order_detail_pdf.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderDetailItem extends StatelessWidget {
   const OrderDetailItem({
@@ -24,11 +25,11 @@ class OrderDetailItem extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.zero,
               leading: const Icon(Icons.info, color: Colors.brown),
-              title: Text("Order#${order.id}"),
+              title: Text("${AppLocalizations.of(context)!.order}#${order.id}"),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () => navigateTo(context, OrderDetailPdf(order: order)),
             ),
-            if (order.status == "pending") ...[
+            if (order.status == AppLocalizations.of(context)!.pending) ...[
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -41,7 +42,7 @@ class OrderDetailItem extends StatelessWidget {
                       id: order.id,
                     ),
                     icon: const Icon(Icons.payment),
-                    label: const Text("Pay Now"),
+                    label: Text(AppLocalizations.of(context)!.payNow),
                   ),
                   const SizedBox(width: 8),
                   DeleteOrderButtonBlocConsumer(order: order),

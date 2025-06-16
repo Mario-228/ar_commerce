@@ -107,6 +107,15 @@
   "checkEmailVerification": "الرجاء التحقق من بريدك الإلكتروني للتحقق من الحساب",
   "chooseFromGallery": "اختر من المعرض",
   "takePhoto": "التقط صورة",
-  "updatedSuccessfully": "تم التحديث بنجاح"
+  "updatedSuccessfully": "تم التحديث بنجاح",
+  "trackingDetails": "تفاصيل التتبع ستكون \n متاحة في بريدك الإلكتروني",
+  "delete": "حذف",
+  "noCompletedOrders": "لا توجد طلبات مكتملة",
+  "noPendingOrders": "لا توجد طلبات معلقة",
+  "completedOrders": "الطلبات المكتملة",
+  "pendingOrders": "الطلبات المعلقة",
+  "order": "طلب",
+  "pending": "معلق",
+  "refreshOrders": "تحديث الطلبات"
 
 }

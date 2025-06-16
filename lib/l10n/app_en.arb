@@ -107,7 +107,16 @@
   "checkEmailVerification":"Check your email to verify your account",
   "chooseFromGallery": "Choose from Gallery",
   "takePhoto": "Take a Photo",
-  "updatedSuccessfully": "Updated Successfully"
+  "updatedSuccessfully": "Updated Successfully",
+  "trackingDetails":"Tracking details will be \n available in your email",
+  "delete": "Delete",
+  "noCompletedOrders": "No completed orders",
+  "noPendingOrders": "No pending orders",
+  "completedOrders": "Completed",
+  "pendingOrders": "Pending",
+  "order": "Order",
+  "pending": "Pending",
+  "refreshOrders": "Refresh Orders"
 
 }
 
