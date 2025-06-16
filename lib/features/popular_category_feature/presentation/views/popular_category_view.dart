@@ -12,7 +12,7 @@ class PopularCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CategoryAppbar(
+      appBar: CategoryAppbar(
         title: AppLocalizations.of(context)!.popular,
       ),
       body: BlocProvider.value(
