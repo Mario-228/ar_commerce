@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_new_version/features/favourites_feature/presentation/views_models/get_user_favourite_cubit/get_user_favourite_states.dart';
 import 'package:graduation_project_new_version/features/home_feature/presentation/widgets/custom_product_item.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../views_models/get_user_favourite_cubit/get_user_favourites_cubit.dart';
 
 class FavouritesGridView extends StatelessWidget {
@@ -18,7 +18,8 @@ class FavouritesGridView extends StatelessWidget {
           if (state.isLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state.favourites.isEmpty) {
-            return const Center(child: Text('No Favourites Yet'));
+            return Center(
+                child: Text(AppLocalizations.of(context)!.noFavoritesYet));
           } else {
             return GridView.builder(
               physics: const BouncingScrollPhysics(),

@@ -116,6 +116,7 @@
   "pendingOrders": "الطلبات المعلقة",
   "order": "طلب",
   "pending": "معلق",
-  "refreshOrders": "تحديث الطلبات"
+  "refreshOrders": "تحديث الطلبات",
+  "noFavoritesYet": "لا توجد عناصر مفضلة حتى الآن"
 
 }

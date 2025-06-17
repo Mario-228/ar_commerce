@@ -29,7 +29,7 @@ class OrderDetailItem extends StatelessWidget {
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () => navigateTo(context, OrderDetailPdf(order: order)),
             ),
-            if (order.status == AppLocalizations.of(context)!.pending) ...[
+            if (order.status == "pending") ...[
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

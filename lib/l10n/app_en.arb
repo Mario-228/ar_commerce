@@ -115,8 +115,9 @@
   "completedOrders": "Completed",
   "pendingOrders": "Pending",
   "order": "Order",
-  "pending": "Pending",
-  "refreshOrders": "Refresh Orders"
+  "pending": "pending",
+  "refreshOrders": "Refresh Orders",
+  "noFavoritesYet": "No favorites yet"
 
 }
 
