@@ -22,12 +22,7 @@ class CategoryAppbar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {
             GoRouter.of(context).push(AppRouters.kHomeView);
           }),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.sort),
-        ),
-      ],
+      actions: [],
     );
   }
 

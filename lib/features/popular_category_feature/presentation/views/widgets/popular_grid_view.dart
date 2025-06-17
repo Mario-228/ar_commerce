@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project_new_version/features/home_feature/presentation/views_models/get_product_cubit/get_product_cubit.dart';
+import 'package:graduation_project_new_version/features/home_feature/presentation/views_models/get_product_cubit/get_product_states.dart';
 // import 'package:go_router/go_router.dart';
 // import 'package:graduation_project/core/utils/app_routers/app_routers.dart';
 import '../../../../../core/utils/models/custom_product_item_model/custom_product_item_model.dart';
@@ -9,87 +12,31 @@ class PopularProductsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CustomProductItemModel> productItems = [
-      CustomProductItemModel(
-          id: 1,
-          name: 'Product 1',
-          price: 10,
-          pictureUrl:
-              'https://img.freepik.com/free-vector/realistic-textile-sign-opening-soon_52683-18802.jpg?t=st=1736815141~exp=1736818741~hmac=60b7e3bed7b2316bda905dbdd883e368cb5ef029473d08dd478d5fb3e3cb659e&w=740',
-          isFavorite: true,
-          isLike: false,
-          productBrand: 'Brand 1',
-          productBrandId: 1,
-          quantity: 10,
-          productTypeId: 1,
-          productType: 'Type 1',
-          currency: 'L.E ',
-          description: 'Description 1',
-          image3DUrl:
-              "https://modelviewer.dev/shared-assets/models/Astronaut.glb"),
-      CustomProductItemModel(
-          id: 1,
-          name: 'Product 1',
-          price: 10,
-          pictureUrl:
-              'https://img.freepik.com/free-vector/realistic-textile-sign-opening-soon_52683-18802.jpg?t=st=1736815141~exp=1736818741~hmac=60b7e3bed7b2316bda905dbdd883e368cb5ef029473d08dd478d5fb3e3cb659e&w=740',
-          isFavorite: true,
-          isLike: false,
-          productBrand: 'Brand 1',
-          productBrandId: 1,
-          quantity: 10,
-          productTypeId: 1,
-          productType: 'Type 1',
-          currency: 'L.E ',
-          description: 'Description 1',
-          image3DUrl:
-              "https://modelviewer.dev/shared-assets/models/Astronaut.glb"),
-      CustomProductItemModel(
-          id: 1,
-          name: 'Product 1',
-          price: 10,
-          pictureUrl:
-              'https://img.freepik.com/free-vector/realistic-textile-sign-opening-soon_52683-18802.jpg?t=st=1736815141~exp=1736818741~hmac=60b7e3bed7b2316bda905dbdd883e368cb5ef029473d08dd478d5fb3e3cb659e&w=740',
-          isFavorite: true,
-          isLike: false,
-          productBrand: 'Brand 1',
-          productBrandId: 1,
-          quantity: 10,
-          productTypeId: 1,
-          productType: 'Type 1',
-          currency: 'L.E ',
-          description: 'Description 1',
-          image3DUrl:
-              "https://modelviewer.dev/shared-assets/models/Astronaut.glb"),
-      CustomProductItemModel(
-          id: 1,
-          name: 'Product 1',
-          price: 10,
-          pictureUrl:
-              'https://img.freepik.com/free-vector/realistic-textile-sign-opening-soon_52683-18802.jpg?t=st=1736815141~exp=1736818741~hmac=60b7e3bed7b2316bda905dbdd883e368cb5ef029473d08dd478d5fb3e3cb659e&w=740',
-          isFavorite: true,
-          isLike: false,
-          productBrand: 'Brand 1',
-          productBrandId: 1,
-          quantity: 10,
-          productTypeId: 1,
-          productType: 'Type 1',
-          currency: 'L.E ',
-          description: 'Description 1',
-          image3DUrl:
-              "https://modelviewer.dev/shared-assets/models/Astronaut.glb"),
-    ];
-    return GridView.builder(
-      physics: const BouncingScrollPhysics(),
-      itemCount: productItems.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 2,
-        mainAxisSpacing: 2,
-        childAspectRatio: 1,
-      ),
-      itemBuilder: (context, index) =>
-          CustomProductItem(productItemModel: productItems[index]),
-    );
+    List<CustomProductItemModel> productItems = [];
+    return BlocBuilder<GetProductCubit, GetProductStates>(
+        builder: (context, state) {
+      if (state is GetProductSuccessState) {
+        productItems = state.productItems;
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: productItems.length ~/ 2,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2,
+            childAspectRatio: 1,
+          ),
+          itemBuilder: (context, index) =>
+              CustomProductItem(productItemModel: productItems[index]),
+        );
+      } else if (state is GetProductErrorState) {
+        return Center(
+          child: Text(state.errorMessageFromApi),
+        );
+      } else {
+        return const Center(child: CircularProgressIndicator());
+      }
+    });
   }
 }

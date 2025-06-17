@@ -15,26 +15,29 @@ class CheckoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CheckoutCubit()..getAddresses(),
-      child: Scaffold(
-        appBar: CustomAppbar(
-          canGoBack: true,
-          leadingOnPressed: () =>
-              GoRouter.of(context).pushReplacement(AppRouters.kHomeView),
-          title: AppLocalizations.of(context)!.checkout,
-          actions: [
-            Builder(
-              builder: (context) => IconButton(
-                onPressed: () async =>
-                    await CheckoutCubit.get(context).getAddresses(),
-                icon: Icon(
-                  Icons.refresh,
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          appBar: CustomAppbar(
+            canGoBack: true,
+            leadingOnPressed: () =>
+                GoRouter.of(context).pushReplacement(AppRouters.kHomeView),
+            title: AppLocalizations.of(context)!.checkout,
+            actions: [
+              Builder(
+                builder: (context) => IconButton(
+                  onPressed: () async =>
+                      await CheckoutCubit.get(context).getAddresses(),
+                  icon: Icon(
+                    Icons.refresh,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
+          body: CheckoutViewBody(
+              total: cartModel.totalCart, cartModel: cartModel),
         ),
-        body:
-            CheckoutViewBody(total: cartModel.totalCart, cartModel: cartModel),
       ),
     );
   }

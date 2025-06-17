@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:graduation_project_new_version/core/localiztion/locale_cubit.dart';
+import 'package:graduation_project_new_version/constants.dart';
 import 'package:graduation_project_new_version/core/utils/ar_service/ar_device_compatibility_checker.dart';
 import 'package:graduation_project_new_version/core/utils/cache_helper/cache_helper.dart';
 import 'package:graduation_project_new_version/core/utils/get_it_service/get_it_service.dart';
@@ -13,6 +14,7 @@ import 'package:graduation_project_new_version/features/profile_feature/presenta
 // import 'package:graduation_project/constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pretty_bloc_observer/pretty_bloc_observer.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/utils/app_colors/app_colors.dart';
 import 'core/utils/app_routers/app_routers.dart';
 import 'core/utils/functions/initialize_user_info_variables.dart';
@@ -33,6 +35,10 @@ Future<void> main() async {
   GetItService.init();
   Bloc.observer = PrettyBlocObserver();
   initializeUserInfoVariables();
+  await Supabase.initialize(
+    url: baseUrl,
+    anonKey: anonKey,
+  );
   runApp(
     MultiBlocProvider(
       providers: [

@@ -7,10 +7,8 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
   GetOrderProfileCubit() : super(const GetOrderProfileState());
 
   static GetOrderProfileCubit get(context) => BlocProvider.of(context);
-  bool isLoaded = false;
   Map<int, bool> loadingStatus = <int, bool>{};
   Future<void> getOrders() async {
-    if (isLoaded) return;
     emit(state.copyWith(
       isLoading: true,
       errorMessage: null,
@@ -41,7 +39,6 @@ class GetOrderProfileCubit extends Cubit<GetOrderProfileState> {
           errorMessage: null,
           ordersLoadingStatus: loadingStatus,
         ));
-        isLoaded = true;
       },
     );
   }

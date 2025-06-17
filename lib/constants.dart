@@ -3,8 +3,8 @@ import 'package:graduation_project_new_version/core/utils/models/custom_product_
 import 'features/profile_feature/data/models/profile_user_model.dart';
 
 const String anonKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRocWpjeWlpc3VocGJ6c2hheG5tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM3NDg3MTUsImV4cCI6MjA0OTMyNDcxNX0.bO0FfYvKRKLtqt7C0gT-ogUGKN0_oxn-A-gxQwMft1g';
-const String baseUrl = 'https://dhqjcyiisuhpbzshaxnm.supabase.co';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhenZmb2lpcWZhbXViZGpxZ29pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQwODk0MzAsImV4cCI6MjA0OTY2NTQzMH0.C1PexAyagnfqHT6IwnXOziLMzSYQbJ8kmmioeTl4C_k';
+const String baseUrl = 'https://bazvfoiiqfamubdjqgoi.supabase.co';
 
 late String userToken;
 late bool isVerified;
