@@ -159,4 +159,5 @@ marioyoussef200@gmail.com
 
 ## 📱 Demo
 
-<video src="https://drive.google.com/file/d/19iwKoqrNV8Q0JRJQ92KhWbZP9ltvHNXN/view?usp=sharing" controls width="100%"></video>
+▶️ [Click here to watch the demo video](https://drive.google.com/file/d/19iwKoqrNV8Q0JRJQ92KhWbZP9ltvHNXN/view?usp=sharing)
+
