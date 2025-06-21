@@ -152,7 +152,11 @@ This project uses a number of Dart & Flutter packages. Below are the major depen
 For feedback or inquiries, use the "Contact Us" section in the app or reach out at:
 
 ```
-support@ar-commerce.app
+marioyoussef200@gmail.com
 ```
 
 ---
+
+## 📱 Demo
+
+<video src="media/AR-Commerce-Demo.mp4" controls width="100%"></video>
